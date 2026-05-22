@@ -17,3 +17,14 @@ Thumbs.db
 *.log
 *.tmp
 ~*
+
+# Node / Omni
+node_modules/
+
+# Graphify (optional: commit graphify-out/ for team — ignore volatile files per upstream README)
+graphify-out/manifest.json
+graphify-out/cost.json
+
+# Third-party reference clones (see README — not vendored in git)
+references/
+

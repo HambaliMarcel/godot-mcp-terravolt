@@ -1,0 +1,9 @@
+# Third-party reference clones (same boundary as .gitnexusignore)
+references/
+
+# Dependencies & tooling noise
+node_modules/
+.gitnexus/
+
+# Generated JS graphs (separate from graphify-out KG)
+graphs/
