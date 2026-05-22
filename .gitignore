@@ -55,6 +55,11 @@ tools/_scratch_manifest.json
 tests/_fixtures/with-addon/addons/
 tests/_fixtures/with-addon/.godot/
 tests/_fixtures/empty/.godot/
+tests/_fixtures/tilemap_zoo/.godot/
+
+# Local debug probes (never commit)
+_probe_err.txt
+_probe_out.txt
 
 # Linear import scratch (payload chunks — regenerate locally; never vendor)
 tools/.linear-batch/

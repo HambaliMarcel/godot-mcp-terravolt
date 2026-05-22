@@ -4,6 +4,7 @@
 import { strict as assert } from "node:assert";
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
 import test from "node:test";
 
 import { HeadlessCoordinator } from "../../../dist/headless/headlessCoordinator.js";
@@ -12,8 +13,20 @@ import { headlessConfig, loadGodotBinary, repoRoot } from "../lib/godot_test_env
 const godotBinary = loadGodotBinary();
 const gameFixture = join(repoRoot, "tests", "_fixtures", "minimal_game");
 const driverFixture = join(repoRoot, "tests", "_fixtures", "empty");
-const addonAutoload = join(repoRoot, "packages", "godot-mcp-addon", "autoloads", "runtime_bridge.gd");
-const addonHelpers = join(repoRoot, "packages", "godot-mcp-addon", "handlers", "runtime_helpers.gd");
+const addonAutoload = join(
+  repoRoot,
+  "packages",
+  "godot-mcp-addon",
+  "autoloads",
+  "runtime_bridge.gd",
+);
+const addonHelpers = join(
+  repoRoot,
+  "packages",
+  "godot-mcp-addon",
+  "handlers",
+  "runtime_helpers.gd",
+);
 const fixtureAutoloadDir = join(gameFixture, "autoloads");
 
 function stageRuntimeBridge() {
@@ -26,7 +39,11 @@ function stageRuntimeBridge() {
   writeFileSync(join(fixtureAutoloadDir, "runtime_bridge.gd"), bridgeSrc);
 }
 
-const skip = !godotBinary || !existsSync(gameFixture) || !existsSync(driverFixture) || !existsSync(addonAutoload);
+const skip =
+  !godotBinary ||
+  !existsSync(gameFixture) ||
+  !existsSync(driverFixture) ||
+  !existsSync(addonAutoload);
 const skipReason = !godotBinary
   ? "TERRAVOLT_GODOT_BINARY not set"
   : !existsSync(gameFixture)
@@ -80,7 +97,7 @@ test("runtime.* headless round-trips", { skip: skip && skipReason }, async () =>
       } catch {
         /* bridge still booting */
       }
-      await new Promise((r) => setTimeout(r, 1000));
+      await delay(1000);
     }
     assert.ok(tree, "runtime.list_nodes did not succeed after polling");
     assert.ok(tree.root);

@@ -85,17 +85,49 @@ static func describe_control(root: Node, path: String) -> Dictionary:
 	var t := resolve_target(root, {"control_path": path})
 	if not t.get("ok", false):
 		return t
+	var ctrl: Control = t["control"]
+	return {"ok": true, "result": _control_override_summary(ctrl)}
+
+
+static func _control_override_summary(ctrl: Control) -> Dictionary:
+	var colors: Dictionary = {}
+	var constants: Dictionary = {}
+	var fonts: Dictionary = {}
+	var font_sizes: Dictionary = {}
+	var icons: Dictionary = {}
+	var styles: Dictionary = {}
+	var type_names := PackedStringArray([ctrl.get_class()])
+	if not ctrl.theme_type_variation.is_empty():
+		type_names.append(str(ctrl.theme_type_variation))
+	var color_keys := PackedStringArray([
+		"font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_disabled_color",
+		"font_outline_color", "icon_normal_color", "icon_hover_color", "icon_pressed_color", "icon_disabled_color",
+	])
+	var font_keys := PackedStringArray(["font", "font_size"])
+	for type_name in type_names:
+		for key in color_keys:
+			if ctrl.has_theme_color_override(key):
+				colors["%s/%s" % [type_name, key]] = color_json(ctrl.get_theme_color(key, type_name))
+		for key in font_keys:
+			if ctrl.has_theme_font_override(key):
+				var f := ctrl.get_theme_font(key, type_name)
+				fonts["%s/%s" % [type_name, key]] = f.resource_path if f else ""
+			if ctrl.has_theme_font_size_override(key):
+				font_sizes["%s/%s" % [type_name, key]] = ctrl.get_theme_font_size(key, type_name)
+		for key in ["normal", "hover", "pressed", "focus", "disabled"]:
+			if ctrl.has_theme_stylebox_override(key):
+				styles["%s/%s" % [type_name, key]] = _stylebox_summary(ctrl.get_theme_stylebox(key, type_name))
 	return {
-		"ok": true,
-		"result": {
-			"kind": "control_overrides",
-			"colors": {},
-			"constants": {},
-			"fonts": {},
-			"font_sizes": {},
-			"icons": {},
-			"styles": {"Button/font_color": {"class": "Color", "properties_summary": {}}},
-		},
+		"kind": "control_overrides",
+		"path": str(ctrl.get_path()),
+		"type": ctrl.get_class(),
+		"theme_type_variation": str(ctrl.theme_type_variation),
+		"colors": colors,
+		"constants": constants,
+		"fonts": fonts,
+		"font_sizes": font_sizes,
+		"icons": icons,
+		"styles": styles,
 	}
 
 
