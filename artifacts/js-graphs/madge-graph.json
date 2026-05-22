@@ -113,6 +113,7 @@
   ],
   "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
   "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
+  "scripts/addon-link.mjs": [],
   "scripts/planned.mjs": [],
   "scripts/regen-graphs.mjs": [],
   "scripts/run-gitnexus.mjs": [],

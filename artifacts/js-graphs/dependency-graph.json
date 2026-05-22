@@ -402,6 +402,7 @@
         "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "scripts/addon-link.mjs",
         "scripts/regen-graphs.mjs",
         "scripts/run-gitnexus.mjs",
         "tools/.linear-batch/generate-child-save-payloads.js",
@@ -1201,6 +1202,7 @@
         "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "scripts/addon-link.mjs",
         "scripts/regen-graphs.mjs",
         "scripts/run-gitnexus.mjs"
       ],
@@ -6943,6 +6945,7 @@
         "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "scripts/addon-link.mjs",
         "scripts/regen-graphs.mjs",
         "scripts/run-gitnexus.mjs",
         "tools/.linear-batch/generate-child-save-payloads.js",
@@ -11000,6 +11003,65 @@
       "valid": true
     },
     {
+      "source": "scripts/addon-link.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "scripts/planned.mjs",
       "dependencies": [],
       "dependents": [],
@@ -11383,8 +11445,8 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 285,
-    "totalDependenciesCruised": 437,
+    "totalCruised": 286,
+    "totalDependenciesCruised": 440,
     "optionsUsed": {
       "baseDir": "H:\\Godot MCP Marcel",
       "combinedDependencies": false,
