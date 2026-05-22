@@ -10,6 +10,12 @@ can copy to a temp directory.
 | `minimal_3d/`        | Minimal 3D project with `main.tscn`; powers task 11 `scene.*` / `project.*` headless tests.                     |
 | `resource_zoo/`      | Sample `.tres` + `.gdshader` files; powers task 14 `resource.*` / `shader.*` headless tests.                    |
 | `asset_zoo/`         | Texture + script sample; powers task 15 `asset.*` / `batch_refactor.*` and task 16 `analysis.*` headless tests. |
+| `minimal_game/`      | CharacterBody2D + runtime bridge autoload; powers task 17 `runtime.*` headless E2E (bridge staged from addon at test time). |
+| `physics_zoo/`       | 3D world root; powers task 19 `physics.*` headless tests.                                                       |
+| `particle_zoo/`      | Effects root; powers task 19 `particle.*` headless tests.                                                       |
+| `nav_zoo/`           | Floor + nav region; powers task 19 `navigation.*` headless tests.                                               |
+| `tilemap_zoo/`       | TileMapLayer + tileset; powers task 20 `tilemap.*` headless tests.                                              |
+| `theme_zoo/`         | Theme + Control sample; powers task 20 `theme_ui.*` headless tests.                                             |
 | `dialogue_demo/`     | _(planned)_ Macro showcase.                                                                                     |
 | `stress_tree_10000/` | _(planned)_ Stress tree for envelope/SLA tests.                                                                 |
 

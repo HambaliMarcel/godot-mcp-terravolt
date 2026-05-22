@@ -27,6 +27,7 @@ export async function launchHeadlessDriver(opts: {
     stdio: ["ignore", "ignore", "pipe"],
     env: {
       ...process.env,
+      TERRAVOLT_GODOT_BINARY: opts.godotBinary,
       TERRAVOLT_CATALOG_VERSION: opts.catalogVersion ?? "unknown",
       TERRAVOLT_REGISTRY_SHA256: opts.registrySha256 ?? "unknown",
     },

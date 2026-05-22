@@ -1,0 +1,5 @@
+[gd_scene load_steps=1 format=3 uid="uid://physics_zoo_main"]
+
+[node name="World" type="Node3D"]
+
+[node name="Ground" type="Node3D" parent="."]

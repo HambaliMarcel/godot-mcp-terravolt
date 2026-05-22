@@ -62,15 +62,23 @@ function scanWindowsRoot(root: string): string | undefined {
   return undefined;
 }
 
+/** Skip Windows `.cmd`/`.bat` shims — Node `spawn` needs a direct executable. */
+function usableBinary(p: string | undefined): string | undefined {
+  if (!p || p.length === 0) return undefined;
+  if (/\.(cmd|bat)$/i.test(p)) return undefined;
+  if (!existsSync(p)) return undefined;
+  return path.resolve(p);
+}
+
 /** Resolution order mirrors docs/tasklist/07 §7.6.2 and docs/guides/quick-start.md. */
 export function resolveGodotBinary(opts: {
   readonly argvFlag?: string;
   readonly envBinary?: string;
 }): string | undefined {
-  if (opts.argvFlag && opts.argvFlag.length > 0 && existsSync(opts.argvFlag))
-    return path.resolve(opts.argvFlag);
-  if (opts.envBinary && opts.envBinary.length > 0 && existsSync(opts.envBinary))
-    return path.resolve(opts.envBinary);
+  const fromArgv = usableBinary(opts.argvFlag);
+  if (fromArgv) return fromArgv;
+  const fromEnv = usableBinary(opts.envBinary);
+  if (fromEnv) return fromEnv;
 
   const pathEnv = process.env.PATH ?? "";
   const dirs = pathEnv.split(path.delimiter).filter(Boolean);

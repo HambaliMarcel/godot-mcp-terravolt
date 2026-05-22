@@ -26,8 +26,9 @@ const addonSrc = join(repoRoot, "packages", "godot-mcp-addon");
 const addonDst = join(fixture, "addons", "terravolt_mcp");
 
 function loadGodotBinary() {
-  if (process.env.TERRAVOLT_GODOT_BINARY && existsSync(process.env.TERRAVOLT_GODOT_BINARY)) {
-    return process.env.TERRAVOLT_GODOT_BINARY;
+  const fromEnv = process.env.TERRAVOLT_GODOT_BINARY;
+  if (fromEnv && !/\.(cmd|bat)$/i.test(fromEnv) && existsSync(fromEnv)) {
+    return fromEnv;
   }
   if (existsSync(envFile)) {
     try {

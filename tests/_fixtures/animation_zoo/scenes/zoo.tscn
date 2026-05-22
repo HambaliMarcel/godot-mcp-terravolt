@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://terravolt_animation_zoo"]
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.8
+
+[sub_resource type="Animation" id="Animation_run"]
+resource_name = "run"
+length = 0.6
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "death"
+length = 1.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+"death": SubResource("Animation_death"),
+"idle": SubResource("Animation_idle"),
+"run": SubResource("Animation_run"),
+"walk": SubResource("Animation_walk")
+}
+
+[node name="Zoo" type="Node3D"]
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_main")
+}

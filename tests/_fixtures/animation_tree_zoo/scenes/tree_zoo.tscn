@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://terravolt_animation_tree_zoo"]
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.8
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+"idle": SubResource("Animation_idle"),
+"walk": SubResource("Animation_walk")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idle"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_root"]
+states/Start/position = Vector2(0, 0)
+states/idle/node = SubResource("AnimationNodeAnimation_idle")
+states/idle/position = Vector2(200, 100)
+
+[node name="TreeZoo" type="Node3D"]
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_main")
+}
+
+[node name="AnimTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_root")
+anim_player = NodePath("../AnimPlayer")

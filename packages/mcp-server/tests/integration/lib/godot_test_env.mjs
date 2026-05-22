@@ -8,8 +8,9 @@ export const repoRoot = resolve(here, "..", "..", "..", "..", "..");
 const envFile = join(repoRoot, ".terravolt", "godot-env.json");
 
 export function loadGodotBinary() {
-  if (process.env.TERRAVOLT_GODOT_BINARY && existsSync(process.env.TERRAVOLT_GODOT_BINARY)) {
-    return process.env.TERRAVOLT_GODOT_BINARY;
+  const fromEnv = process.env.TERRAVOLT_GODOT_BINARY;
+  if (fromEnv && !/\.(cmd|bat)$/i.test(fromEnv) && existsSync(fromEnv)) {
+    return fromEnv;
   }
   if (existsSync(envFile)) {
     try {

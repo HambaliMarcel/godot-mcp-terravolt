@@ -1,0 +1,10 @@
+; Particle fixture for task 19 headless tests.
+
+config_version=5
+
+[application]
+config/name="Particle Zoo"
+run/main_scene="res://main.tscn"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"

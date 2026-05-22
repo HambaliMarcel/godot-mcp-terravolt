@@ -1,0 +1,13 @@
+; Minimal project for task 18 animation_tree.* headless tests.
+
+config_version=5
+
+[application]
+
+config/name="Animation Tree Zoo"
+run/main_scene="res://scenes/tree_zoo.tscn"
+config/features=PackedStringArray("4.3")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
