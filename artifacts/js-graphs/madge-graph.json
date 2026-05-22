@@ -262,9 +262,11 @@
     "packages/mcp-server/src/tools/registry.ts",
     "packages/mcp-server/src/transport/godot_ws_client.ts"
   ],
+  "packages/mcp-server/tests/integration/addon_parse.test.mjs": [],
   "packages/mcp-server/tests/integration/headless.test.mjs": [
     "packages/mcp-server/dist/headless/headlessCoordinator.js"
   ],
+  "packages/mcp-server/tests/integration/mcp_e2e.test.mjs": [],
   "packages/mcp-server/tests/smoke.test.mjs": [],
   "packages/mcp-server/tests/unit/godotBinary.test.mjs": [
     "packages/mcp-server/dist/headless/godotBinary.js"
