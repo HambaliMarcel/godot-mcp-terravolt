@@ -1,0 +1,18 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "InventoryScreen",
+  "anchors": true,
+  "children": [
+    {
+      "type": "GridContainer",
+      "name": "Slots",
+      "children": [
+        { "type": "Panel", "name": "Slot1" },
+        { "type": "Panel", "name": "Slot2" },
+        { "type": "Panel", "name": "Slot3" },
+        { "type": "Panel", "name": "Slot4" }
+      ]
+    }
+  ]
+}

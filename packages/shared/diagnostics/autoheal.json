@@ -106,6 +106,13 @@
         "Rewrite the expression using only node properties and literals.",
         "See `packages/shared/security/expression_denylist.json`."
       ]
+    },
+    "runtime.no_session": {
+      "hint": "No game session is running; runtime bridge tools need playmode or a headless child.",
+      "steps": [
+        "Call runtime.start_headless { } (CI/headless) or runtime.play { mode: \"current_scene\" } in the editor.",
+        "Confirm runtime.status reports session.alive: true, then retry."
+      ]
     }
   },
   "byCode": {
@@ -159,6 +166,10 @@
     "-33580": {
       "hint": "`editor.no_active_scene` (-33580)",
       "steps": ["See symbol `editor.no_active_scene`."]
+    },
+    "-33930": {
+      "hint": "`runtime.no_session` (-33930)",
+      "steps": ["See symbol `runtime.no_session`."]
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "sparks",
+  "description": "Fast metallic sparks with short lifetime.",
+  "material": {
+    "gravity": { "x": 0, "y": -15, "z": 0 },
+    "initial_velocity_min": { "x": -4, "y": 2, "z": -4 },
+    "initial_velocity_max": { "x": 4, "y": 8, "z": 4 },
+    "scale_min": 0.02,
+    "scale_max": 0.08
+  },
+  "amount": 400,
+  "lifetime": 0.6
+}

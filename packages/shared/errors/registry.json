@@ -584,6 +584,321 @@
       "recoverable": true,
       "hint": "Editor layout API unavailable in this Godot minor.",
       "since": "0.8.0"
+    },
+    {
+      "code": -33930,
+      "symbol": "runtime.no_session",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "No active runtime session; start runtime.play or runtime.start_headless first.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33931,
+      "symbol": "runtime.bridge_unavailable",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Game-process bridge did not bind or accept TCP on the configured port.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33932,
+      "symbol": "runtime.ui_not_found",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "No Control matched the selector path/text/role.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33933,
+      "symbol": "runtime.navigate_timeout",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Navigation agent did not arrive within timeout_ms.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33934,
+      "symbol": "runtime.game_paused",
+      "category": "runtime",
+      "severity": "warn",
+      "recoverable": true,
+      "hint": "SceneTree is paused; use force:true on send_input if intentional.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33935,
+      "symbol": "runtime.bridge_rpc_failed",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "TCP JSON-RPC to the runtime bridge failed or timed out.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33936,
+      "symbol": "runtime.spawn_failed",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "OS.create_process could not start the headless game child.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33937,
+      "symbol": "runtime.handshake_failed",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Child game did not answer bridge ping before wait_handshake_ms elapsed.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33938,
+      "symbol": "runtime.recording_not_active",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Call runtime.record_inputs with action start before stop/replay.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33939,
+      "symbol": "runtime.buffer_not_found",
+      "category": "runtime",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Unknown buffer_id; record a session first.",
+      "since": "0.9.0"
+    },
+    {
+      "code": -33940,
+      "symbol": "animation.name_exists",
+      "category": "animation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Animation name already exists in the target library.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33941,
+      "symbol": "animation.unknown",
+      "category": "animation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Animation or library not found on the AnimationPlayer.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33942,
+      "symbol": "animation.track_kind_unknown",
+      "category": "animation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Unknown animation track type string.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33943,
+      "symbol": "animation.exporter_missing",
+      "category": "animation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "FFmpeg not available for GIF/MP4 export; use PNG sequence fallback.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33944,
+      "symbol": "animation.player_not_found",
+      "category": "animation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "AnimationPlayer node path not found in scene.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33945,
+      "symbol": "animation_tree.parameter_unknown",
+      "category": "animation_tree",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "AnimationTree parameter path is not declared on this tree.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33946,
+      "symbol": "animation_tree.state_exists",
+      "category": "animation_tree",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "State name already exists in the state machine.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33947,
+      "symbol": "animation_tree.state_unknown",
+      "category": "animation_tree",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "State name not found in the state machine.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33948,
+      "symbol": "animation_tree.not_found",
+      "category": "animation_tree",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "AnimationTree node or StateMachine root not found.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33949,
+      "symbol": "animation_tree.transition_unknown",
+      "category": "animation_tree",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Transition between the given states was not found.",
+      "since": "0.10.0"
+    },
+    {
+      "code": -33950,
+      "symbol": "physics.shape_kind_unknown",
+      "category": "physics",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Shape or body kind is not supported for the requested dimension.",
+      "since": "0.11.0"
+    },
+    {
+      "code": -33951,
+      "symbol": "physics.dimension_mismatch",
+      "category": "physics",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Shape dimension does not match body or node type.",
+      "since": "0.11.0"
+    },
+    {
+      "code": -33952,
+      "symbol": "physics.batch_too_large",
+      "category": "physics",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Raycast batch exceeds physics_raycast_max_per_call (64).",
+      "since": "0.11.0"
+    },
+    {
+      "code": -33953,
+      "symbol": "particle.gpu_unsupported",
+      "category": "particle",
+      "severity": "warning",
+      "recoverable": true,
+      "hint": "GPU particles unavailable; CPU fallback was used.",
+      "since": "0.11.0"
+    },
+    {
+      "code": -33954,
+      "symbol": "navigation.bake_timeout",
+      "category": "navigation",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Navigation bake exceeded nav_bake_timeout_ms.",
+      "since": "0.11.0"
+    },
+    {
+      "code": -33960,
+      "symbol": "tilemap.cell_batch_too_large",
+      "category": "tilemap",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Cell batch exceeds tilemap_max_cells_per_call (4096); chunk the request.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33961,
+      "symbol": "tilemap.atlas_unknown",
+      "category": "tilemap",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "source_id is not present on the layer TileSet.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33962,
+      "symbol": "tilemap.terrain_unknown",
+      "category": "tilemap",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "terrain_set or terrain index is invalid for this TileSet.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33963,
+      "symbol": "tilemap.layer_unknown",
+      "category": "tilemap",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "layer_name does not exist on legacy TileMap.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33964,
+      "symbol": "tilemap.node_invalid",
+      "category": "tilemap",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Node path is not a TileMap or TileMapLayer.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33965,
+      "symbol": "theme.target_missing",
+      "category": "theme_ui",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Provide theme_path or control_path on an open scene.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33966,
+      "symbol": "theme.property_unknown",
+      "category": "theme_ui",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Theme type/name pair is not defined.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33967,
+      "symbol": "theme.stylebox_invalid",
+      "category": "theme_ui",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "StyleBox kind or properties failed validation.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33968,
+      "symbol": "theme.font_load_failed",
+      "category": "theme_ui",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "font_path did not resolve to a Font resource.",
+      "since": "0.12.0"
+    },
+    {
+      "code": -33969,
+      "symbol": "theme.preview_failed",
+      "category": "theme_ui",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Theme preview image could not be rendered.",
+      "since": "0.12.0"
     }
   ]
 }

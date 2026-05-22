@@ -1,0 +1,17 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "PauseMenu",
+  "anchors": true,
+  "children": [
+    {
+      "type": "VBoxContainer",
+      "name": "Layout",
+      "children": [
+        { "type": "Label", "name": "Paused", "text": "Paused" },
+        { "type": "Button", "name": "ResumeButton", "text": "Resume" },
+        { "type": "Button", "name": "QuitButton", "text": "Quit" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "fire",
+  "description": "Upward fire burst with warm color ramp.",
+  "material": {
+    "gravity": { "x": 0, "y": -2, "z": 0 },
+    "initial_velocity_min": { "x": -0.3, "y": 1.0, "z": -0.3 },
+    "initial_velocity_max": { "x": 0.3, "y": 3.0, "z": 0.3 },
+    "scale_min": 0.2,
+    "scale_max": 0.8
+  },
+  "amount": 300,
+  "lifetime": 1.2
+}

@@ -1,0 +1,13 @@
+{
+  "name": "snow",
+  "description": "Gentle falling snowflakes with low gravity drift.",
+  "material": {
+    "gravity": { "x": 0, "y": 8, "z": 0 },
+    "initial_velocity_min": { "x": -0.5, "y": -1.0, "z": -0.5 },
+    "initial_velocity_max": { "x": 0.5, "y": -2.0, "z": 0.5 },
+    "scale_min": 0.05,
+    "scale_max": 0.15
+  },
+  "amount": 200,
+  "lifetime": 4.0
+}
