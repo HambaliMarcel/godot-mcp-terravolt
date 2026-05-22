@@ -251,13 +251,13 @@ Here is a realistic sequence — every line is a prompt you can paste into Curso
 
 These remain **partial or backlog** at catalog **0.16.0**:
 
-| Want to…                                    | Status                                 |
-| ------------------------------------------- | -------------------------------------- |
+| Want to…                                    | Status                                  |
+| ------------------------------------------- | --------------------------------------- |
 | Per-category MCP tools (218 as first-class) | Backlog — use `context.fetch_raw` today |
-| Browser project visualizer `:6510`          | Backlog — use Graphify/GitNexus        |
-| Compile-check C# (`.cs`) files              | Backlog (§10)                          |
-| Full macro apply (12/15 templates)          | Partial — dry-run works                |
-| Drive two Godot editors at once             | Roadmap (`docs/roadmap.md`)            |
+| Browser project visualizer `:6510`          | Backlog — use Graphify/GitNexus         |
+| Compile-check C# (`.cs`) files              | Backlog (§10)                           |
+| Full macro apply (12/15 templates)          | Partial — dry-run works                 |
+| Drive two Godot editors at once             | Roadmap (`docs/roadmap.md`)             |
 
 Everything else from the original §08 backlog — scene/node mutators, resources, runtime bridge,
 export, testing, audio, input, 3D scene sugar, macros — is **live**. See

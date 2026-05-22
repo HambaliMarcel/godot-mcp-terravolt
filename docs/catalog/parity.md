@@ -118,32 +118,32 @@ For full per-tool details (inputs, results, errors), see
 
 ### Audio + input (catalog 0.13.0)
 
-| `method`                                                                                          | Editor | Headless TCP | Notes                                      |
-| ------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------------------------------------ |
-| `audio.list_buses`, `audio.add_bus`, `audio.remove_bus`, `audio.set_bus`, `audio.add_effect`      | yes    | yes          | Bus layout via `default_bus_layout.tres`.  |
-| `audio.preview_play`                                                                              | yes    | partial      | No audio output in headless CI.            |
-| `input.list_actions`, `input.add_action`, `input.remove_action`, `input.set_action_events`        | yes    | yes          | InputMap CRUD.                             |
-| `input.rename_action`, `input.simulate_action`, `input.describe_event`                            | yes    | yes          | Event serialization + simulate in driver.  |
+| `method`                                                                                     | Editor | Headless TCP | Notes                                     |
+| -------------------------------------------------------------------------------------------- | ------ | ------------ | ----------------------------------------- |
+| `audio.list_buses`, `audio.add_bus`, `audio.remove_bus`, `audio.set_bus`, `audio.add_effect` | yes    | yes          | Bus layout via `default_bus_layout.tres`. |
+| `audio.preview_play`                                                                         | yes    | partial      | No audio output in headless CI.           |
+| `input.list_actions`, `input.add_action`, `input.remove_action`, `input.set_action_events`   | yes    | yes          | InputMap CRUD.                            |
+| `input.rename_action`, `input.simulate_action`, `input.describe_event`                       | yes    | yes          | Event serialization + simulate in driver. |
 
 ### Scene 3D (catalog 0.14.0)
 
-| `method`                                                                                          | Editor | Headless TCP | Notes                                      |
-| ------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------------------------------------ |
-| `scene_3d.add_mesh_instance`, `scene_3d.add_camera`, `scene_3d.add_light`, `scene_3d.set_environment`, `scene_3d.add_gridmap`, `scene_3d.frame_subject` | yes | yes | 3D zoo fixture scenes. |
+| `method`                                                                                                                                                | Editor | Headless TCP | Notes                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | ---------------------- |
+| `scene_3d.add_mesh_instance`, `scene_3d.add_camera`, `scene_3d.add_light`, `scene_3d.set_environment`, `scene_3d.add_gridmap`, `scene_3d.frame_subject` | yes    | yes          | 3D zoo fixture scenes. |
 
 ### Testing, profile, export (catalog 0.15.0)
 
-| `method`                                                                                          | Editor | Headless TCP | Notes                                      |
-| ------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------------------------------------ |
-| `testing.list_suites`, `testing.run`, `testing.assert_state`, `testing.list_reports`, `testing.get_report`, `testing.screenshot_compare` | yes | yes | Fixture zoo suites. |
-| `profile.monitor`, `profile.flamegraph`                                                           | yes    | partial      | Flamegraph deferred in headless CI.        |
-| `export.list_presets`, `export.build`, `export.template_info`                                     | yes    | yes          | Preset list + template info; build smoke.  |
+| `method`                                                                                                                                 | Editor | Headless TCP | Notes                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | ----------------------------------------- |
+| `testing.list_suites`, `testing.run`, `testing.assert_state`, `testing.list_reports`, `testing.get_report`, `testing.screenshot_compare` | yes    | yes          | Fixture zoo suites.                       |
+| `profile.monitor`, `profile.flamegraph`                                                                                                  | yes    | partial      | Flamegraph deferred in headless CI.       |
+| `export.list_presets`, `export.build`, `export.template_info`                                                                            | yes    | yes          | Preset list + template info; build smoke. |
 
 ### Macro scaffolders (catalog 0.16.0)
 
-| `method`                                                                                          | Editor | Headless TCP | Notes                                      |
-| ------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------------------------------------ |
-| All 15 `macro.*` scaffolders                                                                      | yes    | yes          | 3 full apply; 12 dry-run/stub templates.   |
+| `method`                     | Editor | Headless TCP | Notes                                    |
+| ---------------------------- | ------ | ------------ | ---------------------------------------- |
+| All 15 `macro.*` scaffolders | yes    | yes          | 3 full apply; 12 dry-run/stub templates. |
 
 ## Headless-only methods (no editor counterpart)
 
@@ -172,4 +172,6 @@ Likely future parity (subject to §08 catalog landings): `scene.get_open_path`,
 
 ## Validation checklist
 
-Structured repo validation for tasks **TV-00 … TV-25**: **[`docs/validation/tv-00-25-checkpoint.md`](../validation/tv-00-25-checkpoint.md)** (supersedes TV-00–20 for catalog gate).
+Structured repo validation for tasks **TV-00 … TV-25**:
+**[`docs/validation/tv-00-25-checkpoint.md`](../validation/tv-00-25-checkpoint.md)** (supersedes
+TV-00–20 for catalog gate).

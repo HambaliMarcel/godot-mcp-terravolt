@@ -43,7 +43,11 @@ if (missingHeadless.length) {
 }
 
 const handlerFiles = readdirSync(handlersDir).filter(
-  (f) => f.endsWith(".gd") && !f.includes("_helpers") && !f.includes("runner") && f !== "handler_utils.gd",
+  (f) =>
+    f.endsWith(".gd") &&
+    !f.includes("_helpers") &&
+    !f.includes("runner") &&
+    f !== "handler_utils.gd",
 );
 const categories = new Set(methods.map((m) => m.category ?? m.method.split(".")[0]));
 for (const cat of categories) {
