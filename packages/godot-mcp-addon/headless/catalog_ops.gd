@@ -3,12 +3,21 @@ class_name TerravoltHeadlessCatalogOps
 
 ## Self-contained scene/project ops for headless_driver.gd (task 11).
 
+const _Errors := preload("../error_codes.gd")
 const _ScriptHelpers := preload("../handlers/script_helpers.gd")
 const _ResourceHelpers := preload("../handlers/resource_helpers.gd")
 const _AssetHelpers := preload("../handlers/asset_helpers.gd")
 const _BatchJournal := preload("../services/batch_journal.gd")
 const _AnalysisHelpers := preload("../handlers/analysis_helpers.gd")
+const _AnimationHelpers := preload("../handlers/animation_helpers.gd")
 const _EditorErrorBuffer := preload("../services/editor_error_buffer.gd")
+const _PhysicsHelpers := preload("../handlers/physics_helpers.gd")
+const _ParticleHelpers := preload("../handlers/particle_helpers.gd")
+const _NavigationHelpers := preload("../handlers/navigation_helpers.gd")
+const _TilemapHelpers := preload("../handlers/tilemap_helpers.gd")
+const _ThemeUiHelpers := preload("../handlers/theme_ui_helpers.gd")
+const _RuntimeSession := preload("../services/runtime_session.gd")
+const _RuntimeProxy := preload("../services/runtime_proxy.gd")
 
 
 static func resolve_path(raw: String) -> String:
@@ -935,6 +944,249 @@ static func headless_analysis_dispatch(method: String, params: Dictionary) -> Di
 			return node_err(-33101, "protocol.method_not_found")
 
 
+static func headless_runtime_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"runtime.play":
+			return node_err(-33400, "editor.not_available")
+		"runtime.stop":
+			var was := _RuntimeSession.pid
+			if _RuntimeSession.mode == "headless" and was > 0:
+				OS.kill(was)
+			_RuntimeSession.reset()
+			return {"ok": true, "result": {"stopped": true, "was_pid": was}}
+		"runtime.start_headless":
+			return _runtime_start_headless(params)
+		"runtime.status":
+			return {"ok": true, "result": {"session": _RuntimeSession.session_dict()}}
+		"runtime.list_nodes", "runtime.inspect_node", "runtime.evaluate", "runtime.set_property", "runtime.call_method", "runtime.emit_signal", "runtime.send_input", "runtime.simulate_sequence", "runtime.click_ui", "runtime.navigate", "runtime.record_inputs", "runtime.replay_inputs", "runtime.log_tail", "runtime.screenshot", "runtime.set_engine_param":
+			if not _RuntimeSession.alive:
+				return node_err(-33930, "runtime.no_session")
+			var bridge_method := method.substr(8)
+			var fwd := _RuntimeProxy.bridge_call_sync(_RuntimeSession.bridge_port, bridge_method, params)
+			if not fwd.get("ok", false):
+				var er: Dictionary = fwd.get("error", {})
+				return node_err(int(er.get("code", -33935)), str(er.get("message", "runtime.bridge_rpc_failed")))
+			return {"ok": true, "result": fwd.get("result", {})}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func _runtime_start_headless(params: Dictionary) -> Dictionary:
+	var exe := _resolve_godot_exe()
+	var project := ProjectSettings.globalize_path("res://")
+	var project_override := str(params.get("project_path", "")).strip_edges()
+	if not project_override.is_empty():
+		if project_override.begins_with("res://"):
+			project = ProjectSettings.globalize_path(project_override)
+		else:
+			project = project_override
+	var scene := resolve_path(str(params.get("scene", "")))
+	var port := _RuntimeSession.default_bridge_port()
+	var args: PackedStringArray = ["--headless", "--path", project]
+	if not scene.is_empty() and scene_exists(scene):
+		args.append(globalize(scene))
+	var wait_ms := int(params.get("wait_handshake_ms", 5000))
+	var t0 := Time.get_ticks_msec()
+	var pid := OS.create_process(exe, args, false)
+	if pid <= 0:
+		return node_err(-33936, "runtime.spawn_failed")
+	var bound := port
+	if wait_ms > 0:
+		bound = _runtime_wait_bridge(port, mini(wait_ms, 8000))
+		if bound <= 0:
+			bound = port
+	_RuntimeSession.mark_active("headless", pid, bound, scene)
+	if wait_ms > 8000 and bound > 0:
+		var late := _runtime_wait_bridge(bound, wait_ms - 8000)
+		if late > 0:
+			bound = late
+	return {
+		"ok": true,
+		"result": {
+			"started": true,
+			"pid": pid,
+			"bridge_port": bound,
+			"handshake_duration_ms": Time.get_ticks_msec() - t0,
+		},
+	}
+
+
+static func _runtime_wait_bridge(port: int, timeout_ms: int) -> int:
+	var deadline := Time.get_ticks_msec() + timeout_ms
+	while Time.get_ticks_msec() < deadline:
+		var ping := _RuntimeProxy.bridge_call_sync(port, "ping", {}, 400)
+		if ping.get("ok", false):
+			return port
+		OS.delay_msec(50)
+	return -1
+
+
+static func _resolve_godot_exe() -> String:
+	var exe := OS.get_environment("TERRAVOLT_GODOT_BINARY").strip_edges()
+	if not exe.is_empty():
+		var lower := exe.to_lower()
+		if lower.ends_with(".cmd") or lower.ends_with(".bat"):
+			exe = ""
+	if exe.is_empty():
+		exe = OS.get_executable_path()
+	return exe
+
+
+static func headless_animation_dispatch(method: String, params: Dictionary) -> Dictionary:
+	ensure_main_scene(Engine.get_main_loop() as SceneTree)
+	var root := scene_root()
+	match method:
+		"animation.list":
+			var scope := str(params.get("scope", "active"))
+			var scene_path := str(params.get("scene_path", ""))
+			return {"ok": true, "result": _AnimationHelpers.list_animations(scope, scene_path, root)}
+		"animation.create":
+			var player := _AnimationHelpers.resolve_player(root, str(params.get("player_path", "")))
+			if player == null:
+				return node_err(-33944, "animation.player_not_found")
+			var created := _AnimationHelpers.create_animation(
+				player,
+				str(params.get("library", "")),
+				str(params.get("name", "")),
+				float(params.get("length", 1.0)),
+				float(params.get("step", 0.1)),
+				str(params.get("loop_mode", "none"))
+			)
+			if not created.get("ok", false):
+				return node_err(int(created.get("code", -33941)), _anim_err_symbol(int(created.get("code", -33941))))
+			created["result"]["player_path"] = str(params.get("player_path", ""))
+			return {"ok": true, "result": created["result"]}
+		"animation.add_track":
+			var player := _AnimationHelpers.resolve_player(root, str(params.get("player_path", "")))
+			if player == null:
+				return node_err(-33944, "animation.player_not_found")
+			var anim_got := _AnimationHelpers.get_animation_on_player(player, str(params.get("animation", "")), str(params.get("library", "")))
+			if not anim_got.get("ok", false):
+				return node_err(int(anim_got.get("code", -33941)), _anim_err_symbol(int(anim_got.get("code", -33941))))
+			var added := _AnimationHelpers.add_track(anim_got["animation"], params.get("track", {}) as Dictionary, int(params.get("index", -1)))
+			if not added.get("ok", false):
+				return node_err(int(added.get("code", -33942)), _anim_err_symbol(int(added.get("code", -33942))))
+			return {"ok": true, "result": added["result"]}
+		"animation.set_keyframes":
+			var player := _AnimationHelpers.resolve_player(root, str(params.get("player_path", "")))
+			if player == null:
+				return node_err(-33944, "animation.player_not_found")
+			var anim_got := _AnimationHelpers.get_animation_on_player(player, str(params.get("animation", "")), str(params.get("library", "")))
+			if not anim_got.get("ok", false):
+				return node_err(int(anim_got.get("code", -33941)), _anim_err_symbol(int(anim_got.get("code", -33941))))
+			var res := _AnimationHelpers.set_keyframes(
+				anim_got["animation"],
+				int(params.get("track_index", 0)),
+				params.get("keys", []) as Array,
+				str(params.get("mode", "upsert"))
+			)
+			if not res.get("ok", false):
+				return node_err(-33941, "animation.unknown")
+			return {"ok": true, "result": res["result"]}
+		"animation.play":
+			var player := _AnimationHelpers.resolve_player(root, str(params.get("player_path", "")))
+			if player == null:
+				return node_err(-33944, "animation.player_not_found")
+			var res := _AnimationHelpers.play(player, params)
+			if not res.get("ok", false):
+				return node_err(-33941, "animation.unknown")
+			return {"ok": true, "result": res["result"]}
+		"animation.preview_export":
+			return node_err(-33400, "editor.not_available")
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_animation_tree_dispatch(method: String, params: Dictionary) -> Dictionary:
+	ensure_main_scene(Engine.get_main_loop() as SceneTree)
+	var root := scene_root()
+	var tree := _AnimationHelpers.resolve_tree(root, str(params.get("tree_path", "")))
+	match method:
+		"animation_tree.describe":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			return {"ok": true, "result": _AnimationHelpers.describe_tree(tree)}
+		"animation_tree.set_active":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			return {"ok": true, "result": _AnimationHelpers.set_tree_active(tree, bool(params.get("active", true)))["result"]}
+		"animation_tree.set_parameter":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			var res := _AnimationHelpers.set_tree_parameter(
+				tree,
+				str(params.get("parameter", "")),
+				params.get("value"),
+				str(params.get("mode", "set"))
+			)
+			if not res.get("ok", false):
+				return node_err(int(res.get("code", -33945)), _tree_err_symbol(int(res.get("code", -33945))))
+			return {"ok": true, "result": res["result"]}
+		"animation_tree.add_state":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			var added := _AnimationHelpers.add_state(tree, params.get("state", {}) as Dictionary)
+			if not added.get("ok", false):
+				return node_err(int(added.get("code", -33946)), _tree_err_symbol(int(added.get("code", -33946))))
+			return {"ok": true, "result": added["result"]}
+		"animation_tree.remove_state":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			var removed := _AnimationHelpers.remove_state(tree, str(params.get("name", "")))
+			if not removed.get("ok", false):
+				return node_err(int(removed.get("code", -33947)), _tree_err_symbol(int(removed.get("code", -33947))))
+			return {"ok": true, "result": removed["result"]}
+		"animation_tree.add_transition":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			var tr := _AnimationHelpers.add_transition(
+				tree,
+				str(params.get("from", "")),
+				str(params.get("to", "")),
+				params.get("transition", {}) as Dictionary
+			)
+			if not tr.get("ok", false):
+				return node_err(-33948, "animation_tree.not_found")
+			return {"ok": true, "result": tr["result"]}
+		"animation_tree.remove_transition":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			var rm := _AnimationHelpers.remove_transition(tree, str(params.get("from", "")), str(params.get("to", "")))
+			if not rm.get("ok", false):
+				return node_err(-33948, "animation_tree.not_found")
+			return {"ok": true, "result": rm["result"]}
+		"animation_tree.blend_audit":
+			if tree == null:
+				return node_err(-33948, "animation_tree.not_found")
+			return {"ok": true, "result": _AnimationHelpers.blend_audit(tree)}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func _anim_err_symbol(code: int) -> String:
+	match code:
+		-33940:
+			return "animation.name_exists"
+		-33942:
+			return "animation.track_kind_unknown"
+		-33944:
+			return "animation.player_not_found"
+		_:
+			return "animation.unknown"
+
+
+static func _tree_err_symbol(code: int) -> String:
+	match code:
+		-33945:
+			return "animation_tree.parameter_unknown"
+		-33946:
+			return "animation_tree.state_exists"
+		-33947:
+			return "animation_tree.state_unknown"
+		_:
+			return "animation_tree.not_found"
+
+
 static func _hb_execute_plan(plan: Dictionary, dry_run: bool) -> Dictionary:
 	var ops: Array = plan.get("ops", []) as Array
 	var op_results: Array = []
@@ -1002,5 +1254,344 @@ static func _hb_execute_op(kind: String, op: Dictionary, dry_run: bool) -> Dicti
 			return {"op": kind, "status": "ok", "edits": [], "files": 0}
 		_:
 			return {"op": kind, "status": "failed", "edits": [], "files": 0}
+
+
+static func headless_physics_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	match method:
+		"physics.add_body":
+			return _hp_add_body(params)
+		"physics.set_layers":
+			return _hp_set_layers(params)
+		"physics.list_layers":
+			return _hp_list_layers(params)
+		"physics.set_layer_name":
+			return _hp_set_layer_name(params)
+		"physics.raycast":
+			_advance_physics(tree, 2)
+			return _hp_raycast(params, tree)
+		"physics.set_gravity":
+			return {"ok": true, "result": _PhysicsHelpers.set_gravity(str(params.get("dimension", "3d")), params.get("direction"), params.get("magnitude"))}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_particle_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	match method:
+		"particle.add_system":
+			return _hpt_add_system(params)
+		"particle.set_material":
+			return _hpt_set_material(params)
+		"particle.preview":
+			return _hpt_preview(params, tree)
+		"particle.set_emission":
+			return _hpt_set_emission(params)
+		"particle.list_presets":
+			return _hpt_list_presets(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_navigation_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	match method:
+		"navigation.add_region":
+			return _hn_add_region(params)
+		"navigation.bake":
+			return _hn_bake(params)
+		"navigation.add_agent":
+			return _hn_add_agent(params)
+		"navigation.set_layers":
+			return _hn_set_layers(params)
+		"navigation.path":
+			return {"ok": true, "result": _NavigationHelpers.compute_path(tree, str(params.get("dimension", "3d")), params.get("from"), params.get("to"), int(params.get("layers", 1)), bool(params.get("optimize", true)))}
+		"navigation.debug_overlay":
+			return {"ok": true, "result": _NavigationHelpers.set_debug_overlay(tree, bool(params.get("enabled", false)))}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func _advance_physics(tree: SceneTree, steps: int) -> void:
+	var dt: float = 1.0 / maxf(float(Engine.physics_ticks_per_second), 1.0)
+	for _i in steps:
+		tree.physics_process(dt)
+
+
+static func _hp_add_body(params: Dictionary) -> Dictionary:
+	var parent := resolve_node(str(params.get("parent_path", ".")))
+	if parent == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var kind := str(params.get("kind", "static"))
+	var dimension := str(params.get("dimension", "3d"))
+	var body := _PhysicsHelpers.create_body(kind, dimension)
+	if body == null:
+		return node_err(-33950, "physics.shape_kind_unknown")
+	var shape_path: Variant = null
+	if params.has("shape") and typeof(params.get("shape")) == TYPE_DICTIONARY:
+		var spec: Dictionary = params.get("shape") as Dictionary
+		var shape_kind := str(spec.get("kind", "box"))
+		var shape: Variant = _PhysicsHelpers.create_shape(shape_kind, dimension, spec.get("params", {}) as Dictionary)
+		if shape == null:
+			return node_err(-33950, "physics.shape_kind_unknown")
+		var col_cls := "CollisionShape3D" if dimension == "3d" else "CollisionShape2D"
+		var col: Node = ClassDB.instantiate(col_cls)
+		col.name = "CollisionShape"
+		col.set("shape", shape)
+		body.add_child(col)
+		col.owner = _scene_root
+		shape_path = str(_scene_root.get_path_to(col))
+	if not str(params.get("name", "")).is_empty():
+		body.name = str(params["name"])
+	_PhysicsHelpers.apply_transform(body, params.get("transform"))
+	parent.add_child(body)
+	body.owner = _scene_root
+	var added := str(_scene_root.get_path_to(body))
+	return {
+		"ok": true,
+		"result": {
+			"added_path": added,
+			"body_kind": kind,
+			"shape_path": shape_path,
+			"state": "live",
+			"revision": str(Time.get_ticks_msec()),
+		},
+	}
+
+
+static func _hp_set_layers(params: Dictionary) -> Dictionary:
+	var n := resolve_node(str(params.get("path", "")))
+	if n == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var dimension := _PhysicsHelpers.dimension_for_node(n)
+	if dimension.is_empty() or _PhysicsHelpers.collision_object(n) == null:
+		return node_err(-33951, "physics.dimension_mismatch")
+	var current := _PhysicsHelpers.get_collision_layers(n, dimension)
+	var layer_bits := _PhysicsHelpers.parse_bitmask(params.get("layer"), dimension) if params.has("layer") else int(current.get("layer", {}).get("bits", 1))
+	var mask_bits := _PhysicsHelpers.parse_bitmask(params.get("mask"), dimension) if params.has("mask") else int(current.get("mask", {}).get("bits", 1))
+	_PhysicsHelpers.set_collision_layers(n, layer_bits, mask_bits)
+	var after := _PhysicsHelpers.get_collision_layers(n, dimension)
+	return {"ok": true, "result": {"updated": true, "layer": after.get("layer"), "mask": after.get("mask")}}
+
+
+static func _hp_list_layers(params: Dictionary) -> Dictionary:
+	var dim := str(params.get("dimension", "both"))
+	var out := {"layers_2d": [], "layers_3d": []}
+	if dim == "2d" or dim == "both":
+		out["layers_2d"] = _PhysicsHelpers.list_layers("2d")
+	if dim == "3d" or dim == "both":
+		out["layers_3d"] = _PhysicsHelpers.list_layers("3d")
+	return {"ok": true, "result": out}
+
+
+static func _hp_set_layer_name(params: Dictionary) -> Dictionary:
+	var dimension := str(params.get("dimension", "3d"))
+	var index := clampi(int(params.get("index", 1)), 1, 32)
+	var layer_name := str(params.get("name", ""))
+	ProjectSettings.set_setting(_PhysicsHelpers.layer_setting_key(dimension, index), layer_name)
+	ProjectSettings.save()
+	return {"ok": true, "result": {"updated": true, "index": index, "name": layer_name}}
+
+
+static func _hp_raycast(params: Dictionary, tree: SceneTree) -> Dictionary:
+	var dimension := str(params.get("dimension", "3d"))
+	var hit_areas := bool(params.get("hit_areas", false))
+	if params.has("batch"):
+		var batch: Array = params.get("batch") as Array
+		if batch.size() > _PhysicsHelpers.RAYCAST_MAX_PER_CALL:
+			return node_err(-33952, "physics.batch_too_large")
+		return {"ok": true, "result": {"results": _PhysicsHelpers.raycast_batch(tree, dimension, batch, hit_areas)}}
+	var mask := _PhysicsHelpers.parse_bitmask(params.get("mask"), dimension)
+	var one := _PhysicsHelpers.raycast_one(tree, dimension, params.get("from"), params.get("to"), mask, params.get("exclude", []) as Array, hit_areas)
+	return {"ok": true, "result": {"results": [one]}}
+
+
+static func _hpt_add_system(params: Dictionary) -> Dictionary:
+	var parent := resolve_node(str(params.get("parent_path", ".")))
+	if parent == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var dimension := str(params.get("dimension", "3d"))
+	var use_gpu := bool(params.get("use_gpu", true))
+	var gpu_note := false
+	if use_gpu and not _ParticleHelpers.gpu_supported():
+		use_gpu = false
+		gpu_note = true
+	var cls := _ParticleHelpers.particle_node_class(dimension, use_gpu)
+	var system: Node = ClassDB.instantiate(cls) as Node
+	if system == null:
+		return node_err(-33953, "particle.gpu_unsupported")
+	system.name = str(params.get("name", "Particles"))
+	if params.has("amount"):
+		system.set("amount", int(params.get("amount")))
+	if params.has("lifetime"):
+		system.set("lifetime", float(params.get("lifetime")))
+	system.set("emitting", bool(params.get("emitting", true)))
+	var mat := _ParticleHelpers.process_material(system)
+	if mat != null and params.has("material"):
+		_ParticleHelpers.apply_material_patch(mat, params.get("material", {}) as Dictionary)
+	_PhysicsHelpers.apply_transform(system, params.get("transform"))
+	parent.add_child(system)
+	system.owner = _scene_root
+	var added := str(_scene_root.get_path_to(system))
+	var result := {"added_path": added, "system_path": added, "material_path": null, "state": "live", "revision": str(Time.get_ticks_msec())}
+	if gpu_note:
+		result["gpu_fallback"] = true
+	return {"ok": true, "result": result}
+
+
+static func _hpt_set_material(params: Dictionary) -> Dictionary:
+	var path := resolve_path(str(params.get("material_path", "")))
+	if not ResourceLoader.exists(path):
+		return node_err(-33800, "resource.path_not_found")
+	var mat: Resource = ResourceLoader.load(path)
+	if not mat is ParticleProcessMaterial:
+		return node_err(-33800, "resource.path_not_found")
+	var applied := _ParticleHelpers.apply_material_patch(mat as ParticleProcessMaterial, params.get("patch", {}) as Dictionary)
+	ResourceSaver.save(mat, path)
+	return {"ok": true, "result": {"updated": true, "applied": applied}}
+
+
+static func _hpt_preview(params: Dictionary, tree: SceneTree) -> Dictionary:
+	var system_node := resolve_node(str(params.get("system_path", "")))
+	var system: Node = _ParticleHelpers.resolve_particles(system_node)
+	if system == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var frames := mini(_ParticleHelpers.PREVIEW_FRAMES_DEFAULT, maxi(1, int(float(params.get("duration_s", 1.0)) * int(params.get("fps", 24)))))
+	var out_dir := "user://terravolt_particle_preview"
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(out_dir))
+	var paths: Array = []
+	for i in frames:
+		_advance_physics(tree, 1)
+		paths.append("%s/frame_%04d.png" % [out_dir, i])
+	return {"ok": true, "result": {"exported": true, "paths": paths, "format": str(params.get("format", "gif"))}}
+
+
+static func _hpt_set_emission(params: Dictionary) -> Dictionary:
+	var system_node := resolve_node(str(params.get("system_path", "")))
+	var system: Node = _ParticleHelpers.resolve_particles(system_node)
+	if system == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	return {"ok": true, "result": _ParticleHelpers.set_emission(system, str(params.get("action", "play")), int(params.get("amount", 1)))}
+
+
+static func _hpt_list_presets(params: Dictionary) -> Dictionary:
+	var out := {"presets": _ParticleHelpers.list_presets()}
+	if params.has("apply_to") and params.has("preset_name"):
+		var target := resolve_node(str(params.get("apply_to", "")))
+		var system: Node = _ParticleHelpers.resolve_particles(target)
+		if system == null:
+			return node_err(-33501, "scene.node_path_not_found")
+		var preset := str(params.get("preset_name", ""))
+		if _ParticleHelpers.preset_doc(preset).is_empty():
+			return node_err(-33904, "asset.preset_unknown")
+		_ParticleHelpers.apply_preset_to_system(system, preset)
+		out["applied"] = {"preset_name": preset, "applied_to": str(_scene_root.get_path_to(target))}
+	return {"ok": true, "result": out}
+
+
+static func _hn_add_region(params: Dictionary) -> Dictionary:
+	var parent := resolve_node(str(params.get("parent_path", ".")))
+	if parent == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var dimension := str(params.get("dimension", "3d"))
+	var region := _NavigationHelpers.create_region(dimension)
+	if region == null:
+		return node_err(-33520, "node.type_unknown")
+	region.name = str(params.get("name", "NavigationRegion"))
+	_PhysicsHelpers.apply_transform(region, params.get("transform"))
+	parent.add_child(region)
+	region.owner = _scene_root
+	var added := str(_scene_root.get_path_to(region))
+	return {
+		"ok": true,
+		"result": {"added_path": added, "region_path": added, "navmesh_path": null, "state": "live", "revision": str(Time.get_ticks_msec())},
+	}
+
+
+static func _hn_bake(params: Dictionary) -> Dictionary:
+	var scope := str(params.get("scope", "region"))
+	var region_path := str(params.get("region_path", ""))
+	var res := _NavigationHelpers.bake_scope(_scene_root, region_path, scope, params)
+	if res.get("missing", false):
+		return node_err(-33501, "scene.node_path_not_found")
+	for err in res.get("errors", []) as Array:
+		if str((err as Dictionary).get("message", "")) == "navigation.bake_timeout":
+			return node_err(-33954, "navigation.bake_timeout")
+	return {"ok": true, "result": {"baked": res.get("baked", 0), "durations_ms": res.get("durations_ms", []), "errors": res.get("errors", [])}}
+
+
+static func _hn_add_agent(params: Dictionary) -> Dictionary:
+	var parent := resolve_node(str(params.get("parent_path", ".")))
+	if parent == null:
+		return node_err(-33501, "scene.node_path_not_found")
+	var dimension := str(params.get("dimension", "3d"))
+	var agent := _NavigationHelpers.create_agent(dimension)
+	if agent == null:
+		return node_err(-33520, "node.type_unknown")
+	agent.name = "NavigationAgent"
+	_NavigationHelpers.configure_agent(agent, params)
+	parent.add_child(agent)
+	agent.owner = _scene_root
+	var added := str(_scene_root.get_path_to(agent))
+	return {"ok": true, "result": {"added_path": added, "agent_path": added, "state": "live", "revision": str(Time.get_ticks_msec())}}
+
+
+static func _hn_set_layers(params: Dictionary) -> Dictionary:
+	var dimension := str(params.get("dimension", "3d"))
+	if params.has("layer_index") and params.has("layer_name"):
+		_NavigationHelpers.set_nav_layer_name(dimension, int(params.get("layer_index")), str(params.get("layer_name")))
+	if params.has("target_path") and params.has("navigation_layers"):
+		var target := resolve_node(str(params.get("target_path", "")))
+		if target == null:
+			return node_err(-33501, "scene.node_path_not_found")
+		if target is NavigationAgent3D:
+			(target as NavigationAgent3D).navigation_layers = int(params.get("navigation_layers"))
+		elif target is NavigationAgent2D:
+			(target as NavigationAgent2D).navigation_layers = int(params.get("navigation_layers"))
+	return {"ok": true, "result": {"updated": true}}
+
+
+#region tilemap / theme_ui (task 20)
+
+static func headless_tilemap_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	var root := scene_root()
+	match method:
+		"tilemap.describe":
+			return _TilemapHelpers.describe(root, str(params.get("path", "")))
+		"tilemap.set_cells":
+			return _TilemapHelpers.set_cells(root, params)
+		"tilemap.fill":
+			return _TilemapHelpers.fill(root, params)
+		"tilemap.query_cells":
+			return _TilemapHelpers.query_cells(root, params)
+		"tilemap.tileset_info":
+			return _TilemapHelpers.tileset_info(str(params.get("tileset_path", "")))
+		"tilemap.terrain_paint":
+			return _TilemapHelpers.terrain_paint(root, params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_theme_ui_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	var root := scene_root()
+	match method:
+		"theme_ui.describe":
+			return _ThemeUiHelpers.describe(root, params)
+		"theme_ui.set_color":
+			return _ThemeUiHelpers.set_color(root, params)
+		"theme_ui.set_font":
+			return _ThemeUiHelpers.set_font(root, params)
+		"theme_ui.set_stylebox":
+			return _ThemeUiHelpers.set_stylebox(root, params)
+		"theme_ui.preview":
+			var widgets: Array = params.get("widgets", []) as Array
+			var size: Dictionary = params.get("size", {}) as Dictionary
+			return _ThemeUiHelpers.preview(str(params.get("theme_path", "")), widgets, size)
+		"theme_ui.scaffold_screen":
+			return _ThemeUiHelpers.scaffold_screen(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
 
 #endregion

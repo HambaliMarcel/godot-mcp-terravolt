@@ -17,6 +17,7 @@ const _PROTOCOL_INVALID_PARAMS := -33102
 const _TRANSPORT_UNSUPPORTED_FRAME := -33006
 const _EDITOR_NOT_AVAILABLE := -33400
 const _MAX_LINE_BYTES_DEFAULT := 1048576
+const _Errors := preload("../error_codes.gd")
 const _Ops := preload("./catalog_ops.gd")
 
 var _tcp := TCPServer.new()
@@ -260,6 +261,28 @@ func _dispatch(line: String) -> String:
 			return JSON.stringify(_headless_editor(rid, method, pd))
 		"analysis.scene_complexity", "analysis.signal_flow", "analysis.unused_resources", "analysis.metrics":
 			return JSON.stringify(_headless_analysis(rid, method, pd))
+		"animation.list", "animation.create", "animation.add_track", "animation.set_keyframes", "animation.play":
+			return JSON.stringify(_headless_animation(rid, method, pd))
+		"animation.preview_export":
+			var apx := _err(-32603, "editor.not_available", _EDITOR_NOT_AVAILABLE, "animation.preview_export requires editor.", {})
+			return JSON.stringify(_wr_err(rid, apx))
+		"animation_tree.describe", "animation_tree.set_active", "animation_tree.set_parameter", "animation_tree.add_state", "animation_tree.remove_state", "animation_tree.add_transition", "animation_tree.remove_transition", "animation_tree.blend_audit":
+			return JSON.stringify(_headless_animation_tree(rid, method, pd))
+		"runtime.play":
+			var rp := _err(-32603, "editor.not_available", _EDITOR_NOT_AVAILABLE, "Use runtime.start_headless in headless mode.", {})
+			return JSON.stringify(_wr_err(rid, rp))
+		"runtime.stop", "runtime.start_headless", "runtime.status", "runtime.list_nodes", "runtime.inspect_node", "runtime.evaluate", "runtime.set_property", "runtime.call_method", "runtime.emit_signal", "runtime.send_input", "runtime.simulate_sequence", "runtime.click_ui", "runtime.navigate", "runtime.record_inputs", "runtime.replay_inputs", "runtime.log_tail", "runtime.screenshot", "runtime.set_engine_param":
+			return JSON.stringify(_headless_runtime(rid, method, pd))
+		"physics.list_layers", "physics.set_layer_name", "physics.add_body", "physics.set_layers", "physics.raycast", "physics.set_gravity":
+			return JSON.stringify(_headless_physics(rid, method, pd))
+		"particle.list_presets", "particle.add_system", "particle.set_material", "particle.set_emission", "particle.preview":
+			return JSON.stringify(_headless_particle(rid, method, pd))
+		"navigation.add_region", "navigation.bake", "navigation.add_agent", "navigation.set_layers", "navigation.path", "navigation.debug_overlay":
+			return JSON.stringify(_headless_navigation(rid, method, pd))
+		"tilemap.describe", "tilemap.set_cells", "tilemap.fill", "tilemap.query_cells", "tilemap.tileset_info", "tilemap.terrain_paint":
+			return JSON.stringify(_headless_tilemap(rid, method, pd))
+		"theme_ui.describe", "theme_ui.set_color", "theme_ui.set_font", "theme_ui.set_stylebox", "theme_ui.preview", "theme_ui.scaffold_screen":
+			return JSON.stringify(_headless_theme_ui(rid, method, pd))
 		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
 			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
 			return JSON.stringify(_wr_err(rid, na))
@@ -397,5 +420,85 @@ func _headless_analysis(rid: Variant, method: String, pd: Dictionary) -> Diction
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "analysis.error")), int(g.get("code", -33101)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_runtime(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_runtime_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "runtime.error")), int(g.get("code", -33930)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_animation(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_animation_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "animation.error")), int(g.get("code", -33941)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_animation_tree(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_animation_tree_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "animation_tree.error")), int(g.get("code", -33948)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_physics(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_physics_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "physics.error")), int(g.get("code", -33950)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_particle(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_particle_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "particle.error")), int(g.get("code", -33953)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_navigation(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_navigation_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "navigation.error")), int(g.get("code", -33954)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_tilemap(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_tilemap_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "tilemap.error")), int(g.get("code", -33964)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_theme_ui(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_theme_ui_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "theme.error")), int(g.get("code", -33965)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))
