@@ -107,6 +107,7 @@ test(
         "tools_metrics",
         "tools_bottlenecks",
         "tools_health",
+        "mode_status",
         "context_fetch_raw",
         "headless_start_project",
         "headless_status",
@@ -166,7 +167,32 @@ test(
         "ping@headless",
         `expected headless fallback route, got: ${pingEnv.method}`,
       );
+      assert.equal(
+        pingEnv.route_mode,
+        "headless",
+        `expected route_mode=headless on auto fallback, got: ${pingEnv.route_mode}`,
+      );
       assert.equal(pingEnv.result?.ok, true);
+
+      // _mode override: forcing headless should also work (no WS attempt).
+      const forcedRes = await client.callTool({
+        name: "ping",
+        arguments: { _mode: "headless" },
+      });
+      const forcedEnv = unwrap(forcedRes);
+      assert.equal(forcedEnv.ok, true, `forced headless ping failed: ${JSON.stringify(forcedEnv)}`);
+      assert.equal(forcedEnv.route_mode, "headless");
+      assert.equal(forcedEnv.method, "ping@headless");
+
+      // mode_status: hybrid snapshot must report editor down + headless alive.
+      const msRes = await client.callTool({ name: "mode_status", arguments: {} });
+      const msEnv = unwrap(msRes);
+      assert.equal(msEnv.ok, true, `mode_status failed: ${JSON.stringify(msEnv)}`);
+      assert.equal(msEnv.route_mode, "router");
+      assert.equal(msEnv.result?.editor?.alive, false, "editor should be down (port 1)");
+      assert.equal(msEnv.result?.headless?.alive, true);
+      assert.equal(msEnv.result?.recommended_mode, "headless");
+      assert.equal(msEnv.result?.hybrid_ready, true);
 
       const stopRes = await client.callTool({ name: "headless_stop", arguments: { force: true } });
       const stopEnv = unwrap(stopRes);
