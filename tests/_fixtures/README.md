@@ -9,6 +9,7 @@ can copy to a temp directory.
 | `with-addon/`        | Project the addon-parse smoke stages into; verifies `class_name`s under real Godot.          |
 | `minimal_3d/`        | Minimal 3D project with `main.tscn`; powers task 11 `scene.*` / `project.*` headless tests.  |
 | `resource_zoo/`      | Sample `.tres` + `.gdshader` files; powers task 14 `resource.*` / `shader.*` headless tests. |
+| `asset_zoo/`         | Texture + script sample; powers task 15 `asset.*` / `batch_refactor.*` headless tests.       |
 | `dialogue_demo/`     | _(planned)_ Macro showcase.                                                                  |
 | `stress_tree_10000/` | _(planned)_ Stress tree for envelope/SLA tests.                                              |
 

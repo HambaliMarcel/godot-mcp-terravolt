@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "test": "node --test tests/smoke.test.mjs tests/unit/godotBinary.test.mjs tests/unit/metrics.test.mjs tests/integration/headless.test.mjs tests/integration/mcp_e2e.test.mjs tests/integration/addon_parse.test.mjs tests/integration/scene/scene_headless.test.mjs tests/integration/project/project_headless.test.mjs tests/integration/node/node_headless.test.mjs tests/integration/script/script_signal_headless.test.mjs tests/integration/resource/resource_shader_headless.test.mjs"
+    "test": "node --test tests/smoke.test.mjs tests/unit/godotBinary.test.mjs tests/unit/metrics.test.mjs tests/integration/headless.test.mjs tests/integration/mcp_e2e.test.mjs tests/integration/addon_parse.test.mjs tests/integration/scene/scene_headless.test.mjs tests/integration/project/project_headless.test.mjs tests/integration/node/node_headless.test.mjs tests/integration/script/script_signal_headless.test.mjs tests/integration/resource/resource_shader_headless.test.mjs tests/integration/asset/asset_batch_refactor_headless.test.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

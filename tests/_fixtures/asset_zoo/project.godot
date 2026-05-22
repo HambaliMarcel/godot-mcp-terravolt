@@ -1,0 +1,12 @@
+; Engine configuration file.
+; Minimal project for task 15 asset/batch_refactor headless tests.
+
+config_version=5
+
+[application]
+config/name="Asset Zoo"
+config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene=""
+
+[rendering]
+renderer/rendering_method="forward_plus"
