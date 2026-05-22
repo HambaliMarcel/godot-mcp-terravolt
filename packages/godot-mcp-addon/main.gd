@@ -45,6 +45,10 @@ func _enter_tree() -> void:
 	asset_handlers.attach(_dispatcher, _logger)
 	var batch_handlers := preload("./handlers/batch_refactor.gd").new()
 	batch_handlers.attach(_dispatcher, _logger)
+	var editor_handlers := preload("./handlers/editor.gd").new()
+	editor_handlers.attach(_dispatcher, _logger)
+	var analysis_handlers := preload("./handlers/analysis.gd").new()
+	analysis_handlers.attach(_dispatcher, _logger)
 
 	_dock = _StatusDockScr.new()
 	_dock.name = "TerraVoltMCPStatus"

@@ -1,0 +1,7 @@
+{
+  "node_count": 500,
+  "max_depth": 12,
+  "signal_fan_out": 32,
+  "file_loc": 800,
+  "cyclomatic": 20
+}

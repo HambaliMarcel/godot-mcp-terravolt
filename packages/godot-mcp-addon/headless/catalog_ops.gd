@@ -7,6 +7,8 @@ const _ScriptHelpers := preload("../handlers/script_helpers.gd")
 const _ResourceHelpers := preload("../handlers/resource_helpers.gd")
 const _AssetHelpers := preload("../handlers/asset_helpers.gd")
 const _BatchJournal := preload("../services/batch_journal.gd")
+const _AnalysisHelpers := preload("../handlers/analysis_helpers.gd")
+const _EditorErrorBuffer := preload("../services/editor_error_buffer.gd")
 
 
 static func resolve_path(raw: String) -> String:
@@ -897,6 +899,38 @@ static func headless_batch_refactor_dispatch(method: String, params: Dictionary)
 			return {"ok": true, "result": {"converted": executed.get("edits", []), "applied": not bool(params.get("dry_run", false)), "dry_run": bool(params.get("dry_run", false))}}
 		"batch_refactor.history":
 			return {"ok": true, "result": {"history": _BatchJournal.history(int(params.get("limit", 20)))}}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_editor_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"editor.error_log_tail":
+			var lines := maxi(1, int(params.get("lines", 100)))
+			var level := str(params.get("level", "warn"))
+			return {"ok": true, "result": {"entries": _EditorErrorBuffer.tail(lines, level), "note": "headless: daemon buffer only"}}
+		"editor.screenshot", "editor.focus_node", "editor.open_script", "editor.run_undo", "editor.run_redo", "editor.execute_script", "editor.reload_scripts", "editor.layout":
+			return node_err(-33400, "editor.not_available")
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_analysis_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"analysis.scene_complexity":
+			var scope := str(params.get("scope", "project"))
+			var scene_path := str(params.get("scene_path", ""))
+			var thresholds: Dictionary = params.get("thresholds", {}) as Dictionary
+			return {"ok": true, "result": _AnalysisHelpers.scene_complexity(scope, scene_path, thresholds)}
+		"analysis.signal_flow":
+			return {"ok": true, "result": _AnalysisHelpers.signal_flow(str(params.get("scope", "project")))}
+		"analysis.unused_resources":
+			return {
+				"ok": true,
+				"result": _AnalysisHelpers.unused_resources(params.get("kinds", []) as Array, params.get("exclude", []) as Array),
+			}
+		"analysis.metrics":
+			return {"ok": true, "result": _AnalysisHelpers.project_metrics(params.get("kinds", []) as Array)}
 		_:
 			return node_err(-33101, "protocol.method_not_found")
 

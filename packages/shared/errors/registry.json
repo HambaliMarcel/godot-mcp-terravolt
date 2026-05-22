@@ -548,6 +548,42 @@
       "recoverable": true,
       "hint": "Target class is unknown or incompatible with source nodes.",
       "since": "0.7.0"
+    },
+    {
+      "code": -33920,
+      "symbol": "editor.screenshot_too_large",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Screenshot PNG exceeds the configured size cap.",
+      "since": "0.8.0"
+    },
+    {
+      "code": -33921,
+      "symbol": "editor.script_timeout",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "editor.execute_script exceeded timeout_ms.",
+      "since": "0.8.0"
+    },
+    {
+      "code": -33922,
+      "symbol": "editor.script_forbidden_api",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Source uses denied identifiers; enable allow_* flags or rewrite.",
+      "since": "0.8.0"
+    },
+    {
+      "code": -33923,
+      "symbol": "editor.unsupported_in_version",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Editor layout API unavailable in this Godot minor.",
+      "since": "0.8.0"
     }
   ]
 }

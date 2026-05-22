@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.7.0",
+  "catalog_version": "0.8.0",
   "methods": [
     {
       "method": "ping",
@@ -3764,6 +3764,449 @@
         "name": "batch_refactor.history",
         "title": "batch_refactor.history",
         "description": "List recent batch_refactor.apply calls."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "editor.screenshot",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Capture a PNG of the editor or a named viewport.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string"
+          },
+          "size": {
+            "type": "object"
+          },
+          "quality": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.screenshot",
+        "title": "editor.screenshot",
+        "description": "Capture a PNG of the editor or a named viewport."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["editor.screenshot_too_large"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.focus_node",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Select and frame a node in the scene tree dock.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "frame_in_viewport": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.focus_node",
+        "title": "editor.focus_node",
+        "description": "Select and frame a node in the scene tree dock."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.open_script",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Open a script in the script editor at an optional line.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "line": {
+            "type": "integer"
+          },
+          "column": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.open_script",
+        "title": "editor.open_script",
+        "description": "Open a script in the script editor at an optional line."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.run_undo",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Trigger editor undo steps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.run_undo",
+        "title": "editor.run_undo",
+        "description": "Trigger editor undo steps."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.run_redo",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Trigger editor redo steps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.run_redo",
+        "title": "editor.run_redo",
+        "description": "Trigger editor redo steps."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.execute_script",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Run a one-off @tool script inside the editor with deny-list gating.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "args": {
+            "type": "object"
+          },
+          "timeout_ms": {
+            "type": "integer"
+          },
+          "allow_filesystem": {
+            "type": "boolean"
+          },
+          "allow_net": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.execute_script",
+        "title": "editor.execute_script",
+        "description": "Run a one-off @tool script inside the editor with deny-list gating."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["editor.script_timeout", "editor.script_forbidden_api"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.error_log_tail",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Return recent editor errors and warnings.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "string"
+          },
+          "since_ts": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.error_log_tail",
+        "title": "editor.error_log_tail",
+        "description": "Return recent editor errors and warnings."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "editor.reload_scripts",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Reload scripts in the editor.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.reload_scripts",
+        "title": "editor.reload_scripts",
+        "description": "Reload scripts in the editor."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "editor.layout",
+      "category": "editor",
+      "since": "0.8.0",
+      "description": "Save, load, list, or delete named editor dock layouts.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["action"],
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "editor.layout",
+        "title": "editor.layout",
+        "description": "Save, load, list, or delete named editor dock layouts."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["editor.unsupported_in_version"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "analysis.scene_complexity",
+      "category": "analysis",
+      "since": "0.8.0",
+      "description": "Measure scene complexity (node count, depth, offenders).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "thresholds": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "analysis.scene_complexity",
+        "title": "analysis.scene_complexity",
+        "description": "Measure scene complexity (node count, depth, offenders)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "analysis.signal_flow",
+      "category": "analysis",
+      "since": "0.8.0",
+      "description": "Audit project signal declarations and flag orphan listeners.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "analysis.signal_flow",
+        "title": "analysis.signal_flow",
+        "description": "Audit project signal declarations and flag orphan listeners."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "analysis.unused_resources",
+      "category": "analysis",
+      "since": "0.8.0",
+      "description": "Find unused assets and resources across the project.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kinds": {
+            "type": "array"
+          },
+          "exclude": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "analysis.unused_resources",
+        "title": "analysis.unused_resources",
+        "description": "Find unused assets and resources across the project."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "analysis.metrics",
+      "category": "analysis",
+      "since": "0.8.0",
+      "description": "Rolled-up LOC, scene, script, and resource metrics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kinds": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "analysis.metrics",
+        "title": "analysis.metrics",
+        "description": "Rolled-up LOC, scene, script, and resource metrics."
       },
       "requiresEditor": false,
       "requiresRuntime": false,

@@ -256,6 +256,10 @@ func _dispatch(line: String) -> String:
 			return JSON.stringify(_wr_err(rid, ap))
 		"batch_refactor.preview", "batch_refactor.apply", "batch_refactor.rename_class", "batch_refactor.move_folder", "batch_refactor.replace_in_files", "batch_refactor.normalize_names", "batch_refactor.change_class", "batch_refactor.history":
 			return JSON.stringify(_headless_batch_refactor(rid, method, pd))
+		"editor.screenshot", "editor.focus_node", "editor.open_script", "editor.run_undo", "editor.run_redo", "editor.execute_script", "editor.error_log_tail", "editor.reload_scripts", "editor.layout":
+			return JSON.stringify(_headless_editor(rid, method, pd))
+		"analysis.scene_complexity", "analysis.signal_flow", "analysis.unused_resources", "analysis.metrics":
+			return JSON.stringify(_headless_analysis(rid, method, pd))
 		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
 			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
 			return JSON.stringify(_wr_err(rid, na))
@@ -373,5 +377,25 @@ func _headless_batch_refactor(rid: Variant, method: String, pd: Dictionary) -> D
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "batch.error")), int(g.get("code", -33910)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_editor(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_editor_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "editor.error")), int(g.get("code", -33400)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_analysis(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_analysis_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "analysis.error")), int(g.get("code", -33101)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))

@@ -4,6 +4,7 @@ class_name TerraVoltScriptHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Scripts := preload("./script_helpers.gd")
+const _ErrorBuffer := preload("../services/editor_error_buffer.gd")
 
 var _dispatcher: TerraVoltDispatcher
 var _logger: TerraVoltLogger
@@ -135,6 +136,18 @@ func _h_validate(ctx: Dictionary) -> Dictionary:
 	var r := _Scripts.validate_gd(path)
 	if r.get("missing", false):
 		return _err_path_not_found(path)
+	if not r.get("ok", true):
+		for e in r.get("errors", []):
+			if typeof(e) != TYPE_DICTIONARY:
+				continue
+			var row := e as Dictionary
+			_ErrorBuffer.append(
+				"error",
+				str(row.get("message", "validate failed")),
+				"script",
+				path,
+				int(row.get("line", -1))
+			)
 	return {"ok": true, "result": r}
 
 

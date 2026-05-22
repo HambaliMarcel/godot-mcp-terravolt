@@ -102,6 +102,13 @@ const BATCH_TOO_MANY_EDITS := -33912
 const BATCH_INCOMPATIBLE_CLASSES := -33913
 #endregion
 
+#region editor / analysis (task 16)
+const EDITOR_SCREENSHOT_TOO_LARGE := -33920
+const EDITOR_SCRIPT_TIMEOUT := -33921
+const EDITOR_SCRIPT_FORBIDDEN_API := -33922
+const EDITOR_UNSUPPORTED_IN_VERSION := -33923
+#endregion
+
 #region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
 const HEADLESS_BINARY_MISSING := -33810
 const HEADLESS_NO_PROJECT := -33811
@@ -193,6 +200,10 @@ const _CODE_TO_SYMBOL := {
 	BATCH_PARTIAL_FAILURE: "batch.partial_failure",
 	BATCH_TOO_MANY_EDITS: "batch.too_many_edits",
 	BATCH_INCOMPATIBLE_CLASSES: "batch.incompatible_classes",
+	EDITOR_SCREENSHOT_TOO_LARGE: "editor.screenshot_too_large",
+	EDITOR_SCRIPT_TIMEOUT: "editor.script_timeout",
+	EDITOR_SCRIPT_FORBIDDEN_API: "editor.script_forbidden_api",
+	EDITOR_UNSUPPORTED_IN_VERSION: "editor.unsupported_in_version",
 	PROJECT_SETTING_LOCKED: "project.setting_locked",
 	HEADLESS_BINARY_MISSING: "headless.binary_missing",
 	HEADLESS_NO_PROJECT: "headless.no_project",
