@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.16.0",
+  "catalog_version": "0.17.0",
   "methods": [
     {
       "method": "ping",
@@ -8570,6 +8570,155 @@
       "safe": false,
       "mutates": true,
       "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "android.list_devices",
+      "category": "android",
+      "since": "0.17.0",
+      "description": "List Android devices visible to adb (parses `adb devices -l`).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "android.list_devices",
+        "title": "android.list_devices",
+        "description": "List Android devices visible to adb (parses `adb devices -l`)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["android.adb_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "android.preset_info",
+      "category": "android",
+      "since": "0.17.0",
+      "description": "Inspect an Android export preset (export_path, package_name, runnable).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "preset_name": {
+            "type": "string"
+          },
+          "preset_index": {
+            "type": "integer",
+            "minimum": -1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "android.preset_info",
+        "title": "android.preset_info",
+        "description": "Inspect an Android export preset (export_path, package_name, runnable)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["android.preset_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "android.deploy",
+      "category": "android",
+      "since": "0.17.0",
+      "description": "Export APK + adb install -r + optional launch. Skip the export step with skip_export=true.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "preset_name": {
+            "type": "string"
+          },
+          "preset_index": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "device_serial": {
+            "type": "string"
+          },
+          "debug": {
+            "type": "boolean"
+          },
+          "launch": {
+            "type": "boolean"
+          },
+          "skip_export": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "android.deploy",
+        "title": "android.deploy",
+        "description": "Export APK + adb install -r + optional launch. Skip the export step with skip_export=true."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "android.preset_not_found",
+        "android.export_failed",
+        "android.install_failed",
+        "android.adb_not_found"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.run_scenario",
+      "category": "testing",
+      "since": "0.17.0",
+      "description": "Run a scripted scenario: ordered [input|wait|assert|screenshot] steps with per-step results.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["steps"],
+        "properties": {
+          "steps": {
+            "type": "array"
+          },
+          "stop_on_fail": {
+            "type": "boolean"
+          },
+          "step_timeout_ms": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.run_scenario",
+        "title": "testing.run_scenario",
+        "description": "Run a scripted scenario: ordered [input|wait|assert|screenshot] steps with per-step results."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["testing.scenario_failed"],
       "examples": [],
       "headlessFallback": true
     }
