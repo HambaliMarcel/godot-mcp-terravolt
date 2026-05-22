@@ -23,7 +23,6 @@
     "addon:link": "node scripts/addon-link.mjs",
     "addon:unlink": "node scripts/addon-link.mjs unlink",
     "catalog:sync": "node scripts/catalog-sync.mjs",
-    "catalog:gen": "node scripts/catalog-sync.mjs",
     "release": "node scripts/planned.mjs release",
     "intel:graphs": "node scripts/regen-graphs.mjs",
     "intel:gitnexus": "node scripts/run-gitnexus.mjs",

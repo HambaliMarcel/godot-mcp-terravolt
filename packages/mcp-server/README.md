@@ -22,6 +22,16 @@ Global install / `npx` use the **`terravolt-godot-mcp`** bin (see `package.json`
 Point your MCP client at the compiled entry (or `terravolt-godot-mcp`), **stdio** transport. Do
 **not** wrap the process in shells that write to stdout. Logs are **stderr** JSON lines.
 
+### Shared registry lookup
+
+Resolution order for **`packages/shared/methods/registry.json`**:
+
+1. **`TERRAVOLT_METHOD_REGISTRY_JSON`** — absolute path override (packaging / CI fixtures).
+2. Walk **`process.cwd()`** ancestors, then ancestors of the compiled module — matches `npm run`
+   from the monorepo root or running **`dist/index.js`** from `packages/mcp-server`.
+
+See also [`packages/shared/README.md`](../shared/README.md).
+
 ## Daemon tools (from shared catalog)
 
 Declared in **`packages/shared/methods/registry.json`** and merged at router boot:

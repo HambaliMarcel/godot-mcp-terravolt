@@ -447,12 +447,12 @@ Per `command_line_tutorial.rst` §"Running a script":
 
 ### A.5 NPM script table additions (planned, finalize in `02`/`07`)
 
-| Script                       | Purpose                                                                     | Tied to                   |
-| ---------------------------- | --------------------------------------------------------------------------- | ------------------------- |
-| `godot:doctor`               | Run `godot --version`, `godot --headless --version`; print PATH resolution. | Doctor checklist §1.6.10. |
-| `addon:scaffold-from-editor` | One-time helper noting the manual editor-dialog step.                       | `02 §A.2`.                |
-| `dev:project:open`           | Open the configured dev project (`godot --editor --path <dev project>`).    | `02`.                     |
-| `catalog:gen`                | (Defined in `06`.)                                                          | Reaffirmed here.          |
+| Script                       | Purpose                                                                     | Tied to                      |
+| ---------------------------- | --------------------------------------------------------------------------- | ---------------------------- |
+| `godot:doctor`               | Run `godot --version`, `godot --headless --version`; print PATH resolution. | Doctor checklist §1.6.10.    |
+| `addon:scaffold-from-editor` | One-time helper noting the manual editor-dialog step.                       | `02 §A.2`.                   |
+| `dev:project:open`           | Open the configured dev project (`godot --editor --path <dev project>`).    | `02`.                        |
+| `catalog:sync`               | Generates addon `_generated/catalog_meta.gd` (`06`).                        | Wired in **`package.json`**. |
 
 ### A.6 Risk register additions
 

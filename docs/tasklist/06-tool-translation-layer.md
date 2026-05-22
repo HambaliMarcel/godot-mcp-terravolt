@@ -379,8 +379,8 @@ packages/shared/methods/registry.json
             └──► docs/catalog/                                  (markdown — planned in `10`)
 ```
 
-**Today:** `npm run catalog:sync` (alias `catalog:gen`) runs `scripts/catalog-sync.mjs` and
-refreshes `_generated/catalog_meta.gd` only. Full codegen + `docs/catalog/` remains for later tasks.
+**Today:** `npm run catalog:sync` runs `scripts/catalog-sync.mjs` and refreshes
+**`_generated/catalog_meta.gd`** only. Full codegen + `docs/catalog/` remains for later tasks.
 
 ---
 
@@ -419,8 +419,8 @@ refreshes `_generated/catalog_meta.gd` only. Full codegen + `docs/catalog/` rema
    behave identically.
 3. Schema fuzz: run a small fuzz pass that randomizes parameters for `log.tail` and confirms only
    well-typed inputs succeed.
-4. Doc-gen: run `npm run catalog:gen`; confirm `docs/catalog/` regenerates without diff drift on
-   repeated runs.
+4. Doc-gen: planned `catalog:sync` successors for `docs/catalog/` (`10` — not wired yet). repeated
+   runs.
 5. Catalog version: bump `catalog_version`; verify clients see the bump via `server.info`.
 
 ---

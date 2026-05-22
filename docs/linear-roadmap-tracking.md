@@ -83,6 +83,9 @@ file).
 - `npm run test:server`
 - `npm run build:server`
 
+**Registry path** (router): automatic discovery from cwd + module ancestors, or
+**`TERRAVOLT_METHOD_REGISTRY_JSON`** (see `packages/mcp-server/README.md`).
+
 **Still intentionally manual / deferred on the markdown checklists** (not CI blockers):
 
 - Godot/editor smokes (**§** in `03`, `04`, `05`, `06` — reconnect, daemon restart, MCP `ping` with

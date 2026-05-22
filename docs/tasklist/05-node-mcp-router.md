@@ -125,22 +125,22 @@ This file ships everything **outside** `tools/` plus the three built-ins listed.
 
 The router accepts:
 
-| Flag / env                              | Default             | Purpose                                |
-| --------------------------------------- | ------------------- | -------------------------------------- |
-| `--godot-host` / `TERRAVOLT_GODOT_HOST` | `127.0.0.1`         | Daemon host.                           |
-| `--godot-port` / `TERRAVOLT_GODOT_PORT` | `6505`              | Daemon port.                           |
-| `--connect-timeout-ms`                  | `5000`              | First-attempt connect timeout.         |
-| `--heartbeat-interval-ms`               | `15000`             | Override heartbeat.                    |
-| `--heartbeat-timeout-ms`                | `45000`             | Override timeout.                      |
-| `--reconnect-base-ms`                   | `500`               | Backoff base.                          |
-| `--reconnect-max-ms`                    | `30000`             | Backoff cap.                           |
-| `--log-level` / `TERRAVOLT_LOG_LEVEL`   | `info`              | `debug`/`info`/`warn`/`error`.         |
-| `--request-timeout-ms`                  | `30000`             | Per-RPC default.                       |
-| `--max-payload-bytes`                   | `4_194_304` (4 MiB) | Soft cap.                              |
-| `--enable-headless-fallback`            | `false`             | Toggle for `07`.                       |
-| `--token` / `TERRAVOLT_TOKEN`           | unset               | Auth token for daemon.                 |
-| `--version`                             | —                   | Print version & exit.                  |
-| `--print-config`                        | —                   | Echo resolved config to stderr & exit. |
+| Flag / env                              | Default             | Purpose                                 |
+| --------------------------------------- | ------------------- | --------------------------------------- |
+| `--godot-host` / `TERRAVOLT_GODOT_HOST` | `127.0.0.1`         | Daemon host.                            |
+| `--godot-port` / `TERRAVOLT_GODOT_PORT` | `6505`              | Daemon port.                            |
+| `--connect-timeout-ms`                  | `5000`              | First-attempt connect timeout.          |
+| `--heartbeat-interval-ms`               | `15000`             | Override heartbeat.                     |
+| `--heartbeat-timeout-ms`                | `45000`             | Override timeout.                       |
+| `--reconnect-base-ms`                   | `500`               | Backoff base.                           |
+| `--reconnect-max-ms`                    | `30000`             | Backoff cap.                            |
+| `--log-level` / `TERRAVOLT_LOG_LEVEL`   | `info`              | `debug`/`info`/`warn`/`error`.          |
+| `--request-timeout-ms`                  | `30000`             | Per-RPC default.                        |
+| `--max-payload-bytes`                   | `4_194_304` (4 MiB) | Soft cap.                               |
+| _(Phase `07`, not wired yet)_           | _(not applicable)_  | Headless parity lands in **`07`** only. |
+| `--token` / `TERRAVOLT_TOKEN`           | unset               | Auth token for daemon.                  |
+| `--version`                             | —                   | Print version & exit.                   |
+| `--print-config`                        | —                   | Echo resolved config to stderr & exit.  |
 
 Lifecycle:
 
