@@ -263,10 +263,71 @@
     "packages/mcp-server/src/transport/godot_ws_client.ts"
   ],
   "packages/mcp-server/tests/integration/addon_parse.test.mjs": [],
+  "packages/mcp-server/tests/integration/analysis/analysis_editor_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
   "packages/mcp-server/tests/integration/headless.test.mjs": [
     "packages/mcp-server/dist/headless/headlessCoordinator.js"
   ],
+  "packages/mcp-server/tests/integration/lib/godot_test_env.mjs": [],
+  "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
   "packages/mcp-server/tests/integration/mcp_e2e.test.mjs": [],
+  "packages/mcp-server/tests/integration/node/node_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/physics/physics_particle_nav_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/project/project_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/resource/resource_shader_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/runtime/runtime_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/scene/scene_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/scene_3d/scene_3d_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/script/script_signal_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/testing/testing_profile_export_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
+  "packages/mcp-server/tests/integration/tilemap/tilemap_theme_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
   "packages/mcp-server/tests/smoke.test.mjs": [],
   "packages/mcp-server/tests/unit/godotBinary.test.mjs": [
     "packages/mcp-server/dist/headless/godotBinary.js"
@@ -383,7 +444,52 @@
   "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
   "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
   "scripts/addon-link.mjs": [],
+  "scripts/build-registry-11.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-12.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-13.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-14.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-15.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-16.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-17.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-18.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-19.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-20.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-21.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-22.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-23.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-24.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
   "scripts/catalog-sync.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/generate-catalog-coverage.mjs": [
     "scripts/lib/repo_root.mjs"
   ],
   "scripts/lib/repo_root.mjs": [],
@@ -398,6 +504,9 @@
   ],
   "scripts/run-gitnexus.mjs": [],
   "scripts/setup-godot-env.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/validate-catalog-gate.mjs": [
     "scripts/lib/repo_root.mjs"
   ],
   "tools/.linear-batch/generate-child-save-payloads.js": [],
