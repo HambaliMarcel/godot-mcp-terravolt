@@ -1,0 +1,12 @@
+; Engine configuration file.
+; Minimal project for task 14 resource/shader headless tests.
+
+config_version=5
+
+[application]
+config/name="Resource Zoo"
+config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene=""
+
+[rendering]
+renderer/rendering_method="forward_plus"
