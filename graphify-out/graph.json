@@ -3609,7 +3609,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L155",
       "id": "visualizer_canvas_clearpositions",
-      "community": 39,
+      "community": 31,
       "norm_label": "clearpositions()"
     },
     {
@@ -3627,7 +3627,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L169",
       "id": "visualizer_canvas_draw",
-      "community": 33,
+      "community": 39,
       "norm_label": "draw()"
     },
     {
@@ -3726,7 +3726,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L799",
       "id": "visualizer_canvas_scenehittest",
-      "community": 33,
+      "community": 39,
       "norm_label": "scenehittest()"
     },
     {
@@ -4014,7 +4014,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
       "source_location": "L24",
       "id": "visualizer_modals_initcontextmenu",
-      "community": 31,
+      "community": 33,
       "norm_label": "initcontextmenu()"
     },
     {
@@ -4239,7 +4239,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
       "source_location": "L401",
       "id": "visualizer_panel_handleinlineedit",
-      "community": 37,
+      "community": 21,
       "norm_label": "handleinlineedit()"
     },
     {
@@ -4491,7 +4491,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
       "source_location": "L1070",
       "id": "visualizer_panel_savescenenodeproperty",
-      "community": 37,
+      "community": 21,
       "norm_label": "savescenenodeproperty()"
     },
     {
@@ -4635,7 +4635,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
       "source_location": "L95",
       "id": "visualizer_state_setcurrentview",
-      "community": 97,
+      "community": 31,
       "norm_label": "setcurrentview()"
     },
     {
@@ -5013,7 +5013,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
       "source_location": "L47",
       "id": "visualizer_websocket_sendcommand",
-      "community": 37,
+      "community": 33,
       "norm_label": "sendcommand()"
     },
     {
@@ -33541,7 +33541,7 @@
       "label": "Appendix A \u2014 Official Godot Docs alignment (added revision 2)",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L411",
+      "source_location": "L415",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_appendix_a_official_godot_docs_alignment_added_revision_2",
       "community": 20,
       "norm_label": "appendix a \u2014 official godot docs alignment (added revision 2)"
@@ -33550,7 +33550,7 @@
       "label": "A.1 Log sink resolution (canonical)",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L417",
+      "source_location": "L421",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_1_log_sink_resolution_canonical",
       "community": 20,
       "norm_label": "a.1 log sink resolution (canonical)"
@@ -33559,7 +33559,7 @@
       "label": "A.2 File writing API",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L430",
+      "source_location": "L434",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_2_file_writing_api",
       "community": 20,
       "norm_label": "a.2 file writing api"
@@ -33568,7 +33568,7 @@
       "label": "A.3 Logger \u2194 Godot debug-category mapping",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L439",
+      "source_location": "L443",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_3_logger_godot_debug_category_mapping",
       "community": 20,
       "norm_label": "a.3 logger \u2194 godot debug-category mapping"
@@ -33577,7 +33577,7 @@
       "label": "A.4 The `breakpoint` keyword",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L452",
+      "source_location": "L456",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_4_the_breakpoint_keyword",
       "community": 20,
       "norm_label": "a.4 the `breakpoint` keyword"
@@ -33586,7 +33586,7 @@
       "label": "A.5 Debug-category project setting alignment",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L462",
+      "source_location": "L466",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_5_debug_category_project_setting_alignment",
       "community": 20,
       "norm_label": "a.5 debug-category project setting alignment"
@@ -33595,7 +33595,7 @@
       "label": "A.6 JSON-RPC parsing in GDScript",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L473",
+      "source_location": "L477",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_6_json_rpc_parsing_in_gdscript",
       "community": 20,
       "norm_label": "a.6 json-rpc parsing in gdscript"
@@ -33604,7 +33604,7 @@
       "label": "A.7 Notification semantics \u2014 agent-facing events",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L484",
+      "source_location": "L488",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_7_notification_semantics_agent_facing_events",
       "community": 20,
       "norm_label": "a.7 notification semantics \u2014 agent-facing events"
@@ -33613,7 +33613,7 @@
       "label": "A.8 Logger record schema clarifications",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L497",
+      "source_location": "L501",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_8_logger_record_schema_clarifications",
       "community": 20,
       "norm_label": "a.8 logger record schema clarifications"
@@ -33622,7 +33622,7 @@
       "label": "A.9 Rotation API specifics",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L512",
+      "source_location": "L516",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_9_rotation_api_specifics",
       "community": 20,
       "norm_label": "a.9 rotation api specifics"
@@ -33631,7 +33631,7 @@
       "label": "A.10 Risks added",
       "file_type": "document",
       "source_file": "docs/tasklist/04-jsonrpc-dispatch-and-logging.md",
-      "source_location": "L521",
+      "source_location": "L525",
       "id": "tasklist_04_jsonrpc_dispatch_and_logging_a_10_risks_added",
       "community": 20,
       "norm_label": "a.10 risks added"
@@ -36466,7 +36466,7 @@
       "label": "Automated tests",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L59",
+      "source_location": "L61",
       "id": "godot_mcp_addon_readme_automated_tests",
       "community": 110,
       "norm_label": "automated tests"
@@ -36475,7 +36475,7 @@
       "label": "Operational constants",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L63",
+      "source_location": "L65",
       "id": "godot_mcp_addon_readme_operational_constants",
       "community": 110,
       "norm_label": "operational constants"
@@ -56182,9 +56182,9 @@
       "source_file": "package.json",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_marcel_package_devdependencies",
-      "target": "godot_mcp_marcel_package_devdependencies_cross_env",
-      "confidence_score": 1.0
+      "target": "godot_mcp_marcel_package_devdependencies_cross_env"
     },
     {
       "relation": "contains",
@@ -65713,9 +65713,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_dirname",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_dirname"
     },
     {
       "relation": "contains",
@@ -65723,9 +65723,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_root",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_root"
     },
     {
       "relation": "contains",
@@ -65733,9 +65733,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_src",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_src"
     },
     {
       "relation": "contains",
@@ -65743,9 +65743,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_die",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_die"
     },
     {
       "relation": "contains",
@@ -65753,9 +65753,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_godotroot",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_godotroot"
     },
     {
       "relation": "contains",
@@ -65763,9 +65763,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_rmrf",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_rmrf"
     },
     {
       "relation": "contains",
@@ -65773,9 +65773,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_cptree",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_cptree"
     },
     {
       "relation": "contains",
@@ -65783,9 +65783,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L213",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_argv",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_argv"
     },
     {
       "relation": "contains",
@@ -65793,9 +65793,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L219",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_force",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_force"
     },
     {
       "relation": "contains",
@@ -65803,9 +65803,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L222",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_unlinkcmd",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_unlinkcmd"
     },
     {
       "relation": "contains",
@@ -65813,9 +65813,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L236",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_proj",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_proj"
     },
     {
       "relation": "contains",
@@ -65823,9 +65823,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L242",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_mjs",
-      "target": "scripts_addon_link_dest",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_dest"
     },
     {
       "relation": "calls",
@@ -65834,9 +65834,9 @@
       "source_file": "scripts/addon-link.mjs",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_addon_link_godotroot",
-      "target": "scripts_addon_link_die",
-      "confidence_score": 1.0
+      "target": "scripts_addon_link_die"
     },
     {
       "relation": "contains",
@@ -88749,9 +88749,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_contributing_windows_godot_portable_md",
-      "target": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi"
     },
     {
       "relation": "contains",
@@ -88759,9 +88759,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "target": "contributing_windows_godot_portable_1_keep_the_unzip_folder_stable",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_1_keep_the_unzip_folder_stable"
     },
     {
       "relation": "contains",
@@ -88769,9 +88769,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "target": "contributing_windows_godot_portable_2_smoke_test_the_binary",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_2_smoke_test_the_binary"
     },
     {
       "relation": "contains",
@@ -88779,9 +88779,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "target": "contributing_windows_godot_portable_3_put_godot_on_version_path",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_3_put_godot_on_version_path"
     },
     {
       "relation": "contains",
@@ -88789,9 +88789,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "target": "contributing_windows_godot_portable_4_sandbox_project_outside_godot_mcp_terravolt",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_4_sandbox_project_outside_godot_mcp_terravolt"
     },
     {
       "relation": "contains",
@@ -88799,9 +88799,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_windows_portable_godot_zip_not_msi",
-      "target": "contributing_windows_godot_portable_related",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_related"
     },
     {
       "relation": "contains",
@@ -88809,9 +88809,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_2_smoke_test_the_binary",
-      "target": "contributing_windows_godot_portable_codeblock_1",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_codeblock_1"
     },
     {
       "relation": "contains",
@@ -88819,9 +88819,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_3_put_godot_on_version_path",
-      "target": "contributing_windows_godot_portable_codeblock_2",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_codeblock_2"
     },
     {
       "relation": "contains",
@@ -88829,9 +88829,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_3_put_godot_on_version_path",
-      "target": "contributing_windows_godot_portable_codeblock_3",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_codeblock_3"
     },
     {
       "relation": "contains",
@@ -88839,9 +88839,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_3_put_godot_on_version_path",
-      "target": "contributing_windows_godot_portable_codeblock_4",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_codeblock_4"
     },
     {
       "relation": "contains",
@@ -88849,9 +88849,9 @@
       "source_file": "docs/contributing/windows-godot-portable.md",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "contributing_windows_godot_portable_4_sandbox_project_outside_godot_mcp_terravolt",
-      "target": "contributing_windows_godot_portable_codeblock_5",
-      "confidence_score": 1.0
+      "target": "contributing_windows_godot_portable_codeblock_5"
     },
     {
       "relation": "contains",
@@ -94299,9 +94299,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packages_godot_mcp_addon_readme_md",
-      "target": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon"
     },
     {
       "relation": "contains",
@@ -94329,9 +94329,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_requirements",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_requirements"
     },
     {
       "relation": "contains",
@@ -94339,9 +94339,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_link_into_a_godot_dev_project",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_link_into_a_godot_dev_project"
     },
     {
       "relation": "contains",
@@ -94349,9 +94349,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_editor_usage",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_editor_usage"
     },
     {
       "relation": "contains",
@@ -94359,9 +94359,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_phase_map",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_phase_map"
     },
     {
       "relation": "contains",
@@ -94369,9 +94369,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_automated_tests",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_automated_tests"
     },
     {
       "relation": "contains",
@@ -94379,9 +94379,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_terravolt_mcp_godot_4_addon",
-      "target": "godot_mcp_addon_readme_operational_constants",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_operational_constants"
     },
     {
       "relation": "contains",
@@ -94389,9 +94389,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_link_into_a_godot_dev_project",
-      "target": "godot_mcp_addon_readme_codeblock_1",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_codeblock_1"
     },
     {
       "relation": "contains",
@@ -94399,9 +94399,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_link_into_a_godot_dev_project",
-      "target": "godot_mcp_addon_readme_codeblock_2",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_codeblock_2"
     },
     {
       "relation": "contains",
@@ -94409,9 +94409,9 @@
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "godot_mcp_addon_readme_link_into_a_godot_dev_project",
-      "target": "godot_mcp_addon_readme_codeblock_3",
-      "confidence_score": 1.0
+      "target": "godot_mcp_addon_readme_codeblock_3"
     },
     {
       "relation": "contains",
@@ -112175,5 +112175,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d481e5dad616f90bb17a661afcc1ad0f9c15458d"
+  "built_at_commit": "3dd9a73ab2a698faa8c7ee8cd1f6d652e898ee5c"
 }

@@ -1,7 +1,7 @@
 # Graph Report - Godot MCP Marcel  (2026-05-22)
 
 ## Corpus Check
-- 1052 files · ~624,446 words
+- 1052 files · ~624,492 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d481e5da`
+- Built from commit: `3dd9a73a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -873,16 +873,16 @@
 10. `全部 162 个工具` - 26 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `handleInlineEdit()` --calls--> `sendCommand()`  [EXTRACTED]
+  references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js
+- `saveSceneNodeProperty()` --calls--> `sendCommand()`  [EXTRACTED]
+  references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js
 - `startPrimary()` --calls--> `setGodotBridge()`  [EXTRACTED]
   references/godot-mcp-tomyud1/mcp-server/src/index.ts → references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts
 - `init()` --calls--> `initCanvas()`  [EXTRACTED]
   references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
 - `initEvents()` --calls--> `getCanvas()`  [EXTRACTED]
   references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
-- `initContextMenu()` --calls--> `getCanvas()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
-- `init()` --calls--> `updateZoomIndicator()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
 
 ## Communities (1112 total, 345 thin omitted)
 
@@ -972,7 +972,7 @@ Nodes (42): 04 — JSON-RPC Dispatch & Logging (Phase 1, part C), 4.10 Verificat
 
 ### Community 21 - "Community 21"
 Cohesion: 0.07
-Nodes (33): actualIndex, closePanel(), formatPropertyName(), funcIndex, highlight, initInlineEditing(), initPropertyEditing(), initSectionResizing() (+25 more)
+Nodes (35): actualIndex, closePanel(), formatPropertyName(), funcIndex, handleInlineEdit(), highlight, initInlineEditing(), initPropertyEditing() (+27 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.05
@@ -1012,15 +1012,15 @@ Nodes (32): description, devDependencies, cross-env, dependency-cruiser, gitnexu
 
 ### Community 31 - "Community 31"
 Cohesion: 0.11
-Nodes (24): fitToView(), initEvents(), updateStats(), applyForces(), centerLayout(), initLayout(), resolveCollisions(), init() (+16 more)
+Nodes (25): clearPositions(), fitToView(), initEvents(), updateStats(), applyForces(), centerLayout(), initLayout(), resolveCollisions() (+17 more)
 
 ### Community 32 - "Community 32"
 Cohesion: 0.06
 Nodes (30): author, bin, godot-mcp, bugs, url, dependencies, axios, fs-extra (+22 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.17
-Nodes (28): draw(), getCanvas(), hitTest(), sceneHitTest(), screenToWorld(), expandScene(), goBackToSceneOverview(), handleSceneMouseDown() (+20 more)
+Cohesion: 0.16
+Nodes (28): getCanvas(), hitTest(), screenToWorld(), expandScene(), goBackToSceneOverview(), handleSceneMouseDown(), handleSceneMouseMove(), handleSceneMouseUp() (+20 more)
 
 ### Community 34 - "Community 34"
 Cohesion: 0.07
@@ -1035,16 +1035,16 @@ Cohesion: 0.07
 Nodes (29): 00 — Foundation & Contracts (Pre-Phase 1), 0.10 Tech stack (final, no debate), 0.11 Cross-file dependency map, 0.12 Scoreboard (used by the agent to grade itself), 0.13 Decisions log (append-only), 0.14 Risk register (foundation-relevant), 0.15 Communication conventions for later files, 0.16 Final checklist (before opening file 01) (+21 more)
 
 ### Community 37 - "Community 37"
-Cohesion: 0.08
-Nodes (21): expandAndHighlightFunction(), handleInlineEdit(), saveSceneNodeProperty(), setCurrentUsages(), GD_KEYWORDS, GD_TYPES, highlightGDScript(), forceDeleteFromPanel() (+13 more)
+Cohesion: 0.09
+Nodes (18): expandAndHighlightFunction(), setCurrentUsages(), GD_KEYWORDS, GD_TYPES, highlightGDScript(), forceDeleteFromPanel(), initUsagePanelDrag(), initUsagePanelResize() (+10 more)
 
 ### Community 38 - "Community 38"
 Cohesion: 0.08
 Nodes (26): 3D Scene Tools (6), All 172 Tools, Analysis & Search Tools (4), Animation Tools (6), AnimationTree Tools (4), Audio Tools (6), Batch & Refactoring Tools (8), Blend Tree Tools (1) (+18 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.13
-Nodes (21): calculateTreeLayout(), centerOnNodes(), clearPositions(), drawExpandedSceneView(), drawSceneNode(), drawSceneOverview(), drawSceneView(), drawSceneViewPlaceholder() (+13 more)
+Cohesion: 0.14
+Nodes (22): calculateTreeLayout(), centerOnNodes(), draw(), drawExpandedSceneView(), drawSceneNode(), drawSceneOverview(), drawSceneView(), drawSceneViewPlaceholder() (+14 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.14
@@ -1271,8 +1271,8 @@ Cohesion: 0.22
 Nodes (10): 1. Scene & node DOM (CRUD+), 2. Scripting & context (C# & GDScript), 3. Runtime & telemetry (live connection), 4. Vibe-code macros (advanced automation), Categorical schemas, DIRECTIVES FOR CURSOR, Directives for implementers, File 2: superset_tool_registry.md (+2 more)
 
 ### Community 97 - "Community 97"
-Cohesion: 0.17
-Nodes (10): camera, currentUsages, FOLDER_COLORS, folderColorMap, getFolderColor(), scenePositions, scriptToScenes, setCurrentView() (+2 more)
+Cohesion: 0.18
+Nodes (9): camera, currentUsages, FOLDER_COLORS, folderColorMap, getFolderColor(), scenePositions, scriptToScenes, setPendingDelete() (+1 more)
 
 ### Community 98 - "Community 98"
 Cohesion: 0.20
