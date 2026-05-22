@@ -45,6 +45,9 @@ dist/
 # Linear roadmap bulk import resume ledger (personal machine)
 .linear_children_import_done.tsv
 
+# Local Godot env profile (produced by `npm run env:godot`)
+.terravolt/
+
 # Ephemeral MCP manifest previews (generator: tools/_emit_manifest.py)
 tools/_scratch_manifest.json
 
