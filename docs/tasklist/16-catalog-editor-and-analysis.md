@@ -248,7 +248,7 @@ Phase 3, work-unit #6. Prerequisite: `15` shipped.
 ## 16.13 Handoff checklist to file `17`
 
 - [ ] Catalog version `0.8.0` pushed.
-- [ ] 102 tools total live.
+- [ ] **111** tools total live.
 - [ ] Editor error live-stream event tested with > 100 messages/sec burst (throttled to ≤ 20/sec
       out).
 - [ ] Open `17-catalog-runtime.md`.

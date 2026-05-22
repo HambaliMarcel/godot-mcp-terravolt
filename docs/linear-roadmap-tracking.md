@@ -21,10 +21,13 @@ Tracked in Linear under **Terravolt** → project **Godot MCP TerraVolt — buil
 | 11      | `docs/tasklist/11-catalog-scene-and-project.md`        | [TER-47](https://linear.app/terravolt/issue/TER-47)                                                                     |
 | 12      | `docs/tasklist/12-catalog-node-polymorphic.md`         | [TER-48](https://linear.app/terravolt/issue/TER-48)                                                                     |
 | 13      | `docs/tasklist/13-catalog-script-and-signal.md`        | [TER-49](https://linear.app/terravolt/issue/TER-49)                                                                     |
+| 14      | `docs/tasklist/14-catalog-resource-and-shader.md`      | [TER-50](https://linear.app/terravolt/issue/TER-50)                                                                     |
+| 15      | `docs/tasklist/15-catalog-asset-and-batch-refactor.md` | [TER-51](https://linear.app/terravolt/issue/TER-51)                                                                     |
+| 16      | `docs/tasklist/16-catalog-editor-and-analysis.md`      | [TER-52](https://linear.app/terravolt/issue/TER-52)                                                                     |
 
 Sequential **blockedBy** wiring (00 → … → 10) is configured on those epics: each episode waits on
-the prior epic. Phase 3 catalog work-units **11 → 12 → 13** chain similarly on **TER-47 → TER-48 →
-TER-49**.
+the prior epic. Phase 3 catalog work-units **11 → 12 → … → 16** chain on **TER-47 → TER-48 → … →
+TER-52**.
 
 Notes:
 
@@ -72,10 +75,15 @@ exporter if you need longer Linear descriptions.
 
 ---
 
+## Phase `00–16` validation (maintainer sweep)
+
+See **`docs/validation/tv-00-16-checkpoint.md`** for the latest automated gate table and per-task
+rollup (catalog **0.8.0** / tasks **00–16**).
+
 ## Phase `00–13` validation (maintainer sweep)
 
-See **`docs/validation/tv-00-13-checkpoint.md`** for the latest automated gate table and per-task
-rollup (includes catalog **0.5.0** / tasks **11–13**).
+See **`docs/validation/tv-00-13-checkpoint.md`** for the prior gate table (catalog **0.5.0** / tasks
+**11–13**).
 
 ## Phase `00–06` validation (maintainer sweep)
 
