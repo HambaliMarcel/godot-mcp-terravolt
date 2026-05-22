@@ -1,29 +1,146 @@
-# godot-mcp-terravolt
+# TerraVolt Godot MCP
 
-TerraVolt **Godot ⇄ MCP** monorepo: product code lands in **`packages/`**; onboarding, SRS, and
-agent context live in **`docs/`**.
+> **Cursor ↔ Godot 4** over the Model Context Protocol. Stdio MCP router bridging a persistent
+> WebSocket to the editor plus a headless `--script` driver for everything you can do without the
+> GUI open.
 
-**Canonical tree:** **[`docs/repo-layout.md`](docs/repo-layout.md)** — read this once before moving
-files.
+- Router version `0.1.0` · Catalog version `0.2.0`
+- **12** MCP tools registered today (3 daemon-bridged, 5 router-local, 4 headless lifecycle)
+- Verified against real **Godot 4.6.3 stable mono** on Windows; 11/11 router tests including a real
+  `@modelcontextprotocol/sdk` end-to-end smoke
 
-## Omni / intel stack
+## Why this exists
 
-| Piece                | Command / output                                                                                                                                                                                      |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **JS module graphs** | `npm install` then **`npm run intel:graphs`** → `artifacts/js-graphs/`                                                                                                                                |
-| **GitNexus**         | **`npm run intel:gitnexus`** → `.gitnexus/` (gitignored index). See `.gitnexusignore` — **`references/godot-mcp-*`** included; **`references/godot-docs`** excluded (Sphinx/manual). See `AGENTS.md`. |
-| **Graphify (KG)**    | **`npm run intel:graphify`** → `graphify-out/`; **`npm run intel:graphify:cluster`** Optional. Patterns: `.graphifyignore`.                                                                           |
-| **Combined**         | **`npm run omni:intel`**                                                                                                                                                                              |
+| Want to…                                                                      | Today                                                                                                                                                                                                                           |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Drive the Godot editor from Cursor / any MCP client                           | Yes, when the editor is open and the TerraVolt addon is enabled (`ping`, `server.info`, `log.tail`, plus `context.fetch_raw` for early access to anything else the daemon exposes).                                             |
+| Run GDScript compile checks without the editor open                           | Yes — `headless.validate_script` spawns `godot --headless --script headless_driver.gd` on demand.                                                                                                                               |
+| Keep ping/info alive when the editor isn't running                            | Yes — registry rows with `headlessFallback: true` (currently `ping`, `server.info`) automatically retry against the headless coordinator. The MCP envelope reports `method: "<name>@headless"` so the caller can see the route. |
+| Telemetry: what's slow, what's failing                                        | Yes — `tools.metrics`, `tools.bottlenecks`, `tools.health`.                                                                                                                                                                     |
+| Self-healing error messages                                                   | Yes — `autoHeal` hints from `packages/shared/diagnostics/autoheal.json` are merged into errors unless `--disable-auto-heal` is passed.                                                                                          |
+| Full editor catalog (scene tree, node tree, inspector, exports, run tests, …) | Backlog — see `docs/tasklist/08`, tracked under Linear `TER-41`.                                                                                                                                                                |
 
-Operational checklist: [.cursor/workflows/intel-refresh.md](.cursor/workflows/intel-refresh.md)  
-Architecture: [docs/architecture/overview.md](docs/architecture/overview.md)
+## Quick start (under 10 minutes)
 
-## Workspace agents (Cursor)
+```powershell
+# 1. clone + install + build
+git clone https://github.com/HambaliMarcel/godot-mcp-terravolt.git
+cd godot-mcp-terravolt
+npm install
+npm run build:server
 
-- MCP: [.cursor/mcp.json](.cursor/mcp.json) (**GitNexus**)
-- Rules: [.cursor/rules/terravolt-omni.mdc](.cursor/rules/terravolt-omni.mdc), `graphify.mdc`
+# 2. point the router at a Godot 4 binary
+npm run env:godot
+# writes .terravolt/godot-env.json and prints the env line to copy.
 
-## Reference repos (local)
+# 3. (optional) link the addon into your dev project
+$env:TERRAVOLT_GODOT_PROJECT = "C:\path\to\my-godot-project"
+npm run addon:link
+# Then in Godot: Project Settings → Plugins → enable "TerraVolt MCP".
+
+# 4. wire it into Cursor
+# Add this to your workspace `.cursor/mcp.json` (or user-level `~/.cursor/mcp.json`):
+```
+
+```jsonc
+{
+  "mcpServers": {
+    "terravolt-godot-mcp": {
+      "command": "node",
+      "args": ["packages/mcp-server/dist/index.js"],
+      "env": {
+        "TERRAVOLT_GODOT_BINARY": "C:\\Users\\<you>\\AppData\\Local\\Programs\\Godot\\Godot_v4.6.3-stable_mono_win64\\Godot_v4.6.3-stable_mono_win64_console.exe",
+        "TERRAVOLT_PROJECT_PATH": "C:\\path\\to\\my-godot-project",
+      },
+    },
+  },
+}
+```
+
+Restart Cursor — the tool picker now shows `ping`, `server.info`, `log.tail`, `tools.*`,
+`context.fetch_raw`, and the `headless.*` family.
+
+Full step-by-step (with troubleshooting) lives in
+**[`docs/guides/quick-start.md`](docs/guides/quick-start.md)**.
+
+## Detailed guides
+
+| Guide                                                  | Read it when…                                      |
+| ------------------------------------------------------ | -------------------------------------------------- |
+| [Quick start](docs/guides/quick-start.md)              | first install / wiring Cursor                      |
+| [MCP usage](docs/guides/mcp-usage.md)                  | you want `tools/call` payload shapes per tool      |
+| [Tools reference](docs/guides/tools-reference.md)      | you need the authoritative parameter/result list   |
+| [Godot integration](docs/guides/godot-integration.md)  | you want to understand the editor vs headless flow |
+| [Headless-only workflow](docs/guides/headless-only.md) | CI, agents, no display                             |
+| [Troubleshooting](docs/guides/troubleshooting.md)      | something fails — start here                       |
+| [FAQ](docs/faq.md)                                     | strategic / scope questions                        |
+| [Support matrix](docs/support-matrix.md)               | OS + Godot + Node combos we test                   |
+| [v1 release readiness](docs/release/v1-readiness.md)   | tracking ship gates                                |
+| [Roadmap](docs/roadmap.md)                             | post-1.0 items                                     |
+
+## What ships in this repo
+
+| Path                                                     | What's there                                                                                            |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [`packages/mcp-server/`](packages/mcp-server/)           | Node + TypeScript MCP router (`@terravolt/godot-mcp`). MCP stdio in, WebSocket + headless TCP out.      |
+| [`packages/godot-mcp-addon/`](packages/godot-mcp-addon/) | Godot 4 addon: WebSocket JSON-RPC daemon, rotating logger, headless TCP driver, generated catalog meta. |
+| [`packages/shared/`](packages/shared/)                   | Canonical JSON registries (methods, errors, autoheal hints).                                            |
+| [`docs/`](docs/)                                         | SRS, tasklists `00–10`, guides, validation checkpoint, support matrix.                                  |
+| [`tests/_fixtures/`](tests/_fixtures/)                   | Minimal Godot projects used by the integration tests (`empty/`, `with-addon/`).                         |
+| [`scripts/`](scripts/)                                   | `env:godot`, `catalog:sync`, `release:notes`, `release:check`, `addon:link`, intel regen.               |
+| [`.github/workflows/`](.github/workflows/)               | `lint.yml`, `unit.yml` (cross-OS), `release.yml` (tag-driven).                                          |
+
+## Verifying your install
+
+```powershell
+npm run lint                # ESLint @terravolt/godot-mcp
+npm run typecheck           # tsc --noEmit
+npm run build:server        # tsc emit dist/
+npm run test:server         # 11 tests, real Godot integration auto-skips if missing
+npm run catalog:sync        # regenerates _generated/catalog_meta.gd
+npm run release:check       # 5/5 gates (hash, version, error mirror, readiness, CHANGELOG)
+```
+
+To exercise real Godot interaction:
+
+```powershell
+$env:TERRAVOLT_GODOT_BINARY = (Get-Content .terravolt/godot-env.json | ConvertFrom-Json).godotBinary
+npm run test:server         # now also runs the real-Godot integration + addon parse-check
+```
+
+## Status
+
+Phase 2 router and addon foundation are in master with full real-Godot end-to-end coverage. Tracker:
+**[`docs/validation/tv-00-10-checkpoint.md`](docs/validation/tv-00-10-checkpoint.md)**.
+
+| Tasklist                          | State                                                                  |
+| --------------------------------- | ---------------------------------------------------------------------- |
+| `00` Foundation contracts         | green                                                                  |
+| `01` Repo + tooling               | green                                                                  |
+| `02–04` Addon + WS + JSON-RPC     | green                                                                  |
+| `05–06` Router + shared catalog   | green                                                                  |
+| `07` Headless fallback            | foundation + WS-down fallback shipped; export/import/run_tests pending |
+| `08` Full ~200 method catalog     | backlog (tracked as Linear `TER-41`)                                   |
+| `09` Context / errors / telemetry | partial (`tools.bottlenecks`, `context.fetch_raw`, `autoHeal` shipped) |
+| `10` QA / release / docs          | foundation + real-MCP smoke green; site auto-build pending             |
+
+## Contributing
+
+- [`AGENTS.md`](AGENTS.md) — canonical agent-facing readme for this repo.
+- [`CLAUDE.md`](CLAUDE.md) — Claude-specific routing notes.
+- [`docs/contributing/agent-guidelines.md`](docs/contributing/agent-guidelines.md) — safety +
+  branching.
+- [`docs/contributing/git-hooks.md`](docs/contributing/git-hooks.md) — optional commit-msg hook.
+- [`docs/contributing/windows-godot-portable.md`](docs/contributing/windows-godot-portable.md) —
+  Windows-specific install notes.
+
+## Governance
+
+[`LICENSE`](LICENSE) · [`CONTRIBUTING.md`](CONTRIBUTING.md) ·
+[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) · [`SECURITY.md`](SECURITY.md) ·
+[`CHANGELOG.md`](CHANGELOG.md)
+
+## Reference clones (local, not vendored)
 
 ```bash
 git clone --depth 1 https://github.com/godotengine/godot-docs.git references/godot-docs
@@ -32,22 +149,16 @@ git clone --depth 1 https://github.com/tomyud1/godot-mcp.git references/godot-mc
 git clone --depth 1 https://github.com/Coding-Solo/godot-mcp.git references/godot-mcp-coding-solo
 ```
 
-`godot-docs` is large (official [Sphinx](https://docs.godotengine.org/) manual source — see upstream
-[readme](https://github.com/godotengine/godot-docs)). **Architectural comparison** of MCP refs:
-**[docs/references/reference-repos-map.md](docs/references/reference-repos-map.md)**.
+Architectural comparison:
+**[`docs/references/reference-repos-map.md`](docs/references/reference-repos-map.md)**.
 
-## Documentation
+## Code intelligence
 
-[docs/README.md](docs/README.md) · [architecture](docs/architecture/overview.md) ·
-[SRS](docs/srs/README.md) · [tasklist `00`–`10`](docs/tasklist/)
+This repo is indexed by GitNexus and Graphify:
 
-## Status
+```powershell
+npm run omni:intel          # runs intel:gitnexus, intel:graphs, intel:graphify
+```
 
-Early scaffold — structure reserved for MCP server + Godot addon implementation. **SRS:**
-[`docs/srs/README.md`](docs/srs/README.md) (architecture, tool registry, roadmap; fundamentals
-contract **before** Phase 1 coding).
-
-## Contributing (Git hooks)
-
-Optional Cursor co-author handling:
-[docs/contributing/git-hooks.md](docs/contributing/git-hooks.md).
+See [`AGENTS.md`](AGENTS.md) for the embedded GitNexus block describing when to call
+`gitnexus_query`, `gitnexus_impact`, and friends from inside Cursor.

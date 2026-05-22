@@ -76,8 +76,31 @@ A new headless `--import` fixture (`tests/_fixtures/with-addon/`) plus
 `tests/integration/addon_parse.test.mjs` guards against regressions of any
 of the GDScript-side bugs above.
 
+## Documentation tier (2026-05-22 v4 doc refresh)
+
+The user-facing documentation was finalized against the verified state of
+the codebase:
+
+- Root `README.md` rewritten as the product entry — quick start, "why",
+  guide index, status table.
+- `docs/README.md` re-indexed into Guides / Status & release /
+  Architecture / Execution / Contributing sections.
+- New `docs/guides/tools-reference.md` — authoritative reference for all
+  12 registered MCP tools (inputs, results, errors).
+- New `docs/guides/mcp-usage.md` — concrete `tools/call` payloads per
+  tool + a Node SDK example that mirrors `mcp_e2e.test.mjs`.
+- New `docs/guides/godot-integration.md` — editor vs headless connection
+  flow (ASCII diagram) + verification matrix.
+- `docs/guides/quick-start.md`, `headless-only.md`, `troubleshooting.md`
+  refreshed for test counts, new errors found, and cross-links.
+- `packages/**/README.md` updated to today's flag/env-var/tool list.
+- `docs/release/v1-readiness.md` "Documentation site builds clean" gate
+  flipped from "In progress" to "Yes".
+
 ## Manual / CI gap
 
-Editor-mode E2E (`xvfb-run` on Linux, real editor on Windows/macOS) remains out of scope until §08 ships category implementations.
+Editor-mode E2E (`xvfb-run` on Linux, real editor on Windows/macOS)
+remains out of scope until §08 ships category implementations.
 
-See also **`docs/catalog/parity.md`** and **`docs/release/v1-readiness.md`**.
+See also **`docs/catalog/parity.md`** and
+**`docs/release/v1-readiness.md`**.
