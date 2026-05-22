@@ -267,6 +267,10 @@
     "packages/mcp-server/dist/headless/headlessCoordinator.js",
     "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
   ],
+  "packages/mcp-server/tests/integration/android/android_and_scenario_headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
   "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs": [
     "packages/mcp-server/dist/headless/headlessCoordinator.js",
     "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
@@ -484,6 +488,9 @@
     "scripts/lib/repo_root.mjs"
   ],
   "scripts/build-registry-24.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/build-registry-26.mjs": [
     "scripts/lib/repo_root.mjs"
   ],
   "scripts/catalog-sync.mjs": [

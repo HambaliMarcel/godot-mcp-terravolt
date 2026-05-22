@@ -14,7 +14,7 @@ treat **[`AGENTS.md`](AGENTS.md)** as the single canonical agent-facing readme f
 
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **godot-mcp-terravolt** (4887 symbols, 7543 relationships,
+This project is indexed by GitNexus as **godot-mcp-terravolt** (4926 symbols, 7597 relationships,
 169 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate
 safely.
 
