@@ -377,13 +377,15 @@ None. This file uses only what `00 §0.10` already locked. It picks two things d
 ## 1.12 Handoff checklist to file `02`
 
 - [x] All §1.9 boxes checked.
-- [ ] Godot 4.x installed locally and on PATH (verify manually: `godot --version`).
-- [ ] A throwaway Godot dev project exists somewhere outside this repo (create before editing
-      `plugin.cfg`).
+- [x] Godot 4.x reachable on `PATH` (**`godot --version`**) — portable ZIP +
+      `%USERPROFILE%\bin\godot.cmd` shim (see
+      [`windows-godot-portable.md`](../contributing/windows-godot-portable.md)).
+- [x] Throwaway Godot dev project exists outside the monorepo (this machine:
+      `%USERPROFILE%\Documents\TerravoltMcpDev`; configure addons in task `02`).
 - [x] `addon:link`/`addon:unlink` scripts noted (`package.json` → `planned.mjs`; implement task
       `02`).
 - [x] GDScript style guide chosen (Godot official) and noted in the addon README.
-- [ ] Decision pending: addon test framework (GUT vs gdUnit4) — to be made in `02`.
+- [ ] Addon test framework (**GUT vs gdUnit4**) — pick when opening **`02`** (not a `01` blocker).
 
 When all done, open **`02-godot-plugin-foundation.md`**.
 
@@ -399,7 +401,9 @@ When all done, open **`02-godot-plugin-foundation.md`**.
 Per `tutorials/editor/command_line_tutorial.rst`:
 
 - **PATH placement.** Recommended: place the editor binary under `/usr/local/bin/godot` on Linux. On
-  Windows, `scoop install godot` (or `godot-mono` for .NET builds) adds it automatically. On macOS,
+  Windows, `scoop install godot` (or `godot-mono` for .NET builds) adds it automatically, or use the
+  **portable ZIP + `godot.cmd` shim** documented in
+  [`contributing/windows-godot-portable.md`](../contributing/windows-godot-portable.md). On macOS,
   the binary lives inside the `.app` bundle at `Godot.app/Contents/MacOS/Godot`.
 - **Sentinel command for the doctor checklist:** `godot --version` (returns the engine version
   banner).
