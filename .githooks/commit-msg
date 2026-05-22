@@ -1,0 +1,7 @@
+#!/bin/sh
+# Drop Cursor-inserted Co-authored-by trailers from commit messages (local clones only).
+# Enable: git config core.hooksPath .githooks
+tmp="$(mktemp)"
+grep -vF 'Co-authored-by: Cursor <cursoragent@cursor.com>' "$1" >"$tmp" || exit 1
+cat "$tmp" >"$1"
+rm -f "$tmp"

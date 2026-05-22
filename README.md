@@ -28,3 +28,22 @@ git clone --depth 1 https://github.com/Coding-Solo/godot-mcp.git references/godo
 ## Status
 
 Early scaffold — omni tooling; reference repos are local only (see above).
+
+## Git: dropping `Co-authored-by: Cursor <cursoragent@cursor.com>`
+
+Historic commits on `origin` were rewritten **without** that trailer. After you pull, anyone with an old clone should:
+
+```bash
+git fetch origin
+git reset --hard origin/master
+```
+
+To **stop future local commits** from re-adding the Cursor agent line, point Git at this repo’s hook (run once per clone):
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Hooks are not auto-enabled for security; you must run the command above. The `commit-msg` script only removes that one `Co-authored-by` line.
+
+Also check **Cursor → Settings** for any option that adds a co-author line to git commits and disable it if you prefer not to rely on the hook.
