@@ -1,0 +1,12 @@
+; Godot 4 fixture project used by docs/tasklist/10 §10.6.5 to parse-check
+; every TerraVolt addon .gd file in a context where `class_name` siblings
+; resolve. The integration test stages the addon at runtime via
+; `tests/_fixtures/with-addon/addons/terravolt_mcp/` (junction or copy)
+; and tears it down between runs — this directory is `.gitignore`d.
+
+config_version=5
+
+[application]
+
+config/name="terravolt-with-addon-fixture"
+config/features=PackedStringArray("4.0")

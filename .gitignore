@@ -51,6 +51,11 @@ dist/
 # Ephemeral MCP manifest previews (generator: tools/_emit_manifest.py)
 tools/_scratch_manifest.json
 
+# Staged addon for `tests/_fixtures/with-addon` parse-check (created on demand)
+tests/_fixtures/with-addon/addons/
+tests/_fixtures/with-addon/.godot/
+tests/_fixtures/empty/.godot/
+
 # Linear import scratch (payload chunks — regenerate locally; never vendor)
 tools/.linear-batch/
 
