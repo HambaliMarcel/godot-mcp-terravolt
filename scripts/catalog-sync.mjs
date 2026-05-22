@@ -4,12 +4,13 @@
  */
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const regPath = join(root, "packages/shared/methods/registry.json");
-const outDir = join(root, "packages/godot-mcp-addon/_generated");
+import { findTerravoltRepoRoot } from "./lib/repo_root.mjs";
+
+const root = findTerravoltRepoRoot(import.meta.url);
+const regPath = join(root, "packages", "shared", "methods", "registry.json");
+const outDir = join(root, "packages", "godot-mcp-addon", "_generated");
 const outPath = join(outDir, "catalog_meta.gd");
 
 const bytes = readFileSync(regPath);
