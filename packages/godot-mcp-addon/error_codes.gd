@@ -36,6 +36,17 @@ const EDITOR_NOT_AVAILABLE := -33400
 const EDITOR_NO_OPEN_PROJECT := -33401
 #endregion
 
+#region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
+const HEADLESS_BINARY_MISSING := -33810
+const HEADLESS_NO_PROJECT := -33811
+const HEADLESS_SPAWN_FAILED := -33812
+const HEADLESS_DRIVER_HANDSHAKE_FAILED := -33813
+const HEADLESS_SESSION_BUSY := -33814
+const HEADLESS_CRASHED := -33815
+const HEADLESS_TIMEOUT := -33816
+const HEADLESS_DISALLOWED := -33817
+#endregion
+
 static func meta_for_tv_code(tv_code: int) -> Dictionary:
 	var sym := symbol_for(tv_code)
 	return {"app_code": sym, "category": category_for(tv_code), "recoverable": recoverable_for(tv_code)}
@@ -73,6 +84,15 @@ static func category_for(tv_code: int) -> String:
 		EDITOR_NOT_AVAILABLE,
 		EDITOR_NO_OPEN_PROJECT:
 			return "editor"
+		HEADLESS_BINARY_MISSING,
+		HEADLESS_NO_PROJECT,
+		HEADLESS_SPAWN_FAILED,
+		HEADLESS_DRIVER_HANDSHAKE_FAILED,
+		HEADLESS_SESSION_BUSY,
+		HEADLESS_CRASHED,
+		HEADLESS_TIMEOUT,
+		HEADLESS_DISALLOWED:
+			return "headless"
 		_:
 			return "internal"
 
@@ -113,6 +133,22 @@ static func symbol_for(tv_code: int) -> String:
 			return "editor.not_available"
 		EDITOR_NO_OPEN_PROJECT:
 			return "editor.no_open_project"
+		HEADLESS_BINARY_MISSING:
+			return "headless.binary_missing"
+		HEADLESS_NO_PROJECT:
+			return "headless.no_project"
+		HEADLESS_SPAWN_FAILED:
+			return "headless.spawn_failed"
+		HEADLESS_DRIVER_HANDSHAKE_FAILED:
+			return "headless.driver_handshake_failed"
+		HEADLESS_SESSION_BUSY:
+			return "headless.session_busy"
+		HEADLESS_CRASHED:
+			return "headless.crashed"
+		HEADLESS_TIMEOUT:
+			return "headless.timeout"
+		HEADLESS_DISALLOWED:
+			return "headless.disallowed"
 		_:
 			return "internal.unexpected"
 
