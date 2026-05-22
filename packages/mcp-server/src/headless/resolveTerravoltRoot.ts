@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const REGISTRY_TAIL = ["packages", "shared", "methods", "registry.json"] as const;
@@ -16,9 +16,17 @@ function ancestorDirs(seed: string): string[] {
   return out;
 }
 
+function toFsPath(urlOrPath: string): string {
+  if (urlOrPath.startsWith("file://")) return fileURLToPath(urlOrPath);
+  if (isAbsolute(urlOrPath)) return urlOrPath;
+  throw new Error(
+    `[terravolt] Expected a file:// URL or absolute path, got: ${urlOrPath}`,
+  );
+}
+
 /** Locate monorepo root by `packages/shared/methods/registry.json`. */
 export function resolveTerravoltRepoRoot(importMetaUrl: string): string {
-  const fromModule = dirname(fileURLToPath(importMetaUrl));
+  const fromModule = dirname(toFsPath(importMetaUrl));
   const roots = [...ancestorDirs(process.cwd()), ...ancestorDirs(fromModule)];
   const seen = new Set<string>();
   for (const root of roots) {

@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const REGISTRY_TAIL = ["packages", "shared", "methods", "registry.json"] as const;
@@ -14,6 +14,19 @@ function ancestorDirs(seed: string): string[] {
     d = p;
   }
   return out;
+}
+
+/**
+ * Accept either a `file://` URL (preferred — `import.meta.url`) or an
+ * already-decoded absolute filesystem path. Windows paths look like URLs
+ * (`H:\...`) so we can't always re-decode; tolerate both shapes.
+ */
+function toFsPath(urlOrPath: string): string {
+  if (urlOrPath.startsWith("file://")) return fileURLToPath(urlOrPath);
+  if (isAbsolute(urlOrPath)) return urlOrPath;
+  throw new Error(
+    `[terravolt] Expected a file:// URL or absolute path, got: ${urlOrPath}`,
+  );
 }
 
 /**
@@ -32,7 +45,7 @@ export function resolveMethodRegistryJsonPath(importMetaUrl: string): string {
     return envPath;
   }
 
-  const fromModule = dirname(fileURLToPath(importMetaUrl));
+  const fromModule = dirname(toFsPath(importMetaUrl));
   const roots = [...ancestorDirs(process.cwd()), ...ancestorDirs(fromModule)];
   const seen = new Set<string>();
   for (const root of roots) {

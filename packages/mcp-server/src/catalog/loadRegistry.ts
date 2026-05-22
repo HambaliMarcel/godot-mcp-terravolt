@@ -1,6 +1,5 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 
 import type { MethodRegistryFile } from "./methodRegistry.types.js";
 import { resolveMethodRegistryJsonPath } from "./repoRoot.js";
@@ -13,8 +12,11 @@ export type {
 
 let cachedPath: string | undefined;
 
+// `resolveMethodRegistryJsonPath` expects a `file://` URL (it runs
+// `fileURLToPath` internally). On Windows, double-decoding the path
+// raises ERR_INVALID_URL_SCHEME ("H:\..." is parsed with scheme `h:`).
 function registryAbsolutePath(): string {
-  cachedPath ??= resolveMethodRegistryJsonPath(fileURLToPath(import.meta.url));
+  cachedPath ??= resolveMethodRegistryJsonPath(import.meta.url);
   return cachedPath;
 }
 
