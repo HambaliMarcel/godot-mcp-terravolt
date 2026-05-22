@@ -321,15 +321,16 @@ is **not** supported in v1; the router restarts to apply changes.
 
 ## 5.9 Acceptance criteria
 
-- [ ] `packages/mcp-server/` builds with `npm run build:server`.
-- [ ] `packages/mcp-server/` typechecks (`npm run typecheck`).
-- [ ] `ping`, `server.info`, `log.tail` tools registered with valid JSON schemas.
-- [ ] Router connects to the daemon and survives daemon restarts via reconnect + backoff.
-- [ ] Heartbeat works; unhealthy connections are detected and recycled.
-- [ ] No stdout pollution; all logs go to stderr.
-- [ ] CLI flags and env vars from §5.6.4 honored.
-- [ ] Smoke tests in §5.6.12 pass.
-- [ ] Decisions Log updated.
+- [x] `packages/mcp-server/` builds with `npm run build:server`.
+- [x] `packages/mcp-server/` typechecks (`npm run typecheck`).
+- [x] `ping`, `server.info`, `log.tail` tools registered with valid JSON schemas.
+- [x] Router connects to the daemon and survives daemon restarts via reconnect + backoff.
+- [x] Heartbeat works; unhealthy connections are detected and recycled.
+- [x] No stdout pollution; all logs go to stderr.
+- [x] CLI flags and env vars from §5.6.4 honored.
+- [ ] Smoke tests in §5.6.12 pass (manual operator checklist; CI covers `--version` /
+      `--print-config`).
+- [x] Decisions Log updated.
 
 ---
 
@@ -361,11 +362,11 @@ is **not** supported in v1; the router restarts to apply changes.
 
 ## 5.12 Handoff checklist to file `06`
 
-- [ ] Three built-in tools live end-to-end.
-- [ ] WS client robust to disconnect/reconnect.
-- [ ] Router source layout established under `packages/mcp-server/src/`.
-- [ ] Tool registration mechanism exists in `tools/registry.ts` (even if minimal).
-- [ ] Diagnostic envelope from daemon is preserved in MCP tool errors.
+- [ ] Three built-in tools live end-to-end (requires running Godot daemon + plugin).
+- [x] WS client robust to disconnect/reconnect.
+- [x] Router source layout established under `packages/mcp-server/src/`.
+- [x] Tool registration mechanism exists in `tools/registry.ts` (even if minimal).
+- [x] Diagnostic envelope from daemon is preserved in MCP tool errors.
 
 When done, open **`06-tool-translation-layer.md`**.
 

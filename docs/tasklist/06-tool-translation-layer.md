@@ -374,12 +374,13 @@ Define once, referenced everywhere:
 ```text
 packages/shared/methods/registry.json
             │
-            ├──► packages/mcp-server/src/_generated/tools.ts   (router-side TS types)
-            ├──► packages/godot-mcp-addon/_generated/methods.gd (daemon-side method list)
-            └──► docs/catalog/                                  (markdown for users/agents)
+            ├──► packages/mcp-server/src/_generated/tools.ts   (router-side TS types) — optional / later
+            ├──► packages/godot-mcp-addon/_generated/catalog_meta.gd (SHA + version; today)
+            └──► docs/catalog/                                  (markdown — planned in `10`)
 ```
 
-Generation is performed by a script in `scripts/` invoked via `npm run catalog:gen`.
+**Today:** `npm run catalog:sync` (alias `catalog:gen`) runs `scripts/catalog-sync.mjs` and
+refreshes `_generated/catalog_meta.gd` only. Full codegen + `docs/catalog/` remains for later tasks.
 
 ---
 
@@ -393,18 +394,21 @@ Generation is performed by a script in `scripts/` invoked via `npm run catalog:g
 
 ## 6.9 Acceptance criteria
 
-- [ ] `packages/shared/` exists with method and error registries.
-- [ ] Router auto-generates MCP tools from the shared registry at boot.
-- [ ] Daemon loads the same shared registry on enable.
-- [ ] `tools.list`, `tools.describe`, `tools.health`, `tools.metrics` work.
-- [ ] Schema validation is enforced on both sides.
-- [ ] Response normalization in place for the common Godot types (`§6.7.4`).
-- [ ] Cancellation pathway documented and wired (best-effort).
-- [ ] Notifications subscription wired (no events yet, but path tested with a dummy
-      `event.test.tick`).
-- [ ] `tools.health` detects `protocol.catalog_mismatch`.
-- [ ] Smoke tests in §6.6.17 pass.
-- [ ] Decisions Log updated.
+- [x] `packages/shared/` exists with method and error registries.
+- [x] Router auto-generates MCP tools from the shared registry at boot.
+- [x] Daemon loads the same shared registry on enable (via `catalog:sync` → `catalog_meta.gd` +
+      dispatcher fields).
+- [x] `tools.list`, `tools.describe`, `tools.health`, `tools.metrics` work.
+- [x] Schema validation is enforced on both sides.
+- [ ] Response normalization in place for the common Godot types (`§6.7.4`) — deferred toward `08` /
+      shared `schemas/common/`.
+- [x] Cancellation pathway documented and wired (best-effort).
+- [ ] Notifications subscription wired with dummy `event.test.tick` (daemon path not yet emitted;
+      router bridge is live).
+- [x] `tools.health` detects catalog mismatch (`protocol_catalog_mismatch_detected` + SHA/version
+      parity).
+- [ ] Smoke tests in §6.6.17 pass (manual; partial automation via `test:server`).
+- [x] Decisions Log updated.
 
 ---
 
@@ -436,11 +440,11 @@ Generation is performed by a script in `scripts/` invoked via `npm run catalog:g
 
 ## 6.12 Handoff checklist to file `07`
 
-- [ ] Shared registry is the source of truth for names, schemas, error codes.
-- [ ] Tool registration mechanics ready to absorb the 200+ tool catalog.
-- [ ] Notification path wired (events flow from daemon to MCP client).
-- [ ] Telemetry hooks ready for `09`.
-- [ ] Router doc-gen produces `docs/catalog/`.
+- [x] Shared registry is the source of truth for names, schemas, error codes.
+- [x] Tool registration mechanics ready to absorb the 200+ tool catalog.
+- [ ] Notification path exercised with `event.*` from daemon (bridge ready; no tick yet).
+- [x] Telemetry hooks ready for `09`.
+- [ ] Router doc-gen produces `docs/catalog/` (planned with `10`).
 
 When done, open **`07-headless-fallback.md`**.
 
