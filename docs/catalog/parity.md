@@ -84,6 +84,38 @@ For full per-tool details (inputs, results, errors), see
 | `editor.error_log_tail`                                                                                                                                                 | yes    | partial      | Headless returns daemon buffer only.               |
 | `analysis.scene_complexity`, `analysis.signal_flow`, `analysis.unused_resources`, `analysis.metrics`                                                                    | yes    | yes          | Shared `analysis_helpers.gd` in editor + headless. |
 
+### Runtime (catalog 0.9.0)
+
+| `method`                                                                                                                                    | Editor | Headless TCP | Notes                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | -------------------------------------------------------------------------------------- |
+| `runtime.play`, `runtime.stop`, `runtime.status`                                                                                            | yes    | partial      | Headless uses `runtime.start_headless` subprocess + TCP bridge (port 6506).            |
+| `runtime.start_headless`                                                                                                                    | no     | yes          | Spawns game process; resolves Godot exe (skips `.cmd`/`.bat` shims).                   |
+| `runtime.list_nodes`, `runtime.inspect_node`, `runtime.evaluate`, `runtime.set_property`, `runtime.call_method`, `runtime.emit_signal`      | yes    | partial      | Proxied to game-process bridge when session alive.                                     |
+| `runtime.send_input`, `runtime.simulate_sequence`, `runtime.click_ui`, `runtime.navigate`, `runtime.record_inputs`, `runtime.replay_inputs` | yes    | partial      | Bridge autoload in game project; CI covers core round-trip via `minimal_game` fixture. |
+| `runtime.log_tail`, `runtime.screenshot`, `runtime.set_engine_param`                                                                        | yes    | partial      | Bridge helpers; screenshot needs render context in headless game.                      |
+
+### Animation + animation_tree (catalog 0.10.0)
+
+| `method`                                                                                                                                                                                                                           | Editor | Headless TCP | Notes                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | --------------------------------------- |
+| `animation.list`, `animation.create`, `animation.add_track`, `animation.set_key`, `animation.play`, `animation.stop`                                                                                                               | yes    | yes          | `AnimationPlayer` on loaded main scene. |
+| `animation_tree.describe`, `animation_tree.set_parameter`, `animation_tree.get_parameter`, `animation_tree.blend_audit`, `animation_tree.play`, `animation_tree.stop`, `animation_tree.add_state`, `animation_tree.add_transition` | yes    | yes          | Headless uses fixture zoo scenes.       |
+
+### Physics, particle, navigation (catalog 0.11.0)
+
+| `method`                                                                                                                                   | Editor | Headless TCP | Notes                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------------ | ---------------------------------------------------------------- |
+| `physics.add_body`, `physics.set_layers`, `physics.list_layers`, `physics.set_layer_name`, `physics.raycast`, `physics.set_gravity`        | yes    | yes          | Main-scene bootstrap + physics step advance in headless.         |
+| `particle.add_system`, `particle.set_material`, `particle.preview`, `particle.set_emission`, `particle.list_presets`                       | yes    | yes          | GPU→CPU fallback when RD unavailable; no `Node.has()` (Godot 4). |
+| `navigation.add_region`, `navigation.bake`, `navigation.add_agent`, `navigation.set_layers`, `navigation.path`, `navigation.debug_overlay` | yes    | yes          | Region bake + path query in headless fixtures.                   |
+
+### Tilemap + theme_ui (catalog 0.12.0)
+
+| `method`                                                                                                                                | Editor | Headless TCP | Notes                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | -------------------------------------------------------------------------------------- |
+| `tilemap.describe`, `tilemap.set_cells`, `tilemap.fill`, `tilemap.query_cells`, `tilemap.tileset_info`, `tilemap.terrain_paint`         | yes    | yes          | `TileMapLayer`-first; legacy `TileMap` fallback where needed.                          |
+| `theme_ui.describe`, `theme_ui.set_color`, `theme_ui.set_font`, `theme_ui.set_stylebox`, `theme_ui.preview`, `theme_ui.scaffold_screen` | yes    | yes          | Scaffold assigns `owner` before pack; control override describe reads theme overrides. |
+
 ## Headless-only methods (no editor counterpart)
 
 | `method`                 | Surface                             | Notes                                                                     |

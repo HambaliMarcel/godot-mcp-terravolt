@@ -1,20 +1,20 @@
 # v1 release readiness checklist
 
-Mirrors `docs/tasklist/10 §10.6.16`. Tick items only after the linked artefact is in `master` and CI
+Mirrors `docs/tasklist/10 ?10.6.16`. Tick items only after the linked artefact is in `master` and CI
 is green.
 
-| Gate                                                | Status (2026-05-22 v5, catalog **0.8.0** verified) | Notes                                                                                                                                                                                           |
-| --------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All §09 acceptance criteria met.                    | Partial                                            | `tools.bottlenecks`, `context.fetch_raw`, `autoHeal` ship; envelopes / SLA budgets / batch fusion / `ifMatch` not yet.                                                                          |
-| At least one tool per category from §08.            | Partial                                            | **12 categories live** through task **16** (**111** daemon methods, catalog **`0.8.0`**); remaining §08 categories in tasklists **`17`–`25`** (TER-41).                                         |
-| Showcase scenario §10.6.4 passes locally and in CI. | Partial                                            | Real-MCP stdio + **10** headless integration suites (scene/project/node/script/signal/resource/asset/analysis); full §08 showcase pending tasks **17+**.                                        |
-| All workflows green for 7 consecutive days.         | Pending                                            | `lint.yml` + `unit.yml` only today.                                                                                                                                                             |
-| No unresolved CRITICAL/HIGH bugs.                   | Yes (current)                                      | Four bugs from the real-MCP sweep fixed and documented in `CHANGELOG.md`.                                                                                                                       |
-| Documentation site builds clean.                    | Yes                                                | Root `README.md` rewritten; `docs/README.md` indexes the new guides (`quick-start.md`, `mcp-usage.md`, `tools-reference.md`, `godot-integration.md`, `headless-only.md`, `troubleshooting.md`). |
-| Support matrix updated.                             | Yes                                                | `docs/support-matrix.md`.                                                                                                                                                                       |
-| Security review fresh.                              | Yes                                                | `SECURITY.md` updated per §10.6.11 / §A.10.                                                                                                                                                     |
-| Decisions log up to date.                           | Pending                                            | Add v1.0 entry when shipping (`docs/tasklist/00 §0.13`).                                                                                                                                        |
-| Release notes drafted from registry diff.           | Tooling ready                                      | `npm run release:notes`.                                                                                                                                                                        |
+| Gate                                                | Status (2026-05-22 v6, catalog **0.12.0** verified) | Notes                                                                                                                                                                                           |
+| --------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All ?09 acceptance criteria met.                    | Partial                                             | `tools.bottlenecks`, `context.fetch_raw`, `autoHeal` ship; envelopes / SLA budgets / batch fusion / `ifMatch` not yet.                                                                          |
+| At least one tool per category from ?08.            | Partial                                             | **19 categories live** through task **20** (**173** daemon methods, catalog **`0.12.0`**); remaining ?08 categories in tasklists **`21`?`25`** (TER-41).                                        |
+| Showcase scenario ?10.6.4 passes locally and in CI. | Partial                                             | Real-MCP stdio + **14** headless integration suites (through tasks **17?20**); full ?08 showcase pending tasks **21+**.                                                                         |
+| All workflows green for 7 consecutive days.         | Pending                                             | `lint.yml` + `unit.yml` only today.                                                                                                                                                             |
+| No unresolved CRITICAL/HIGH bugs.                   | Yes (current)                                       | Four bugs from the real-MCP sweep fixed and documented in `CHANGELOG.md`.                                                                                                                       |
+| Documentation site builds clean.                    | Yes                                                 | Root `README.md` rewritten; `docs/README.md` indexes the new guides (`quick-start.md`, `mcp-usage.md`, `tools-reference.md`, `godot-integration.md`, `headless-only.md`, `troubleshooting.md`). |
+| Support matrix updated.                             | Yes                                                 | `docs/support-matrix.md`.                                                                                                                                                                       |
+| Security review fresh.                              | Yes                                                 | `SECURITY.md` updated per ?10.6.11 / ?A.10.                                                                                                                                                     |
+| Decisions log up to date.                           | Pending                                             | Add v1.0 entry when shipping (`docs/tasklist/00 ?0.13`).                                                                                                                                        |
+| Release notes drafted from registry diff.           | Tooling ready                                       | `npm run release:notes`.                                                                                                                                                                        |
 
 ## Pre-tag command sequence
 
@@ -34,6 +34,6 @@ registry, all `-33xxx` codes in `packages/shared/errors/registry.json` are mirro
 
 ## Post-release
 
-- Open issues from the §10.6.14 roadmap.
-- Schedule the §10.6.17 weekly maintenance pass.
+- Open issues from the ?10.6.14 roadmap.
+- Schedule the ?10.6.17 weekly maintenance pass.
 - Update `docs/support-matrix.md` only if a Godot or Node baseline shifts.

@@ -5,29 +5,33 @@ Tracked in Linear under **Terravolt** → project **Godot MCP TerraVolt — buil
 
 ## What was imported via MCP (Cursor plugin)
 
-| Episode | Markdown                                               | Epic issue                                                                                                              |
-| ------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| 00      | `docs/tasklist/00-foundation-and-contracts.md`         | [TER-44](https://linear.app/terravolt/issue/TER-44) (**[TER-33](https://linear.app/terravolt/issue/TER-33)** duplicate) |
-| 01      | `docs/tasklist/01-repository-and-tooling-setup.md`     | [TER-34](https://linear.app/terravolt/issue/TER-34)                                                                     |
-| 02      | `docs/tasklist/02-godot-plugin-foundation.md`          | [TER-35](https://linear.app/terravolt/issue/TER-35)                                                                     |
-| 03      | `docs/tasklist/03-godot-websocket-server.md`           | [TER-37](https://linear.app/terravolt/issue/TER-37)                                                                     |
-| 04      | `docs/tasklist/04-jsonrpc-dispatch-and-logging.md`     | [TER-36](https://linear.app/terravolt/issue/TER-36)                                                                     |
-| 05      | `docs/tasklist/05-node-mcp-router.md`                  | [TER-38](https://linear.app/terravolt/issue/TER-38)                                                                     |
-| 06      | `docs/tasklist/06-tool-translation-layer.md`           | [TER-39](https://linear.app/terravolt/issue/TER-39)                                                                     |
-| 07      | `docs/tasklist/07-headless-fallback.md`                | [TER-40](https://linear.app/terravolt/issue/TER-40)                                                                     |
-| 08      | `docs/tasklist/08-toolset-implementation.md`           | [TER-41](https://linear.app/terravolt/issue/TER-41)                                                                     |
-| 09      | `docs/tasklist/09-context-and-error-optimization.md`   | [TER-43](https://linear.app/terravolt/issue/TER-43)                                                                     |
-| 10      | `docs/tasklist/10-quality-testing-release-and-docs.md` | [TER-42](https://linear.app/terravolt/issue/TER-42)                                                                     |
-| 11      | `docs/tasklist/11-catalog-scene-and-project.md`        | [TER-47](https://linear.app/terravolt/issue/TER-47)                                                                     |
-| 12      | `docs/tasklist/12-catalog-node-polymorphic.md`         | [TER-48](https://linear.app/terravolt/issue/TER-48)                                                                     |
-| 13      | `docs/tasklist/13-catalog-script-and-signal.md`        | [TER-49](https://linear.app/terravolt/issue/TER-49)                                                                     |
-| 14      | `docs/tasklist/14-catalog-resource-and-shader.md`      | [TER-50](https://linear.app/terravolt/issue/TER-50)                                                                     |
-| 15      | `docs/tasklist/15-catalog-asset-and-batch-refactor.md` | [TER-51](https://linear.app/terravolt/issue/TER-51)                                                                     |
-| 16      | `docs/tasklist/16-catalog-editor-and-analysis.md`      | [TER-52](https://linear.app/terravolt/issue/TER-52)                                                                     |
+| Episode | Markdown                                                   | Epic issue                                                                                                              |
+| ------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 00      | `docs/tasklist/00-foundation-and-contracts.md`             | [TER-44](https://linear.app/terravolt/issue/TER-44) (**[TER-33](https://linear.app/terravolt/issue/TER-33)** duplicate) |
+| 01      | `docs/tasklist/01-repository-and-tooling-setup.md`         | [TER-34](https://linear.app/terravolt/issue/TER-34)                                                                     |
+| 02      | `docs/tasklist/02-godot-plugin-foundation.md`              | [TER-35](https://linear.app/terravolt/issue/TER-35)                                                                     |
+| 03      | `docs/tasklist/03-godot-websocket-server.md`               | [TER-37](https://linear.app/terravolt/issue/TER-37)                                                                     |
+| 04      | `docs/tasklist/04-jsonrpc-dispatch-and-logging.md`         | [TER-36](https://linear.app/terravolt/issue/TER-36)                                                                     |
+| 05      | `docs/tasklist/05-node-mcp-router.md`                      | [TER-38](https://linear.app/terravolt/issue/TER-38)                                                                     |
+| 06      | `docs/tasklist/06-tool-translation-layer.md`               | [TER-39](https://linear.app/terravolt/issue/TER-39)                                                                     |
+| 07      | `docs/tasklist/07-headless-fallback.md`                    | [TER-40](https://linear.app/terravolt/issue/TER-40)                                                                     |
+| 08      | `docs/tasklist/08-toolset-implementation.md`               | [TER-41](https://linear.app/terravolt/issue/TER-41)                                                                     |
+| 09      | `docs/tasklist/09-context-and-error-optimization.md`       | [TER-43](https://linear.app/terravolt/issue/TER-43)                                                                     |
+| 10      | `docs/tasklist/10-quality-testing-release-and-docs.md`     | [TER-42](https://linear.app/terravolt/issue/TER-42)                                                                     |
+| 11      | `docs/tasklist/11-catalog-scene-and-project.md`            | [TER-47](https://linear.app/terravolt/issue/TER-47)                                                                     |
+| 12      | `docs/tasklist/12-catalog-node-polymorphic.md`             | [TER-48](https://linear.app/terravolt/issue/TER-48)                                                                     |
+| 13      | `docs/tasklist/13-catalog-script-and-signal.md`            | [TER-49](https://linear.app/terravolt/issue/TER-49)                                                                     |
+| 14      | `docs/tasklist/14-catalog-resource-and-shader.md`          | [TER-50](https://linear.app/terravolt/issue/TER-50)                                                                     |
+| 15      | `docs/tasklist/15-catalog-asset-and-batch-refactor.md`     | [TER-51](https://linear.app/terravolt/issue/TER-51)                                                                     |
+| 16      | `docs/tasklist/16-catalog-editor-and-analysis.md`          | [TER-52](https://linear.app/terravolt/issue/TER-52)                                                                     |
+| 17      | `docs/tasklist/17-catalog-runtime.md`                      | [TER-53](https://linear.app/terravolt/issue/TER-53)                                                                     |
+| 18      | `docs/tasklist/18-catalog-animation-and-animation-tree.md` | [TER-54](https://linear.app/terravolt/issue/TER-54)                                                                     |
+| 19      | `docs/tasklist/19-catalog-physics-particle-navigation.md`  | [TER-55](https://linear.app/terravolt/issue/TER-55)                                                                     |
+| 20      | `docs/tasklist/20-catalog-tilemap-and-theme-ui.md`         | [TER-56](https://linear.app/terravolt/issue/TER-56)                                                                     |
 
 Sequential **blockedBy** wiring (00 → … → 10) is configured on those epics: each episode waits on
-the prior epic. Phase 3 catalog work-units **11 → 12 → … → 16** chain on **TER-47 → TER-48 → … →
-TER-52**.
+the prior epic. Phase 3 catalog work-units **11 → 12 → … → 20** chain on **TER-47 → TER-48 → … →
+TER-56**.
 
 Notes:
 
@@ -75,10 +79,15 @@ exporter if you need longer Linear descriptions.
 
 ---
 
+## Phase `00–20` validation (maintainer sweep)
+
+See **`docs/validation/tv-00-20-checkpoint.md`** for the latest automated gate table and per-task
+rollup (catalog **0.12.0** / tasks **00–20**).
+
 ## Phase `00–16` validation (maintainer sweep)
 
-See **`docs/validation/tv-00-16-checkpoint.md`** for the latest automated gate table and per-task
-rollup (catalog **0.8.0** / tasks **00–16**).
+See **`docs/validation/tv-00-16-checkpoint.md`** for the prior gate table (catalog **0.8.0** / tasks
+**00–16**).
 
 ## Phase `00–13` validation (maintainer sweep)
 

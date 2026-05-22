@@ -8,10 +8,11 @@ page is the operator-facing summary.
 > Every tool returns the same MCP envelope: `{ ok: true, tool, method, latencyMs, result }` or
 > `{ ok: false, message, app_code?, autoHeal?, … }`.
 
-Catalog version: **`0.8.0`** (router `0.1.0`).  
+Catalog version: **`0.12.0`** (router `0.1.0`).  
 Total MCP tools: **13** — 3 daemon-bridged + 6 router-local + 4 headless.  
-Daemon catalog: **111** JSON-RPC methods — use [`context.fetch_raw`](#contextfetch_raw) or
-editor/headless TCP for the full set; see [`docs/catalog/`](../catalog/).
+Daemon catalog: **173** JSON-RPC methods (**152** with `headlessFallback`) — use
+[`context.fetch_raw`](#contextfetch_raw) or editor/headless TCP for the full set; see
+[`docs/catalog/`](../catalog/) (tasks **11–20** landed through catalog **0.12.0**).
 
 ## At a glance
 
