@@ -6,6 +6,7 @@
     "moduleResolution": "NodeNext",
     "strict": true,
     "noImplicitAny": true,
+    "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,

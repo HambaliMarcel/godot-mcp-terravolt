@@ -5,4 +5,26 @@ export default tseslint.config(
   { ignores: ["dist/**"] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+      "no-console": "error",
+      "no-restricted-properties": [
+        "error",
+        {
+          object: "process.stdout",
+          property: "write",
+          message:
+            "Do not write to process.stdout — reserved for MCP stdio framing (use structured stderr logger).",
+        },
+      ],
+    },
+  },
 );
