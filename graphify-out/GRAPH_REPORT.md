@@ -1,7 +1,7 @@
 # Graph Report - Godot MCP Marcel  (2026-05-22)
 
 ## Corpus Check
-- 1161 files · ~697,674 words
+- 1161 files · ~697,374 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1f28ddfa`
+- Built from commit: `5c372fcc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -3020,7 +3020,7 @@ Nodes (11): addonDst, addonSrc, envFile, fixture, godotBinary, godotMeta, here, 
 
 ### Community 1122 - "Community 1122"
 Cohesion: 0.15
-Nodes (13): bySymbol, expression.forbidden_identifier, headless.driver_handshake_failed, headless.no_project, node.property_unknown, hint, steps, hint (+5 more)
+Nodes (13): bySymbol, expression.forbidden_identifier, headless.crashed, headless.driver_handshake_failed, node.property_unknown, hint, steps, hint (+5 more)
 
 ### Community 1123 - "Community 1123"
 Cohesion: 0.07
@@ -3296,7 +3296,7 @@ Nodes (5): cyclomatic, file_loc, max_depth, node_count, signal_fan_out
 
 ### Community 1198 - "Community 1198"
 Cohesion: 0.67
-Nodes (3): headless.crashed, hint, steps
+Nodes (3): headless.no_project, hint, steps
 
 ### Community 1199 - "Community 1199"
 Cohesion: 0.29
