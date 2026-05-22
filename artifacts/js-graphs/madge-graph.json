@@ -1,4 +1,112 @@
 {
   "config/dependency-cruiser.config.cjs": [],
+  "references/godot-mcp-coding-solo/scripts/build.js": [],
+  "references/godot-mcp-coding-solo/src/index.ts": [],
+  "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/index.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/resources.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/resources.ts": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tests/primary-http.test.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/asset-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/file-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/asset-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/file-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/project-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/scene-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/script-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/tools/visualizer-tools.ts",
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/project-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/scene-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/script-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/tools/visualizer-tools.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/types.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/types.ts": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts": [
+    "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js": [],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js": [
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js",
+    "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js"
+  ],
+  "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
+  "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
   "tools/intel/regen-graphs.mjs": []
 }

@@ -8,6 +8,2307 @@
       "valid": true
     },
     {
+      "source": "references/godot-mcp-coding-solo/scripts/build.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "path",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/scripts/build.js",
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "tools/intel/regen-graphs.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "url",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/scripts/build.js",
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "tools/intel/regen-graphs.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-coding-solo/src/index.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/index.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/index.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/stdio.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/stdio.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/types.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "cjs",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "require"
+          ],
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "util",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "util",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "@modelcontextprotocol/sdk/server/index.js",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/resources.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "@modelcontextprotocol/sdk/server/stdio.js",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "@modelcontextprotocol/sdk/types.js",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/resources.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "child_process",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "tools/intel/regen-graphs.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "fs",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "require"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "tools/intel/regen-graphs.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "fs",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "tools/intel/regen-graphs.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "util",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-coding-solo/src/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "esbuild",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "esbuild",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "esbuild",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "crypto",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "crypto",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "ws",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "ws",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "crypto",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "ws",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/asset-tools.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/file-tools.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/project-tools.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/scene-tools.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/script-tools.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/visualizer-tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./godot-bridge.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./primary-http.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./proxy-client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./resources.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/resources.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tools/index.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./visualizer-server.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/index.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/index.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/stdio.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/stdio.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/types.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "http",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "http",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/primary-http.test.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "http",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/primary-http.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "http",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "http",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/resources.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/index.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/index.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/types.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./asset-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/asset-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./file-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/file-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./project-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/project-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./scene-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/scene-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./script-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/script-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./visualizer-tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/visualizer-tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/asset-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/file-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/project-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/scene-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/script-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tools/visualizer-tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./godot-bridge.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "http",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "http",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "ws",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "ws",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../godot-bridge.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "vitest",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "vitest",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "ws",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "ws",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "vitest",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/primary-http.test.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tests/primary-http.test.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../primary-http.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "http",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "http",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "vitest",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "vitest",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../primary-http.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/primary-http.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../proxy-client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "vitest",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "vitest",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../godot-bridge.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/index.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "vitest",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "vitest",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./canvas.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./panel.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./websocket.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./canvas.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./syntax.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./websocket.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js",
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./canvas.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./events.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./layout.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./modals.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./panel.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./usages.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./websocket.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./canvas.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./events.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./layout.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/layout.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./panel.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./websocket.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/usages.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./panel.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./state.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./syntax.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/syntax.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./websocket.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "vitest/config",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "vitest/config",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "vitest/config",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "tools/intel/regen-graphs.mjs",
       "dependencies": [
         {
@@ -86,74 +2387,6 @@
       "dependents": [],
       "orphan": false,
       "valid": true
-    },
-    {
-      "source": "child_process",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "tools/intel/regen-graphs.mjs"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "fs",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "tools/intel/regen-graphs.mjs"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "path",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "tools/intel/regen-graphs.mjs"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "url",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "tools/intel/regen-graphs.mjs"
-      ],
-      "orphan": false,
-      "valid": true
     }
   ],
   "summary": {
@@ -162,8 +2395,8 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 6,
-    "totalDependenciesCruised": 4,
+    "totalCruised": 49,
+    "totalDependenciesCruised": 103,
     "optionsUsed": {
       "baseDir": "H:\\Godot MCP Marcel",
       "combinedDependencies": false,
@@ -173,7 +2406,7 @@
         "path": "^node_modules"
       },
       "exclude": {
-        "path": "^node_modules|^dist|^coverage|^references|^\\.gitnexus|^artifacts/js-graphs|^graphify-out"
+        "path": "^node_modules|^dist|^coverage|^references/godot-docs|^\\.gitnexus|^artifacts/js-graphs|^graphify-out"
       },
       "exoticRequireStrings": [],
       "externalModuleResolutionStrategy": "node_modules",
