@@ -18,9 +18,13 @@ Tracked in Linear under **Terravolt** → project **Godot MCP TerraVolt — buil
 | 08      | `docs/tasklist/08-toolset-implementation.md`           | [TER-41](https://linear.app/terravolt/issue/TER-41)                                                                     |
 | 09      | `docs/tasklist/09-context-and-error-optimization.md`   | [TER-43](https://linear.app/terravolt/issue/TER-43)                                                                     |
 | 10      | `docs/tasklist/10-quality-testing-release-and-docs.md` | [TER-42](https://linear.app/terravolt/issue/TER-42)                                                                     |
+| 11      | `docs/tasklist/11-catalog-scene-and-project.md`        | [TER-47](https://linear.app/terravolt/issue/TER-47)                                                                     |
+| 12      | `docs/tasklist/12-catalog-node-polymorphic.md`         | [TER-48](https://linear.app/terravolt/issue/TER-48)                                                                     |
+| 13      | `docs/tasklist/13-catalog-script-and-signal.md`        | [TER-49](https://linear.app/terravolt/issue/TER-49)                                                                     |
 
 Sequential **blockedBy** wiring (00 → … → 10) is configured on those epics: each episode waits on
-the prior epic.
+the prior epic. Phase 3 catalog work-units **11 → 12 → 13** chain similarly on **TER-47 → TER-48 →
+TER-49**.
 
 Notes:
 
@@ -67,6 +71,11 @@ Linear payloads. Anything longer stays **canonical in Git** (`docs/tasklist/*.md
 exporter if you need longer Linear descriptions.
 
 ---
+
+## Phase `00–13` validation (maintainer sweep)
+
+See **`docs/validation/tv-00-13-checkpoint.md`** for the latest automated gate table and per-task
+rollup (includes catalog **0.5.0** / tasks **11–13**).
 
 ## Phase `00–06` validation (maintainer sweep)
 
