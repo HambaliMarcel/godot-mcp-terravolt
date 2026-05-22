@@ -283,6 +283,10 @@
     "packages/mcp-server/dist/headless/headlessCoordinator.js",
     "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
   ],
+  "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/tests/integration/lib/godot_test_env.mjs"
+  ],
   "packages/mcp-server/tests/integration/headless.test.mjs": [
     "packages/mcp-server/dist/headless/headlessCoordinator.js"
   ],

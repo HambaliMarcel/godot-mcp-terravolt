@@ -166,6 +166,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/mcp_e2e.test.mjs",
@@ -318,6 +319,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/mcp_e2e.test.mjs",
@@ -987,6 +989,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/node/node_headless.test.mjs",
@@ -9557,6 +9560,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/mcp_e2e.test.mjs",
@@ -9923,6 +9927,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/mcp_e2e.test.mjs",
@@ -10026,6 +10031,7 @@
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
         "packages/mcp-server/tests/integration/addon_parse.test.mjs",
         "packages/mcp-server/tests/integration/lib/godot_test_env.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/integration/mcp_e2e.test.mjs",
         "packages/mcp-server/tests/smoke.test.mjs"
@@ -45318,6 +45324,7 @@
         "packages/mcp-server/tests/integration/animation/animation_headless.test.mjs",
         "packages/mcp-server/tests/integration/asset/asset_batch_refactor_headless.test.mjs",
         "packages/mcp-server/tests/integration/audio_input/audio_input_headless.test.mjs",
+        "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
         "packages/mcp-server/tests/integration/macro/macro_headless.test.mjs",
         "packages/mcp-server/tests/integration/node/node_headless.test.mjs",
         "packages/mcp-server/tests/integration/physics/physics_particle_nav_headless.test.mjs",
@@ -45777,6 +45784,138 @@
           ],
           "protocol": "node:",
           "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/tests/integration/coverage/all_methods_dispatch.test.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../../../dist/headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../lib/godot_test_env.mjs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/tests/integration/lib/godot_test_env.mjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "assert",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "assert",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "node:test",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "node:test",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "process",
           "coreModule": true,
           "followable": false,
           "couldNotResolve": false,
@@ -51607,8 +51746,8 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 1010,
-    "totalDependenciesCruised": 2242,
+    "totalCruised": 1011,
+    "totalDependenciesCruised": 2249,
     "optionsUsed": {
       "baseDir": "H:\\Godot MCP Marcel",
       "combinedDependencies": false,
