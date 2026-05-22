@@ -76,6 +76,14 @@ For full per-tool details (inputs, results, errors), see
 | `batch_refactor.preview`, `batch_refactor.apply`, `batch_refactor.rename_class`, `batch_refactor.move_folder`, `batch_refactor.replace_in_files`, `batch_refactor.history` | yes    | yes          | Confirm token from preview hash.                     |
 | `batch_refactor.normalize_names`, `batch_refactor.change_class`                                                                                                            | yes    | partial      | Headless v1 stubs for complex scene rewrites.        |
 
+### Editor & analysis (catalog 0.8.0)
+
+| `method`                                                                                                                                                                | Editor | Headless TCP | Notes                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | -------------------------------------------------- |
+| `editor.screenshot`, `editor.focus_node`, `editor.open_script`, `editor.run_undo`, `editor.run_redo`, `editor.execute_script`, `editor.reload_scripts`, `editor.layout` | yes    | no           | `editor.not_available` in headless driver.         |
+| `editor.error_log_tail`                                                                                                                                                 | yes    | partial      | Headless returns daemon buffer only.               |
+| `analysis.scene_complexity`, `analysis.signal_flow`, `analysis.unused_resources`, `analysis.metrics`                                                                    | yes    | yes          | Shared `analysis_helpers.gd` in editor + headless. |
+
 ## Headless-only methods (no editor counterpart)
 
 | `method`                 | Surface                             | Notes                                                                     |

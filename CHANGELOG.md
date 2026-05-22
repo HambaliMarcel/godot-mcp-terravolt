@@ -10,6 +10,17 @@ The shared method catalog tracks its own `catalog_version` inside
 
 ## [Unreleased]
 
+### Added — Phase 3 catalog (task 16)
+
+- **`editor.*`** (9 methods) and **`analysis.*`** (4 methods) in catalog **`0.8.0`**:
+  `handlers/editor.gd`, `handlers/analysis.gd`, `handlers/analysis_helpers.gd`,
+  `services/editor_error_buffer.gd`.
+- Sandboxed `editor.execute_script` with deny-list; screenshot size cap; analysis metrics/complexity
+  headless parity.
+- Integration test `tests/integration/analysis/analysis_editor_headless.test.mjs`.
+- Catalog docs: `docs/catalog/editor.md`, `docs/catalog/analysis.md`.
+- Thresholds: `packages/shared/analysis/thresholds.json`.
+
 ### Added — Phase 3 catalog (task 15)
 
 - **`asset.*`** (12 methods) and **`batch_refactor.*`** (8 methods) in catalog **`0.7.0`**:
