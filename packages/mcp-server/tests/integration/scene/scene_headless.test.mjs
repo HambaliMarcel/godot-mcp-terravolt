@@ -34,8 +34,12 @@ async function withCoordinator(projectPath, fn) {
 test("scene.* headless round-trips", { skip: skip && skipReason }, async () => {
   await withCoordinator(emptyFixture, async (c) => {
     const emptyList = await c.rpc("scene.list", {});
-    assert.equal(emptyList.total, 0);
+    // The empty fixture ships a friendly placeholder main.tscn so an
+    // accidental F5 press in the editor doesn't error with "no main scene
+    // defined". scene.list should find exactly that one placeholder.
     assert.ok(Array.isArray(emptyList.scenes));
+    assert.equal(emptyList.total, 1, `expected 1 placeholder scene, got ${emptyList.total}`);
+    assert.equal(emptyList.scenes[0]?.path, "res://main.tscn");
 
     await assert.rejects(
       () => c.rpc("scene.get", { path: "res://does_not_exist.tscn" }),

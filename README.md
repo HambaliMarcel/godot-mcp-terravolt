@@ -1,4 +1,4 @@
-# TerraVolt Godot MCP
+# Terravolt Godot MCP
 
 > **Cursor ↔ Godot 4** over the Model Context Protocol. Stdio MCP router bridging a persistent
 > WebSocket to the editor plus a headless `--script` driver for everything you can do without the
@@ -21,7 +21,7 @@
 
 | Want to…                                                                      | Today                                                                                                                                                                                                                           |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Drive the Godot editor from Cursor / any MCP client                           | Yes, when the editor is open and the TerraVolt addon is enabled (`ping`, `server.info`, `log.tail`, plus `context.fetch_raw` for early access to anything else the daemon exposes).                                             |
+| Drive the Godot editor from Cursor / any MCP client                           | Yes, when the editor is open and the Terravolt addon is enabled (`ping`, `server.info`, `log.tail`, plus `context.fetch_raw` for early access to anything else the daemon exposes).                                             |
 | Run GDScript compile checks without the editor open                           | Yes — `headless.validate_script` spawns `godot --headless --script headless_driver.gd` on demand.                                                                                                                               |
 | Keep ping/info alive when the editor isn't running                            | Yes — registry rows with `headlessFallback: true` (currently `ping`, `server.info`) automatically retry against the headless coordinator. The MCP envelope reports `method: "<name>@headless"` so the caller can see the route. |
 | Telemetry: what's slow, what's failing                                        | Yes — `tools.metrics`, `tools.bottlenecks`, `tools.health`.                                                                                                                                                                     |
@@ -44,7 +44,7 @@ npm run env:godot
 # 3. (optional) link the addon into your dev project
 $env:TERRAVOLT_GODOT_PROJECT = "C:\path\to\my-godot-project"
 npm run addon:link
-# Then in Godot: Project Settings → Plugins → enable "TerraVolt MCP".
+# Then in Godot: Project Settings → Plugins → enable "Terravolt MCP".
 
 # 4. wire it into Cursor
 # Add this to your workspace `.cursor/mcp.json` (or user-level `~/.cursor/mcp.json`):
@@ -129,9 +129,21 @@ Import) or run it headless from the CLI:
 & $env:TERRAVOLT_GODOT_BINARY --path examples/playable-demo
 ```
 
-It's self-contained (no autoloads, no addon required) so F5 just works. The fixtures under
-`tests/_fixtures/` are deliberately scene-less — they exist as project roots for `godot --headless`
-and will show "no main scene defined" if you press Play on them; that is by design.
+It's self-contained (no autoloads, no addon required) so F5 just works.
+
+To prove the demo is wired correctly without launching the editor, drive it through the MCP headless
+coordinator:
+
+```powershell
+npm run test:example
+# PASS server.info / scene.list / scene.get / script.validate /
+# script.list / project.info / project.get_settings
+# summary: 7/7 checks passed
+```
+
+The fixtures under `tests/_fixtures/` are test rigs for `godot --headless`. They also ship a
+friendly placeholder `main.tscn` so accidentally pressing F5 in the editor shows a "go to
+examples/playable-demo" message instead of erroring with "no main scene defined".
 
 ## Status
 

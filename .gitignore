@@ -58,6 +58,8 @@ tests/_fixtures/empty/.godot/
 tests/_fixtures/tilemap_zoo/.godot/
 tests/_fixtures/audio_zoo/.godot/
 tests/_fixtures/testing_zoo/.godot/
+examples/playable-demo/.godot/
+examples/playable-demo/**/*.uid
 
 # Local debug probes (never commit)
 _probe_err.txt

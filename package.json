@@ -2,7 +2,7 @@
   "name": "godot-mcp-terravolt",
   "version": "0.1.0",
   "private": true,
-  "description": "Godot MCP (TerraVolt) — omni-protocol tooling: Graphify + GitNexus",
+  "description": "Godot MCP (Terravolt) — omni-protocol tooling: Graphify + GitNexus",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -19,6 +19,7 @@
     "build:server": "npm run build --workspace @terravolt/godot-mcp",
     "dev:server": "node scripts/planned.mjs dev:server",
     "test:server": "npm run test --workspace @terravolt/godot-mcp",
+    "test:example": "node tools/test-example.mjs",
     "test:e2e": "node scripts/planned.mjs test:e2e",
     "addon:link": "node scripts/addon-link.mjs",
     "addon:unlink": "node scripts/addon-link.mjs unlink",

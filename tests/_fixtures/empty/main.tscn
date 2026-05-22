@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://tv_empty_smoke_main"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_smoke"]
+font_size = 18
+font_color = Color(0.85, 0.92, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 0.85)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.1, 0.14, 1)
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -80.0
+offset_right = 360.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Terravolt headless smoke fixture
+
+This project root exists so godot --headless --path . accepts a project for
+the integration test suite. It has no gameplay logic.
+
+For a real \"press Play\" demo, open examples/playable-demo/ instead."
+label_settings = SubResource("LabelSettings_smoke")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
