@@ -1,0 +1,2605 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": ".dependency-cruiser.js",
+      "file_type": "code",
+      "source_file": ".dependency-cruiser.js",
+      "source_location": "L1",
+      "id": "dependency_cruiser_js",
+      "community": 18,
+      "norm_label": ".dependency-cruiser.js"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "id": "package_json",
+      "community": 0,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "id": "godot_mcp_marcel_package_name",
+      "community": 0,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "id": "godot_mcp_marcel_package_version",
+      "community": 0,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "id": "godot_mcp_marcel_package_private",
+      "community": 0,
+      "norm_label": "private"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "id": "godot_mcp_marcel_package_description",
+      "community": 0,
+      "norm_label": "description"
+    },
+    {
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "id": "godot_mcp_marcel_package_license",
+      "community": 0,
+      "norm_label": "license"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "id": "godot_mcp_marcel_package_scripts",
+      "community": 0,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "intel:graphs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "id": "godot_mcp_marcel_package_scripts_intel_graphs",
+      "community": 0,
+      "norm_label": "intel:graphs"
+    },
+    {
+      "label": "intel:gitnexus",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "id": "godot_mcp_marcel_package_scripts_intel_gitnexus",
+      "community": 0,
+      "norm_label": "intel:gitnexus"
+    },
+    {
+      "label": "intel:graphify",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "id": "godot_mcp_marcel_package_scripts_intel_graphify",
+      "community": 0,
+      "norm_label": "intel:graphify"
+    },
+    {
+      "label": "intel:graphify:cluster",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "id": "godot_mcp_marcel_package_scripts_intel_graphify_cluster",
+      "community": 0,
+      "norm_label": "intel:graphify:cluster"
+    },
+    {
+      "label": "omni:intel",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "id": "godot_mcp_marcel_package_scripts_omni_intel",
+      "community": 0,
+      "norm_label": "omni:intel"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "id": "godot_mcp_marcel_package_devdependencies",
+      "community": 0,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "dependency-cruiser",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "id": "godot_mcp_marcel_package_devdependencies_dependency_cruiser",
+      "community": 0,
+      "norm_label": "dependency-cruiser"
+    },
+    {
+      "label": "gitnexus",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "id": "godot_mcp_marcel_package_devdependencies_gitnexus",
+      "community": 0,
+      "norm_label": "gitnexus"
+    },
+    {
+      "label": "madge",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "id": "godot_mcp_marcel_package_devdependencies_madge",
+      "community": 0,
+      "norm_label": "madge"
+    },
+    {
+      "label": "mcp.json",
+      "file_type": "code",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L1",
+      "id": "cursor_mcp_json",
+      "community": 12,
+      "norm_label": "mcp.json"
+    },
+    {
+      "label": "mcpServers",
+      "file_type": "code",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L2",
+      "id": "cursor_mcp_mcpservers",
+      "community": 12,
+      "norm_label": "mcpservers"
+    },
+    {
+      "label": "gitnexus",
+      "file_type": "code",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L3",
+      "id": "cursor_mcp_mcpservers_gitnexus",
+      "community": 12,
+      "norm_label": "gitnexus"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L4",
+      "id": "cursor_mcp_gitnexus_command",
+      "community": 12,
+      "norm_label": "command"
+    },
+    {
+      "label": "args",
+      "file_type": "code",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L5",
+      "id": "cursor_mcp_gitnexus_args",
+      "community": 12,
+      "norm_label": "args"
+    },
+    {
+      "label": "regen-graphs.mjs",
+      "file_type": "code",
+      "source_file": "scripts/regen-graphs.mjs",
+      "source_location": "L1",
+      "id": "scripts_regen_graphs_mjs",
+      "community": 14,
+      "norm_label": "regen-graphs.mjs"
+    },
+    {
+      "label": "root",
+      "file_type": "code",
+      "source_file": "scripts/regen-graphs.mjs",
+      "source_location": "L6",
+      "id": "scripts_regen_graphs_root",
+      "community": 14,
+      "norm_label": "root"
+    },
+    {
+      "label": "out",
+      "file_type": "code",
+      "source_file": "scripts/regen-graphs.mjs",
+      "source_location": "L37",
+      "id": "scripts_regen_graphs_out",
+      "community": 14,
+      "norm_label": "out"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "agents_md",
+      "community": 6,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "GitNexus \u2014 this workspace",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "godot_mcp_marcel_agents_gitnexus_this_workspace",
+      "community": 6,
+      "norm_label": "gitnexus \u2014 this workspace"
+    },
+    {
+      "label": "Activate / refresh",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L5",
+      "id": "godot_mcp_marcel_agents_activate_refresh",
+      "community": 6,
+      "norm_label": "activate / refresh"
+    },
+    {
+      "label": "Graphify",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L12",
+      "id": "godot_mcp_marcel_agents_graphify",
+      "community": 6,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "code:bash (npm run intel:graphs)",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L16",
+      "id": "godot_mcp_marcel_agents_codeblock_1",
+      "community": 6,
+      "norm_label": "code:bash (npm run intel:graphs)"
+    },
+    {
+      "label": "Cursor",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L22",
+      "id": "godot_mcp_marcel_agents_cursor",
+      "community": 6,
+      "norm_label": "cursor"
+    },
+    {
+      "label": "GitNexus \u2014 Code Intelligence",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L29",
+      "id": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "community": 6,
+      "norm_label": "gitnexus \u2014 code intelligence"
+    },
+    {
+      "label": "Always Do",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L35",
+      "id": "godot_mcp_marcel_agents_always_do",
+      "community": 6,
+      "norm_label": "always do"
+    },
+    {
+      "label": "Never Do",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L43",
+      "id": "godot_mcp_marcel_agents_never_do",
+      "community": 6,
+      "norm_label": "never do"
+    },
+    {
+      "label": "Resources",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L50",
+      "id": "godot_mcp_marcel_agents_resources",
+      "community": 6,
+      "norm_label": "resources"
+    },
+    {
+      "label": "CLI",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L59",
+      "id": "godot_mcp_marcel_agents_cli",
+      "community": 6,
+      "norm_label": "cli"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "id": "claude_md",
+      "community": 9,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "GitNexus \u2014 Code Intelligence",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L2",
+      "id": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "community": 9,
+      "norm_label": "gitnexus \u2014 code intelligence"
+    },
+    {
+      "label": "Always Do",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L8",
+      "id": "godot_mcp_marcel_claude_always_do",
+      "community": 9,
+      "norm_label": "always do"
+    },
+    {
+      "label": "Never Do",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L16",
+      "id": "godot_mcp_marcel_claude_never_do",
+      "community": 9,
+      "norm_label": "never do"
+    },
+    {
+      "label": "Resources",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L23",
+      "id": "godot_mcp_marcel_claude_resources",
+      "community": 9,
+      "norm_label": "resources"
+    },
+    {
+      "label": "CLI",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L32",
+      "id": "godot_mcp_marcel_claude_cli",
+      "community": 9,
+      "norm_label": "cli"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 13,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "godot-mcp-terravolt",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "godot_mcp_marcel_readme_godot_mcp_terravolt",
+      "community": 13,
+      "norm_label": "godot-mcp-terravolt"
+    },
+    {
+      "label": "Omni protocol stack (this repo)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "id": "godot_mcp_marcel_readme_omni_protocol_stack_this_repo",
+      "community": 13,
+      "norm_label": "omni protocol stack (this repo)"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "id": "godot_mcp_marcel_readme_status",
+      "community": 13,
+      "norm_label": "status"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_cli_skill_md",
+      "community": 1,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "GitNexus CLI Commands",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_cli_skill_gitnexus_cli_commands",
+      "community": 1,
+      "norm_label": "gitnexus cli commands"
+    },
+    {
+      "label": "Commands",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L10",
+      "id": "gitnexus_cli_skill_commands",
+      "community": 1,
+      "norm_label": "commands"
+    },
+    {
+      "label": "analyze \u2014 Build or refresh the index",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L12",
+      "id": "gitnexus_cli_skill_analyze_build_or_refresh_the_index",
+      "community": 1,
+      "norm_label": "analyze \u2014 build or refresh the index"
+    },
+    {
+      "label": "code:bash (npx gitnexus analyze)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L14",
+      "id": "gitnexus_cli_skill_codeblock_1",
+      "community": 1,
+      "norm_label": "code:bash (npx gitnexus analyze)"
+    },
+    {
+      "label": "status \u2014 Check index freshness",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L28",
+      "id": "gitnexus_cli_skill_status_check_index_freshness",
+      "community": 1,
+      "norm_label": "status \u2014 check index freshness"
+    },
+    {
+      "label": "code:bash (npx gitnexus status)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L30",
+      "id": "gitnexus_cli_skill_codeblock_2",
+      "community": 1,
+      "norm_label": "code:bash (npx gitnexus status)"
+    },
+    {
+      "label": "clean \u2014 Delete the index",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L36",
+      "id": "gitnexus_cli_skill_clean_delete_the_index",
+      "community": 1,
+      "norm_label": "clean \u2014 delete the index"
+    },
+    {
+      "label": "code:bash (npx gitnexus clean)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L38",
+      "id": "gitnexus_cli_skill_codeblock_3",
+      "community": 1,
+      "norm_label": "code:bash (npx gitnexus clean)"
+    },
+    {
+      "label": "wiki \u2014 Generate documentation from the graph",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L49",
+      "id": "gitnexus_cli_skill_wiki_generate_documentation_from_the_graph",
+      "community": 1,
+      "norm_label": "wiki \u2014 generate documentation from the graph"
+    },
+    {
+      "label": "code:bash (npx gitnexus wiki)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L51",
+      "id": "gitnexus_cli_skill_codeblock_4",
+      "community": 1,
+      "norm_label": "code:bash (npx gitnexus wiki)"
+    },
+    {
+      "label": "list \u2014 Show all indexed repos",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L66",
+      "id": "gitnexus_cli_skill_list_show_all_indexed_repos",
+      "community": 1,
+      "norm_label": "list \u2014 show all indexed repos"
+    },
+    {
+      "label": "code:bash (npx gitnexus list)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L68",
+      "id": "gitnexus_cli_skill_codeblock_5",
+      "community": 1,
+      "norm_label": "code:bash (npx gitnexus list)"
+    },
+    {
+      "label": "After Indexing",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L74",
+      "id": "gitnexus_cli_skill_after_indexing",
+      "community": 1,
+      "norm_label": "after indexing"
+    },
+    {
+      "label": "Troubleshooting",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L79",
+      "id": "gitnexus_cli_skill_troubleshooting",
+      "community": 1,
+      "norm_label": "troubleshooting"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_debugging_skill_md",
+      "community": 3,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Debugging with GitNexus",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "community": 3,
+      "norm_label": "debugging with gitnexus"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L8",
+      "id": "gitnexus_debugging_skill_when_to_use",
+      "community": 3,
+      "norm_label": "when to use"
+    },
+    {
+      "label": "Workflow",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L16",
+      "id": "gitnexus_debugging_skill_workflow",
+      "community": 3,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "code:block1 (1. gitnexus_query({query: \"<error or symptom>\"})            )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L18",
+      "id": "gitnexus_debugging_skill_codeblock_1",
+      "community": 3,
+      "norm_label": "code:block1 (1. gitnexus_query({query: \"<error or symptom>\"})            )"
+    },
+    {
+      "label": "Checklist",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L27",
+      "id": "gitnexus_debugging_skill_checklist",
+      "community": 3,
+      "norm_label": "checklist"
+    },
+    {
+      "label": "code:block2 (- [ ] Understand the symptom (error message, unexpected beha)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L29",
+      "id": "gitnexus_debugging_skill_codeblock_2",
+      "community": 3,
+      "norm_label": "code:block2 (- [ ] understand the symptom (error message, unexpected beha)"
+    },
+    {
+      "label": "Debugging Patterns",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L39",
+      "id": "gitnexus_debugging_skill_debugging_patterns",
+      "community": 3,
+      "norm_label": "debugging patterns"
+    },
+    {
+      "label": "Tools",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L49",
+      "id": "gitnexus_debugging_skill_tools",
+      "community": 3,
+      "norm_label": "tools"
+    },
+    {
+      "label": "code:block3 (gitnexus_query({query: \"payment validation error\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L53",
+      "id": "gitnexus_debugging_skill_codeblock_3",
+      "community": 3,
+      "norm_label": "code:block3 (gitnexus_query({query: \"payment validation error\"}))"
+    },
+    {
+      "label": "code:block4 (gitnexus_context({name: \"validatePayment\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L61",
+      "id": "gitnexus_debugging_skill_codeblock_4",
+      "community": 3,
+      "norm_label": "code:block4 (gitnexus_context({name: \"validatepayment\"}))"
+    },
+    {
+      "label": "code:cypher (MATCH path = (a)-[:CodeRelation {type: 'CALLS'}*1..2]->(b:Fu)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L70",
+      "id": "gitnexus_debugging_skill_codeblock_5",
+      "community": 3,
+      "norm_label": "code:cypher (match path = (a)-[:coderelation {type: 'calls'}*1..2]->(b:fu)"
+    },
+    {
+      "label": "Example: \"Payment endpoint returns 500 intermittently\"",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L75",
+      "id": "gitnexus_debugging_skill_example_payment_endpoint_returns_500_intermittently",
+      "community": 3,
+      "norm_label": "example: \"payment endpoint returns 500 intermittently\""
+    },
+    {
+      "label": "code:block6 (1. gitnexus_query({query: \"payment error handling\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L77",
+      "id": "gitnexus_debugging_skill_codeblock_6",
+      "community": 3,
+      "norm_label": "code:block6 (1. gitnexus_query({query: \"payment error handling\"}))"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_exploring_skill_md",
+      "community": 4,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Exploring Codebases with GitNexus",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "community": 4,
+      "norm_label": "exploring codebases with gitnexus"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L8",
+      "id": "gitnexus_exploring_skill_when_to_use",
+      "community": 4,
+      "norm_label": "when to use"
+    },
+    {
+      "label": "Workflow",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L16",
+      "id": "gitnexus_exploring_skill_workflow",
+      "community": 4,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "code:block1 (1. READ gitnexus://repos                          \u2192 Discover)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L18",
+      "id": "gitnexus_exploring_skill_codeblock_1",
+      "community": 4,
+      "norm_label": "code:block1 (1. read gitnexus://repos                          \u2192 discover)"
+    },
+    {
+      "label": "Checklist",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L28",
+      "id": "gitnexus_exploring_skill_checklist",
+      "community": 4,
+      "norm_label": "checklist"
+    },
+    {
+      "label": "code:block2 (- [ ] READ gitnexus://repo/{name}/context)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L30",
+      "id": "gitnexus_exploring_skill_codeblock_2",
+      "community": 4,
+      "norm_label": "code:block2 (- [ ] read gitnexus://repo/{name}/context)"
+    },
+    {
+      "label": "Resources",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L39",
+      "id": "gitnexus_exploring_skill_resources",
+      "community": 4,
+      "norm_label": "resources"
+    },
+    {
+      "label": "Tools",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L48",
+      "id": "gitnexus_exploring_skill_tools",
+      "community": 4,
+      "norm_label": "tools"
+    },
+    {
+      "label": "code:block3 (gitnexus_query({query: \"payment processing\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L52",
+      "id": "gitnexus_exploring_skill_codeblock_3",
+      "community": 4,
+      "norm_label": "code:block3 (gitnexus_query({query: \"payment processing\"}))"
+    },
+    {
+      "label": "code:block4 (gitnexus_context({name: \"validateUser\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L60",
+      "id": "gitnexus_exploring_skill_codeblock_4",
+      "community": 4,
+      "norm_label": "code:block4 (gitnexus_context({name: \"validateuser\"}))"
+    },
+    {
+      "label": "Example: \"How does payment processing work?\"",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L67",
+      "id": "gitnexus_exploring_skill_example_how_does_payment_processing_work",
+      "community": 4,
+      "norm_label": "example: \"how does payment processing work?\""
+    },
+    {
+      "label": "code:block5 (1. READ gitnexus://repo/my-app/context       \u2192 918 symbols, )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L69",
+      "id": "gitnexus_exploring_skill_codeblock_5",
+      "community": 4,
+      "norm_label": "code:block5 (1. read gitnexus://repo/my-app/context       \u2192 918 symbols, )"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_guide_skill_md",
+      "community": 7,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "GitNexus Guide",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_guide_skill_gitnexus_guide",
+      "community": 7,
+      "norm_label": "gitnexus guide"
+    },
+    {
+      "label": "Always Start Here",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L10",
+      "id": "gitnexus_guide_skill_always_start_here",
+      "community": 7,
+      "norm_label": "always start here"
+    },
+    {
+      "label": "Skills",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L20",
+      "id": "gitnexus_guide_skill_skills",
+      "community": 7,
+      "norm_label": "skills"
+    },
+    {
+      "label": "Tools Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L31",
+      "id": "gitnexus_guide_skill_tools_reference",
+      "community": 7,
+      "norm_label": "tools reference"
+    },
+    {
+      "label": "Resources Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L43",
+      "id": "gitnexus_guide_skill_resources_reference",
+      "community": 7,
+      "norm_label": "resources reference"
+    },
+    {
+      "label": "Graph Schema",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L56",
+      "id": "gitnexus_guide_skill_graph_schema",
+      "community": 7,
+      "norm_label": "graph schema"
+    },
+    {
+      "label": "code:cypher (MATCH (caller)-[:CodeRelation {type: 'CALLS'}]->(f:Function )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L61",
+      "id": "gitnexus_guide_skill_codeblock_1",
+      "community": 7,
+      "norm_label": "code:cypher (match (caller)-[:coderelation {type: 'calls'}]->(f:function )"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_impact_analysis_skill_md",
+      "community": 2,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Impact Analysis with GitNexus",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "community": 2,
+      "norm_label": "impact analysis with gitnexus"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L8",
+      "id": "gitnexus_impact_analysis_skill_when_to_use",
+      "community": 2,
+      "norm_label": "when to use"
+    },
+    {
+      "label": "Workflow",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L17",
+      "id": "gitnexus_impact_analysis_skill_workflow",
+      "community": 2,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "code:block1 (1. gitnexus_impact({target: \"X\", direction: \"upstream\"})  \u2192 )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L19",
+      "id": "gitnexus_impact_analysis_skill_codeblock_1",
+      "community": 2,
+      "norm_label": "code:block1 (1. gitnexus_impact({target: \"x\", direction: \"upstream\"})  \u2192 )"
+    },
+    {
+      "label": "Checklist",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L28",
+      "id": "gitnexus_impact_analysis_skill_checklist",
+      "community": 2,
+      "norm_label": "checklist"
+    },
+    {
+      "label": "code:block2 (- [ ] gitnexus_impact({target, direction: \"upstream\"}) to fi)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L30",
+      "id": "gitnexus_impact_analysis_skill_codeblock_2",
+      "community": 2,
+      "norm_label": "code:block2 (- [ ] gitnexus_impact({target, direction: \"upstream\"}) to fi)"
+    },
+    {
+      "label": "Understanding Output",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L39",
+      "id": "gitnexus_impact_analysis_skill_understanding_output",
+      "community": 2,
+      "norm_label": "understanding output"
+    },
+    {
+      "label": "Risk Assessment",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L47",
+      "id": "gitnexus_impact_analysis_skill_risk_assessment",
+      "community": 2,
+      "norm_label": "risk assessment"
+    },
+    {
+      "label": "Tools",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L56",
+      "id": "gitnexus_impact_analysis_skill_tools",
+      "community": 2,
+      "norm_label": "tools"
+    },
+    {
+      "label": "code:block3 (gitnexus_impact({)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L60",
+      "id": "gitnexus_impact_analysis_skill_codeblock_3",
+      "community": 2,
+      "norm_label": "code:block3 (gitnexus_impact({)"
+    },
+    {
+      "label": "code:block4 (gitnexus_detect_changes({scope: \"staged\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L78",
+      "id": "gitnexus_impact_analysis_skill_codeblock_4",
+      "community": 2,
+      "norm_label": "code:block4 (gitnexus_detect_changes({scope: \"staged\"}))"
+    },
+    {
+      "label": "Example: \"What breaks if I change validateUser?\"",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L86",
+      "id": "gitnexus_impact_analysis_skill_example_what_breaks_if_i_change_validateuser",
+      "community": 2,
+      "norm_label": "example: \"what breaks if i change validateuser?\""
+    },
+    {
+      "label": "code:block5 (1. gitnexus_impact({target: \"validateUser\", direction: \"upst)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L88",
+      "id": "gitnexus_impact_analysis_skill_codeblock_5",
+      "community": 2,
+      "norm_label": "code:block5 (1. gitnexus_impact({target: \"validateuser\", direction: \"upst)"
+    },
+    {
+      "label": "SKILL.md",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L1",
+      "id": "claude_skills_gitnexus_gitnexus_refactoring_skill_md",
+      "community": 5,
+      "norm_label": "skill.md"
+    },
+    {
+      "label": "Refactoring with GitNexus",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L6",
+      "id": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "community": 5,
+      "norm_label": "refactoring with gitnexus"
+    },
+    {
+      "label": "When to Use",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L8",
+      "id": "gitnexus_refactoring_skill_when_to_use",
+      "community": 5,
+      "norm_label": "when to use"
+    },
+    {
+      "label": "Workflow",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L16",
+      "id": "gitnexus_refactoring_skill_workflow",
+      "community": 5,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "code:block1 (1. gitnexus_impact({target: \"X\", direction: \"upstream\"})  \u2192 )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L18",
+      "id": "gitnexus_refactoring_skill_codeblock_1",
+      "community": 5,
+      "norm_label": "code:block1 (1. gitnexus_impact({target: \"x\", direction: \"upstream\"})  \u2192 )"
+    },
+    {
+      "label": "Checklists",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L27",
+      "id": "gitnexus_refactoring_skill_checklists",
+      "community": 8,
+      "norm_label": "checklists"
+    },
+    {
+      "label": "Rename Symbol",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L29",
+      "id": "gitnexus_refactoring_skill_rename_symbol",
+      "community": 8,
+      "norm_label": "rename symbol"
+    },
+    {
+      "label": "code:block2 (- [ ] gitnexus_rename({symbol_name: \"oldName\", new_name: \"ne)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L31",
+      "id": "gitnexus_refactoring_skill_codeblock_2",
+      "community": 8,
+      "norm_label": "code:block2 (- [ ] gitnexus_rename({symbol_name: \"oldname\", new_name: \"ne)"
+    },
+    {
+      "label": "Extract Module",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L39",
+      "id": "gitnexus_refactoring_skill_extract_module",
+      "community": 8,
+      "norm_label": "extract module"
+    },
+    {
+      "label": "code:block3 (- [ ] gitnexus_context({name: target}) \u2014 see all incoming/ou)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L41",
+      "id": "gitnexus_refactoring_skill_codeblock_3",
+      "community": 8,
+      "norm_label": "code:block3 (- [ ] gitnexus_context({name: target}) \u2014 see all incoming/ou)"
+    },
+    {
+      "label": "Split Function/Service",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L50",
+      "id": "gitnexus_refactoring_skill_split_function_service",
+      "community": 8,
+      "norm_label": "split function/service"
+    },
+    {
+      "label": "code:block4 (- [ ] gitnexus_context({name: target}) \u2014 understand all call)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L52",
+      "id": "gitnexus_refactoring_skill_codeblock_4",
+      "community": 8,
+      "norm_label": "code:block4 (- [ ] gitnexus_context({name: target}) \u2014 understand all call)"
+    },
+    {
+      "label": "Tools",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L62",
+      "id": "gitnexus_refactoring_skill_tools",
+      "community": 5,
+      "norm_label": "tools"
+    },
+    {
+      "label": "code:block5 (gitnexus_rename({symbol_name: \"validateUser\", new_name: \"aut)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L66",
+      "id": "gitnexus_refactoring_skill_codeblock_5",
+      "community": 5,
+      "norm_label": "code:block5 (gitnexus_rename({symbol_name: \"validateuser\", new_name: \"aut)"
+    },
+    {
+      "label": "code:block6 (gitnexus_impact({target: \"validateUser\", direction: \"upstrea)",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L75",
+      "id": "gitnexus_refactoring_skill_codeblock_6",
+      "community": 5,
+      "norm_label": "code:block6 (gitnexus_impact({target: \"validateuser\", direction: \"upstrea)"
+    },
+    {
+      "label": "code:block7 (gitnexus_detect_changes({scope: \"all\"}))",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L83",
+      "id": "gitnexus_refactoring_skill_codeblock_7",
+      "community": 5,
+      "norm_label": "code:block7 (gitnexus_detect_changes({scope: \"all\"}))"
+    },
+    {
+      "label": "code:cypher (MATCH (caller)-[:CodeRelation {type: 'CALLS'}]->(f:Function )",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L92",
+      "id": "gitnexus_refactoring_skill_codeblock_8",
+      "community": 5,
+      "norm_label": "code:cypher (match (caller)-[:coderelation {type: 'calls'}]->(f:function )"
+    },
+    {
+      "label": "Risk Rules",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L97",
+      "id": "gitnexus_refactoring_skill_risk_rules",
+      "community": 5,
+      "norm_label": "risk rules"
+    },
+    {
+      "label": "Example: Rename `validateUser` to `authenticateUser`",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L106",
+      "id": "gitnexus_refactoring_skill_example_rename_validateuser_to_authenticateuser",
+      "community": 5,
+      "norm_label": "example: rename `validateuser` to `authenticateuser`"
+    },
+    {
+      "label": "code:block9 (1. gitnexus_rename({symbol_name: \"validateUser\", new_name: \")",
+      "file_type": "document",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L108",
+      "id": "gitnexus_refactoring_skill_codeblock_9",
+      "community": 5,
+      "norm_label": "code:block9 (1. gitnexus_rename({symbol_name: \"validateuser\", new_name: \")"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L1",
+      "id": "cursor_agent_policies_readme_md",
+      "community": 10,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Agent policies (safety)",
+      "file_type": "document",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L1",
+      "id": "agent_policies_readme_agent_policies_safety",
+      "community": 10,
+      "norm_label": "agent policies (safety)"
+    },
+    {
+      "label": "Destructive operations",
+      "file_type": "document",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L3",
+      "id": "agent_policies_readme_destructive_operations",
+      "community": 10,
+      "norm_label": "destructive operations"
+    },
+    {
+      "label": "Data handling",
+      "file_type": "document",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L11",
+      "id": "agent_policies_readme_data_handling",
+      "community": 10,
+      "norm_label": "data handling"
+    },
+    {
+      "label": "Branching",
+      "file_type": "document",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L15",
+      "id": "agent_policies_readme_branching",
+      "community": 10,
+      "norm_label": "branching"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": ".cursor/context-routing/README.md",
+      "source_location": "L1",
+      "id": "cursor_context_routing_readme_md",
+      "community": 16,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Context routing (priority)",
+      "file_type": "document",
+      "source_file": ".cursor/context-routing/README.md",
+      "source_location": "L1",
+      "id": "context_routing_readme_context_routing_priority",
+      "community": 16,
+      "norm_label": "context routing (priority)"
+    },
+    {
+      "label": "intel-refresh.md",
+      "file_type": "document",
+      "source_file": ".cursor/workflows/intel-refresh.md",
+      "source_location": "L1",
+      "id": "cursor_workflows_intel_refresh_md",
+      "community": 17,
+      "norm_label": "intel-refresh.md"
+    },
+    {
+      "label": "Intel refresh workflow",
+      "file_type": "document",
+      "source_file": ".cursor/workflows/intel-refresh.md",
+      "source_location": "L1",
+      "id": "workflows_intel_refresh_intel_refresh_workflow",
+      "community": 17,
+      "norm_label": "intel refresh workflow"
+    },
+    {
+      "label": "SYSTEM_OVERVIEW.md",
+      "file_type": "document",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L1",
+      "id": "architecture_system_overview_md",
+      "community": 11,
+      "norm_label": "system_overview.md"
+    },
+    {
+      "label": "TerraVolt Godot MCP \u2014 system overview",
+      "file_type": "document",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L1",
+      "id": "architecture_system_overview_terravolt_godot_mcp_system_overview",
+      "community": 11,
+      "norm_label": "terravolt godot mcp \u2014 system overview"
+    },
+    {
+      "label": "Purpose",
+      "file_type": "document",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L3",
+      "id": "architecture_system_overview_purpose",
+      "community": 11,
+      "norm_label": "purpose"
+    },
+    {
+      "label": "Layers",
+      "file_type": "document",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L7",
+      "id": "architecture_system_overview_layers",
+      "community": 11,
+      "norm_label": "layers"
+    },
+    {
+      "label": "Layout ( evolving )",
+      "file_type": "document",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L15",
+      "id": "architecture_system_overview_layout_evolving",
+      "community": 11,
+      "norm_label": "layout ( evolving )"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "context-map/README.md",
+      "source_location": "L1",
+      "id": "context_map_readme_md",
+      "community": 15,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Context map \u2014 TerraVolt Godot MCP",
+      "file_type": "document",
+      "source_file": "context-map/README.md",
+      "source_location": "L1",
+      "id": "context_map_readme_context_map_terravolt_godot_mcp",
+      "community": 15,
+      "norm_label": "context map \u2014 terravolt godot mcp"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "godot_mcp_marcel_package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_intel_graphs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_intel_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_intel_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_intel_graphify_cluster",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_omni_intel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_devdependencies",
+      "target": "godot_mcp_marcel_package_devdependencies_dependency_cruiser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_devdependencies",
+      "target": "godot_mcp_marcel_package_devdependencies_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_devdependencies",
+      "target": "godot_mcp_marcel_package_devdependencies_madge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "cursor_mcp_json",
+      "target": "cursor_mcp_mcpservers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "cursor_mcp_mcpservers",
+      "target": "cursor_mcp_mcpservers_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "cursor_mcp_mcpservers_gitnexus",
+      "target": "cursor_mcp_gitnexus_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/mcp.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "cursor_mcp_mcpservers_gitnexus",
+      "target": "cursor_mcp_gitnexus_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/regen-graphs.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "scripts_regen_graphs_mjs",
+      "target": "scripts_regen_graphs_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/regen-graphs.mjs",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "scripts_regen_graphs_mjs",
+      "target": "scripts_regen_graphs_out",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents_md",
+      "target": "godot_mcp_marcel_agents_gitnexus_this_workspace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "agents_md",
+      "target": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_this_workspace",
+      "target": "godot_mcp_marcel_agents_activate_refresh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_this_workspace",
+      "target": "godot_mcp_marcel_agents_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_this_workspace",
+      "target": "godot_mcp_marcel_agents_cursor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_graphify",
+      "target": "godot_mcp_marcel_agents_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_agents_always_do",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_agents_never_do",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_agents_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_agents_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_agents_cli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "claude_md",
+      "target": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_claude_always_do",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_claude_never_do",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_claude_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_claude_gitnexus_code_intelligence",
+      "target": "godot_mcp_marcel_claude_cli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "godot_mcp_marcel_readme_godot_mcp_terravolt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_readme_godot_mcp_terravolt",
+      "target": "godot_mcp_marcel_readme_omni_protocol_stack_this_repo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_readme_godot_mcp_terravolt",
+      "target": "godot_mcp_marcel_readme_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_cli_skill_md",
+      "target": "gitnexus_cli_skill_gitnexus_cli_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_gitnexus_cli_commands",
+      "target": "gitnexus_cli_skill_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_gitnexus_cli_commands",
+      "target": "gitnexus_cli_skill_after_indexing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_gitnexus_cli_commands",
+      "target": "gitnexus_cli_skill_troubleshooting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_commands",
+      "target": "gitnexus_cli_skill_analyze_build_or_refresh_the_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_commands",
+      "target": "gitnexus_cli_skill_status_check_index_freshness",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_commands",
+      "target": "gitnexus_cli_skill_clean_delete_the_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_commands",
+      "target": "gitnexus_cli_skill_wiki_generate_documentation_from_the_graph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_commands",
+      "target": "gitnexus_cli_skill_list_show_all_indexed_repos",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_analyze_build_or_refresh_the_index",
+      "target": "gitnexus_cli_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_status_check_index_freshness",
+      "target": "gitnexus_cli_skill_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_clean_delete_the_index",
+      "target": "gitnexus_cli_skill_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_wiki_generate_documentation_from_the_graph",
+      "target": "gitnexus_cli_skill_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-cli/SKILL.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "gitnexus_cli_skill_list_show_all_indexed_repos",
+      "target": "gitnexus_cli_skill_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_debugging_skill_md",
+      "target": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_debugging_patterns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_debugging_with_gitnexus",
+      "target": "gitnexus_debugging_skill_example_payment_endpoint_returns_500_intermittently",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_workflow",
+      "target": "gitnexus_debugging_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_checklist",
+      "target": "gitnexus_debugging_skill_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_tools",
+      "target": "gitnexus_debugging_skill_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_tools",
+      "target": "gitnexus_debugging_skill_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_tools",
+      "target": "gitnexus_debugging_skill_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-debugging/SKILL.md",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "gitnexus_debugging_skill_example_payment_endpoint_returns_500_intermittently",
+      "target": "gitnexus_debugging_skill_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_exploring_skill_md",
+      "target": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_resources",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_exploring_codebases_with_gitnexus",
+      "target": "gitnexus_exploring_skill_example_how_does_payment_processing_work",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_workflow",
+      "target": "gitnexus_exploring_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_checklist",
+      "target": "gitnexus_exploring_skill_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_tools",
+      "target": "gitnexus_exploring_skill_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_tools",
+      "target": "gitnexus_exploring_skill_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-exploring/SKILL.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "gitnexus_exploring_skill_example_how_does_payment_processing_work",
+      "target": "gitnexus_exploring_skill_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_guide_skill_md",
+      "target": "gitnexus_guide_skill_gitnexus_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_gitnexus_guide",
+      "target": "gitnexus_guide_skill_always_start_here",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_gitnexus_guide",
+      "target": "gitnexus_guide_skill_skills",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_gitnexus_guide",
+      "target": "gitnexus_guide_skill_tools_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_gitnexus_guide",
+      "target": "gitnexus_guide_skill_resources_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_gitnexus_guide",
+      "target": "gitnexus_guide_skill_graph_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-guide/SKILL.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "gitnexus_guide_skill_graph_schema",
+      "target": "gitnexus_guide_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_impact_analysis_skill_md",
+      "target": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_understanding_output",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_risk_assessment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_impact_analysis_with_gitnexus",
+      "target": "gitnexus_impact_analysis_skill_example_what_breaks_if_i_change_validateuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_workflow",
+      "target": "gitnexus_impact_analysis_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_checklist",
+      "target": "gitnexus_impact_analysis_skill_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_tools",
+      "target": "gitnexus_impact_analysis_skill_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_tools",
+      "target": "gitnexus_impact_analysis_skill_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "gitnexus_impact_analysis_skill_example_what_breaks_if_i_change_validateuser",
+      "target": "gitnexus_impact_analysis_skill_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "claude_skills_gitnexus_gitnexus_refactoring_skill_md",
+      "target": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_when_to_use",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_checklists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_risk_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_refactoring_with_gitnexus",
+      "target": "gitnexus_refactoring_skill_example_rename_validateuser_to_authenticateuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_workflow",
+      "target": "gitnexus_refactoring_skill_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_checklists",
+      "target": "gitnexus_refactoring_skill_rename_symbol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_checklists",
+      "target": "gitnexus_refactoring_skill_extract_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_checklists",
+      "target": "gitnexus_refactoring_skill_split_function_service",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_rename_symbol",
+      "target": "gitnexus_refactoring_skill_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_extract_module",
+      "target": "gitnexus_refactoring_skill_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_split_function_service",
+      "target": "gitnexus_refactoring_skill_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_tools",
+      "target": "gitnexus_refactoring_skill_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_tools",
+      "target": "gitnexus_refactoring_skill_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_tools",
+      "target": "gitnexus_refactoring_skill_codeblock_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_tools",
+      "target": "gitnexus_refactoring_skill_codeblock_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/skills/gitnexus/gitnexus-refactoring/SKILL.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "gitnexus_refactoring_skill_example_rename_validateuser_to_authenticateuser",
+      "target": "gitnexus_refactoring_skill_codeblock_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "cursor_agent_policies_readme_md",
+      "target": "agent_policies_readme_agent_policies_safety",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "agent_policies_readme_agent_policies_safety",
+      "target": "agent_policies_readme_destructive_operations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "agent_policies_readme_agent_policies_safety",
+      "target": "agent_policies_readme_data_handling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/agent-policies/README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "agent_policies_readme_agent_policies_safety",
+      "target": "agent_policies_readme_branching",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/context-routing/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "cursor_context_routing_readme_md",
+      "target": "context_routing_readme_context_routing_priority",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".cursor/workflows/intel-refresh.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "cursor_workflows_intel_refresh_md",
+      "target": "workflows_intel_refresh_intel_refresh_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "architecture_system_overview_md",
+      "target": "architecture_system_overview_terravolt_godot_mcp_system_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "architecture_system_overview_terravolt_godot_mcp_system_overview",
+      "target": "architecture_system_overview_purpose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "architecture_system_overview_terravolt_godot_mcp_system_overview",
+      "target": "architecture_system_overview_layers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "architecture/SYSTEM_OVERVIEW.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "architecture_system_overview_terravolt_godot_mcp_system_overview",
+      "target": "architecture_system_overview_layout_evolving",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "context-map/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "context_map_readme_md",
+      "target": "context_map_readme_context_map_terravolt_godot_mcp",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "4614a5cb639e7a30332a0b244b49f2a8fa86d23e"
+}
