@@ -57,7 +57,9 @@ When this file is done:
 - [x] `npm run validate:catalog` is green (handlers wired, headless dispatch, error mirror).
 - [x] `npm run coverage:report` writes 222 tools to `docs/coverage/catalog-coverage.md`.
 - [x] `npm run release:check` mirrors 130 app error codes.
-- [x] `npm run test:server` is **30/30** against live Godot 4.6.3.
+- [x] `npm run test:server` is **31/31** against live Godot 4.6.3 (includes the exhaustive
+      `coverage/all_methods_dispatch` smoke that walks the registry and asserts no
+      method-not-found).
 - [x] `docs/coverage/parity-matrix.md` lists `android.*` as ✅ live and notes the +50 over Pro.
 
 ## 26.7 Verification (smoke)

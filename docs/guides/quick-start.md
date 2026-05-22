@@ -81,7 +81,8 @@ If `TERRAVOLT_GODOT_BINARY` is set you can also run the full real-Godot integrat
 
 ```powershell
 npm run test:server
-# 30/30 tests pass: smoke, unit, real-Godot integration (21 headless suites incl. android.*).
+# 31/31 tests pass: smoke, unit, real-Godot integration (21 headless suites incl. android.*,
+# plus an exhaustive 156/156 coverage smoke that dispatches every safe catalog method).
 npm run validate:catalog
 # Registry integrity + headless dispatch gate (tasks 25 + 26).
 npm run release:check

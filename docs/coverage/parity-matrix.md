@@ -6,7 +6,8 @@ catalog changes materially.
 **Reference sources:** [`docs/references/reference-repos-map.md`](../references/reference-repos-map.md)
 
 **Last validated:** 2026-05-22 — catalog **0.17.0**, **222** daemon methods, **201** headless
-fallback, **30/30** integration tests passing against live Godot 4.6.3.
+fallback, **31/31** integration tests passing against live Godot 4.6.3 (including the
+exhaustive coverage smoke that dispatches every `headlessFallback: true` method).
 
 | Feature | Reference | TerraVolt status | Notes |
 | ------- | --------- | ---------------- | ----- |
@@ -51,7 +52,9 @@ fallback, **30/30** integration tests passing against live Godot 4.6.3.
 - `testing.run_scenario` orchestrator (input/wait/assert/screenshot steps in one call)
 - Headless-first `android.*` deploy chain (`adb` + `--export-debug/release` from the daemon)
 - `validate:catalog` + `coverage:report` CI gates (tasks 25 + 26)
-- 30/30 integration tests against the real Godot 4.6.3 binary (proof of runnable wiring)
+- 31/31 integration tests against the real Godot 4.6.3 binary, including an exhaustive
+  coverage smoke that dispatches 156/156 safe candidate methods from the 201 headless-capable
+  catalog (proof of runnable wiring across the full catalog, not just happy-path samples)
 
 ## Known gaps (tracked in Linear)
 

@@ -9,9 +9,10 @@ This is the **rookie-friendly** companion to `docs/guides/tools-reference.md`. E
 - **Impact on Godot** — what happens in the engine.
 
 Total surface: **222 daemon methods** across **28 categories** (catalog **0.17.0**), exposed to
-Cursor via **13 MCP router tools** plus `context.fetch_raw` for any catalog method. **30/30
-integration tests** pass against the live Godot 4.6.3 binary, so every category is provably
-runnable. Pick whichever bucket matches your moment.
+Cursor via **13 MCP router tools** plus `context.fetch_raw` for any catalog method. **31/31
+integration tests** pass against the live Godot 4.6.3 binary — including an exhaustive coverage
+smoke that dispatches **156/156** safe candidates from the 201 headless-capable methods — so every
+category is provably runnable. Pick whichever bucket matches your moment.
 
 > Category reference: [`docs/catalog/`](../catalog/) · Coverage:
 > [`docs/coverage/catalog-coverage.md`](../coverage/catalog-coverage.md)

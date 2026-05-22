@@ -3,7 +3,9 @@
 **Canonical docs:** `docs/tasklist/00*.md` … `26-android-and-scenario.md`
 
 **Last sweep:** 2026-05-22 (maintainer audit — tasks **00–26** complete at catalog **0.17.0**,
-**222** daemon methods, **30/30** integration tests passing against live Godot 4.6.3.mono.official)
+**222** daemon methods, **31/31** integration tests passing against live Godot 4.6.3.mono.official,
+including the new exhaustive coverage smoke that dispatches **156/156** safe candidate methods out
+of 201 headless-capable methods)
 
 ## Deliverables matrix (00–25)
 
@@ -29,7 +31,9 @@
 | 26    | android + scenario (4)      | `android.gd`/`android_helpers.gd`, `testing.run_scenario`, 30th test  | Done     |
 
 **Registry builders:** `scripts/build-registry-{11..24,26}.mjs`  
-**Integration tests:** 21 headless suites under `packages/mcp-server/tests/integration/`  
+**Integration tests:** 21 headless category suites + exhaustive coverage smoke under
+`packages/mcp-server/tests/integration/` (`coverage/all_methods_dispatch.test.mjs` walks every
+`headlessFallback: true` registry entry against the live daemon)  
 **Catalog docs:** `docs/catalog/*.md` (28 category pages incl. `android.md`)
 
 ## Automated checks
@@ -42,7 +46,7 @@ Run from repo root (`npm install` once):
 | `npm run format:check`     | Pass (LF enforced via `.gitattributes`)                          |
 | `npm run typecheck`        | Pass                                                             |
 | `npm run build:server`     | Pass                                                             |
-| `npm run test:server`      | Pass — **30/30** tests against live Godot 4.6.3.mono.official    |
+| `npm run test:server`      | Pass — **31/31** tests against live Godot 4.6.3.mono.official    |
 | `npm run catalog:sync`     | Pass (`catalog_version=0.17.0`)                                  |
 | `npm run coverage:report`  | Pass — **222** tools ≥ 200 gate (matches task 25 stretch target) |
 | `npm run validate:catalog` | Pass — handlers wired, headless dispatch, error mirror           |
