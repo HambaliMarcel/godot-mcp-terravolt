@@ -35,7 +35,7 @@ After editing MCP config, restart Cursor.
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **godot-mcp-terravolt** (3215 symbols, 5558 relationships, 157 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **godot-mcp-terravolt** (3427 symbols, 5847 relationships, 163 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 

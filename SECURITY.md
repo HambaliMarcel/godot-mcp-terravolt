@@ -31,3 +31,37 @@ to those upstream projects.
 
 Responsible disclosure that avoids user harm or data destruction is appreciated. Researchers must
 not exploit issues beyond verification.
+
+---
+
+## Threat model (per `docs/tasklist/10 §10.6.11` and `§A.10`)
+
+- **Loopback by default.** The Godot addon binds `127.0.0.1:6505`; the router only
+  connects to loopback unless explicitly reconfigured. Changing `bind_address` to
+  `0.0.0.0` exposes the daemon to any process on the LAN — pair such deployments
+  with `terravolt_mcp/security/require_token`.
+- **Optional token auth.** When configured, the router must supply the token on
+  every WebSocket open. Tokens are never logged.
+- **Arbitrary script execution.** `headless.run_script` and equivalent
+  primitives are **off by default**. Enable only via the explicit router flag
+  `--allow-arbitrary-scripts` and document the intent in CI configuration.
+- **Log redaction.** Daemon logs may include user-supplied content (script
+  source from `script.set`, asset paths). Enable
+  `terravolt_mcp/logging/redact = true` for shared environments.
+- **Telemetry.** TerraVolt does **not** phone home. All metrics live in
+  `tools.metrics` / `tools.bottlenecks` and never leave the host.
+- **Supply chain.** npm dependencies are pinned in `packages/mcp-server/package.json`;
+  release CI must run `npm audit --production` and fail on high/critical
+  advisories.
+- **Updates.** Release notes always list security-relevant changes; subscribe
+  to the GitHub release feed for advisories.
+
+## Reporting checklist
+
+When reporting, include:
+
+1. Affected component (`mcp-server` / `godot-mcp-addon` / scripts).
+2. Versions: router `package.json#version`, `catalog_version`,
+   `Godot --version`.
+3. Reproducer with the smallest possible MCP tool call or daemon JSON-RPC frame.
+4. Network exposure flags in use (`bind_address`, token, allow-arbitrary-scripts).

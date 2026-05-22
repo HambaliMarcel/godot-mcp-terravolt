@@ -22,4 +22,4 @@ Anything else in `packages/shared/methods/registry.json` **without** `headlessFa
 
 ## Validation checklist
 
-Structured repo validation for tasks **TV-00 … TV-09** (including honest partial scope for §07 §08 §09): **`docs/validation/tv-00-09-checkpoint.md`**.
+Structured repo validation for tasks **TV-00 … TV-10** (including honest partial scope for §07 §08 §09 §10): **`docs/validation/tv-00-10-checkpoint.md`**.
