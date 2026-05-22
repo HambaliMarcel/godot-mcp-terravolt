@@ -8,9 +8,10 @@ This is the **rookie-friendly** companion to `docs/guides/tools-reference.md`. E
 - **What Cursor does under the hood** — which MCP tool runs.
 - **Impact on Godot** — what happens in the engine.
 
-Total surface: **218 daemon methods** across **27 categories**, exposed to Cursor via **13 MCP
-router tools** plus `context.fetch_raw` for any catalog method. Pick whichever bucket matches your
-moment.
+Total surface: **222 daemon methods** across **28 categories** (catalog **0.17.0**), exposed to
+Cursor via **13 MCP router tools** plus `context.fetch_raw` for any catalog method. **30/30
+integration tests** pass against the live Godot 4.6.3 binary, so every category is provably
+runnable. Pick whichever bucket matches your moment.
 
 > Category reference: [`docs/catalog/`](../catalog/) · Coverage:
 > [`docs/coverage/catalog-coverage.md`](../coverage/catalog-coverage.md)
@@ -249,23 +250,25 @@ Here is a realistic sequence — every line is a prompt you can paste into Curso
 
 ## What's NOT supported yet (so you don't waste time asking)
 
-These remain **partial or backlog** at catalog **0.16.0**:
+These remain **partial or backlog** at catalog **0.17.0**:
 
-| Want to…                                    | Status                                  |
-| ------------------------------------------- | --------------------------------------- |
-| Per-category MCP tools (218 as first-class) | Backlog — use `context.fetch_raw` today |
-| Browser project visualizer `:6510`          | Backlog — use Graphify/GitNexus         |
-| Compile-check C# (`.cs`) files              | Backlog (§10)                           |
-| Full macro apply (12/15 templates)          | Partial — dry-run works                 |
-| Drive two Godot editors at once             | Roadmap (`docs/roadmap.md`)             |
+| Want to…                                    | Status                                    |
+| ------------------------------------------- | ----------------------------------------- |
+| Per-category MCP tools (222 as first-class) | Backlog — use `context.fetch_raw` today   |
+| Browser project visualizer `:6510`          | Backlog — use Graphify/GitNexus           |
+| Compile-check C# (`.cs`) files              | Backlog (§10)                             |
+| Full macro apply (12/15 templates)          | Partial — dry-run works                   |
+| Drive two Godot editors at once             | Roadmap (`docs/roadmap.md`)               |
+| iOS deploy parity with `android.deploy`     | Roadmap — adb-equivalent tooling deferred |
 
 Everything else from the original §08 backlog — scene/node mutators, resources, runtime bridge,
-export, testing, audio, input, 3D scene sugar, macros — is **live**. See
+export, testing, audio, input, 3D scene sugar, macros, **Android deploy chain**, and **scenario
+orchestration** — is **live**. See
 [`docs/demos/vibe-coding-walkthrough.md`](../demos/vibe-coding-walkthrough.md) for an end-to-end
 prompt script.
 
 When new router tools land, this page will gain dedicated sections. For now, use the 13 router tools
-plus `context.fetch_raw` for any of the 218 daemon methods — or read category docs under
+plus `context.fetch_raw` for any of the 222 daemon methods — or read category docs under
 `docs/catalog/`.
 
 ---

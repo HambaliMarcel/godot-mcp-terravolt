@@ -1,6 +1,6 @@
 # Catalog: `testing.*`
 
-Phase 3 work-unit #13 — 6 daemon methods (`catalog_version` **0.15.0**).
+Phase 3/4 — 7 daemon methods (`catalog_version` **0.17.0**, +1 from task 26).
 
 | Method                       | Safe | Mutates | Headless |
 | ---------------------------- | ---- | ------- | -------- |
@@ -10,6 +10,7 @@ Phase 3 work-unit #13 — 6 daemon methods (`catalog_version` **0.15.0**).
 | `testing.screenshot_compare` | no   | yes     | yes      |
 | `testing.list_reports`       | yes  | no      | yes      |
 | `testing.get_report`         | yes  | no      | yes      |
+| `testing.run_scenario`       | no   | yes     | yes      |
 
 Handlers: `packages/godot-mcp-addon/handlers/testing.gd`  
 Helpers: `packages/godot-mcp-addon/handlers/testing_helpers.gd`
@@ -19,4 +20,10 @@ Helpers: `packages/godot-mcp-addon/handlers/testing_helpers.gd`
 structured stub report from scanned `func test_*` scripts. Reports persist under
 `user://terravolt/test_reports/`.
 
-Error band: `-33990` … `-33992`.
+`testing.run_scenario` executes an ordered array of `{type:"input"|"wait"|"assert"|"screenshot"}`
+steps and returns a per-step report `{ok, steps_total, steps_run, steps:[…]}`. Use it to drive a
+single playable slice through gameplay+assertion in one round-trip without writing a custom test
+harness. Mirrors the orchestration pattern from `godot-mcp-pro/test_commands.gd:run_test_scenario`
+but uses TerraVolt headless primitives (no editor dependency).
+
+Error band: `-33990` … `-33992`, `-33997` (`testing.scenario_failed`).

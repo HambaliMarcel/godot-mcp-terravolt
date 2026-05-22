@@ -11,7 +11,7 @@ TerraVolt MCP prompts only (macros + a handful of mutators).
 
 | Step | Prompt                                              | Expected MCP call                                         | Outcome                                        |
 | ---- | --------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------- |
-| 1    | _"Run a health check on the Godot MCP."_            | `tools.health`                                            | `pass: true`, catalog `0.16.0`                 |
+| 1    | _"Run a health check on the Godot MCP."_            | `tools.health`                                            | `pass: true`, catalog `0.17.0`                 |
 | 2    | _"List every daemon method in the macro category."_ | `context.fetch_raw` → `tools.list` filter or `tools.list` | 15 `macro.*` tools                             |
 | 3    | _"Describe macro.basic_2d_level."_                  | `tools.describe` or registry lookup                       | Input schema with `project_path`, `level_name` |
 
@@ -40,12 +40,14 @@ TerraVolt MCP prompts only (macros + a handful of mutators).
 
 ## Act 4 — Validate headless (3 min)
 
-| Step | Prompt                                                    | Expected call                                   | Outcome                        |
-| ---- | --------------------------------------------------------- | ----------------------------------------------- | ------------------------------ |
-| 11   | _"Compile-check every .gd file we created."_              | `headless.validate_script` loop                 | All `ok: true`                 |
-| 12   | _"Start a headless game session and list runtime nodes."_ | `runtime.start_headless` + `runtime.list_nodes` | Bridge alive, nodes enumerated |
-| 13   | _"Run testing.list_suites and report status."_            | `testing.list_suites`                           | Suite registry (fixture zoo)   |
-| 14   | _"Stop the headless session."_                            | `headless.stop` / `runtime.stop`                | Process cleaned up             |
+| Step | Prompt                                                                               | Expected call                                                   | Outcome                                                 |
+| ---- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------------------------- |
+| 11   | _"Compile-check every .gd file we created."_                                         | `headless.validate_script` loop                                 | All `ok: true`                                          |
+| 12   | _"Start a headless game session and list runtime nodes."_                            | `runtime.start_headless` + `runtime.list_nodes`                 | Bridge alive, nodes enumerated                          |
+| 13   | _"Run testing.list_suites and report status."_                                       | `testing.list_suites`                                           | Suite registry (fixture zoo)                            |
+| 14   | _"Drive a 4-step scenario: press jump, wait 0.1s, assert player.x > 0, screenshot."_ | `testing.run_scenario` `{steps:[input,wait,assert,screenshot]}` | `ok:true`, per-step report                              |
+| 15   | _"List Android devices connected via adb."_                                          | `android.list_devices`                                          | Serial + state list (or `adb_not_found` if adb missing) |
+| 16   | _"Stop the headless session."_                                                       | `headless.stop` / `runtime.stop`                                | Process cleaned up                                      |
 
 ---
 
@@ -53,7 +55,7 @@ TerraVolt MCP prompts only (macros + a handful of mutators).
 
 | Step | Prompt                         | Expected outcome                            |
 | ---- | ------------------------------ | ------------------------------------------- |
-| 15   | _"Open Godot and press Play."_ | Character moves, HUD visible, enemies spawn |
+| 17   | _"Open Godot and press Play."_ | Character moves, HUD visible, enemies spawn |
 
 ---
 
@@ -61,12 +63,12 @@ TerraVolt MCP prompts only (macros + a handful of mutators).
 
 This walkthrough exercises patterns from all four reference repos:
 
-| Reference         | Pattern used                                             |
-| ----------------- | -------------------------------------------------------- |
-| **tomyud1**       | WS daemon + MCP stdio router; scene/project mutators     |
-| **Coding-Solo**   | `runtime.start_headless` subprocess + bridge             |
-| **godot-mcp-pro** | Rich catalog (218 tools), macro scaffolders, input/audio |
-| **godot-docs**    | TileMapLayer, InputMap, autoload wiring                  |
+| Reference         | Pattern used                                                                       |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| **tomyud1**       | WS daemon + MCP stdio router; scene/project mutators                               |
+| **Coding-Solo**   | `runtime.start_headless` subprocess + bridge                                       |
+| **godot-mcp-pro** | Rich catalog (222 tools), macro scaffolders, input/audio, **android deploy chain** |
+| **godot-docs**    | TileMapLayer, InputMap, autoload wiring                                            |
 
 ---
 

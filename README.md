@@ -4,10 +4,16 @@
 > WebSocket to the editor plus a headless `--script` driver for everything you can do without the
 > GUI open.
 
-- Router version `0.1.0` · Catalog version `0.2.0`
-- **13** MCP tools registered today (3 daemon-bridged, 6 router-local, 4 headless lifecycle)
-- Verified against real **Godot 4.6.3 stable mono** on Windows; 11/11 router tests including a real
-  `@modelcontextprotocol/sdk` end-to-end smoke
+- Router version `0.1.0` · **Catalog version `0.17.0`** (registry @
+  [`packages/shared/methods/registry.json`](packages/shared/methods/registry.json))
+- **222 daemon methods** across **28 categories** (`scene`, `node`, `script`, `signal`, `resource`,
+  `shader`, `asset`, `batch_refactor`, `editor`, `analysis`, `animation`, `animation_tree`,
+  `physics`, `particle`, `navigation`, `runtime`, `tilemap`, `theme_ui`, `audio`, `input`,
+  `scene_3d`, `testing`, `profile`, `export`, `macro`, `android`, plus bootstrap/observability)
+- **13** first-class MCP router tools today (3 daemon-bridged, 6 router-local, 4 headless
+  lifecycle); the remaining 222 daemon methods are reachable via `context.fetch_raw`
+- Verified against **Godot 4.6.3.stable.mono.official**: **30/30** integration tests including a
+  real `@modelcontextprotocol/sdk` end-to-end smoke and a 21-suite headless matrix
 
 ## Why this exists
 
@@ -97,8 +103,10 @@ Full step-by-step (with troubleshooting) lives in
 npm run lint                # ESLint @terravolt/godot-mcp
 npm run typecheck           # tsc --noEmit
 npm run build:server        # tsc emit dist/
-npm run test:server         # 11 tests, real Godot integration auto-skips if missing
-npm run catalog:sync        # regenerates _generated/catalog_meta.gd
+npm run test:server         # 30 tests; real Godot integration auto-skips when binary missing
+npm run catalog:sync        # regenerates _generated/catalog_meta.gd (catalog 0.17.0)
+npm run coverage:report     # docs/coverage/catalog-coverage.md (222 tools, 28 categories)
+npm run validate:catalog    # registry integrity + headless dispatch + error mirror gate
 npm run release:check       # 5/5 gates (hash, version, error mirror, readiness, CHANGELOG)
 ```
 
@@ -111,19 +119,21 @@ npm run test:server         # now also runs the real-Godot integration + addon p
 
 ## Status
 
-Phase 2 router and addon foundation are in master with full real-Godot end-to-end coverage. Tracker:
-**[`docs/validation/tv-00-10-checkpoint.md`](docs/validation/tv-00-10-checkpoint.md)**.
+Phases 1–4 (tasklists `00`–`26`) are in master with full real-Godot end-to-end coverage. Tracker:
+**[`docs/validation/tv-00-25-checkpoint.md`](docs/validation/tv-00-25-checkpoint.md)**.
 
-| Tasklist                          | State                                                                  |
-| --------------------------------- | ---------------------------------------------------------------------- |
-| `00` Foundation contracts         | green                                                                  |
-| `01` Repo + tooling               | green                                                                  |
-| `02–04` Addon + WS + JSON-RPC     | green                                                                  |
-| `05–06` Router + shared catalog   | green                                                                  |
-| `07` Headless fallback            | foundation + WS-down fallback shipped; export/import/run_tests pending |
-| `08` Full ~200 method catalog     | backlog (tracked as Linear `TER-41`)                                   |
-| `09` Context / errors / telemetry | partial (`tools.bottlenecks`, `context.fetch_raw`, `autoHeal` shipped) |
-| `10` QA / release / docs          | foundation + real-MCP smoke green; site auto-build pending             |
+| Tasklist                          | State                                                                 |
+| --------------------------------- | --------------------------------------------------------------------- |
+| `00–01` Foundation + repo         | green                                                                 |
+| `02–04` Addon + WS + JSON-RPC     | green                                                                 |
+| `05–06` Router + shared catalog   | green                                                                 |
+| `07` Headless fallback            | green — **201/222** methods headless-safe                             |
+| `08` ~200 method catalog          | green — **222** methods @ catalog `0.17.0`                            |
+| `09` Context / errors / telemetry | green — **130** error codes, `tools.bottlenecks`, `autoHeal`          |
+| `10` QA / release / docs          | green — **30/30** tests, `release:check`, user guides                 |
+| `11–24` Per-category catalog      | green — handlers + headless ops + integration tests + docs            |
+| `25` Completion gate              | green — coverage report, parity matrix, validation checkpoint         |
+| `26` Android + scenario           | green — `android.*` (3) + `testing.run_scenario` ship the 222 stretch |
 
 ## Contributing
 

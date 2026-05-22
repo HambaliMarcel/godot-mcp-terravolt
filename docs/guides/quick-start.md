@@ -81,9 +81,11 @@ If `TERRAVOLT_GODOT_BINARY` is set you can also run the full real-Godot integrat
 
 ```powershell
 npm run test:server
-# 29/29 tests pass: smoke, unit, real-Godot integration (20 headless suites).
+# 30/30 tests pass: smoke, unit, real-Godot integration (21 headless suites incl. android.*).
 npm run validate:catalog
-# Registry integrity + headless dispatch gate (task 25).
+# Registry integrity + headless dispatch gate (tasks 25 + 26).
+npm run release:check
+# Catalog hash + 130 app error codes + readiness gate.
 ```
 
 ## 5. Plug into Cursor
@@ -105,8 +107,8 @@ Add to your Cursor `mcp.json` (workspace `.cursor/mcp.json` or `~/.cursor/mcp.js
 }
 ```
 
-Restart Cursor. The MCP tools panel lists **13 router tools**; the full **218-method** catalog is
-available via `context.fetch_raw`:
+Restart Cursor. The MCP tools panel lists **13 router tools**; the full **222-method** catalog
+(`catalog_version` 0.17.0) is available via `context.fetch_raw`:
 
 - `ping`, `server.info`, `log.tail`
 - `tools.list`, `tools.describe`, `tools.metrics`, `tools.bottlenecks`, `tools.health`,
@@ -120,6 +122,8 @@ Example category calls via `context.fetch_raw`:
 { "method": "macro.basic_2d_level", "params": { "project_path": "C:\\path\\to\\game", "dry_run": true } }
 { "method": "input.list_actions", "params": {} }
 { "method": "export.list_presets", "params": {} }
+{ "method": "android.list_devices", "params": {} }
+{ "method": "testing.run_scenario", "params": { "steps": [{ "type": "wait", "seconds": 0.05 }] } }
 ```
 
 Per-tool payloads live in **[`mcp-usage.md`](mcp-usage.md)** and full parameter/result schemas in
