@@ -27,6 +27,17 @@ func _enter_tree() -> void:
 	_server.configure(_dispatcher, _logger)
 	_dispatcher.configure(_logger, _server, self, ADDON_VERSION)
 
+	var scene_handlers := preload("./handlers/scene.gd").new()
+	scene_handlers.attach(_dispatcher, _logger)
+	var project_handlers := preload("./handlers/project.gd").new()
+	project_handlers.attach(_dispatcher, _logger)
+	var node_handlers := preload("./handlers/node.gd").new()
+	node_handlers.attach(_dispatcher, _logger)
+	var script_handlers := preload("./handlers/script.gd").new()
+	script_handlers.attach(_dispatcher, _logger)
+	var signal_handlers := preload("./handlers/signal.gd").new()
+	signal_handlers.attach(_dispatcher, _logger)
+
 	_dock = _StatusDockScr.new()
 	_dock.name = "TerraVoltMCPStatus"
 	(_dock as TerraVoltStatusDock).setup(self, _logger, _dispatcher, _server)

@@ -1,0 +1,24 @@
+{
+  "identifiers": [
+    "OS",
+    "File",
+    "DirAccess",
+    "FileAccess",
+    "Engine",
+    "JavaScriptBridge",
+    "JavaScriptObject",
+    "HTTPClient",
+    "HTTPRequest",
+    "Socket",
+    "StreamPeer",
+    "TCPServer",
+    "UDPServer",
+    "ResourceLoader",
+    "ResourceSaver",
+    "ProjectSettings",
+    "ClassDB",
+    "GDScript",
+    "Expression"
+  ],
+  "patterns": ["execute", "shell_open", "create_process", "create_instance"]
+}

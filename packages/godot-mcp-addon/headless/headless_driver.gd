@@ -15,7 +15,9 @@ const _PROTOCOL_INVALID_JSONRPC_VERSION := -33100
 const _PROTOCOL_METHOD_NOT_FOUND := -33101
 const _PROTOCOL_INVALID_PARAMS := -33102
 const _TRANSPORT_UNSUPPORTED_FRAME := -33006
+const _EDITOR_NOT_AVAILABLE := -33400
 const _MAX_LINE_BYTES_DEFAULT := 1048576
+const _Ops := preload("./catalog_ops.gd")
 
 var _tcp := TCPServer.new()
 var _peer: StreamPeerTCP
@@ -38,6 +40,7 @@ func _initialize() -> void:
 		quit(127)
 		return
 	printerr("TERRAVOLT_HEADLESS_PORT=%d\n" % _tcp.get_local_port())
+	_Ops.ensure_main_scene(self)
 	process_frame.connect(_tick)
 
 
@@ -156,17 +159,92 @@ func _dispatch(line: String) -> String:
 				"registry_sha256": _registry_sha256,
 				"godot_version": gv.get("string", JSON.stringify(gv)),
 				"build_mode": "headless_tcp",
-				"supported_methods_count": 5,
+				"supported_methods_count": 34,
 			}
 			return JSON.stringify(_wr_ok(rid, info))
 		"server.list_methods":
-			var lst: Array[String] = ["dispatch.cancel", "ping", "script.validate_syntax", "server.info", "server.list_methods"]
+			var lst: Array[String] = [
+				"dispatch.cancel",
+				"ping",
+				"project.get_settings",
+				"project.info",
+				"project.list_autoloads",
+				"project.set_main_scene",
+				"project.set_settings",
+				"scene.create",
+				"scene.delete",
+				"scene.get",
+				"scene.list",
+				"scene.validate",
+				"script.validate_syntax",
+				"server.info",
+				"server.list_methods",
+			]
 			lst.sort()
 			return JSON.stringify(_wr_ok(rid, lst))
 		"dispatch.cancel":
 			return JSON.stringify(_wr_ok(rid, null))
 		"script.validate_syntax":
 			return JSON.stringify(_wr_ok(rid, _validate_syntax(pd)))
+		"scene.list":
+			var scenes := _Ops.walk_scenes()
+			return JSON.stringify(_wr_ok(rid, {"scenes": scenes, "total": scenes.size()}))
+		"scene.get":
+			return JSON.stringify(_headless_scene_get(rid, pd))
+		"scene.create":
+			return JSON.stringify(_headless_scene_create(rid, pd))
+		"scene.delete":
+			return JSON.stringify(_headless_scene_delete(rid, pd))
+		"scene.validate":
+			var path := _Ops.resolve_path(str(pd.get("scope", "active")))
+			if str(pd.get("scope", "active")) != "active":
+				var g := _Ops.scene_get(path)
+				if not g.get("ok", false):
+					return JSON.stringify(
+						_wr_err(
+							rid,
+							_err(-32603, str(g.get("message", "scene.path_not_found")), int(g.get("code", -33500)), "", {"path": path})
+						)
+					)
+			return JSON.stringify(_wr_ok(rid, {"ok": true, "issues": []}))
+		"project.info":
+			return JSON.stringify(_wr_ok(rid, _Ops.project_info().result))
+		"project.get_settings":
+			return JSON.stringify(_wr_ok(rid, _Ops.project_get_settings(pd).result))
+		"project.set_settings":
+			return JSON.stringify(_wr_ok(rid, _Ops.project_set_settings(pd).result))
+		"project.list_autoloads":
+			return JSON.stringify(_wr_ok(rid, {"autoloads": []}))
+		"project.set_main_scene":
+			var mp := _Ops.resolve_path(str(pd.get("path", "")))
+			if bool(pd.get("validate", true)) and not _Ops.scene_exists(mp):
+				return JSON.stringify(
+					_wr_err(rid, _err(-32603, "scene.path_not_found", -33500, "", {"path": mp}))
+				)
+			ProjectSettings.set_setting("application/run/main_scene", mp)
+			ProjectSettings.save()
+			return JSON.stringify(_wr_ok(rid, {"set": true, "path": mp}))
+		"scene.open", "scene.close", "scene.save", "scene.save_as":
+			var ed := _err(-32603, "editor.not_available", _EDITOR_NOT_AVAILABLE, "Open the editor for this method.", {})
+			return JSON.stringify(_wr_err(rid, ed))
+		"node.get", "node.add", "node.delete", "node.is_a", "node.modify", "node.evaluate_expression", "node.find_path", "node.list_groups", "node.list_signals":
+			return JSON.stringify(_headless_node(rid, method, pd))
+		"node.duplicate", "node.move", "node.rename", "node.attach_script", "node.detach_script":
+			var na := _err(-32603, "editor.no_active_scene", -33580, "Headless v1 partial node support.", {})
+			return JSON.stringify(_wr_err(rid, na))
+		"script.list", "script.read", "script.write", "script.patch", "script.validate", "script.find_usages", "script.format":
+			return JSON.stringify(_headless_catalog(rid, method, pd))
+		"script.rename_symbol":
+			var ed2 := _err(-32603, "editor.no_active_scene", -33580, "Rename requires editor v1.", {})
+			return JSON.stringify(_wr_err(rid, ed2))
+		"signal.list_declared", "signal.list_connections", "signal.find_listeners", "signal.graph", "signal.add_declaration", "signal.remove_declaration":
+			return JSON.stringify(_headless_catalog(rid, method, pd))
+		"signal.connect", "signal.disconnect", "signal.bulk_connect", "signal.bulk_disconnect":
+			var sg := _err(-32603, "editor.no_active_scene", -33580, "Signal wiring requires active scene in editor.", {})
+			return JSON.stringify(_wr_err(rid, sg))
+		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
+			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
+			return JSON.stringify(_wr_err(rid, na))
 		_:
 			var nf := _err(-32601, "Method not found", _PROTOCOL_METHOD_NOT_FOUND, "", {"method": method})
 			return JSON.stringify(_wr_err(rid, nf))
@@ -193,3 +271,53 @@ func _validate_syntax(p: Dictionary) -> Dictionary:
 	if erc != OK:
 		return {"ok": false, "errors": [{"line": 1, "col": 1, "message": error_string(erc)}]}
 	return {"ok": true}
+
+
+func _headless_scene_get(rid: Variant, pd: Dictionary) -> Dictionary:
+	var g := _Ops.scene_get(str(pd.get("path", "")))
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "scene.path_not_found")), int(g.get("code", -33500)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_scene_create(rid: Variant, pd: Dictionary) -> Dictionary:
+	var g := _Ops.scene_create(pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "scene.create_failed")), int(g.get("code", -33510)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_scene_delete(rid: Variant, pd: Dictionary) -> Dictionary:
+	var path := _Ops.resolve_path(str(pd.get("path", "")))
+	if not _Ops.scene_exists(path):
+		return _wr_err(rid, _err(-32603, "scene.path_not_found", -33500, "", {"path": path}))
+	var abs := _Ops.globalize(path)
+	var sz := FileAccess.get_file_as_bytes(abs).size()
+	DirAccess.remove_absolute(abs)
+	return _wr_ok(rid, {"deleted": true, "path": path, "freed_bytes": sz})
+
+
+func _headless_node(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_node_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "node.error")), int(g.get("code", -33501)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_catalog(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g: Dictionary = _Ops.headless_script_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "catalog.error")), int(g.get("code", -33101)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))

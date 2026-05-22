@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://terravolt.dev/schemas/common/Selector.json",
+  "title": "Selector",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["node_path"],
+      "properties": { "node_path": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["uid"],
+      "properties": { "uid": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["query"],
+      "properties": {
+        "query": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "group": { "type": "string" },
+            "name_pattern": { "type": "string" },
+            "in_subtree_of": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

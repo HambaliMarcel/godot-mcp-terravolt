@@ -71,6 +71,41 @@
         "Run `npm run catalog:sync`, restart MCP router and the Godot editor.",
         "If using a submodule copy of the addon, regenerate `_generated` catalog GD."
       ]
+    },
+    "scene.path_not_found": {
+      "hint": "The requested `.tscn` / `.scn` path does not exist under the project.",
+      "steps": [
+        "Run `scene.list` to enumerate available scenes.",
+        "Use `scene.create` to create the file, or fix the path to an existing `res://` resource."
+      ]
+    },
+    "editor.not_available": {
+      "hint": "This method requires the Godot editor with the TerraVolt addon connected.",
+      "steps": [
+        "Open the project in Godot and enable the TerraVolt MCP addon (WebSocket :6505).",
+        "For headless-capable alternatives, use `scene.create` / `project.set_settings` via `headless.start_project`."
+      ]
+    },
+    "editor.no_active_scene": {
+      "hint": "No scene is open in the editor (or headless has no edited root).",
+      "steps": [
+        "Call `scene.open` in the editor first.",
+        "Or use `scene.get` / `scene.create` for file-level operations without an active tab."
+      ]
+    },
+    "node.property_unknown": {
+      "hint": "The property name is not on the node's property list.",
+      "steps": [
+        "Call `node.get` with `properties: \"all\"` to inspect valid keys.",
+        "Use exported/script variable names exactly as shown in the editor."
+      ]
+    },
+    "expression.forbidden_identifier": {
+      "hint": "Sandboxed expressions cannot reference OS, File, DirAccess, etc.",
+      "steps": [
+        "Rewrite the expression using only node properties and literals.",
+        "See `packages/shared/security/expression_denylist.json`."
+      ]
     }
   },
   "byCode": {
@@ -112,6 +147,18 @@
     "-33817": {
       "hint": "`headless.disallowed` (-33817)",
       "steps": ["See symbol `headless.disallowed`."]
+    },
+    "-33400": {
+      "hint": "`editor.not_available` (-33400): Editor-only method in headless mode.",
+      "steps": ["See symbol `editor.not_available`."]
+    },
+    "-33500": {
+      "hint": "`scene.path_not_found` (-33500)",
+      "steps": ["See symbol `scene.path_not_found`."]
+    },
+    "-33580": {
+      "hint": "`editor.no_active_scene` (-33580)",
+      "steps": ["See symbol `editor.no_active_scene`."]
     }
   }
 }

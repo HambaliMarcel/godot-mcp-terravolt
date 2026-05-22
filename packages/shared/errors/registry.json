@@ -37,6 +37,285 @@
       "since": "0.1.0"
     },
     {
+      "code": -33400,
+      "symbol": "editor.not_available",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Open the Godot editor with the TerraVolt addon enabled.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33500,
+      "symbol": "scene.path_not_found",
+      "category": "scene",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the res:// path exists and matches project layout.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33501,
+      "symbol": "scene.node_path_not_found",
+      "category": "scene",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use scene.get_tree to inspect valid NodePaths.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33510,
+      "symbol": "scene.create_failed",
+      "category": "scene",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Check root_type is a valid Node subclass and output path is writable.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33511,
+      "symbol": "scene.save_failed",
+      "category": "scene",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Ensure a scene tab is active and the path is valid.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33520,
+      "symbol": "node.type_unknown",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use a registered Godot class name that extends Node.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33521,
+      "symbol": "node.cycle_detected",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Cannot reparent a node under itself or its descendants.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33522,
+      "symbol": "node.name_collision",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Choose a unique sibling name.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33523,
+      "symbol": "node.property_unknown",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use node.get to inspect valid property names.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33524,
+      "symbol": "node.value_type_mismatch",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Ensure the value type matches the property hint.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33525,
+      "symbol": "selector.no_match",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Relax the selector or use expect=many.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33526,
+      "symbol": "node.script_already_attached",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Detach first or pass replace_existing=true.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33527,
+      "symbol": "expression.parse_error",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Fix expression syntax.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33528,
+      "symbol": "expression.execute_error",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Expression failed at runtime.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33529,
+      "symbol": "expression.forbidden_identifier",
+      "category": "node",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Expression uses a blocked identifier (OS, File, DirAccess, …).",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33530,
+      "symbol": "script.path_not_found",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the script res:// path exists.",
+      "since": "0.4.0"
+    },
+    {
+      "code": -33105,
+      "symbol": "protocol.idempotency_conflict",
+      "category": "protocol",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Refresh revision via script.read and retry with matching if_match.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33600,
+      "symbol": "script.path_not_found",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the script res:// path exists.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33601,
+      "symbol": "script.path_exists",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use overwrite mode or pick a new path.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33602,
+      "symbol": "script.patch_conflict",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Re-read the file and rebuild hunks against current lines.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33603,
+      "symbol": "script.dotnet_unavailable",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use a Godot .NET build and install .NET 8 SDK for C# validation.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33604,
+      "symbol": "script.validate_timeout",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Increase validate_timeout_ms or split the script.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33605,
+      "symbol": "script.rename_conflict",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Target symbol already exists in scope.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33606,
+      "symbol": "script.formatter_missing",
+      "category": "script",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Install gdformat via pipx install gdtoolkit.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33700,
+      "symbol": "signal.name_exists",
+      "category": "signal",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Pick a unique signal name.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33701,
+      "symbol": "signal.unknown",
+      "category": "signal",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Declare the signal first or check spelling.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33702,
+      "symbol": "signal.target_unknown",
+      "category": "signal",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the target NodePath exists in the active scene.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33703,
+      "symbol": "signal.method_unknown",
+      "category": "signal",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the target method exists on the listener node.",
+      "since": "0.5.0"
+    },
+    {
+      "code": -33550,
+      "symbol": "resource.dependency_block",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Remove dependents first or pass force=true on scene.delete.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33580,
+      "symbol": "editor.no_active_scene",
+      "category": "editor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Open a scene in the editor or use scene.create in headless mode.",
+      "since": "0.3.0"
+    },
+    {
+      "code": -33590,
+      "symbol": "project.setting_locked",
+      "category": "project",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Pass confirm_high_risk=true for locked project settings keys.",
+      "since": "0.3.0"
+    },
+    {
       "code": -33810,
       "symbol": "headless.binary_missing",
       "category": "headless",

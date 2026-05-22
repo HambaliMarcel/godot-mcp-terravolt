@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.2.0",
+  "catalog_version": "0.5.0",
   "methods": [
     {
       "method": "ping",
@@ -93,6 +93,2136 @@
       "mutates": false,
       "errorCodes": [],
       "examples": []
+    },
+    {
+      "method": "scene.list",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Enumerate .tscn/.scn files under res://.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string"
+          },
+          "include_imported": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.list",
+        "title": "scene.list",
+        "description": "Enumerate .tscn/.scn files under res://."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.get",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Scene metadata without instantiating.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.get",
+        "title": "scene.get",
+        "description": "Scene metadata without instantiating."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.open",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Open a scene tab in the editor.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "focus": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.open",
+        "title": "scene.open",
+        "description": "Open a scene tab in the editor."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.path_not_found", "editor.not_available"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "scene.close",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Close the current or named scene tab.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "save_first": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.close",
+        "title": "scene.close",
+        "description": "Close the current or named scene tab."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["editor.no_active_scene", "editor.not_available"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "scene.save",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Save the currently-edited scene.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.save",
+        "title": "scene.save",
+        "description": "Save the currently-edited scene."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.save_failed", "editor.no_active_scene"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "scene.save_as",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Save the current scene under a new path.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["new_path"],
+        "properties": {
+          "new_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.save_as",
+        "title": "scene.save_as",
+        "description": "Save the current scene under a new path."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.save_failed"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "scene.create",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Create a new scene file with a typed root node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "root_type": {
+            "type": "string"
+          },
+          "root_name": {
+            "type": "string"
+          },
+          "children": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.create",
+        "title": "scene.create",
+        "description": "Create a new scene file with a typed root node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.create_failed", "node.type_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.delete",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Delete a scene file with optional dependency guard.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "force": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.delete",
+        "title": "scene.delete",
+        "description": "Delete a scene file with optional dependency guard."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.path_not_found", "resource.dependency_block"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.instantiate",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Instantiate a PackedScene under a parent node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source_path", "parent_path"],
+        "properties": {
+          "source_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "edit_state": {
+            "type": "string",
+            "enum": ["instance", "disabled", "main"]
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.instantiate",
+        "title": "scene.instantiate",
+        "description": "Instantiate a PackedScene under a parent node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.path_not_found", "scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.pack",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Pack a subtree into a new .tscn file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["root_path", "output_path"],
+        "properties": {
+          "root_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "recursive_owner": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.pack",
+        "title": "scene.pack",
+        "description": "Pack a subtree into a new .tscn file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.create_failed", "editor.no_active_scene"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.get_tree",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Return the active scene tree (envelope-aware).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "envelope": {
+            "type": "string",
+            "enum": ["summary", "raw"]
+          },
+          "max_depth": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_children_per_node": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.get_tree",
+        "title": "scene.get_tree",
+        "description": "Return the active scene tree (envelope-aware)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["editor.no_active_scene"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.get_subtree",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Return a subtree from a NodePath.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["root_path"],
+        "properties": {
+          "root_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "envelope": {
+            "type": "string",
+            "enum": ["summary", "raw"]
+          },
+          "max_depth": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_children_per_node": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.get_subtree",
+        "title": "scene.get_subtree",
+        "description": "Return a subtree from a NodePath."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.find_in_tree",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Search the active scene for nodes matching a selector.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["selector"],
+        "properties": {
+          "selector": {
+            "type": "object"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "include_props": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.find_in_tree",
+        "title": "scene.find_in_tree",
+        "description": "Search the active scene for nodes matching a selector."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.validate",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Static integrity check for a scene or the active tree.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string"
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.validate",
+        "title": "scene.validate",
+        "description": "Static integrity check for a scene or the active tree."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene.replace",
+      "category": "scene",
+      "since": "0.3.0",
+      "description": "Replace a subtree with another scene or synthesized node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["at_path", "with"],
+        "properties": {
+          "at_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "with": {
+            "type": "object"
+          },
+          "keep_groups": {
+            "type": "boolean"
+          },
+          "keep_owner": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene.replace",
+        "title": "scene.replace",
+        "description": "Replace a subtree with another scene or synthesized node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found", "scene.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.info",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Consolidated project metadata.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.info",
+        "title": "project.info",
+        "description": "Consolidated project metadata."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.get_settings",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Read one or many project settings.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "group": {
+            "type": "string"
+          },
+          "include_defaults": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.get_settings",
+        "title": "project.get_settings",
+        "description": "Read one or many project settings."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.set_settings",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Patch project settings.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["patch"],
+        "properties": {
+          "patch": {
+            "type": "object"
+          },
+          "save": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.set_settings",
+        "title": "project.set_settings",
+        "description": "Patch project settings."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["project.setting_locked"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.list_autoloads",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "List every autoload entry.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.list_autoloads",
+        "title": "project.list_autoloads",
+        "description": "List every autoload entry."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.add_autoload",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Register an autoload singleton.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "path"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "singleton": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.add_autoload",
+        "title": "project.add_autoload",
+        "description": "Register an autoload singleton."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["node.type_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.remove_autoload",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Unregister an autoload.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.remove_autoload",
+        "title": "project.remove_autoload",
+        "description": "Unregister an autoload."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "project.set_main_scene",
+      "category": "project",
+      "since": "0.3.0",
+      "description": "Set application/run/main_scene.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "validate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "project.set_main_scene",
+        "title": "project.set_main_scene",
+        "description": "Set application/run/main_scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.add",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Add a new node under a parent in the active scene.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["parent_path", "type"],
+        "properties": {
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "index": {
+            "type": "integer"
+          },
+          "unique_name": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.add",
+        "title": "node.add",
+        "description": "Add a new node under a parent in the active scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["node.type_unknown", "scene.node_path_not_found", "node.name_collision"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.delete",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Remove a node and its subtree from the active scene.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "defer": {
+            "type": "boolean"
+          },
+          "free_resources": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.delete",
+        "title": "node.delete",
+        "description": "Remove a node and its subtree from the active scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.duplicate",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Clone a node under a target parent.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source_path"],
+        "properties": {
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "new_name": {
+            "type": "string"
+          },
+          "flags": {
+            "type": "object"
+          },
+          "shallow": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.duplicate",
+        "title": "node.duplicate",
+        "description": "Clone a node under a target parent."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.move",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Reparent a node and/or change sibling order.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source_path", "target_parent_path"],
+        "properties": {
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "index": {
+            "type": "integer"
+          },
+          "keep_global_transform": {
+            "type": "boolean"
+          },
+          "new_name": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.move",
+        "title": "node.move",
+        "description": "Reparent a node and/or change sibling order."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found", "node.cycle_detected"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.rename",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Rename a node and optionally rewrite NodePath references.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "new_name"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "new_name": {
+            "type": "string"
+          },
+          "update_references": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.rename",
+        "title": "node.rename",
+        "description": "Rename a node and optionally rewrite NodePath references."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found", "node.name_collision"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.get",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Read node identity and serializable properties.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "properties": {},
+          "include_hint": {
+            "type": "boolean"
+          },
+          "include_export": {
+            "type": "boolean"
+          },
+          "envelope": {
+            "type": "string",
+            "enum": ["summary", "raw"]
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.get",
+        "title": "node.get",
+        "description": "Read node identity and serializable properties."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.modify",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Polymorphic mutator: property writes, groups, meta, signal connect/disconnect in one call.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "ops"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ops": {
+            "type": "array"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "if_match": {},
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.modify",
+        "title": "node.modify",
+        "description": "Polymorphic mutator: property writes, groups, meta, signal connect/disconnect in one call."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "node.property_unknown",
+        "node.value_type_mismatch",
+        "scene.node_path_not_found",
+        "protocol.invalid_params"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.list_groups",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "List groups for a node or recursively for the scene.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recursive": {
+            "type": "boolean"
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["scene", "active"]
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.list_groups",
+        "title": "node.list_groups",
+        "description": "List groups for a node or recursively for the scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.list_signals",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Enumerate declared signals and connections on a node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "include_inherited": {
+            "type": "boolean"
+          },
+          "include_connections": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.list_signals",
+        "title": "node.list_signals",
+        "description": "Enumerate declared signals and connections on a node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.find_path",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Resolve a Selector to concrete NodePaths.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["selector"],
+        "properties": {
+          "selector": {
+            "type": "object"
+          },
+          "expect": {
+            "type": "string",
+            "enum": ["single", "many"]
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.find_path",
+        "title": "node.find_path",
+        "description": "Resolve a Selector to concrete NodePaths."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["selector.no_match"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.is_a",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Type query: class or script inheritance check.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "type"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.is_a",
+        "title": "node.is_a",
+        "description": "Type query: class or script inheritance check."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.attach_script",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Attach a script resource to a node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "script_path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "script_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "replace_existing": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.attach_script",
+        "title": "node.attach_script",
+        "description": "Attach a script resource to a node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "node.script_already_attached",
+        "script.path_not_found",
+        "scene.node_path_not_found"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.detach_script",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Remove the script from a node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.detach_script",
+        "title": "node.detach_script",
+        "description": "Remove the script from a node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene.node_path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "node.evaluate_expression",
+      "category": "node",
+      "since": "0.4.0",
+      "description": "Evaluate a sandboxed Godot Expression against a node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "expression"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expression": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "object"
+          },
+          "scene_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "node.evaluate_expression",
+        "title": "node.evaluate_expression",
+        "description": "Evaluate a sandboxed Godot Expression against a node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [
+        "expression.parse_error",
+        "expression.execute_error",
+        "expression.forbidden_identifier",
+        "scene.node_path_not_found"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.list",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Enumerate script files under res://.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string"
+          },
+          "include_addon": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.list",
+        "title": "script.list",
+        "description": "Enumerate script files under res://."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.read",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Read script contents (envelope-aware).",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "range": {
+            "type": "object"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.read",
+        "title": "script.read",
+        "description": "Read script contents (envelope-aware)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["script.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.write",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Create or overwrite a script file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "content"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "content": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.write",
+        "title": "script.write",
+        "description": "Create or overwrite a script file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "script.path_not_found",
+        "script.path_exists",
+        "protocol.idempotency_conflict"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.patch",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Apply line-range hunks to a script.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "hunks"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "hunks": {
+            "type": "array"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.patch",
+        "title": "script.patch",
+        "description": "Apply line-range hunks to a script."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["script.path_not_found", "script.patch_conflict"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.validate",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Compile-check a script.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "mode": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.validate",
+        "title": "script.validate",
+        "description": "Compile-check a script."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [
+        "script.path_not_found",
+        "script.dotnet_unavailable",
+        "script.validate_timeout"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.find_usages",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Find symbol references across the project.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["symbol"],
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "case_sensitive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.find_usages",
+        "title": "script.find_usages",
+        "description": "Find symbol references across the project."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "script.rename_symbol",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Rename a symbol project-wide.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to", "kind"],
+        "properties": {
+          "scope": {},
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "exclude": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.rename_symbol",
+        "title": "script.rename_symbol",
+        "description": "Rename a symbol project-wide."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["script.rename_conflict"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "script.format",
+      "category": "script",
+      "since": "0.5.0",
+      "description": "Format a script file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "in_place": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "script.format",
+        "title": "script.format",
+        "description": "Format a script file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["script.path_not_found", "script.formatter_missing"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.list_declared",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "List user-declared signals on a node's script.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.list_declared",
+        "title": "signal.list_declared",
+        "description": "List user-declared signals on a node's script."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.add_declaration",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Add a signal declaration to a script.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["script_path", "signal_name"],
+        "properties": {
+          "script_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "args": {
+            "type": "array"
+          },
+          "doc_comment": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.add_declaration",
+        "title": "signal.add_declaration",
+        "description": "Add a signal declaration to a script."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["script.path_not_found", "signal.name_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.remove_declaration",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Remove a signal declaration from a script.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["script_path", "signal_name"],
+        "properties": {
+          "script_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "signal_name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.remove_declaration",
+        "title": "signal.remove_declaration",
+        "description": "Remove a signal declaration from a script."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["script.path_not_found", "signal.unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.connect",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Connect a signal to a target method.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from_path", "signal_name", "to_path", "method"],
+        "properties": {
+          "from_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "to_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string"
+          },
+          "flags": {
+            "type": "integer"
+          },
+          "binds": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.connect",
+        "title": "signal.connect",
+        "description": "Connect a signal to a target method."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["signal.unknown", "signal.target_unknown", "signal.method_unknown"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "signal.disconnect",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Disconnect a signal connection.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from_path", "signal_name", "to_path", "method"],
+        "properties": {
+          "from_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "to_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.disconnect",
+        "title": "signal.disconnect",
+        "description": "Disconnect a signal connection."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "signal.list_connections",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "List outgoing signal connections on a node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signal_name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.list_connections",
+        "title": "signal.list_connections",
+        "description": "List outgoing signal connections on a node."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.find_listeners",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Reverse lookup for signal listeners.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from_path", "signal_name"],
+        "properties": {
+          "from_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signal_name": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.find_listeners",
+        "title": "signal.find_listeners",
+        "description": "Reverse lookup for signal listeners."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "signal.bulk_connect",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Connect many signal pairs atomically.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["connections"],
+        "properties": {
+          "connections": {
+            "type": "array"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.bulk_connect",
+        "title": "signal.bulk_connect",
+        "description": "Connect many signal pairs atomically."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "signal.bulk_disconnect",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Disconnect many signal pairs.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["connections"],
+        "properties": {
+          "connections": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.bulk_disconnect",
+        "title": "signal.bulk_disconnect",
+        "description": "Disconnect many signal pairs."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "signal.graph",
+      "category": "signal",
+      "since": "0.5.0",
+      "description": "Export the signal graph as JSON/Mermaid/DOT.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          },
+          "include_engine_signals": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "signal.graph",
+        "title": "signal.graph",
+        "description": "Export the signal graph as JSON/Mermaid/DOT."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://terravolt.dev/schemas/common/ScenePath.json",
+  "title": "ScenePath",
+  "type": "string",
+  "minLength": 1,
+  "description": "Godot scene resource path (res://...) or absolute filesystem path."
+}

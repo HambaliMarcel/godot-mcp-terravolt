@@ -10,6 +10,33 @@ The shared method catalog tracks its own `catalog_version` inside
 
 ## [Unreleased]
 
+### Added — Phase 3 catalog (task 13)
+
+- **`script.*`** (8 methods) and **`signal.*`** (10 methods) in catalog **`0.5.0`**:
+  `handlers/script.gd`, `handlers/signal.gd`, `handlers/script_helpers.gd`.
+- Sandboxed validation parity for `.gd`; `signal.graph` exports JSON/Mermaid/DOT.
+- Integration test `tests/integration/script/script_signal_headless.test.mjs`.
+- Catalog docs: `docs/catalog/script.md`, `docs/catalog/signal.md`.
+
+### Added — Phase 3 catalog (task 12)
+
+- **`node.*`** (14 methods) in catalog **`0.4.0`**: `handlers/node.gd` with polymorphic
+  `node.modify`, sandboxed `node.evaluate_expression`, UndoRedo on editor mutators.
+- Shared schemas `PropertyDict.json`, `SignalConnection.json`; expression denylist at
+  `packages/shared/security/expression_denylist.json`.
+- Headless node ops in `headless/catalog_ops.gd`; integration test
+  `tests/integration/node/node_headless.test.mjs`.
+- Catalog doc `docs/catalog/node.md`.
+
+### Added — Phase 3 catalog (task 11)
+
+- **`scene.*`** (15 methods) and **`project.*`** (7 methods) in catalog **`0.3.0`**:
+  `handlers/scene.gd`, `handlers/project.gd`, shared schemas `ScenePath.json` / `Selector.json`.
+- Headless TCP parity for read/write scene and project ops via `headless/catalog_ops.gd`.
+- Integration tests: `tests/integration/scene/scene_headless.test.mjs`,
+  `tests/integration/project/project_headless.test.mjs`; fixture `tests/_fixtures/minimal_3d/`.
+- Catalog docs: `docs/catalog/scene.md`, `docs/catalog/project.md`.
+
 ### Added
 
 - **§07** Headless Godot fallback: TCP-backed `headless_driver.gd`, `HeadlessCoordinator`, MCP tools
@@ -28,7 +55,11 @@ The shared method catalog tracks its own `catalog_version` inside
 
 ### Changed
 
-- `packages/shared/methods/registry.json` `catalog_version` → `0.2.0`.
+- `packages/shared/methods/registry.json` `catalog_version` → `0.5.0` (18 new methods: 8 `script.*`,
+  10 `signal.*`).
+- `packages/shared/methods/registry.json` `catalog_version` → `0.4.0` (14 new `node.*` methods).
+- `packages/shared/methods/registry.json` `catalog_version` → `0.3.0` (22 new daemon methods: 15
+  `scene.*`, 7 `project.*`).
 - `resolveGodotBinary` now scans `%LOCALAPPDATA%\Programs\Godot\**`, `%USERPROFILE%\Tools\Godot\**`,
   `C:\Program Files\Godot`, and `C:\Tools\Godot` on Windows; prefers the `_console.exe` variant for
   stable stderr capture.
