@@ -1,4 +1,4 @@
-# Reference repositories — TerraVolt map
+# Reference repositories — Terravolt map
 
 Local clones live under **`references/`** (gitignored). Use this page as the **mental model** before diving into Graphify/GitNexus on those trees.
 
@@ -52,7 +52,7 @@ Re-index respects **`.gitignore` for cloning** (`references/` stayed untracked) 
 | *(missing here)* `server/` | Paid bundle: Node MCP server (`build/index.js`), CLI (`cli.js`), modes `--lite`, `--minimal`, `--3d`. |
 | `docs/`, `llms.txt` | Orientation for LLMs / users. |
 
-**Takeaway for TerraVolt:** richest **editor-integrated** surface; study **addon structure** + JSON-RPC framing; Node server closed-source in public tree.
+**Takeaway for Terravolt:** richest **editor-integrated** surface; study **addon structure** + JSON-RPC framing; Node server closed-source in public tree.
 
 ---
 
@@ -100,7 +100,7 @@ AI client ◄── MCP (stdio) ──► mcp-server ◄── WebSocket ──�
 
 ## Suggested learning order (agents & humans)
 
-1. Read this map + **`docs/context/context-map.md`** (still prioritizes first-party TerraVolt code).
+1. Read this map + **`docs/context/context-map.md`** (still prioritizes first-party Terravolt code).
 2. **Compare architectures:** skim `addons/` in **Pro vs tom** side-by-side; then read **Coding-Solo `src/`** entrypoints.
 3. **GitNexus:** `gitnexus_query`, `gitnexus_context` on symbols like `websocket`, `MCP`, `tool` within `references/godot-mcp-tomyud1/mcp-server/`.
 4. **Graphify:** `py -3 -m graphify query "how does MCP connect to Godot"` (after `intel:graphify`).

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Link / unlink TerraVolt Godot addon into a dev project’s `addons/terravolt_mcp`.
+ * Link / unlink Terravolt Godot addon into a dev project’s `addons/terravolt_mcp`.
  *
  * - `TERRAVOLT_GODOT_PROJECT` absolute path (preferred), or
  * - `~/.terravolt-mcp-dev.json`: `{ "godotProject": "H:/absolute/path/DevProject" }`

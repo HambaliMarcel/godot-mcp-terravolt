@@ -1,7 +1,7 @@
 # Headless-only workflow
 
 When you cannot (or do not want to) keep the Godot editor open — typically CI, remote agents, or
-large refactors — TerraVolt’s **§07 headless fallback** keeps a subset of MCP tools alive.
+large refactors — Terravolt’s **§07 headless fallback** keeps a subset of MCP tools alive.
 
 ## Prerequisites
 

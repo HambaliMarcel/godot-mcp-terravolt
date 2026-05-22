@@ -10,7 +10,7 @@ config/features=PackedStringArray("4.0")
 
 [autoload]
 
-TerraVoltRuntimeBridge="res://autoloads/runtime_bridge.gd"
+TerravoltRuntimeBridge="res://autoloads/runtime_bridge.gd"
 
 [terravolt_mcp]
 

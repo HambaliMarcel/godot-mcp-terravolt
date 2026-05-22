@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltAssetHelpers
+class_name TerravoltAssetHelpers
 
 ## Shared asset pipeline helpers (task 15).
 

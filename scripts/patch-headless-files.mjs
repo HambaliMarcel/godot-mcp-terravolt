@@ -44,6 +44,6 @@ const mcp = "h:/Godot MCP Marcel/packages/mcp-server/src/transport/mcp_stdio.ts"
 let ms = fs.readFileSync(mcp, "utf8");
 ms = ms.replace(
   /\s*instructions:\s*\n\s*["][^"]*["],\n/,
-  `\n      instructions:\n        \"TerraVolt bridges Cursor MCP stdio to editor (:6505) and optional Godot headless TCP (task 07).\",\n`,
+  `\n      instructions:\n        \"Terravolt bridges Cursor MCP stdio to editor (:6505) and optional Godot headless TCP (task 07).\",\n`,
 );
 fs.writeFileSync(mcp, ms);

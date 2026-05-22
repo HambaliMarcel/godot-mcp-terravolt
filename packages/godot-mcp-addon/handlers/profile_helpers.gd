@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltProfileHelpers
+class_name TerravoltProfileHelpers
 
 ## profile.* helpers (task 23).
 

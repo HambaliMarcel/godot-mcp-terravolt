@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltHandlerUtils
+class_name TerravoltHandlerUtils
 
 ## Shared helpers for category handlers (task 11+).
 
@@ -26,7 +26,7 @@ static func require_editor(dispatcher: Variant) -> Dictionary:
 			"error": _Err.tv_rpc_error(
 				_Err.EDITOR_NOT_AVAILABLE,
 				"editor.not_available",
-				"Open the Godot editor with the TerraVolt addon enabled, or use a headless-capable method.",
+				"Open the Godot editor with the Terravolt addon enabled, or use a headless-capable method.",
 				{}
 			),
 		}

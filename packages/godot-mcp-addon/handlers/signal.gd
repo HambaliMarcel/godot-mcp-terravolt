@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltSignalHandlers
+class_name TerravoltSignalHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Scripts := preload("./script_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -132,8 +132,8 @@ func _h_connect(ctx: Dictionary) -> Dictionary:
 	if to == null:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SIGNAL_TARGET_UNKNOWN,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SIGNAL_TARGET_UNKNOWN,
 				"signal.target_unknown",
 				"Target node not found.",
 				{"to_path": str(p.get("to_path", ""))}
@@ -146,8 +146,8 @@ func _h_connect(ctx: Dictionary) -> Dictionary:
 	if not to.has_method(method):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SIGNAL_METHOD_UNKNOWN,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SIGNAL_METHOD_UNKNOWN,
 				"signal.method_unknown",
 				"Target method not found.",
 				{"method": method}
@@ -293,8 +293,8 @@ func _h_graph(ctx: Dictionary) -> Dictionary:
 func _err_script_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SCRIPT_PATH_NOT_FOUND_CAT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.SCRIPT_PATH_NOT_FOUND_CAT,
 			"script.path_not_found",
 			"Script not found.",
 			{"path": path}
@@ -305,8 +305,8 @@ func _err_script_not_found(path: String) -> Dictionary:
 func _err_signal_exists(name: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SIGNAL_NAME_EXISTS,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.SIGNAL_NAME_EXISTS,
 			"signal.name_exists",
 			"Signal already declared.",
 			{"signal_name": name}
@@ -317,8 +317,8 @@ func _err_signal_exists(name: String) -> Dictionary:
 func _err_signal_unknown(name: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SIGNAL_UNKNOWN,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.SIGNAL_UNKNOWN,
 			"signal.unknown",
 			"Signal not found.",
 			{"signal_name": name}

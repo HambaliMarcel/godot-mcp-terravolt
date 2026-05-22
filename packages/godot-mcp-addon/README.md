@@ -1,4 +1,4 @@
-# TerraVolt MCP — Godot 4 addon
+# Terravolt MCP — Godot 4 addon
 
 Editor plugin exposing a **localhost WebSocket JSON-RPC daemon** (`:6505` by default) plus
 structured logging to **`user://mcp_log.txt`**.
@@ -50,8 +50,8 @@ npm run addon:unlink
 
 ## Editor usage
 
-Enable **TerraVolt MCP** in **Project Settings → Plugins**. Use the bottom panel **TerraVolt MCP**
-for status, ledger, Start/Stop/Restart, log actions. TerraVolt settings namespace:
+Enable **Terravolt MCP** in **Project Settings → Plugins**. Use the bottom panel **Terravolt MCP**
+for status, ledger, Start/Stop/Restart, log actions. Terravolt settings namespace:
 `terravolt_mcp/...` (port, bind, heartbeat, logging, etc.).
 
 ## Phase map
@@ -62,7 +62,7 @@ Implemented per **`docs/tasklist/02`**–**`04`**:
 - **`03`** — `TCPServer` + `WebSocketPeer` listener, single-client policy, heartbeat. Default
   `heartbeat_mode=control_frame` drives native WS ping via `WebSocketPeer.set_heartbeat_interval`;
   use `rpc` or `both` for JSON-RPC `server.heartbeat` notifications plus data-idle timeout pruning.
-- **`04`** — JSON-RPC 2.0 dispatch, TerraVolt error envelope, rotation logger, RPC plumbing methods
+- **`04`** — JSON-RPC 2.0 dispatch, Terravolt error envelope, rotation logger, RPC plumbing methods
   (`ping`, `echo`, `server.info`, `log.tail`, …).
 
 ## Files
@@ -104,5 +104,5 @@ Supported methods: `ping`, `server.info`, `server.list_methods`, `script.validat
 
 Aligned with
 **[`docs/tasklist/00-foundation-and-contracts.md`](../../docs/tasklist/00-foundation-and-contracts.md)
-§0.3**: port **`6505`**, log **`user://mcp_log.txt`**, TerraVolt application error bucket
+§0.3**: port **`6505`**, log **`user://mcp_log.txt`**, Terravolt application error bucket
 **`-33000`…`-33999`**.

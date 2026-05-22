@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltParticleHandlers
+class_name TerravoltParticleHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Parts := preload("./particle_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -217,8 +217,8 @@ func _h_list_presets(ctx: Dictionary) -> Dictionary:
 func _err_material_missing(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_PATH_NOT_FOUND,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_PATH_NOT_FOUND,
 			"resource.path_not_found",
 			"Particle process material not found.",
 			{"path": path},
@@ -229,8 +229,8 @@ func _err_material_missing(path: String) -> Dictionary:
 func _err_idempotency() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
 			"protocol.idempotency_conflict",
 			"if_match revision does not match current material revision.",
 			{},
@@ -241,8 +241,8 @@ func _err_idempotency() -> Dictionary:
 func _err_preset_unknown(name: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.ASSET_PRESET_UNKNOWN,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.ASSET_PRESET_UNKNOWN,
 			"asset.preset_unknown",
 			"Unknown particle preset name.",
 			{"preset": name},
@@ -253,8 +253,8 @@ func _err_preset_unknown(name: String) -> Dictionary:
 func _err_gpu_unsupported() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PARTICLE_GPU_UNSUPPORTED,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PARTICLE_GPU_UNSUPPORTED,
 			"particle.gpu_unsupported",
 			"GPU particles unavailable; fell back to CPU.",
 			{},

@@ -1,6 +1,6 @@
 ﻿extends SceneTree
 
-## Headless TerraVolt driver: newline-delimited JSON-RPC over TCP loopback.
+## Headless Terravolt driver: newline-delimited JSON-RPC over TCP loopback.
 ## Self-contained — no `res://` dependency, so it works from any
 ## `--path <project>` regardless of whether the addon is mounted.
 ##

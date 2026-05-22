@@ -1,9 +1,9 @@
 # Vibe-coding walkthrough — 2D platformer slice
 
 Scripted demo for task 25: build a playable 2D platformer slice from an empty Godot project using
-TerraVolt MCP prompts only (macros + a handful of mutators).
+Terravolt MCP prompts only (macros + a handful of mutators).
 
-**Prerequisites:** Godot 4.6+, TerraVolt MCP wired in Cursor (`tools.health` → `pass: true`).
+**Prerequisites:** Godot 4.6+, Terravolt MCP wired in Cursor (`tools.health` → `pass: true`).
 
 ---
 

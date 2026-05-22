@@ -51,7 +51,7 @@ After this file:
 | Constant                                 | Value                      | From        |
 | ---------------------------------------- | -------------------------- | ----------- |
 | JSON-RPC version literal                 | `"2.0"`                    | `00 §0.3`   |
-| Application error code range (TerraVolt) | `-33000` to `-33999`       | `00 §0.3`   |
+| Application error code range (Terravolt) | `-33000` to `-33999`       | `00 §0.3`   |
 | Log file path                            | `user://mcp_log.txt`       | `00 §0.3`   |
 | Log rotation default size                | `5 MiB` (i.e., `5120 KiB`) | `02 §2.6.6` |
 
@@ -79,7 +79,7 @@ must:
 5. Reject invalid params (schema mismatch) with `-32602 Invalid params`. Schema validation happens
    here (server-side) **and** in the router (client-side) so the error is doubly enforced. See
    §4.6.6.
-6. Internal handler exceptions ⇒ `-32603 Internal error`, but **prefer mapping to a TerraVolt
+6. Internal handler exceptions ⇒ `-32603 Internal error`, but **prefer mapping to a Terravolt
    application code** in the `-33xxx` range with a precise category.
 7. Parse failures (malformed JSON) ⇒ `-32700 Parse error`. Whenever the failed message has no
    recoverable `id`, the response uses `id: null` per spec.
@@ -151,7 +151,7 @@ These are the **only** methods implemented in this file. All other methods land 
 
 ### 4.6.5 Application error code registry
 
-The TerraVolt application code range is `-33000` to `-33999`. Codes are stable: once assigned, they
+The Terravolt application code range is `-33000` to `-33999`. Codes are stable: once assigned, they
 never change meaning.
 
 | Code     | Category    | Symbol                             | Recoverable?              | Meaning                                                                                               |
@@ -235,7 +235,7 @@ Every error returned over JSON-RPC follows this envelope shape (described in pro
 - `code` — JSON-RPC numeric code (spec or `-33xxx`).
 - `message` — short human-readable string.
 - `data`:
-  - `app_code` — TerraVolt symbol (e.g., `scene.node_path_not_found`).
+  - `app_code` — Terravolt symbol (e.g., `scene.node_path_not_found`).
   - `category` — `transport`, `protocol`, `auth`, `editor`, `scene`, `script`, `resource`,
     `runtime`, `context`, `internal`, `dispatch`.
   - `recoverable` — bool.
@@ -446,11 +446,11 @@ Per `tutorials/scripting/debug/overview_of_debugging_tools.rst` §"Debug project
 
 - Godot's own debug subcategories: `Settings`, `File Logging`, `GDScript`, `Shader Language`,
   `Canvas Items`, `Shapes`.
-- TerraVolt's logger is **independent** of those (so as not to clobber a project's existing debug
+- Terravolt's logger is **independent** of those (so as not to clobber a project's existing debug
   settings) but it should mirror Godot's `debug/file_logging/*` keys (where applicable) for
   consistency. Document mapping in the addon README.
 - Godot's built-in `--log-file <path>` CLI flag (per `command_line_tutorial.rst`) overrides
-  stderr/stdout logging for the engine. TerraVolt's logger is _additional_ (structured JSON to a
+  stderr/stdout logging for the engine. Terravolt's logger is _additional_ (structured JSON to a
   known file); the user can still set `--log-file` for engine-level logging.
 
 ### A.4 The `breakpoint` keyword
@@ -458,20 +458,20 @@ Per `tutorials/scripting/debug/overview_of_debugging_tools.rst` §"Debug project
 Per `overview_of_debugging_tools.rst`:
 
 - GDScript has a `breakpoint` keyword that triggers a debugger break when execution reaches it.
-- Useful **inside TerraVolt addon dev**: drop `breakpoint` in a handler to inspect from the editor's
+- Useful **inside Terravolt addon dev**: drop `breakpoint` in a handler to inspect from the editor's
   debugger panel.
 - **Never** ship `breakpoint` in committed handler code — add an ESLint-equivalent GDScript lint
   rule (or a CI grep) for `^[\\s]*breakpoint\\b` and fail PRs.
 
 ### A.5 Debug-category project setting alignment
 
-When TerraVolt opens its logger, also honor (read-only):
+When Terravolt opens its logger, also honor (read-only):
 
 - `application/run/print_header` (whether to print engine startup banner).
 - `debug/file_logging/enable_file_logging` (engine's own file logging on/off).
 - `debug/settings/stdout/verbose_stdout` (engine verbose flag).
 
-The dock's debug panel may surface these for the developer's convenience; TerraVolt does not modify
+The dock's debug panel may surface these for the developer's convenience; Terravolt does not modify
 them.
 
 ### A.6 JSON-RPC parsing in GDScript

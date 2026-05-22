@@ -1,4 +1,4 @@
-# TerraVolt MCP — examples
+# Terravolt MCP — examples
 
 Standalone Godot projects you can open and run to verify the engine half of the toolchain works on
 your machine. None of these are used by the integration test suite; they exist purely for hands-on

@@ -1,6 +1,6 @@
 # `@terravolt/godot-mcp` — Node MCP router
 
-The TerraVolt MCP server. **Stdio** in (Cursor / any MCP client) and **WebSocket JSON-RPC 2.0** out
+The Terravolt MCP server. **Stdio** in (Cursor / any MCP client) and **WebSocket JSON-RPC 2.0** out
 to the Godot daemon on `127.0.0.1:6505`, with a `--headless` TCP fallback for the registry rows that
 mark `headlessFallback: true`.
 

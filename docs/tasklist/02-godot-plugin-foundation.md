@@ -42,7 +42,7 @@ When this file is done, the addon will:
 5. Provide a _placeholder_ logging surface (`04` will give it the real `user://mcp_log.txt` writer).
 6. Expose a small **Editor dock or panel** (a single status row at minimum) so the developer can see
    addon state (idle / listening / connected / error) without poking the debugger.
-7. Provide a **settings panel** entry (under `Project Settings → Plugins → TerraVolt MCP`) for any
+7. Provide a **settings panel** entry (under `Project Settings → Plugins → Terravolt MCP`) for any
    user-configurable knobs (heartbeat interval, port override later, log verbosity).
 8. Provide **two npm scripts** at the repo root for development convenience: `addon:link` and
    `addon:unlink`.
@@ -65,12 +65,12 @@ No new constants introduced.
 
 ### 2.6.1 Choose and lock the addon identity
 
-1. **Plugin name:** `TerraVolt MCP` (display) / `terravolt_mcp` (machine).
+1. **Plugin name:** `Terravolt MCP` (display) / `terravolt_mcp` (machine).
 2. **Plugin script path** (relative to the addon root): `main.gd` (entrypoint extending
    `EditorPlugin`).
 3. **Plugin entry class:** `MainPlugin` (or similarly distinctive — recorded in the addon README).
 4. **Plugin version:** start at `0.1.0`. Bumps are coordinated with the Node router release in `10`.
-5. **Author:** TerraVolt / Marcel (project owner). Recorded once in `plugin.cfg`.
+5. **Author:** Terravolt / Marcel (project owner). Recorded once in `plugin.cfg`.
 
 ### 2.6.2 `plugin.cfg` plan
 
@@ -81,7 +81,7 @@ project's `addons/` and confirm Godot's plugin manager recognizes it before comm
 Fields, conceptually:
 
 - Plugin display name.
-- Description ("MCP bridge daemon for TerraVolt Godot MCP. Hosts a WebSocket on port 6505, logs to
+- Description ("MCP bridge daemon for Terravolt Godot MCP. Hosts a WebSocket on port 6505, logs to
   `user://mcp_log.txt`.").
 - Author.
 - Version.
@@ -101,12 +101,12 @@ Responsibilities of `main.gd`:
    - Register the addon's **dock or status panel** in the editor (lower-right dock or status bar —
      decision logged in §2.6.7).
    - Register the addon's **project settings** entries (see §2.6.6).
-   - Emit a single line through the logging facade: "TerraVolt MCP addon entered tree."
+   - Emit a single line through the logging facade: "Terravolt MCP addon entered tree."
 3. On `_exit_tree`:
    - Tear down the MCP server controller cleanly (placeholder no-op for now; `03` adds the real
      `close()` path).
    - Unregister UI panels and project settings.
-   - Emit a single log line: "TerraVolt MCP addon exited tree."
+   - Emit a single log line: "Terravolt MCP addon exited tree."
 4. On `_ready` (or whichever Godot lifecycle hook fits best):
    - Honor the **"start on editor open" project setting** (default _enabled_). When enabled, kick
      off the MCP server controller's `start()` (placeholder for now).
@@ -166,7 +166,7 @@ A short checklist captured in the addon README documents how to verify.
 
 ### 2.6.6 Project settings entries
 
-Register the following under `Project Settings → General → Plugins → TerraVolt MCP` (or a dedicated
+Register the following under `Project Settings → General → Plugins → Terravolt MCP` (or a dedicated
 subgroup chosen here):
 
 | Setting                                      | Type            | Default              | Purpose                                                                                 |
@@ -192,7 +192,7 @@ All settings should be wired so changing them via the editor UI either takes eff
 Decide which surface is best:
 
 - **Option A — Bottom-panel dock** (recommended): a single tab next to the Output / Debugger panels,
-  labeled "TerraVolt MCP."
+  labeled "Terravolt MCP."
 - **Option B — Editor toolbar button** that opens a popup with status.
 
 Pick **A** for v1. The dock shows:
@@ -255,7 +255,7 @@ tests yet; the framework is set up so `10` can hit the ground running.
 Before declaring `02` complete, run:
 
 1. Enable the addon in the dev project. Confirm no errors in the editor output panel.
-2. Open the TerraVolt MCP dock. Confirm static labels render.
+2. Open the Terravolt MCP dock. Confirm static labels render.
 3. Change a project setting (e.g., flip `auto_start_on_open`). Confirm the setting persists across
    editor restarts.
 4. Disable the addon. Confirm dock removes itself; no errors.
@@ -335,10 +335,10 @@ States the dock surface in §2.6.7 must render verbatim.
 ## 2.10 Verification plan
 
 1. Run `npm run addon:link` against a Godot dev project. Open the project.
-2. Enable `TerraVolt MCP` plugin. Confirm dock appears, status badge shows `Idle` (or
+2. Enable `Terravolt MCP` plugin. Confirm dock appears, status badge shows `Idle` (or
    `Listening (placeholder)`).
 3. Confirm log lines from `_enter_tree` show in the editor output.
-4. Toggle `Project Settings → … → TerraVolt MCP → server/auto_start_on_open` off. Disable plugin.
+4. Toggle `Project Settings → … → Terravolt MCP → server/auto_start_on_open` off. Disable plugin.
    Re-enable. Confirm dock now shows `Idle`.
 5. Change `server/port` to `6506` (non-default). Confirm the dock listen address updates (server
    doesn't actually bind yet, but the displayed value should reflect the setting).
@@ -386,9 +386,9 @@ Per `making_plugins.rst`:
 ```text
 [plugin]
 
-name="TerraVolt MCP"
-description="MCP bridge daemon for TerraVolt Godot MCP. Hosts a WebSocket on port 6505, logs to user://mcp_log.txt."
-author="Marcel / TerraVolt"
+name="Terravolt MCP"
+description="MCP bridge daemon for Terravolt Godot MCP. Hosts a WebSocket on port 6505, logs to user://mcp_log.txt."
+author="Marcel / Terravolt"
 version="0.1.0"
 script="main.gd"
 ```
@@ -437,7 +437,7 @@ Per `making_plugins.rst` §"A custom dock":
     editor container (toolbar, inspector, etc.).
   - `add_tool_menu_item(label, callable)` — adds an entry under **Project → Tools → …**, an extra
     entry point.
-- The user can drag/rearrange/float docks; persist nothing about position in TerraVolt code — Godot
+- The user can drag/rearrange/float docks; persist nothing about position in Terravolt code — Godot
   stores it.
 
 ### A.4 Project settings registration
@@ -464,7 +464,7 @@ Per `tutorials/scripting/singletons_autoload.rst` §"Registering autoloads/singl
 - The autoload is added before any user scene loads, so the addon's autoload may be the first node
   in the runtime tree under `/root/`.
 - **Warning** from the docs: never `free()` or `queue_free()` an autoload at runtime — the engine
-  will crash. TerraVolt's `project.remove_autoload` tool must be marked `requiresEditor: true`.
+  will crash. Terravolt's `project.remove_autoload` tool must be marked `requiresEditor: true`.
 
 ### A.6 Editor data & path resolution
 
@@ -484,7 +484,7 @@ Per `data_paths.rst`:
 Per `command_line_tutorial.rst` Run Options table:
 
 - `godot --recovery-mode` disables tool scripts, editor plugins, GDExtensions — i.e., **disables
-  TerraVolt MCP**. If a user reports the addon "missing" after a crash, the troubleshooting guide
+  Terravolt MCP**. If a user reports the addon "missing" after a crash, the troubleshooting guide
   must point at recovery mode as a first check.
 
 ### A.8 Addon test framework — narrow the choice
@@ -512,4 +512,4 @@ Per the project's stated criteria (Decisions Log §0.13):
 | Non-`@tool` GDScript loaded by addon is silently empty.                                          | `making_plugins.rst` warning.      | Lint enforces `@tool` at line 1 of every `.gd` under `packages/godot-mcp-addon/`.                         |
 | `add_autoload_singleton` from `_enter_tree` instead of `_enable_plugin` fires every editor open. | `making_plugins.rst` §autoloads.   | Always use the `_enable_plugin`/`_disable_plugin` pair.                                                   |
 | Dock layout collisions with other plugins.                                                       | Empirical.                         | Default slot reserved (`DOCK_SLOT_LEFT_BR`); document fallback to bottom-panel tab if conflicts reported. |
-| Project Settings property hints absent ⇒ Inspector shows raw fields.                             | `class_ProjectSettings` reference. | Every TerraVolt setting must include `property_info` with `hint`/`hint_string`.                           |
+| Project Settings property hints absent ⇒ Inspector shows raw fields.                             | `class_ProjectSettings` reference. | Every Terravolt setting must include `property_info` with `hint`/`hint_string`.                           |

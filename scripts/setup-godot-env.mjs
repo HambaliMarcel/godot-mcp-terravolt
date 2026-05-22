@@ -166,7 +166,7 @@ function main() {
   writeFileSync(outPath, `${JSON.stringify(profile, null, 2)}\n`, "utf8");
 
   if (!opts.quiet) {
-    process.stdout.write(`# TerraVolt Godot env -> ${outPath}\n`);
+    process.stdout.write(`# Terravolt Godot env -> ${outPath}\n`);
     if (platform() === "win32") {
       process.stdout.write(`$env:TERRAVOLT_GODOT_BINARY = "${binary}"\n`);
     } else {

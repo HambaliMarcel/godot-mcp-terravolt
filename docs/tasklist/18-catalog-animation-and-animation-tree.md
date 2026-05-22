@@ -2,7 +2,7 @@
 
 > Animation in Godot lives in two layers: classic `AnimationPlayer` + `Animation` resources
 > (track-based keyframes) and the newer `AnimationTree` graph (state machines, blend trees,
-> transitions). TerraVolt exposes both with dedicated tools so the agent can wire idle/run/jump
+> transitions). Terravolt exposes both with dedicated tools so the agent can wire idle/run/jump
 > state machines, key transform tracks, tweak easing, and audit blend weights.
 
 ---

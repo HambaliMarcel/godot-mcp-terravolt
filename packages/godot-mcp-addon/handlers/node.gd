@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltNodeHandlers
+class_name TerravoltNodeHandlers
 
 const _Utils := preload("./handler_utils.gd")
 
@@ -10,12 +10,12 @@ const _EXPR_DENY := PackedStringArray([
 	"ClassDB", "GDScript", "Expression",
 ])
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _transient_roots: Array[Node] = []
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -107,7 +107,7 @@ func _h_add(ctx: Dictionary) -> Dictionary:
 		child.unique_name_in_owner = true
 	if OS.has_feature("editor") and _Utils.editor_plugin(_dispatcher):
 		var ur := _Utils.editor_plugin(_dispatcher).get_undo_redo()
-		ur.create_action("TerraVolt node.add")
+		ur.create_action("Terravolt node.add")
 		ur.add_do_method(parent, "add_child", child, true)
 		ur.add_do_method(child, "set_owner", scene_root)
 		if p.has("index"):
@@ -147,7 +147,7 @@ func _h_delete(ctx: Dictionary) -> Dictionary:
 	var defer := bool(p.get("defer", true))
 	if OS.has_feature("editor") and _Utils.editor_plugin(_dispatcher):
 		var ur := _Utils.editor_plugin(_dispatcher).get_undo_redo()
-		ur.create_action("TerraVolt node.delete")
+		ur.create_action("Terravolt node.delete")
 		ur.add_do_method(node.get_parent(), "remove_child", node)
 		if defer:
 			ur.add_do_method(node, "queue_free")
@@ -230,8 +230,8 @@ func _h_move(ctx: Dictionary) -> Dictionary:
 	if _Utils.is_ancestor(node, target_parent):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.NODE_CYCLE_DETECTED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.NODE_CYCLE_DETECTED,
 				"node.cycle_detected",
 				"Cannot reparent under self or descendant.",
 				{"source_path": source_path, "target_parent_path": target_parent_path}
@@ -342,7 +342,7 @@ func _h_modify(ctx: Dictionary) -> Dictionary:
 	var ur: Variant = null
 	if not dry_run and OS.has_feature("editor") and _Utils.editor_plugin(_dispatcher):
 		ur = _Utils.editor_plugin(_dispatcher).get_undo_redo()
-		ur.create_action("TerraVolt node.modify")
+		ur.create_action("Terravolt node.modify")
 	for op_variant in ops:
 		if typeof(op_variant) != TYPE_DICTIONARY:
 			skipped.append({"op": op_variant, "reason": "invalid_op"})
@@ -492,8 +492,8 @@ func _h_find_path(ctx: Dictionary) -> Dictionary:
 	if expect == "single" and paths.size() != 1:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SELECTOR_NO_MATCH,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SELECTOR_NO_MATCH,
 				"selector.no_match",
 				"Expected exactly one match.",
 				{"count": paths.size()}
@@ -533,8 +533,8 @@ func _h_attach_script(ctx: Dictionary) -> Dictionary:
 	if node.get_script() != null and not bool(p.get("replace_existing", false)):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.NODE_SCRIPT_ALREADY_ATTACHED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.NODE_SCRIPT_ALREADY_ATTACHED,
 				"node.script_already_attached",
 				"Node already has a script.",
 				{"path": path}
@@ -544,8 +544,8 @@ func _h_attach_script(ctx: Dictionary) -> Dictionary:
 	if not ResourceLoader.exists(script_path):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCRIPT_PATH_NOT_FOUND,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCRIPT_PATH_NOT_FOUND,
 				"script.path_not_found",
 				"Script file not found.",
 				{"script_path": script_path}
@@ -608,8 +608,8 @@ func _h_evaluate_expression(ctx: Dictionary) -> Dictionary:
 	if not forbidden.is_empty():
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EXPRESSION_FORBIDDEN_IDENTIFIER,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EXPRESSION_FORBIDDEN_IDENTIFIER,
 				"expression.forbidden_identifier",
 				"Expression uses a forbidden identifier.",
 				{"identifier": forbidden}
@@ -626,8 +626,8 @@ func _h_evaluate_expression(ctx: Dictionary) -> Dictionary:
 	if err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EXPRESSION_PARSE_ERROR,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EXPRESSION_PARSE_ERROR,
 				"expression.parse_error",
 				error_string(err),
 				{}
@@ -637,8 +637,8 @@ func _h_evaluate_expression(ctx: Dictionary) -> Dictionary:
 	if ex.has_execute_failed():
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EXPRESSION_EXECUTE_ERROR,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EXPRESSION_EXECUTE_ERROR,
 				"expression.execute_error",
 				"Expression execution failed.",
 				{}
@@ -650,8 +650,8 @@ func _h_evaluate_expression(ctx: Dictionary) -> Dictionary:
 func _err_name_collision(name: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.NODE_NAME_COLLISION,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.NODE_NAME_COLLISION,
 			"node.name_collision",
 			"Sibling name already taken.",
 			{"name": name}

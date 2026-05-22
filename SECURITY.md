@@ -46,7 +46,7 @@ not exploit issues beyond verification.
   intent in CI configuration.
 - **Log redaction.** Daemon logs may include user-supplied content (script source from `script.set`,
   asset paths). Enable `terravolt_mcp/logging/redact = true` for shared environments.
-- **Telemetry.** TerraVolt does **not** phone home. All metrics live in `tools.metrics` /
+- **Telemetry.** Terravolt does **not** phone home. All metrics live in `tools.metrics` /
   `tools.bottlenecks` and never leave the host.
 - **Supply chain.** npm dependencies are pinned in `packages/mcp-server/package.json`; release CI
   must run `npm audit --production` and fail on high/critical advisories.

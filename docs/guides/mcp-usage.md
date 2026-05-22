@@ -1,4 +1,4 @@
-# Using the TerraVolt MCP
+# Using the Terravolt MCP
 
 This guide is the hands-on counterpart to `docs/guides/tools-reference.md`. It shows the **shapes**
 Cursor (and any MCP-compatible client) sees over stdio JSON-RPC, plus a programmatic Node example

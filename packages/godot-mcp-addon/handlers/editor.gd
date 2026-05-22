@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltEditorHandlers
+class_name TerravoltEditorHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Res := preload("./resource_helpers.gd")
@@ -13,12 +13,12 @@ const _DENY_FS := ["FileAccess", "DirAccess", "File.", "OS.open", "OS.create", "
 const _DENY_NET := ["HTTPClient", "HTTPRequest", "Socket", "StreamPeer", "TCPServer", "UDPServer"]
 const _DENY_ALWAYS := ["Engine.execute", "create_process", "shell_open", "JavaScriptBridge"]
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _layout_dir := "user://terravolt_layouts/"
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -79,10 +79,10 @@ func _h_screenshot(_ctx: Dictionary) -> Dictionary:
 	if target == "main":
 		var base := iface.get_base_control()
 		if base == null:
-			return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Editor base control unavailable.", {})}
+			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Editor base control unavailable.", {})}
 		var tex := base.get_viewport().get_texture()
 		if tex == null:
-			return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Could not grab editor viewport.", {})}
+			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Could not grab editor viewport.", {})}
 		img = tex.get_image()
 	else:
 		var vp_count := iface.get_editor_viewport_count()
@@ -95,7 +95,7 @@ func _h_screenshot(_ctx: Dictionary) -> Dictionary:
 		else:
 			vp = iface.get_editor_viewport_2d(idx)
 		if vp == null:
-			return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Viewport target unavailable.", {})}
+			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Viewport target unavailable.", {})}
 		img = vp.get_texture().get_image()
 	var sz: Variant = p.get("size")
 	if typeof(sz) == TYPE_DICTIONARY:
@@ -107,8 +107,8 @@ func _h_screenshot(_ctx: Dictionary) -> Dictionary:
 	if png.size() > SCREENSHOT_MAX_KB * 1024:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_SCREENSHOT_TOO_LARGE,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EDITOR_SCREENSHOT_TOO_LARGE,
 				"editor.screenshot_too_large",
 				"Screenshot exceeds %d KB cap." % SCREENSHOT_MAX_KB,
 				{"bytes": png.size(), "max_kb": SCREENSHOT_MAX_KB}
@@ -135,10 +135,10 @@ func _h_focus_node(_ctx: Dictionary) -> Dictionary:
 	var node_path := str(p.get("path", ""))
 	var root := iface.get_edited_scene_root()
 	if root == null:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.EDITOR_NO_ACTIVE_SCENE, "editor.no_active_scene", "No edited scene.", {})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NO_ACTIVE_SCENE, "editor.no_active_scene", "No edited scene.", {})}
 	var node := root.get_node_or_null(NodePath(node_path))
 	if node == null:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.SCENE_NODE_PATH_NOT_FOUND, "scene.node_path_not_found", "Node not found.", {"path": node_path})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.SCENE_NODE_PATH_NOT_FOUND, "scene.node_path_not_found", "Node not found.", {"path": node_path})}
 	iface.get_selection().clear()
 	iface.get_selection().add_node(node)
 	iface.edit_node(node)
@@ -152,10 +152,10 @@ func _h_open_script(_ctx: Dictionary) -> Dictionary:
 	var p := _Utils.params_dict(_ctx)
 	var path := _Res.resolve_path(str(p.get("path", "")))
 	if not ResourceLoader.exists(path):
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.SCRIPT_PATH_NOT_FOUND, "script.path_not_found", "Script missing.", {"path": path})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.SCRIPT_PATH_NOT_FOUND, "script.path_not_found", "Script missing.", {"path": path})}
 	var res := load(path)
 	if res == null:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.SCRIPT_PATH_NOT_FOUND, "script.path_not_found", "Could not load script.", {"path": path})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.SCRIPT_PATH_NOT_FOUND, "script.path_not_found", "Could not load script.", {"path": path})}
 	_iface().edit_resource(res)
 	var line := int(p.get("line", 1))
 	if line > 0:
@@ -207,8 +207,8 @@ func _h_execute_script(_ctx: Dictionary) -> Dictionary:
 	if not denied.is_empty():
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_SCRIPT_FORBIDDEN_API,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EDITOR_SCRIPT_FORBIDDEN_API,
 				"editor.script_forbidden_api",
 				"Source uses denied identifiers.",
 				{"denied": denied, "source": source}
@@ -224,8 +224,8 @@ func _h_execute_script(_ctx: Dictionary) -> Dictionary:
 	if Time.get_ticks_msec() - started > timeout_ms:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_SCRIPT_TIMEOUT,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EDITOR_SCRIPT_TIMEOUT,
 				"editor.script_timeout",
 				"Script reload exceeded timeout.",
 				{"timeout_ms": timeout_ms}
@@ -240,8 +240,8 @@ func _h_execute_script(_ctx: Dictionary) -> Dictionary:
 	if Time.get_ticks_msec() - started > timeout_ms:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_SCRIPT_TIMEOUT,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.EDITOR_SCRIPT_TIMEOUT,
 				"editor.script_timeout",
 				"Script execution exceeded timeout.",
 				{"timeout_ms": timeout_ms}
@@ -342,8 +342,8 @@ func _h_layout(_ctx: Dictionary) -> Dictionary:
 			if cfg.save(path) != OK:
 				return {
 					"ok": false,
-					"error": TerraVoltErrors.tv_rpc_error(
-						TerraVoltErrors.EDITOR_UNSUPPORTED_IN_VERSION,
+					"error": TerravoltErrors.tv_rpc_error(
+						TerravoltErrors.EDITOR_UNSUPPORTED_IN_VERSION,
 						"editor.unsupported_in_version",
 						"Could not persist layout snapshot.",
 						{"action": action}
@@ -353,7 +353,7 @@ func _h_layout(_ctx: Dictionary) -> Dictionary:
 		"load":
 			var lpath := _layout_dir.path_join("%s.cfg" % name)
 			if not FileAccess.file_exists(lpath):
-				return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.EDITOR_UNSUPPORTED_IN_VERSION, "editor.unsupported_in_version", "Layout not found.", {"name": name})}
+				return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_UNSUPPORTED_IN_VERSION, "editor.unsupported_in_version", "Layout not found.", {"name": name})}
 			return {"ok": true, "result": {"loaded": true, "name": name}}
 		"delete":
 			var dpath := _layout_dir.path_join("%s.cfg" % name)
@@ -361,4 +361,4 @@ func _h_layout(_ctx: Dictionary) -> Dictionary:
 				DirAccess.remove_absolute(dpath)
 			return {"ok": true, "result": {"deleted": true, "name": name}}
 		_:
-			return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.PROTOCOL_INVALID_PARAMS, "protocol.invalid_params", "Unknown layout action.", {"action": action})}
+			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.PROTOCOL_INVALID_PARAMS, "protocol.invalid_params", "Unknown layout action.", {"action": action})}

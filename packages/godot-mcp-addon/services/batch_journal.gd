@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltBatchJournal
+class_name TerravoltBatchJournal
 
 ## Persistent preview/apply/revert journal (task 15).
 

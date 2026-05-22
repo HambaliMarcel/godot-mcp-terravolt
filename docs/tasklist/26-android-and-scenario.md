@@ -1,6 +1,6 @@
 # 26 — Android deploy chain + scenario orchestration
 
-> Phase 4 closeout: the only remaining feature surface from `godot-mcp-pro` that TerraVolt did not
+> Phase 4 closeout: the only remaining feature surface from `godot-mcp-pro` that Terravolt did not
 > have (Android deploy chain via `adb`) plus a scenario-style runner that orchestrates ordered
 > input/wait/assert/screenshot steps. Hits the 222-tool stretch goal from
 > [`docs/tasklist/25-catalog-completion-gate.md`](./25-catalog-completion-gate.md).

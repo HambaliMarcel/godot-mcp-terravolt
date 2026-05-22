@@ -35,7 +35,7 @@ When this file is done:
    artifact) showing an empty Godot project turned into a playable 2D platformer slice via prompts
    only.
 4. **1.0 release candidate** tagged `v0.17.0-rc.1`.
-5. **Linear issues opened** for known gaps and tracked under a milestone "TerraVolt 1.0 — Catalog
+5. **Linear issues opened** for known gaps and tracked under a milestone "Terravolt 1.0 — Catalog
    Complete".
 
 ## 25.5 Operating constants used
@@ -94,7 +94,7 @@ No new constants. References existing ones across files.
 - [ ] `docs/coverage/catalog-coverage.md` generated from the registry — lists tool count per
       category, parity flags, total.
 - [ ] `docs/coverage/parity-matrix.md` lists every feature from the comparison screenshot and
-      TerraVolt's status (✅ live, ⏳ planned, ❌ not planned, with reasoning).
+      Terravolt's status (✅ live, ⏳ planned, ❌ not planned, with reasoning).
 - [ ] `docs/guides/use-cases.md` updated to reflect the full ~222 tool surface (refresh from the
       13-tool draft).
 - [ ] `docs/guides/quick-start.md` updated with at least one example call per category.
@@ -142,12 +142,12 @@ No new constants. References existing ones across files.
 ### 25.6.9 Parity vs reference plugin (the screenshot)
 
 Use `docs/coverage/parity-matrix.md`. The agent must list each row from the screenshot's feature
-list and mark TerraVolt's status. At gate time:
+list and mark Terravolt's status. At gate time:
 
-- [ ] Tool surface count is **≥** the reference's claim (~163 → TerraVolt ≥ 209).
+- [ ] Tool surface count is **≥** the reference's claim (~163 → Terravolt ≥ 209).
 - [ ] Every reference feature listed under "Key Features" is either ✅ live or ⏳ on the 1.0
       milestone with an open Linear issue.
-- [ ] TerraVolt's **differentiators** explicitly listed: `tools.health` + catalog SHA pinning,
+- [ ] Terravolt's **differentiators** explicitly listed: `tools.health` + catalog SHA pinning,
       `tools.metrics` + `tools.bottlenecks`, `headless` fallback, `context.fetch_raw`, AJV schema
       validation, structured `autoHeal`, two-phase batch refactor with revert, deterministic
       `resource.export_json`, `macro.*` scaffolders.
@@ -172,7 +172,7 @@ list and mark TerraVolt's status. At gate time:
 - [ ] Every checkbox in 25.6.\* is checked off in the PR that lands this file's deliverables.
 - [ ] CI `coverage:report` step passes with `total_tools ≥ 200`.
 - [ ] `v0.17.0-rc.1` tag is created on `master` after the PR merges.
-- [ ] Linear milestone "TerraVolt 1.0 — Catalog Complete" contains zero open blockers.
+- [ ] Linear milestone "Terravolt 1.0 — Catalog Complete" contains zero open blockers.
 
 ## 25.10 Verification plan
 
@@ -202,7 +202,7 @@ list and mark TerraVolt's status. At gate time:
 
 - [ ] Tag `v0.17.0-rc.1` (RC track defined in `10 §10.7`).
 - [ ] Trigger release pipeline per `10`.
-- [ ] Open a Linear "TerraVolt 1.0 — Public" milestone targeting `v1.0.0` once any soak issues are
+- [ ] Open a Linear "Terravolt 1.0 — Public" milestone targeting `v1.0.0` once any soak issues are
       resolved.
 
 ## 25.13 Commit template
@@ -226,7 +226,7 @@ Refs: docs/tasklist/25-catalog-completion-gate.md, docs/tasklist/10-quality-test
   points Cursor at it via `.cursor/mcp.json`.
 - They prompt: _"Boot a new Godot project at ~/Games/CaveDive, scaffold a 2D platformer player, a
   wave spawner, a HUD, and a main menu. Save as the main scene. Test it headless."_
-- TerraVolt:
+- Terravolt:
   1. `tools.health` confirms wiring.
   2. `macro.basic_2d_level` → level file.
   3. `macro.player_controller_2d` → player.

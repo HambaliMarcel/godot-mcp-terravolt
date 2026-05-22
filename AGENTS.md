@@ -5,7 +5,7 @@
 [**`docs/srs/execution_roadmap.md`**](docs/srs/execution_roadmap.md) before writing
 transport/tooling.
 
-TerraVolt **godot-mcp-terravolt** uses **GitNexus** for codebase intelligence when JS/TS (and
+Terravolt **godot-mcp-terravolt** uses **GitNexus** for codebase intelligence when JS/TS (and
 analyzed) sources land here.
 
 ## Activate / refresh

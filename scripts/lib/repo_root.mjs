@@ -1,5 +1,5 @@
 /**
- * Locate the TerraVolt monorepo root by probing `packages/shared/methods/registry.json`,
+ * Locate the Terravolt monorepo root by probing `packages/shared/methods/registry.json`,
  * compatible with callers under `scripts/`, routers under `packages/mcp-server/dist/`, etc.
  */
 import { existsSync } from "node:fs";

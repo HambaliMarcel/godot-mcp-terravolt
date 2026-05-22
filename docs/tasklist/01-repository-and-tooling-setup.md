@@ -239,7 +239,7 @@ Update or confirm:
 4. `docs/context/context-map.md` — append `docs/tasklist/` to the "Suggested order when loading
    context" list, between "SRS" and "Product intent."
 5. `AGENTS.md` (and the analogous `CLAUDE.md`) — append a one-paragraph note: "When implementing
-   TerraVolt MCP, follow `docs/tasklist/00`–`10` in order. Do not skip phase gates."
+   Terravolt MCP, follow `docs/tasklist/00`–`10` in order. Do not skip phase gates."
 6. `packages/README.md` — point at `docs/tasklist/` and the SRS.
 
 ### 1.6.9 Reference indexing freshness
@@ -419,7 +419,7 @@ Per `making_plugins.rst`:
 
 - The editor has a built-in dialog: **Project → Project Settings → Plugins tab → Create New
   Plugin**. It generates `addons/<subfolder>/plugin.cfg` and the entry script in one click.
-- TerraVolt's dev workflow:
+- Terravolt's dev workflow:
   1. Open the throwaway Godot dev project.
   2. Use the dialog _once_ to bootstrap the initial `plugin.cfg` and `main.gd` shape.
   3. Move the generated files into `packages/godot-mcp-addon/` (or rely on `addon:link` symlink so

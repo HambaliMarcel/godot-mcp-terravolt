@@ -1,15 +1,15 @@
 @tool
 extends MarginContainer
-class_name TerraVoltStatusDock
+class_name TerravoltStatusDock
 
 ## Bottom-panel UI for MCP transport + dispatcher (tasks 02–04).
 
 signal restart_hint_changed(needs_restart: bool)
 
 var plugin: EditorPlugin
-var logger: TerraVoltLogger
-var dispatcher: TerraVoltDispatcher
-var server: TerraVoltMCPServer
+var logger: TerravoltLogger
+var dispatcher: TerravoltDispatcher
+var server: TerravoltMCPServer
 
 var _state_lbl: Label
 var _addr_lbl: Label
@@ -22,9 +22,9 @@ var _log_body: RichTextLabel
 
 func setup(
 	p_plugin: EditorPlugin,
-	p_logger: TerraVoltLogger,
-	p_dispatcher: TerraVoltDispatcher,
-	p_server: TerraVoltMCPServer
+	p_logger: TerravoltLogger,
+	p_dispatcher: TerravoltDispatcher,
+	p_server: TerravoltMCPServer
 ) -> void:
 	plugin = p_plugin
 	logger = p_logger
@@ -130,13 +130,13 @@ func _build_ui() -> void:
 
 func _state_name(s: int) -> String:
 	match s:
-		TerraVoltMCPServer.ConnState.IDLE:
+		TerravoltMCPServer.ConnState.IDLE:
 			return "Idle"
-		TerraVoltMCPServer.ConnState.LISTENING:
+		TerravoltMCPServer.ConnState.LISTENING:
 			return "Listening"
-		TerraVoltMCPServer.ConnState.CLIENT_CONNECTED:
+		TerravoltMCPServer.ConnState.CLIENT_CONNECTED:
 			return "Client connected"
-		TerraVoltMCPServer.ConnState.ERROR:
+		TerravoltMCPServer.ConnState.ERROR:
 			return "Error"
 	return "Unknown"
 

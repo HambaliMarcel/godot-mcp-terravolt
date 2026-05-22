@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltShaderHandlers
+class_name TerravoltShaderHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Res := preload("./resource_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -180,8 +180,8 @@ func _scan() -> void:
 func _err_path_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_PATH_NOT_FOUND,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_PATH_NOT_FOUND,
 			"resource.path_not_found",
 			"Shader or material path not found.",
 			{"path": path}
@@ -192,8 +192,8 @@ func _err_path_not_found(path: String) -> Dictionary:
 func _err_path_exists(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_PATH_EXISTS,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_PATH_EXISTS,
 			"resource.path_exists",
 			"Shader file already exists.",
 			{"path": path}
@@ -204,8 +204,8 @@ func _err_path_exists(path: String) -> Dictionary:
 func _err_idempotency() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
 			"protocol.idempotency_conflict",
 			"Revision mismatch (if_match).",
 			{}

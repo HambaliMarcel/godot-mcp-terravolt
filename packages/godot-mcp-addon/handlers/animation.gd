@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltAnimationHandlers
+class_name TerravoltAnimationHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Anim := preload("./animation_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _transient_roots: Array[Node] = []
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -145,23 +145,23 @@ func _player_from_params(p: Dictionary) -> Dictionary:
 
 
 func _err(code: int, symbol: String, hint: String, ctx: Dictionary = {}) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(code, symbol, hint, ctx)}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(code, symbol, hint, ctx)}
 
 
 func _err_player_not_found(path: String) -> Dictionary:
-	return _err(TerraVoltErrors.ANIMATION_PLAYER_NOT_FOUND, "animation.player_not_found", "AnimationPlayer not found.", {"player_path": path})
+	return _err(TerravoltErrors.ANIMATION_PLAYER_NOT_FOUND, "animation.player_not_found", "AnimationPlayer not found.", {"player_path": path})
 
 
 func _map_anim_error(got: Dictionary) -> Dictionary:
-	var code: int = int(got.get("code", TerraVoltErrors.ANIMATION_UNKNOWN))
+	var code: int = int(got.get("code", TerravoltErrors.ANIMATION_UNKNOWN))
 	match code:
-		TerraVoltErrors.ANIMATION_NAME_EXISTS:
+		TerravoltErrors.ANIMATION_NAME_EXISTS:
 			return _err(code, "animation.name_exists", "Animation name already exists in library.", {})
-		TerraVoltErrors.ANIMATION_TRACK_KIND_UNKNOWN:
+		TerravoltErrors.ANIMATION_TRACK_KIND_UNKNOWN:
 			return _err(code, "animation.track_kind_unknown", "Unknown animation track type.", {})
-		TerraVoltErrors.ANIMATION_EXPORTER_MISSING:
+		TerravoltErrors.ANIMATION_EXPORTER_MISSING:
 			return _err(code, "animation.exporter_missing", "FFmpeg not available for requested format.", got)
-		TerraVoltErrors.ANIMATION_PLAYER_NOT_FOUND:
+		TerravoltErrors.ANIMATION_PLAYER_NOT_FOUND:
 			return _err_player_not_found("")
 		_:
 			return _err(code, "animation.unknown", "Animation or library not found.", {})

@@ -1,4 +1,4 @@
-# Software requirements — TerraVolt Godot MCP
+# Software requirements — Terravolt Godot MCP
 
 Formal intent: **dual-stack** MCP for Godot 4.x (`.NET-compatible` target), exceeding aggregate
 patterns from **`youichi-uda/godot-mcp-pro`**, **`tomyud1/godot-mcp`**, and

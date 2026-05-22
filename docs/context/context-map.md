@@ -1,4 +1,4 @@
-# Context map — TerraVolt Godot MCP
+# Context map — Terravolt Godot MCP
 
 Suggested order when loading context:
 
@@ -12,7 +12,7 @@ Suggested order when loading context:
 5. **Upstream references** — `references/godot-mcp-*` MCP clones are indexed for discovery;
    **`references/godot-docs/`** is the official Sphinx manual (local clone +
    [docs online](https://docs.godotengine.org/)) — intentionally **omitted from GitNexus/Graphify**
-   in this workspace to avoid doc-tree noise. Never treat reference trees as shipped TerraVolt
+   in this workspace to avoid doc-tree noise. Never treat reference trees as shipped Terravolt
    product.
 
 Prefer **paths** and short excerpts over pasting entire generated JSON.

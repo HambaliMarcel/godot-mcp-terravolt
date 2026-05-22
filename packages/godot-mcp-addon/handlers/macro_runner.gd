@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltMacroRunner
+class_name TerravoltMacroRunner
 
 ## Per-macro execution state (task 24) — separate file so scene ops can call catalog_ops.
 

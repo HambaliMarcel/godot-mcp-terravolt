@@ -10,7 +10,7 @@ Why this exists:
 
 Requirements:
   - Environment variable LINEAR_API_KEY (from https://linear.app/settings/api)
-  - Writes go to Terravolt / project "Godot MCP TerraVolt — build roadmap"
+  - Writes go to Terravolt / project "Godot MCP Terravolt — build roadmap"
 
 Defaults here match identifiers returned when the epics were created via MCP:
 

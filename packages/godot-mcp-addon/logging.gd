@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltLogger
+class_name TerravoltLogger
 
 ## Structured JSON-lines logger with ring buffer + rotation.
 
@@ -200,7 +200,7 @@ func _rotate_if_needed(abs_path: String) -> void:
 		if FileAccess.file_exists(prev):
 			var err := DirAccess.rename_absolute(prev, nxt)
 			if err != OK:
-				push_warning("[TerraVolt MCP] log rotate rename failed: %s" % str(err))
+				push_warning("[Terravolt MCP] log rotate rename failed: %s" % str(err))
 
 	var first_arc := dir.path_join("%s.1.txt" % stem)
 	DirAccess.rename_absolute(abs_path, first_arc)
@@ -210,7 +210,7 @@ static func mkdir_for_file(path_abs: String) -> void:
 	var dir := path_abs.get_base_dir()
 	var err := DirAccess.make_dir_recursive_absolute(dir)
 	if err != OK and err != ERR_ALREADY_EXISTS:
-		push_warning("[TerraVolt MCP] mkdir log dir failed (%s): %s" % [dir, err])
+		push_warning("[Terravolt MCP] mkdir log dir failed (%s): %s" % [dir, err])
 
 
 func _try_write_line(line: String) -> void:
@@ -225,7 +225,7 @@ func _try_write_line(line: String) -> void:
 	if f == null:
 		f = FileAccess.open(abs_path, FileAccess.WRITE)
 	if f == null:
-		push_warning("[TerraVolt MCP] log open failed: %s" % abs_path)
+		push_warning("[Terravolt MCP] log open failed: %s" % abs_path)
 		return
 
 	f.seek_end()

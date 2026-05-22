@@ -29,7 +29,7 @@ export function successEnvelope(
 export function disconnectedHint(): Record<string, unknown> {
   return {
     app_code: TRANSPORT_NOT_CONNECTED,
-    hint: "Ensure TerraVolt MCP addon is listening on :6505 (Phase 1); see docs/tasklist/05 §5.6.12 smoke.",
+    hint: "Ensure Terravolt MCP addon is listening on :6505 (Phase 1); see docs/tasklist/05 §5.6.12 smoke.",
   };
 }
 

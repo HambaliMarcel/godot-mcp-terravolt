@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltMacroHandlers
+class_name TerravoltMacroHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Macro := preload("./macro_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -67,8 +67,8 @@ func _run(ctx: Dictionary, macro_id: String) -> Dictionary:
 	if not g.get("ok", false):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				int(g.get("code", TerraVoltErrors.MACRO_NOT_IMPLEMENTED)),
+			"error": TerravoltErrors.tv_rpc_error(
+				int(g.get("code", TerravoltErrors.MACRO_NOT_IMPLEMENTED)),
 				str(g.get("message", "macro.error")),
 				str(g.get("message", "macro.error")),
 				{"macro": macro_id}

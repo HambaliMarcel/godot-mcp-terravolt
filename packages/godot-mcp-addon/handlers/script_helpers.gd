@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltScriptHelpers
+class_name TerravoltScriptHelpers
 
 ## Shared script file operations (task 13).
 

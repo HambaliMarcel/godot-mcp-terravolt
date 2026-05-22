@@ -1,6 +1,6 @@
 # 08 — Toolset Implementation (Phase 3 — the 200+ catalog)
 
-> **Goal**: enumerate, organize, and implement the **complete TerraVolt MCP tool catalog** — the
+> **Goal**: enumerate, organize, and implement the **complete Terravolt MCP tool catalog** — the
 > surface that lets an agent build a full Godot 4 game by prompting. This file is the **catalog
 > spec**: every tool, every category, every schema sketch, every error code, every parity note
 > (editor vs headless). It is intentionally large. Implementation proceeds **category by category,
@@ -333,7 +333,7 @@ relevant handlers below):
 | `project.remove_autoload`    | Remove.                                                                        |
 | `project.set_main_scene`     | Set the main scene.                                                            |
 | `project.get_config_version` | `project.godot` config version + Godot min version.                            |
-| `project.ensure_addons`      | Verify required addons are installed and enabled (TerraVolt MCP itself first). |
+| `project.ensure_addons`      | Verify required addons are installed and enabled (Terravolt MCP itself first). |
 | `project.list_features`      | Custom features.                                                               |
 | `project.set_feature_flag`   | Toggle a custom feature flag.                                                  |
 
@@ -683,7 +683,7 @@ Per `class_Object`:
 - `signal.validate_connection` → check method exists via `Object.has_method`.
 - `signal.list_emitters_of` / `signal.list_listeners_of` → walk scene, cross-reference connection
   lists.
-- `signal.suppress` and `signal.replay` — managed via TerraVolt's own in-memory shim (record
+- `signal.suppress` and `signal.replay` — managed via Terravolt's own in-memory shim (record
   connections, route through proxy).
 
 ### A.5 `resource.*` — implementation map
@@ -745,7 +745,7 @@ Per `scene_tree.rst`, `class_Engine`, `class_Performance`, `class_Input`:
   panel API.
 - `runtime.profile_snapshot` → `EngineDebugger.profiling_start/stop` (categories: `script`,
   `physics_3d`, `physics_2d`, `gpu`).
-- `runtime.replay` → TerraVolt's own input recorder; uses `Input.parse_input_event` to replay.
+- `runtime.replay` → Terravolt's own input recorder; uses `Input.parse_input_event` to replay.
 
 ### A.8 `editor.*` — implementation map
 
@@ -783,7 +783,7 @@ Per `class_ProjectSettings`:
   save.
 - `project.get_config_version` → `ProjectSettings.get_setting("application/config/features")` lists
   Godot version features (e.g., `["4.3", "Forward Plus"]`).
-- `project.ensure_addons` → ensure `editor_plugins/enabled` includes TerraVolt plugin.
+- `project.ensure_addons` → ensure `editor_plugins/enabled` includes Terravolt plugin.
 - `project.list_features` → `OS.get_feature_list()` (custom features defined per export preset).
 - `project.set_feature_flag` → custom features live in export presets, not ProjectSettings; the tool
   must edit `export_presets.cfg` and surface the limitation in `09`'s autoHeal.
@@ -916,7 +916,7 @@ Per `tutorials/scripting/debug/the_profiler.rst` and
 - `profile.list_hot_functions` → reads `EngineDebugger.profiling_get_data` (script profiler output).
 - `profile.export_report` → write JSON via `--benchmark-file` (headless) or manual write of
   collected samples.
-- **Custom monitors**: TerraVolt itself registers monitors for its own health (e.g.,
+- **Custom monitors**: Terravolt itself registers monitors for its own health (e.g.,
   `terravolt/wsd/inbound_qps`, `terravolt/dispatcher/p95_ms`) via
   `Performance.add_custom_monitor(name, callable)` — visible in **Debugger → Monitors**.
 

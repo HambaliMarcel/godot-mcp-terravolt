@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltRuntimeHelpers
+class_name TerravoltRuntimeHelpers
 
 const RECORDING_CAPACITY := 10_000
 const NAV_DEFAULT_SPEED := 200.0

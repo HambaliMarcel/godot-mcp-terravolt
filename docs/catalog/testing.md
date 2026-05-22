@@ -24,6 +24,6 @@ structured stub report from scanned `func test_*` scripts. Reports persist under
 steps and returns a per-step report `{ok, steps_total, steps_run, steps:[…]}`. Use it to drive a
 single playable slice through gameplay+assertion in one round-trip without writing a custom test
 harness. Mirrors the orchestration pattern from `godot-mcp-pro/test_commands.gd:run_test_scenario`
-but uses TerraVolt headless primitives (no editor dependency).
+but uses Terravolt headless primitives (no editor dependency).
 
 Error band: `-33990` … `-33992`, `-33997` (`testing.scenario_failed`).

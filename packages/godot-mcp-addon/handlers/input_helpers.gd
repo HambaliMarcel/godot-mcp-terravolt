@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltInputHelpers
+class_name TerravoltInputHelpers
 
 ## InputMap + ProjectSettings persistence helpers (task 21).
 

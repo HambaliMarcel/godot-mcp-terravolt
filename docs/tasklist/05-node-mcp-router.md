@@ -101,7 +101,7 @@ packages/mcp-server/src/
   config.ts                 (env + argv parsing, defaults)
   logger.ts                 (stderr JSON logger)
   diagnostics/
-    errors.ts               (TerraVolt error code mirror; consumed by 06/09)
+    errors.ts               (Terravolt error code mirror; consumed by 06/09)
     map_godot_error.ts      (translates daemon errors → MCP-friendly shape — final in 09)
   transport/
     mcp_stdio.ts            (binds @modelcontextprotocol/sdk to stdio)
@@ -414,7 +414,7 @@ When the router can't immediately reach the daemon, helpful CLI flags exposed fo
 Per `tutorials/scripting/c_sharp/index.rst` and the `command_line_tutorial.rst` `--build-solutions`
 flag:
 
-- If the user project uses C#, the addon (still GDScript-only on TerraVolt's side) must coexist with
+- If the user project uses C#, the addon (still GDScript-only on Terravolt's side) must coexist with
   a project that requires `--build-solutions` for the editor to enable C# scripts.
 - `headless.validate_script` for `.cs` files must invoke Godot with `--build-solutions` once, then
   `--check-only` against the file path. Reserve this complication for `07`.
@@ -428,7 +428,7 @@ Reflect engine-level knobs the user may want to surface from the router as well:
 - `--engine-args "<args>"` — passthrough arguments for any spawned Godot subprocess (used by `07`'s
   headless driver). Quoted JSON-friendly.
 - `--debug-server <uri>` — when provided, the router exposes it via `server.info` so agents know
-  where the engine debug server (DAP/LSP) is reachable. TerraVolt does **not** drive DAP/LSP itself
+  where the engine debug server (DAP/LSP) is reachable. Terravolt does **not** drive DAP/LSP itself
   in v1; these belong to the agent's IDE.
 - `--dap-port <int>`, `--lsp-port <int>` — observation-only fields surfaced in `server.info` if the
   daemon reports them via a future `server.list_endpoints` op.
@@ -442,7 +442,7 @@ Map of editor endpoints the router might _report_ (not drive) for completeness:
 | GDScript Debug Adapter Protocol   | `--dap-port`     | `endpoints.dap_port`     |
 | GDScript Language Server Protocol | `--lsp-port`     | `endpoints.lsp_port`     |
 | Remote debug server               | `--debug-server` | `endpoints.debug_server` |
-| TerraVolt MCP WebSocket           | this file        | `endpoints.terravolt_ws` |
+| Terravolt MCP WebSocket           | this file        | `endpoints.terravolt_ws` |
 
 The agent can read these to coordinate with the IDE if it wishes.
 

@@ -1,8 +1,8 @@
 # Runtime bridge (game process)
 
-TerraVolt **`runtime.*`** tools inspect and drive the **running game**, not the editor daemon on
+Terravolt **`runtime.*`** tools inspect and drive the **running game**, not the editor daemon on
 `:6505`. A second TCP JSON-RPC listener runs inside the game process via the
-**`TerraVoltRuntimeBridge`** autoload.
+**`TerravoltRuntimeBridge`** autoload.
 
 ## Topology
 
@@ -36,8 +36,8 @@ when no session is active.
 
 ## Installation
 
-When the TerraVolt addon enables, `main.gd` calls
-`add_autoload_singleton("TerraVoltRuntimeBridge", …/autoloads/runtime_bridge.gd)` so play mode
+When the Terravolt addon enables, `main.gd` calls
+`add_autoload_singleton("TerravoltRuntimeBridge", …/autoloads/runtime_bridge.gd)` so play mode
 always exposes the bridge. Headless fixtures declare the autoload in `project.godot` directly.
 
 ## Safety

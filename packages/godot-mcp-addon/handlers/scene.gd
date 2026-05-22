@@ -1,14 +1,14 @@
 @tool
 extends RefCounted
-class_name TerraVoltSceneHandlers
+class_name TerravoltSceneHandlers
 
 const _Utils := preload("./handler_utils.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -286,8 +286,8 @@ func _h_save(ctx: Dictionary) -> Dictionary:
 	if err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_SAVE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_SAVE_FAILED,
 				"scene.save_failed",
 				error_string(err),
 				{"path": path}
@@ -319,8 +319,8 @@ func _h_save_as(ctx: Dictionary) -> Dictionary:
 	if not bool(_Utils.params_dict(ctx).get("overwrite", false)) and _Utils.scene_file_exists(new_path):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_SAVE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_SAVE_FAILED,
 				"scene.save_failed",
 				"Target exists; pass overwrite=true.",
 				{"path": new_path}
@@ -330,8 +330,8 @@ func _h_save_as(ctx: Dictionary) -> Dictionary:
 	if err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_SAVE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_SAVE_FAILED,
 				"scene.save_failed",
 				error_string(err),
 				{"path": new_path}
@@ -377,8 +377,8 @@ func _h_create(ctx: Dictionary) -> Dictionary:
 	if pack_err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_CREATE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_CREATE_FAILED,
 				"scene.create_failed",
 				error_string(pack_err),
 				{"path": path}
@@ -391,8 +391,8 @@ func _h_create(ctx: Dictionary) -> Dictionary:
 	if save_err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_CREATE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_CREATE_FAILED,
 				"scene.create_failed",
 				error_string(save_err),
 				{"path": path}
@@ -433,8 +433,8 @@ func _h_delete(ctx: Dictionary) -> Dictionary:
 		if not dependents.is_empty():
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(
-					TerraVoltErrors.RESOURCE_DEPENDENCY_BLOCK,
+				"error": TerravoltErrors.tv_rpc_error(
+					TerravoltErrors.RESOURCE_DEPENDENCY_BLOCK,
 					"resource.dependency_block",
 					"Scene is referenced by other resources; pass force=true to delete anyway.",
 					{"path": path, "dependents": dependents}
@@ -514,8 +514,8 @@ func _h_pack(ctx: Dictionary) -> Dictionary:
 	if err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_CREATE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_CREATE_FAILED,
 				"scene.create_failed",
 				error_string(err),
 				{"output_path": output}
@@ -528,8 +528,8 @@ func _h_pack(ctx: Dictionary) -> Dictionary:
 	if err != OK:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCENE_CREATE_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCENE_CREATE_FAILED,
 				"scene.create_failed",
 				error_string(err),
 				{"output_path": output}
@@ -688,7 +688,7 @@ func _h_replace(ctx: Dictionary) -> Dictionary:
 		var plug := _Utils.editor_plugin(_dispatcher)
 		if plug:
 			var ur := plug.get_undo_redo()
-			ur.create_action("TerraVolt scene.replace")
+			ur.create_action("Terravolt scene.replace")
 			ur.add_do_method(parent, "remove_child", old_node)
 			ur.add_do_method(parent, "add_child", new_node)
 			ur.add_do_method(new_node, "set_owner", scene_root)

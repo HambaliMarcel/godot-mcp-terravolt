@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltJsonSchemaMini
+class_name TerravoltJsonSchemaMini
 
 ## Minimal JSON Schema Draft subset (tasks 02–04). Dependency-free GDScript validator.
 

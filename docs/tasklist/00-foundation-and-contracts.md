@@ -18,7 +18,7 @@
 ## 0.1 Purpose of this file
 
 This file converts the SRS bundle in `docs/srs/` into an **operational contract** the agent commits
-to for the entire build of **TerraVolt Godot MCP** (a.k.a. `godot-mcp-terravolt`). It is the single
+to for the entire build of **Terravolt Godot MCP** (a.k.a. `godot-mcp-terravolt`). It is the single
 source of truth for:
 
 - The **product topology** and which layer talks to which.
@@ -39,17 +39,17 @@ locked.
 
 ## 0.2 Product framing (memorize this)
 
-**TerraVolt Godot MCP** is a _dual-stack_ Model Context Protocol bridge for Godot 4.x
+**Terravolt Godot MCP** is a _dual-stack_ Model Context Protocol bridge for Godot 4.x
 (.NET-compatible), aiming to **dominate** the aggregate capabilities of three upstream reference
 implementations:
 
-| Reference                   | Strength TerraVolt absorbs and exceeds                                                         |
+| Reference                   | Strength Terravolt absorbs and exceeds                                                         |
 | --------------------------- | ---------------------------------------------------------------------------------------------- |
 | `youichi-uda/godot-mcp-pro` | **API/schema breadth**, editor-integrated coverage (paid Node bundle, ~172 tools).             |
 | `tomyud1/godot-mcp`         | **WebSocket framing**, addon ↔ Node TS server parity, optional visualizer at `localhost:6510`. |
 | `Coding-Solo/godot-mcp`     | **Headless / subprocess** Godot execution when the editor is closed.                           |
 
-TerraVolt is the **strict superset**: it ships both a _live editor_ path **and** a _headless CLI_
+Terravolt is the **strict superset**: it ships both a _live editor_ path **and** a _headless CLI_
 path, exposes a **single coherent ~200-op surface** (polymorphic, no duplicates), and is built for
 **vibe coding** — i.e., creating a complete Godot game by prompting a Cursor agent that drives this
 MCP.
@@ -117,7 +117,7 @@ MCP.
 | Heartbeat timeout                                 | `45s` (3 missed heartbeats)                                                         | Phase 1 + Phase 2          |
 | Reconnection backoff base                         | `500ms`, exponential, capped at `30s`                                               | Phase 2                    |
 | JSON-RPC version                                  | `"2.0"` (literal)                                                                   | Phase 1 + Phase 2          |
-| Application error code range                      | `-32099` to `-32000` (reserved by spec) and `-33000` to `-33999` (TerraVolt domain) | Phase 1                    |
+| Application error code range                      | `-32099` to `-32000` (reserved by spec) and `-33000` to `-33999` (Terravolt domain) | Phase 1                    |
 | Max request payload (router → daemon)             | `4 MiB` soft, `16 MiB` hard                                                         | Phase 3                    |
 | Visualizer port (optional, parity with `tomyud1`) | `6510` (reserved, not auto-bound)                                                   | Future                     |
 
@@ -170,7 +170,7 @@ transport end-to-end before advancing.
 ## 0.6 Anti-redundancy doctrine
 
 The single biggest failure mode of the reference implementations is **tool bloat with overlapping
-coverage**. TerraVolt must avoid it.
+coverage**. Terravolt must avoid it.
 
 **Rules:**
 
@@ -341,11 +341,11 @@ Every irreversible decision goes here as a row. Format:
 
 | Date       | Author             | Decision                                                                                                                                   | Rationale                                                                                                                                                                                                                                             | Supersedes |
 | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 2026-05-22 | TerraVolt executor | Foundation §§0.2–0.16 adopted as execution mandate (governance lock).                                                                      | All SRS files read; §0.4 matches `packages/*` layout; tooling gate `01` precedes product code in `02`.                                                                                                                                                | —          |
-| 2026-05-22 | TerraVolt executor | Phase 1 addon (**tasks 02–04**) in `packages/godot-mcp-addon/`: shell, WS **:6505**, JSON-RPC **2.0**, logging.                            | Unblocks **`05`**. Uses Godot **`WebSocketPeer.heartbeat_interval`** for native ping frames when `heartbeat_mode=control_frame`; **`npm run addon:link` / `addon:unlink`** for dev mounts. **GUT** named in addon README (wire in **`10`**).          | —          |
-| 2026-05-22 | TerraVolt executor | Godot 4 official manual doctrines (Appendix A) adopted for addon/daemon behavior.                                                          | Pin `@tool` editor path; `/`-only paths; `user://` vs `res://`; scene-tree lifecycle order; defer structural mutations via `call_deferred` where required. Aligns Sphinx sources under `references/godot-docs/` (read-only clone).                    | —          |
-| 2026-05-22 | TerraVolt executor | Root **`engines.node` ≥ 20 LTS** with npm **`workspaces`** + `@terravolt/godot-mcp` TS scaffold (`01` landed).                             | Honors §0.10; router dependencies still deferred to **`05`**.                                                                                                                                                                                         | —          |
-| 2026-05-22 | TerraVolt executor | npm package **`@terravolt/godot-mcp`** (bin **`terravolt-godot-mcp`**) finalized for Phase 2; **`engines.node` ≥ 20.10`** on that package. | Task **`05`** asked to confirm npm scope availability; **`@terravolt`** namespace is reserved for TerraVolt — no fallback to **`terravolt-godot-mcp`** package name needed. Executable entry is **`dist/index.js`** after **`npm run build:server`**. | —          |
+| 2026-05-22 | Terravolt executor | Foundation §§0.2–0.16 adopted as execution mandate (governance lock).                                                                      | All SRS files read; §0.4 matches `packages/*` layout; tooling gate `01` precedes product code in `02`.                                                                                                                                                | —          |
+| 2026-05-22 | Terravolt executor | Phase 1 addon (**tasks 02–04**) in `packages/godot-mcp-addon/`: shell, WS **:6505**, JSON-RPC **2.0**, logging.                            | Unblocks **`05`**. Uses Godot **`WebSocketPeer.heartbeat_interval`** for native ping frames when `heartbeat_mode=control_frame`; **`npm run addon:link` / `addon:unlink`** for dev mounts. **GUT** named in addon README (wire in **`10`**).          | —          |
+| 2026-05-22 | Terravolt executor | Godot 4 official manual doctrines (Appendix A) adopted for addon/daemon behavior.                                                          | Pin `@tool` editor path; `/`-only paths; `user://` vs `res://`; scene-tree lifecycle order; defer structural mutations via `call_deferred` where required. Aligns Sphinx sources under `references/godot-docs/` (read-only clone).                    | —          |
+| 2026-05-22 | Terravolt executor | Root **`engines.node` ≥ 20 LTS** with npm **`workspaces`** + `@terravolt/godot-mcp` TS scaffold (`01` landed).                             | Honors §0.10; router dependencies still deferred to **`05`**.                                                                                                                                                                                         | —          |
+| 2026-05-22 | Terravolt executor | npm package **`@terravolt/godot-mcp`** (bin **`terravolt-godot-mcp`**) finalized for Phase 2; **`engines.node` ≥ 20.10`** on that package. | Task **`05`** asked to confirm npm scope availability; **`@terravolt`** namespace is reserved for Terravolt — no fallback to **`terravolt-godot-mcp`** package name needed. Executable entry is **`dist/index.js`** after **`npm run build:server`**. | —          |
 
 The agent **must** append further rows whenever an irreversible contract change is made (`00 §0.13`
 format).
@@ -412,7 +412,7 @@ When every box is checked, open **`01-repository-and-tooling-setup.md`**.
 
 > Sourced from `references/godot-docs/` (Godot 4.x Sphinx manual). This appendix layers **engine
 > truths** onto the contracts above. Earlier sections remain authoritative; this appendix narrows
-> ambiguity and pins TerraVolt's choices to canonical Godot terminology and behavior.
+> ambiguity and pins Terravolt's choices to canonical Godot terminology and behavior.
 
 ### A.1 Doctrine clarifications
 
@@ -421,7 +421,7 @@ When every box is checked, open **`01-repository-and-tooling-setup.md`**.
   loaded by the addon "acts like an empty file" in the editor. Make this a hard rule for the entire
   daemon code path; record violations as bugs.
 - **Plugin layout.** Godot expects `addons/<plugin_machine_name>/` inside the project's
-  `res://addons/`. TerraVolt's machine name is `terravolt_mcp` and the addon root mounts to
+  `res://addons/`. Terravolt's machine name is `terravolt_mcp` and the addon root mounts to
   `res://addons/terravolt_mcp/` in the dev project.
 - **Paths use `/` only.** Per `tutorials/scripting/filesystem.rst`, Godot mandates UNIX-style
   separators _even on Windows_. Anything that crosses into Godot land — scene paths, resource paths,
@@ -448,7 +448,7 @@ When every box is checked, open **`01-repository-and-tooling-setup.md`**.
 
 These engine terms are now part of the project glossary alongside `00 §0.8`:
 
-| Term                      | Canonical Godot meaning                                                                                                                     | TerraVolt usage                                      |
+| Term                      | Canonical Godot meaning                                                                                                                     | Terravolt usage                                      |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | `SceneTree`               | Singleton main loop owning the root `Viewport`. Returned by `Node.get_tree()`.                                                              | All scene/runtime tools read it.                     |
 | `MainLoop`                | Base class for any custom loop run via `--main-loop`.                                                                                       | Reserved for headless utility scripts.               |
@@ -479,7 +479,7 @@ Per `tutorials/scripting/singletons_autoload.rst`:
 > "Deleting the current scene at this point is a bad idea, because it may still be executing code.
 > […] The solution is to defer the load to a later time."
 
-Every TerraVolt op that mutates scene structure (free, reparent, replace, change*scene_to*_) must
+Every Terravolt op that mutates scene structure (free, reparent, replace, change*scene_to*_) must
 use `Object.call_deferred()` (or its semantic equivalent) when it might be triggered from inside
 another node's execution. This is mandatory for `scene.replace`, `node.remove`, `scene.delete`, and
 any `runtime._` mutator.
@@ -489,7 +489,7 @@ any `runtime._` mutator.
 Source: `tutorials/scripting/gdscript/gdscript_styleguide.rst`.
 
 - Use the official **GDScript Style Guide** verbatim across the addon.
-- Static typing per `gdscript/static_typing.rst` is **required** in TerraVolt addon code, not
+- Static typing per `gdscript/static_typing.rst` is **required** in Terravolt addon code, not
   optional. No untyped variables in shipped paths.
 - Documentation comments per `gdscript_documentation_comments.rst` — handler functions should
   include the standard GDScript docstring so the agent can introspect them via the editor.
@@ -500,7 +500,7 @@ Source: `tutorials/scripting/gdscript/gdscript_styleguide.rst`.
 | --------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | Non-`@tool` GDScript loaded by the addon ⇒ silently empty file. | `making_plugins.rst` warning.                          | Lint pass in `01` ensures every `.gd` shipped under `packages/godot-mcp-addon/` declares `@tool`.                                 |
 | Path case sensitivity drift (Windows/macOS vs Linux).           | `tutorials/scripting/filesystem.rst`.                  | Enforce lowercase asset names in test fixtures; case-fold path comparisons in handlers.                                           |
-| `Autoload` freed at runtime crashes the engine.                 | `tutorials/scripting/singletons_autoload.rst` warning. | TerraVolt's `project.remove_autoload` must refuse runtime invocation (editor-only); `runtime.*` tools cannot free autoload nodes. |
+| `Autoload` freed at runtime crashes the engine.                 | `tutorials/scripting/singletons_autoload.rst` warning. | Terravolt's `project.remove_autoload` must refuse runtime invocation (editor-only); `runtime.*` tools cannot free autoload nodes. |
 | Self-contained mode confuses log discovery.                     | `data_paths.rst` §"Self-contained mode".               | Logger resolves the actual `user://` path via `ProjectSettings.globalize_path` on first write and surfaces it in `server.info`.   |
 | Hand-editing `.tscn` corrupts dependencies.                     | `filesystem.rst` §"Drawbacks".                         | Already hard rule (`00 §0.7`); reinforced — all moves go through `EditorInterface` / `EditorFileSystem`.                          |
 

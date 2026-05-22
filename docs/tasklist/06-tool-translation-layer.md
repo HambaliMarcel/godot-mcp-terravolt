@@ -81,7 +81,7 @@ daemon read:
 | `requiresRuntime` | bool        | True for ops that need the game to be playing.                                                    |
 | `safe`            | bool        | "Safe" = agent may call without confirmation. Default false for mutators.                         |
 | `mutates`         | bool        | True if the op changes project/editor state.                                                      |
-| `errorCodes`      | array       | TerraVolt app codes this op may raise.                                                            |
+| `errorCodes`      | array       | Terravolt app codes this op may raise.                                                            |
 | `examples`        | array       | One or two example payloads (for docs and agent learning).                                        |
 
 This file lives in `packages/shared/` (a new shared package created by this file). Both router (TS)
@@ -149,7 +149,7 @@ Per tool call:
 4. **Router** runs `pre` hook (if any). Failure ⇒ MCP error with `app_code` from the hook.
 5. **Router** dispatches to daemon (`godot_ws_client`). Daemon **re-validates** input against its
    copy of the same schema.
-6. **Daemon** runs the handler, returns either a result or a TerraVolt error envelope.
+6. **Daemon** runs the handler, returns either a result or a Terravolt error envelope.
 7. **Router** validates the daemon's result against `outputSchema` (in dev mode at least; in prod
    mode this is sampled).
 8. **Router** runs `normalize` and emits the MCP tool result.
@@ -460,7 +460,7 @@ When done, open **`07-headless-fallback.md`**.
 
 Per `class_Variant` and the Variant subtypes in the reference:
 
-| Godot type                      | JSON shape (TerraVolt)                                                                                        | Notes                                                                                                                                  |
+| Godot type                      | JSON shape (Terravolt)                                                                                        | Notes                                                                                                                                  |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------- | ---------------------- |
 | `bool`                          | `true` / `false`                                                                                              | direct                                                                                                                                 |
 | `int`                           | integer                                                                                                       | `int64` range; document if any tool returns values outside JS safe-integer range and use a `string` with `bigint:` prefix in that case |
@@ -525,7 +525,7 @@ Per `class_Object.get_property_list()` and the `PROPERTY_HINT_*` enum:
 
 - Each property entry contains `name`, `type` (Variant type index), `hint` (`PROPERTY_HINT_*`),
   `hint_string`, `usage` (`PROPERTY_USAGE_*`).
-- TerraVolt's tool returns this list **plus** a normalized JSON-schema-flavored summary:
+- Terravolt's tool returns this list **plus** a normalized JSON-schema-flavored summary:
   - `enum` properties (`PROPERTY_HINT_ENUM`) → `{ enum: [...] }`.
   - `range` (`PROPERTY_HINT_RANGE`) with `"min,max[,step]"` → `{ minimum, maximum, multipleOf }`.
   - `file`/`dir` paths → `{ format: "res-path" | "fs-path" }`.
@@ -536,12 +536,12 @@ Per `class_Object.get_property_list()` and the `PROPERTY_HINT_*` enum:
 
 Per `tutorials/best_practices/*`:
 
-- **Scenes vs scripts** (`scenes_versus_scripts.rst`): TerraVolt's `macro.*` recipes default to
+- **Scenes vs scripts** (`scenes_versus_scripts.rst`): Terravolt's `macro.*` recipes default to
   **scene-based** assets (PackedScene) for reusability; scripts attach behavior. Tools must not
   force users to create scripts where scenes would do.
 - **Scene organization** (`scene_organization.rst`): macros generate hierarchies that follow "small,
   composable scenes" — no monolithic god-scenes.
-- **Autoloads vs nodes** (`autoloads_versus_regular_nodes.rst`): TerraVolt's autoload tools warn the
+- **Autoloads vs nodes** (`autoloads_versus_regular_nodes.rst`): Terravolt's autoload tools warn the
   agent when autoload count exceeds a project's earlier baseline (heuristic: > 8 autoloads),
   referencing the doc.
 - **Logic preferences** (`logic_preferences.rst`): when generating boilerplate via macros, prefer
@@ -584,4 +584,4 @@ deep-link engine truth from any tool description.
 | Resource inner-class limitation forgotten.                            | `resource.create` schema rejects inner-class scripts at validation time.                                           |
 | Property hint string formats vary (`"min,max,step"` vs `"min,max"`).  | Normalize in the daemon's schema generator; document.                                                              |
 | Typed arrays/dictionaries lose element-type info across JSON.         | Carry `_element_type` envelope.                                                                                    |
-| Reserved namespace clashes with engine future methods.                | TerraVolt always uses two-segment dotted names (`category.action`); engine uses single-camelCase or single tokens. |
+| Reserved namespace clashes with engine future methods.                | Terravolt always uses two-segment dotted names (`category.action`); engine uses single-camelCase or single tokens. |

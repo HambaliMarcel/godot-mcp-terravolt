@@ -456,7 +456,7 @@ When done, open **`10-quality-testing-release-and-docs.md`**.
 
 Per `custom_performance_monitors.rst`:
 
-- TerraVolt's daemon publishes `terravolt/<subsystem>/<metric>` monitors via
+- Terravolt's daemon publishes `terravolt/<subsystem>/<metric>` monitors via
   `Performance.add_custom_monitor(name, callable)`:
   - `terravolt/dispatcher/inbound_qps` — frames/sec accepted.
   - `terravolt/dispatcher/p50_ms`, `p95_ms`, `p99_ms` — request latency.
@@ -492,7 +492,7 @@ Per `tutorials/export/feature_tags.rst` and `OS.get_feature_list()`:
 
 A starter set of templates that map Godot error strings to autoHeal actions:
 
-| Godot error pattern                              | TerraVolt autoHeal                                                                         |
+| Godot error pattern                              | Terravolt autoHeal                                                                         |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `Resource file not found: <path>`                | Suggest `scene.list` or `resource.find_by_path` with normalized pattern.                   |
 | `Parser Error: Identifier '<name>' not declared` | Suggest `script.search` for the identifier.                                                |

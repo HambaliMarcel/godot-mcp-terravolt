@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltEditorErrorBuffer
+class_name TerravoltEditorErrorBuffer
 
 ## Rolling editor error/warn buffer (task 16).
 

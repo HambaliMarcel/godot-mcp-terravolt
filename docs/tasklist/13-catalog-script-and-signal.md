@@ -1,6 +1,6 @@
 # 13 — Catalog: `script.*` + `signal.*` (Phase 3 work-unit #3)
 
-> The `script.*` category turns TerraVolt into a **real coding partner**: the agent can read/write
+> The `script.*` category turns Terravolt into a **real coding partner**: the agent can read/write
 > `.gd` and `.cs` files, compile-check them, search them, and refactor them. The `signal.*` category
 > complements `node.*` by adding signal-graph–oriented operations (declare, list, bulk wire).
 

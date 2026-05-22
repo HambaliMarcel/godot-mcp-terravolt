@@ -62,7 +62,7 @@ This satisfies **`docs/tasklist/01-repository-and-tooling-setup.md` §A.1** doct
 
 ## 4. Sandbox project outside `godot-mcp-terravolt`
 
-Mirror **`01` §A.3 / §1.6.4**: clone/symlink TerraVolt’s **`packages/godot-mcp-addon/`** later into
+Mirror **`01` §A.3 / §1.6.4**: clone/symlink Terravolt’s **`packages/godot-mcp-addon/`** later into
 `addons/terravolt_mcp/` (task **`02`**). Until then, bootstrap a disposable project **outside** the
 MCP monorepo, e.g. `%USERPROFILE%\Documents\TerravoltMcpDev\`:
 

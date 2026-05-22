@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltResourceHelpers
+class_name TerravoltResourceHelpers
 
 ## Shared resource / variant JSON helpers (task 14).
 

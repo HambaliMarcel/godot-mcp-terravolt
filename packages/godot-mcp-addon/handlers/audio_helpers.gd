@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltAudioHelpers
+class_name TerravoltAudioHelpers
 
 ## AudioServer bus helpers (task 21).
 

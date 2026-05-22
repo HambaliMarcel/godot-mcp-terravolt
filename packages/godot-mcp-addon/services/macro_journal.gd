@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltMacroJournal
+class_name TerravoltMacroJournal
 
 ## Macro apply history + revert snapshots (task 24).
 

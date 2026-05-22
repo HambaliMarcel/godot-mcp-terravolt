@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltExportHelpers
+class_name TerravoltExportHelpers
 
 ## export.* helpers (task 23).
 

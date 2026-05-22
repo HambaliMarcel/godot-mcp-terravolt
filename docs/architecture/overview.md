@@ -1,4 +1,4 @@
-# TerraVolt Godot MCP — system overview
+# Terravolt Godot MCP — system overview
 
 ## Purpose
 

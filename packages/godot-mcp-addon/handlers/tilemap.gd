@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltTilemapHandlers
+class_name TerravoltTilemapHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Tm := preload("./tilemap_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -128,4 +128,4 @@ func _h_terrain_paint(ctx: Dictionary) -> Dictionary:
 
 
 func _err(code: int, symbol: String) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(code, symbol, symbol, {})}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(code, symbol, symbol, {})}

@@ -1,6 +1,6 @@
-# Feature parity matrix — TerraVolt vs reference MCP plugins
+# Feature parity matrix — Terravolt vs reference MCP plugins
 
-Date-stamped snapshot for task 25 completion gate. Regenerate when reference clones or TerraVolt
+Date-stamped snapshot for task 25 completion gate. Regenerate when reference clones or Terravolt
 catalog changes materially.
 
 **Reference sources:** [`docs/references/reference-repos-map.md`](../references/reference-repos-map.md)
@@ -9,15 +9,15 @@ catalog changes materially.
 fallback, **31/31** integration tests passing against live Godot 4.6.3 (including the
 exhaustive coverage smoke that dispatches every `headlessFallback: true` method).
 
-| Feature | Reference | TerraVolt status | Notes |
+| Feature | Reference | Terravolt status | Notes |
 | ------- | --------- | ---------------- | ----- |
 | MCP stdio → Node router | tom / Pro / Coding-Solo | ✅ live | `packages/mcp-server` |
 | Editor WebSocket daemon `:6505` | tom / Pro | ✅ live | `mcp_server.gd` |
-| Headless TCP fallback | TerraVolt | ✅ live | `headless_driver.gd` + `catalog_ops.gd`, **201/222** methods |
-| `tools.health` + catalog SHA | TerraVolt | ✅ live | `tools.health`, `catalog_meta.gd` |
-| `tools.metrics` / bottlenecks | TerraVolt | ✅ live | Task 09 |
-| `context.fetch_raw` | TerraVolt | ✅ live | Registry proxy for all 222 daemon methods |
-| Structured `autoHeal` hints | TerraVolt | ✅ live | `autoheal.json` (130 error bands) |
+| Headless TCP fallback | Terravolt | ✅ live | `headless_driver.gd` + `catalog_ops.gd`, **201/222** methods |
+| `tools.health` + catalog SHA | Terravolt | ✅ live | `tools.health`, `catalog_meta.gd` |
+| `tools.metrics` / bottlenecks | Terravolt | ✅ live | Task 09 |
+| `context.fetch_raw` | Terravolt | ✅ live | Registry proxy for all 222 daemon methods |
+| Structured `autoHeal` hints | Terravolt | ✅ live | `autoheal.json` (130 error bands) |
 | Browser project visualizer `:6510` | tom | ⏳ backlog | Use Graphify/GitNexus locally — TER-63 |
 | Paid Node server modes (lite/3d) | Pro | ❌ not planned | Open addon; study patterns only |
 | Subprocess `run_project` debug loop | Coding-Solo | ✅ partial | `runtime.start_headless` + bridge autoload |
@@ -29,20 +29,20 @@ exhaustive coverage smoke that dispatches every `headlessFallback: true` method)
 | Audio / input map | Pro | ✅ live | Task 21 (13 methods) |
 | 3D scene sugar | Pro 3d | ✅ live | Task 22 (6 `scene_3d.*` tools) |
 | Export / testing / profile | tom / Coding-Solo | ✅ live | Task 23 + 26 (12 tools incl. `testing.run_scenario`) |
-| Macro scaffolders | TerraVolt | ✅ live | Task 24 (15 `macro.*` tools; 3 full, 12 dry-run/stub) |
+| Macro scaffolders | Terravolt | ✅ live | Task 24 (15 `macro.*` tools; 3 full, 12 dry-run/stub) |
 | **Android deploy chain** | Pro | ✅ live | Task 26 (3 `android.*`: `list_devices`, `preset_info`, `deploy`) |
 | Godot 4.6 API alignment | godot-docs | ✅ live | TileMapLayer, ThemeOwner, AudioServer 4.6 |
 
 ## Tool count comparison
 
-| Source | Claimed tools | TerraVolt (2026-05-22) |
+| Source | Claimed tools | Terravolt (2026-05-22) |
 | ------ | ------------- | ---------------------- |
 | godot-mcp-pro | ~172 (modes) | **222** (+50 over reference) |
 | tom/godot-mcp | ~42 | **222** |
 | Coding-Solo | core subset | **222** |
-| **TerraVolt gate (task 25)** | ≥209 | **222 PASS** (meets stated 222 target exactly) |
+| **Terravolt gate (task 25)** | ≥209 | **222 PASS** (meets stated 222 target exactly) |
 
-## TerraVolt differentiators (explicit)
+## Terravolt differentiators (explicit)
 
 - Catalog version + registry SHA pinning in `server.info` / `tools.health`
 - Headless fallback matrix documented in [`docs/catalog/parity.md`](../catalog/parity.md)

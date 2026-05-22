@@ -3,8 +3,8 @@
 > **Goal**: give the router a **headless** path that lets it perform Godot operations _without a
 > running editor_, by spawning Godot in `--headless` mode and driving it via JSON-RPC over stdio (or
 > a short-lived local WS on a different port). The headless path is **modeled after the Coding-Solo
-> upstream** and is the difference between "TerraVolt requires a developer to keep Godot open" and
-> "TerraVolt can autonomously create, build, and verify projects from a CI runner or while the dev's
+> upstream** and is the difference between "Terravolt requires a developer to keep Godot open" and
+> "Terravolt can autonomously create, build, and verify projects from a CI runner or while the dev's
 > editor is closed." It also unlocks ops that don't need the editor (running tests, importing
 > assets, exporting builds, validating syntax).
 
@@ -19,7 +19,7 @@
 ## 7.2 Phase placement
 
 - Strictly part of **Phase 2** as the third leg (editor daemon path + tool factory + headless
-  fallback). Some teams place it later; in TerraVolt it ships now because the **vibe coding** target
+  fallback). Some teams place it later; in Terravolt it ships now because the **vibe coding** target
   requires Godot ops even when no editor is open.
 - Gates Phase 3 jointly with `05`/`06` (Phase 3 tools will assume the fallback exists so they can
   declare which path they use).
@@ -419,7 +419,7 @@ Engine-relevant constants:
 - User args following `--` are read inside scripts via `OS.get_cmdline_user_args()`; engine args via
   `OS.get_cmdline_args()`.
 - Returned path semantics for `--export-*` are **relative to the project directory**, _not_ the
-  current working directory. Always pass absolute paths in TerraVolt's headless calls to avoid
+  current working directory. Always pass absolute paths in Terravolt's headless calls to avoid
   ambiguity.
 
 ### A.2 Driver script contract
@@ -430,7 +430,7 @@ Per `command_line_tutorial.rst` §"Running a script":
 - Lifecycle: when the script extends `SceneTree`, `_init()` is the entrypoint, and `quit()` is
   required to terminate.
 - When extending `MainLoop`, implement `_initialize()`, `_process(delta)`, `_finalize()`.
-- TerraVolt's bundled driver (`packages/godot-mcp-addon/headless/driver.gd`) extends `SceneTree`;
+- Terravolt's bundled driver (`packages/godot-mcp-addon/headless/driver.gd`) extends `SceneTree`;
   its `_init()` registers the JSON-RPC over stdin/stdout pipe and pumps the loop until stdin closes.
 - For interactive headless sessions, keep the SceneTree alive (don't call `quit()`); rely on stdin
   EOF to exit.
@@ -450,7 +450,7 @@ Per `command_line_tutorial.rst` and `tutorials/export/exporting_projects.rst`:
 
 - `godot --headless --import --path <project>` imports all pending assets and exits. This implies
   `--editor --quit`.
-- TerraVolt's `headless.import_assets` and `asset.batch_apply_preset` rely on this flag.
+- Terravolt's `headless.import_assets` and `asset.batch_apply_preset` rely on this flag.
 - Imports honor `.import/` metadata files and the editor's importer registry.
 
 ### A.5 Export pipeline — required setup
@@ -460,7 +460,7 @@ Per `command_line_tutorial.rst` and `tutorials/export/exporting_projects.rst`:
 - Export templates must be installed on the runner (the editor downloads them; in CI, use the
   headless `--install-android-build-template` for Android specifically and `--import` to ensure
   resources are ready before export).
-- `--export-release` paths: target directory **must exist** beforehand; TerraVolt creates it if
+- `--export-release` paths: target directory **must exist** beforehand; Terravolt creates it if
   missing.
 - `--export-pack` accepts either `.pck` or `.zip` based on output extension.
 
@@ -470,7 +470,7 @@ Per `command_line_tutorial.rst` and `tutorials/scripting/debug/overview_of_debug
 §"Customize Run Instances":
 
 - Reserved for future multi-session headless: the editor supports running multiple project instances
-  concurrently. TerraVolt v1 keeps `max=1`; v1.1+ may expose `headless.start_multi`.
+  concurrently. Terravolt v1 keeps `max=1`; v1.1+ may expose `headless.start_multi`.
 
 ### A.7 Remote filesystem and remote debug
 
@@ -478,7 +478,7 @@ Per `command_line_tutorial.rst` and `tutorials/scripting/debug/overview_of_debug
   low-storage devices). Reserve a `--remote-fs-host` router flag that auto-passes this to the
   headless engine; out of scope for v1 but documented so an agent can request the integration in
   v1.1+.
-- `--remote-debug <uri>` connects the engine's script debugger to a remote IDE. TerraVolt observes
+- `--remote-debug <uri>` connects the engine's script debugger to a remote IDE. Terravolt observes
   this only — it does not drive the script debugger over MCP.
 
 ### A.8 Render driver selection
@@ -490,7 +490,7 @@ Per `command_line_tutorial.rst` and `tutorials/scripting/debug/overview_of_debug
 
 ### A.9 Benchmarking & docs generation
 
-- `--benchmark` + `--benchmark-file <abs.json>`: write JSON benchmark report. TerraVolt's perf suite
+- `--benchmark` + `--benchmark-file <abs.json>`: write JSON benchmark report. Terravolt's perf suite
   (`10`) uses this for boot-time measurements.
 - `--doctool <path>` / `--gdscript-docs <path>` / `--gdextension-docs`: generate API reference XML.
   Reserved for `headless.generate_docs` (future).
@@ -502,7 +502,7 @@ Per `command_line_tutorial.rst` and `tutorials/scripting/debug/overview_of_debug
 
 - Arguments **before** `--` go to the engine.
 - Arguments **after** `--` (or `++`) go to the running script/game via `OS.get_cmdline_user_args()`.
-- `headless.run_script` exposes `args` as user-side arguments; TerraVolt's driver passes them after
+- `headless.run_script` exposes `args` as user-side arguments; Terravolt's driver passes them after
   `--`.
 
 ### A.11 Self-contained mode and CI
@@ -516,7 +516,7 @@ Per `command_line_tutorial.rst` and `tutorials/scripting/debug/overview_of_debug
 - Exit code `0`: normal completion.
 - Non-zero exit codes propagate from the engine (e.g., `--check-only` returns non-zero on parse
   failure, `--validate-extension-api` returns non-zero on incompatibility).
-- TerraVolt's headless driver wraps the subprocess and translates non-zero codes into
+- Terravolt's headless driver wraps the subprocess and translates non-zero codes into
   `headless.crashed` (`-33815`) **unless** the op's contract expects non-zero (validation ops
   surface the code in the result, not as an error).
 

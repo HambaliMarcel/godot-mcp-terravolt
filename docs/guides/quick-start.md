@@ -1,6 +1,6 @@
 # Quick start
 
-Goal: from zero to a working TerraVolt MCP session in **under 10 minutes**.
+Goal: from zero to a working Terravolt MCP session in **under 10 minutes**.
 
 > Prereqs: **Node ≥ 20.10** on `PATH`, **Godot 4.x stable** (mono build recommended for `.cs`
 > projects), git, and any MCP-capable client (Cursor Desktop is the primary target).
@@ -36,7 +36,7 @@ The script prints the exact `TERRAVOLT_GODOT_BINARY=…` line for your shell. To
 $env:TERRAVOLT_GODOT_BINARY = "C:\Users\<you>\AppData\Local\Programs\Godot\Godot_v4.6.3-stable_mono_win64\Godot_v4.6.3-stable_mono_win64_console.exe"
 ```
 
-> Use the `_console.exe` flavor on Windows: TerraVolt parses `TERRAVOLT_HEADLESS_PORT=<port>` from
+> Use the `_console.exe` flavor on Windows: Terravolt parses `TERRAVOLT_HEADLESS_PORT=<port>` from
 > stderr, and the non-console exe drops stderr by default.
 
 Validate the binary actually works:
@@ -59,8 +59,8 @@ npm run addon:link
 This symlinks (or copies, if junction creation fails) `packages/godot-mcp-addon/` into the project
 as `addons/terravolt_mcp/`. Then in Godot:
 
-1. **Project → Project Settings → Plugins → enable “TerraVolt MCP”.**
-2. The bottom panel **TerraVolt MCP** appears with Start/Stop/Restart and a live status indicator.
+1. **Project → Project Settings → Plugins → enable “Terravolt MCP”.**
+2. The bottom panel **Terravolt MCP** appears with Start/Stop/Restart and a live status indicator.
 3. The daemon listens on `127.0.0.1:6505` (override in **Project Settings →
    terravolt_mcp/server/port**).
 

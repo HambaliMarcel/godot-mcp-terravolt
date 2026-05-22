@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltParticleHelpers
+class_name TerravoltParticleHelpers
 
 ## Shared particle helpers (task 19).
 

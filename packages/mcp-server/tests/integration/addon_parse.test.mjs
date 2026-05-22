@@ -1,5 +1,5 @@
 /**
- * docs/tasklist/10 §10.6.5 — parse-check every TerraVolt addon `.gd` file
+ * docs/tasklist/10 §10.6.5 — parse-check every Terravolt addon `.gd` file
  * inside a real Godot project that mounts the addon, so `class_name`
  * siblings resolve (mirrors what a developer with `addon:link` would see).
  *

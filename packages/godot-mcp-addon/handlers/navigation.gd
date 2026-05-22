@@ -1,17 +1,17 @@
 @tool
 extends RefCounted
-class_name TerraVoltNavigationHandlers
+class_name TerravoltNavigationHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Nav := preload("./navigation_helpers.gd")
 const _Phys := preload("./physics_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -245,8 +245,8 @@ func _h_debug_overlay(ctx: Dictionary) -> Dictionary:
 func _err_bake_timeout() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.NAVIGATION_BAKE_TIMEOUT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.NAVIGATION_BAKE_TIMEOUT,
 			"navigation.bake_timeout",
 			"Navigation bake exceeded nav_bake_timeout_ms.",
 			{"timeout_ms": _Nav.BAKE_TIMEOUT_MS},

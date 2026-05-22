@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltRuntimeSession
+class_name TerravoltRuntimeSession
 
 ## Tracks an active playmode or headless game subprocess (task 17).
 

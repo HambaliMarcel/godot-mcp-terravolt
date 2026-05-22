@@ -23,7 +23,7 @@ offset_left = 24.0
 offset_top = 18.0
 offset_right = 1128.0
 offset_bottom = 60.0
-text = "TerraVolt MCP — Playable Demo"
+text = "Terravolt MCP — Playable Demo"
 label_settings = SubResource("LabelSettings_title")
 
 [node name="Player" type="CharacterBody2D" parent="."]

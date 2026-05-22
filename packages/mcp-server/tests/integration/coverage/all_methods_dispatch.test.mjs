@@ -8,7 +8,7 @@
  * params and asserts the response is either:
  *
  *   - ok (the daemon returned a result), OR
- *   - a structured TerraVolt error (-33xxx, -32602/-32603) — meaning the
+ *   - a structured Terravolt error (-33xxx, -32602/-32603) — meaning the
  *     daemon DID dispatch the method, it just rejected the input.
  *
  * A `protocol.method_not_found` (-33101 / -32601) is a real failure.
@@ -105,7 +105,7 @@ function isDispatchedError(err) {
   const code = Number(rpc.code);
   // -32600..-32603 are JSON-RPC envelope codes; -32602/-32603 are dispatched
   if (code === -32602 || code === -32603) return true;
-  // TerraVolt app codes live in the -33000..-34999 band
+  // Terravolt app codes live in the -33000..-34999 band
   if (code <= -33000 && code >= -35000) return true;
   // -32700 parse error is acceptable for some malformed param sets
   if (code === -32700) return true;

@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltTilemapHelpers
+class_name TerravoltTilemapHelpers
 
 ## Shared tilemap / TileMapLayer helpers (task 20).
 

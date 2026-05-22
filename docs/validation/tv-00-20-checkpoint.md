@@ -78,7 +78,7 @@ Run from repo root (`npm install` once):
 
 ## Reference-repo alignment (4 main references)
 
-| Reference                 | TerraVolt adoption                                                                                       | Gap / backlog                                                                            |
+| Reference                 | Terravolt adoption                                                                                       | Gap / backlog                                                                            |
 | ------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | **tomyud1/godot-mcp**     | WS `:6505` daemon + Node MCP stdio router; shared JSON-RPC envelope; headless TCP fallback when WS down  | Browser visualizer (`localhost:6510`) not ported — use Graphify/GitNexus locally instead |
 | **Coding-Solo/godot-mcp** | `runtime.start_headless`, subprocess Godot with stdout/stderr path; headless coordinator in `mcp-server` | Full `run_project` debug loop UI not duplicated — covered by `runtime.*` bridge          |

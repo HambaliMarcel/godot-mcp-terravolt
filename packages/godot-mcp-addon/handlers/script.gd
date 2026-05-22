@@ -1,17 +1,17 @@
 @tool
 extends RefCounted
-class_name TerraVoltScriptHandlers
+class_name TerravoltScriptHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Scripts := preload("./script_helpers.gd")
 const _ErrorBuffer := preload("../services/editor_error_buffer.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -70,8 +70,8 @@ func _h_write(ctx: Dictionary) -> Dictionary:
 	if w.get("exists", false):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCRIPT_PATH_EXISTS,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCRIPT_PATH_EXISTS,
 				"script.path_exists",
 				"File already exists; use overwrite mode.",
 				{"path": path}
@@ -95,8 +95,8 @@ func _h_patch(ctx: Dictionary) -> Dictionary:
 	if r.get("conflict", false):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.SCRIPT_PATCH_CONFLICT,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.SCRIPT_PATCH_CONFLICT,
 				"script.patch_conflict",
 				"Hunk line range does not match current file.",
 				{"path": path}
@@ -123,8 +123,8 @@ func _h_validate(ctx: Dictionary) -> Dictionary:
 		if not OS.has_feature("dotnet"):
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(
-					TerraVoltErrors.SCRIPT_DOTNET_UNAVAILABLE,
+				"error": TerravoltErrors.tv_rpc_error(
+					TerravoltErrors.SCRIPT_DOTNET_UNAVAILABLE,
 					"script.dotnet_unavailable",
 					".NET / C# toolchain not available in this Godot build.",
 					{"path": path}
@@ -225,8 +225,8 @@ func _rescan(path: String) -> void:
 func _err_path_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SCRIPT_PATH_NOT_FOUND_CAT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.SCRIPT_PATH_NOT_FOUND_CAT,
 			"script.path_not_found",
 			"Script file not found.",
 			{"path": path}
@@ -237,8 +237,8 @@ func _err_path_not_found(path: String) -> Dictionary:
 func _err_idempotency() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
 			"protocol.idempotency_conflict",
 			"Revision token mismatch.",
 			{}

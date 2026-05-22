@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltAndroidHelpers
+class_name TerravoltAndroidHelpers
 
 ## android.* helpers — Android deploy/inspection via adb + Godot export CLI (task 26).
 

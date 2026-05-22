@@ -3,7 +3,7 @@
     "transport.not_connected": {
       "hint": "The MCP router cannot reach the Godot daemon WebSocket (:6505 by default).",
       "steps": [
-        "Open the target Godot project and enable the TerraVolt MCP addon (listen on TCP :6505).",
+        "Open the target Godot project and enable the Terravolt MCP addon (listen on TCP :6505).",
         "If you only need parity methods (`ping`, `server.info`), start the project's headless session via MCP `headless.start_project`.",
         "Confirm firewall / VPN is not blocking localhost; try `TERRAVOLT_GODOT_HOST` / `--godot-host`."
       ]
@@ -59,7 +59,7 @@
       ]
     },
     "headless.disallowed": {
-      "hint": "The requested path or RPC is outside the TerraVolt allowlist.",
+      "hint": "The requested path or RPC is outside the Terravolt allowlist.",
       "steps": [
         "Prefer registry-backed daemon methods rather than arbitrary file paths.",
         "Point `--project` at the intended sandbox root instead of escaping upward."
@@ -80,9 +80,9 @@
       ]
     },
     "editor.not_available": {
-      "hint": "This method requires the Godot editor with the TerraVolt addon connected.",
+      "hint": "This method requires the Godot editor with the Terravolt addon connected.",
       "steps": [
-        "Open the project in Godot and enable the TerraVolt MCP addon (WebSocket :6505).",
+        "Open the project in Godot and enable the Terravolt MCP addon (WebSocket :6505).",
         "For headless-capable alternatives, use `scene.create` / `project.set_settings` via `headless.start_project`."
       ]
     },

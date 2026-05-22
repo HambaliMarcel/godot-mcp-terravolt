@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltAnimationTreeHandlers
+class_name TerravoltAnimationTreeHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Anim := preload("./animation_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _transient_roots: Array[Node] = []
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -112,8 +112,8 @@ func _tree_from_params(p: Dictionary) -> Dictionary:
 	if tree == null:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.ANIMATION_TREE_NOT_FOUND,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.ANIMATION_TREE_NOT_FOUND,
 				"animation_tree.not_found",
 				"AnimationTree not found.",
 				{"tree_path": str(p.get("tree_path", ""))}
@@ -123,27 +123,27 @@ func _tree_from_params(p: Dictionary) -> Dictionary:
 
 
 func _map_tree_error(got: Dictionary) -> Dictionary:
-	var code: int = int(got.get("code", TerraVoltErrors.ANIMATION_TREE_NOT_FOUND))
+	var code: int = int(got.get("code", TerravoltErrors.ANIMATION_TREE_NOT_FOUND))
 	match code:
-		TerraVoltErrors.ANIMATION_TREE_PARAMETER_UNKNOWN:
+		TerravoltErrors.ANIMATION_TREE_PARAMETER_UNKNOWN:
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(code, "animation_tree.parameter_unknown", "Unknown AnimationTree parameter.", {}),
+				"error": TerravoltErrors.tv_rpc_error(code, "animation_tree.parameter_unknown", "Unknown AnimationTree parameter.", {}),
 			}
-		TerraVoltErrors.ANIMATION_TREE_STATE_EXISTS:
+		TerravoltErrors.ANIMATION_TREE_STATE_EXISTS:
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(code, "animation_tree.state_exists", "State already exists.", {}),
+				"error": TerravoltErrors.tv_rpc_error(code, "animation_tree.state_exists", "State already exists.", {}),
 			}
-		TerraVoltErrors.ANIMATION_TREE_STATE_UNKNOWN:
+		TerravoltErrors.ANIMATION_TREE_STATE_UNKNOWN:
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(code, "animation_tree.state_unknown", "State not found.", {}),
+				"error": TerravoltErrors.tv_rpc_error(code, "animation_tree.state_unknown", "State not found.", {}),
 			}
 		_:
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(code, "animation_tree.not_found", "AnimationTree or state machine root unavailable.", {}),
+				"error": TerravoltErrors.tv_rpc_error(code, "animation_tree.not_found", "AnimationTree or state machine root unavailable.", {}),
 			}
 
 

@@ -1,6 +1,6 @@
 # Support matrix
 
-Validated combinations for the TerraVolt Godot MCP stack. Update every release per
+Validated combinations for the Terravolt Godot MCP stack. Update every release per
 `docs/tasklist/10 §10.6.10`.
 
 ## Engine + runtime

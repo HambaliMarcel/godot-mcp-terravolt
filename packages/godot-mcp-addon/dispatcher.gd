@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltDispatcher
+class_name TerravoltDispatcher
 
 const _CatalogMeta := preload("./_generated/catalog_meta.gd")
 
@@ -10,7 +10,7 @@ signal rpc_ledger_record(
 	method: String, peer_id: int, latency_ms: int, ok: bool, err_code: Variant
 )
 
-var logger: TerraVoltLogger
+var logger: TerravoltLogger
 var server_ref: WeakRef
 var addon_version: String = "0.1.0"
 var editor_plugin_ref: WeakRef
@@ -24,7 +24,7 @@ func _init() -> void:
 
 
 func configure(
-	p_logger: TerraVoltLogger,
+	p_logger: TerravoltLogger,
 	p_server: Variant,
 	p_editor_plugin: EditorPlugin,
 	p_addon_ver: String
@@ -70,8 +70,8 @@ func dispatch_peer_inbound(peer_id: int, text: String) -> PackedStringArray:
 			"frame_discarded_oversized",
 			{"peer_id": peer_id, "bytes": text.to_utf8_buffer().size(), "limit": max_bytes}
 		)
-		var err_ov := TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.TRANSPORT_UNSUPPORTED_FRAME,
+		var err_ov := TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.TRANSPORT_UNSUPPORTED_FRAME,
 			"Frame too large",
 			"Shrink payload or raise terravolt_mcp/server/max_frame_bytes",
 			{"peer_id": peer_id}
@@ -86,7 +86,7 @@ func dispatch_peer_inbound(peer_id: int, text: String) -> PackedStringArray:
 			Time.get_ticks_msec() - t_batch,
 
 			false,
-			err_ov.get(&"code", TerraVoltErrors.TRANSPORT_UNSUPPORTED_FRAME)
+			err_ov.get(&"code", TerravoltErrors.TRANSPORT_UNSUPPORTED_FRAME)
 		)
 		return outs
 
@@ -95,10 +95,10 @@ func dispatch_peer_inbound(peer_id: int, text: String) -> PackedStringArray:
 
 	var parsed: Variant = JSON.parse_string(text)
 	if parsed == null:
-		var pe := TerraVoltErrors.json_rpc_error(
+		var pe := TerravoltErrors.json_rpc_error(
 			-32700,
 			"Parse error",
-			TerraVoltErrors.PROTOCOL_INVALID_PARAMS,
+			TerravoltErrors.PROTOCOL_INVALID_PARAMS,
 			"Body is not valid JSON",
 			{}
 		)
@@ -113,10 +113,10 @@ func dispatch_peer_inbound(peer_id: int, text: String) -> PackedStringArray:
 			batch_cap = 50
 		var arr := parsed as Array
 		if arr.size() > batch_cap:
-			var be := TerraVoltErrors.json_rpc_error(
+			var be := TerravoltErrors.json_rpc_error(
 				-32600,
 				"Invalid Request",
-				TerraVoltErrors.PROTOCOL_BATCH_TOO_LARGE,
+				TerravoltErrors.PROTOCOL_BATCH_TOO_LARGE,
 				"Batch exceeds configured limit",
 				{"batch_size": arr.size(), "limit": batch_cap}
 			)
@@ -160,10 +160,10 @@ func enqueue_server_notification_obj(method: String, params: Variant) -> String:
 func _handle_single(peer_id: int, elt: Variant) -> Variant:
 	var t_req := Time.get_ticks_msec()
 	if typeof(elt) != TYPE_DICTIONARY:
-		var ir := TerraVoltErrors.json_rpc_error(
+		var ir := TerravoltErrors.json_rpc_error(
 			-32600,
 			"Invalid Request",
-			TerraVoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
+			TerravoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
 			"Each JSON-RPC envelope must be an object",
 			{}
 		)
@@ -177,10 +177,10 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 	var proto_bad := proto == null or str(proto) != "2.0"
 
 	if proto_bad:
-		var verr := TerraVoltErrors.json_rpc_error(
+		var verr := TerravoltErrors.json_rpc_error(
 			-32600,
 			"Invalid Request",
-			TerraVoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
+			TerravoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
 			'`jsonrpc` must be `"2.0"`',
 			{}
 		)
@@ -195,10 +195,10 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 		return {"payload": {"jsonrpc": "2.0", "error": verr, "id": obj.get(&"id", null) if has_id_key else null}}
 
 	if not obj.has(&"method") or typeof(obj[&"method"]) != TYPE_STRING:
-		var mr := TerraVoltErrors.json_rpc_error(
+		var mr := TerravoltErrors.json_rpc_error(
 			-32600,
 			"Invalid Request",
-			TerraVoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
+			TerravoltErrors.PROTOCOL_INVALID_JSONRPC_VERSION,
 			"A string `method` is required",
 			{}
 		)
@@ -211,10 +211,10 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 	if obj.has(&"params"):
 		params_variant = obj[&"params"]
 		if typeof(params_variant) != TYPE_DICTIONARY and typeof(params_variant) != TYPE_ARRAY:
-			var pt := TerraVoltErrors.json_rpc_error(
+			var pt := TerravoltErrors.json_rpc_error(
 				-32602,
 				"Invalid params",
-				TerraVoltErrors.PROTOCOL_INVALID_PARAMS,
+				TerravoltErrors.PROTOCOL_INVALID_PARAMS,
 				"`params` must be object or array when present",
 				{}
 			)
@@ -228,10 +228,10 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 	var wants_response := has_id_key
 
 	if not _methods.has(method):
-		var nf := TerraVoltErrors.json_rpc_error(
+		var nf := TerravoltErrors.json_rpc_error(
 			-32601,
 			"Method not found",
-			TerraVoltErrors.PROTOCOL_METHOD_NOT_FOUND,
+			TerravoltErrors.PROTOCOL_METHOD_NOT_FOUND,
 			"Use server.list_methods to inspect supported methods",
 			{"method": method}
 		)
@@ -250,15 +250,15 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 
 	var val: Dictionary
 	if typeof(schema) == TYPE_DICTIONARY:
-		val = TerraVoltJsonSchemaMini.validate(pv_for_schema, schema)
+		val = TerravoltJsonSchemaMini.validate(pv_for_schema, schema)
 	else:
 		val = {"ok": true}
 
 	if not val.get(&"ok", false):
-		var inf := TerraVoltErrors.json_rpc_error(
+		var inf := TerravoltErrors.json_rpc_error(
 			-32602,
 			"Invalid params",
-			TerraVoltErrors.PROTOCOL_INVALID_PARAMS,
+			TerravoltErrors.PROTOCOL_INVALID_PARAMS,
 			"Params failed schema validation",
 			{"errors": [val]}
 		)
@@ -282,10 +282,10 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 	var lat := Time.get_ticks_msec() - t_req
 
 	if typeof(result) != TYPE_DICTIONARY or not (result as Dictionary).has(&"ok"):
-		var ie := TerraVoltErrors.json_rpc_error(
+		var ie := TerravoltErrors.json_rpc_error(
 			-32603,
 			"Internal error",
-			TerraVoltErrors.DISPATCH_HANDLER_THREW,
+			TerravoltErrors.DISPATCH_HANDLER_THREW,
 			"Handler returned an unexpected signature",
 			{}
 		)
@@ -441,10 +441,10 @@ func _h_heartbeat(_ctx: Dictionary) -> Dictionary:
 
 func _h_server_shutdown(ctx: Dictionary) -> Dictionary:
 	if not ProjectSettings.get_setting("terravolt_mcp/server/allow_remote_shutdown", false):
-		var deny := TerraVoltErrors.json_rpc_error(
+		var deny := TerravoltErrors.json_rpc_error(
 			-32600,
 			"Forbidden",
-			TerraVoltErrors.PROTOCOL_INVALID_PARAMS,
+			TerravoltErrors.PROTOCOL_INVALID_PARAMS,
 			"Enable terravolt_mcp/server/allow_remote_shutdown first",
 			{}
 		)

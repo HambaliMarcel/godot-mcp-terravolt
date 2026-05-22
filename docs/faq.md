@@ -32,9 +32,9 @@ Resolution order matches `docs/tasklist/07 §7.6.7`: `--project` flag, then `TER
 then the project of a running editor (detected via `server.info`). The error is
 `headless.no_project` (`-33811`) with a structured `autoHeal` pointer.
 
-### What’s the difference between Godot MCP Pro / tomyud1 / Coding-Solo and TerraVolt?
+### What’s the difference between Godot MCP Pro / tomyud1 / Coding-Solo and Terravolt?
 
-See `references/reference-repos-map.md`. TerraVolt explicitly indexes those peers and only adopts
+See `references/reference-repos-map.md`. Terravolt explicitly indexes those peers and only adopts
 patterns that survive the lock contracts in `docs/tasklist/00`.
 
 ### Is this safe to use on big projects?

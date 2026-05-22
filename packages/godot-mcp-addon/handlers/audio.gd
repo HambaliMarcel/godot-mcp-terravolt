@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltAudioHandlers
+class_name TerravoltAudioHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Audio := preload("./audio_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -102,7 +102,7 @@ func _wrap(g: Dictionary) -> Dictionary:
 func _err(code: int, message: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(code, message, message, {}),
+		"error": TerravoltErrors.tv_rpc_error(code, message, message, {}),
 	}
 
 

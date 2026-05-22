@@ -1,8 +1,8 @@
 @tool
 extends RefCounted
-class_name TerraVoltErrors
+class_name TerravoltErrors
 
-## Stable TerraVolt application codes (-33000 … -33999) plus JSON-RPC helper builders.
+## Stable Terravolt application codes (-33000 … -33999) plus JSON-RPC helper builders.
 
 #region transport
 const TRANSPORT_BIND_FAILED := -33000

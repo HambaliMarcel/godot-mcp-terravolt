@@ -1,6 +1,6 @@
 # Contributing to godot-mcp-terravolt
 
-Thanks for helping improve TerraVolt’s Godot ⇄ MCP work. This repo is early-stage; clarity and
+Thanks for helping improve Terravolt’s Godot ⇄ MCP work. This repo is early-stage; clarity and
 small, focused PRs are especially welcome.
 
 ## Quick links
@@ -42,7 +42,7 @@ Do not commit `.env`, API keys, or tokens. Add patterns to `.gitignore` instead.
 
 `references/godot-mcp-*` are upstream MCP study clones (**indexed** by GitNexus/Graphify in this
 workspace). **`references/godot-docs/`** is the official Sphinx manual — **human reading / search
-only** (excluded from those indexes because of volume). TerraVolt product code lives under
+only** (excluded from those indexes because of volume). Terravolt product code lives under
 **`packages/`** plus first-party tooling, not inside `references/`.
 
 ## Pull requests

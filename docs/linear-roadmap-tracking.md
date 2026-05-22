@@ -1,6 +1,6 @@
-# Linear tracking — Godot MCP TerraVolt roadmap
+# Linear tracking — Godot MCP Terravolt roadmap
 
-Tracked in Linear under **Terravolt** → project **Godot MCP TerraVolt — build roadmap**  
+Tracked in Linear under **Terravolt** → project **Godot MCP Terravolt — build roadmap**  
 ([open project page](https://linear.app/terravolt/project/godot-mcp-terravolt-build-roadmap-db4a5bd8fcbc)).
 
 ## What was imported via MCP (Cursor plugin)

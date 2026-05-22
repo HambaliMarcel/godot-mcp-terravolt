@@ -4,5 +4,5 @@
   "title": "PropertyDict",
   "type": "object",
   "additionalProperties": true,
-  "description": "Open-ended key/value map whose values round-trip through TerraVolt Variant-JSON mapping."
+  "description": "Open-ended key/value map whose values round-trip through Terravolt Variant-JSON mapping."
 }

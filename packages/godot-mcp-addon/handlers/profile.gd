@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltProfileHandlers
+class_name TerravoltProfileHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _H := preload("./profile_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -57,4 +57,4 @@ func _h_flamegraph(ctx: Dictionary) -> Dictionary:
 
 
 func _err(code: int, symbol: String) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(code, symbol, symbol, {})}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(code, symbol, symbol, {})}

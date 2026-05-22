@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltNavigationHelpers
+class_name TerravoltNavigationHelpers
 
 ## Shared navigation helpers (task 19).
 

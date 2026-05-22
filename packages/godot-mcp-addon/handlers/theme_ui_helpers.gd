@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltThemeUiHelpers
+class_name TerravoltThemeUiHelpers
 
 ## Theme + Control UI helpers (task 20).
 

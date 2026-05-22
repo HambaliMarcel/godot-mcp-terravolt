@@ -1349,7 +1349,7 @@ Nodes (12): 03 — Godot WebSocket Server (Phase 1, part B), 3.1 Header, 3.2 Pha
 
 ### Community 74 - "Community 74"
 Cohesion: 0.15
-Nodes (12): Anatomy by folder (`references/`), At-a-glance comparison, code:text (┌──────────────┐), code:text (AI client ◄── MCP (stdio) ──► mcp-server ◄── WebSocket ──► G), code:bash (# Refresh reference clones (example)), Maintenance, Reference repositories — TerraVolt map, `references/godot-docs/` (+4 more)
+Nodes (12): Anatomy by folder (`references/`), At-a-glance comparison, code:text (┌──────────────┐), code:text (AI client ◄── MCP (stdio) ──► mcp-server ◄── WebSocket ──► G), code:bash (# Refresh reference clones (example)), Maintenance, Reference repositories — Terravolt map, `references/godot-docs/` (+4 more)
 
 ### Community 75 - "Community 75"
 Cohesion: 0.17
@@ -1505,7 +1505,7 @@ Nodes (7): compilerOptions, noEmit, outDir, rootDir, exclude, extends, include
 
 ### Community 114 - "Community 114"
 Cohesion: 0.25
-Nodes (7): 1. Product topology (locked), 2. Wire protocol (locked), 3. Operational constants (locked), 4. Implementation placement (locked), 5. Phase gate (do not skip), 6. Reference study map, TerraVolt Godot MCP — fundamentals contract (pre–Phase 1)
+Nodes (7): 1. Product topology (locked), 2. Wire protocol (locked), 3. Operational constants (locked), 4. Implementation placement (locked), 5. Phase gate (do not skip), 6. Reference study map, Terravolt Godot MCP — fundamentals contract (pre–Phase 1)
 
 ### Community 115 - "Community 115"
 Cohesion: 0.36
@@ -1725,11 +1725,11 @@ Nodes (6): description, milestone, parentId, project, team, title
 
 ### Community 169 - "Community 169"
 Cohesion: 0.29
-Nodes (6): After structural changes, Layers, Layout, Purpose, TerraVolt Godot MCP — system overview, Where to read next
+Nodes (6): After structural changes, Layers, Layout, Purpose, Terravolt Godot MCP — system overview, Where to read next
 
 ### Community 170 - "Community 170"
 Cohesion: 0.18
-Nodes (10): code:powershell (# From repo root — Windows PowerShell), code:powershell (py -3 tools\push_linear_issue_children_api.py --prime "TER-4), Export limits (explicit), Finish the child backlog (~295 subsections) in one sweep, Linear tracking — Godot MCP TerraVolt roadmap, Phase `00–06` validation (maintainer sweep), Phase `00–13` validation (maintainer sweep), Phase `00–16` validation (maintainer sweep) (+2 more)
+Nodes (10): code:powershell (# From repo root — Windows PowerShell), code:powershell (py -3 tools\push_linear_issue_children_api.py --prime "TER-4), Export limits (explicit), Finish the child backlog (~295 subsections) in one sweep, Linear tracking — Godot MCP Terravolt roadmap, Phase `00–06` validation (maintainer sweep), Phase `00–13` validation (maintainer sweep), Phase `00–16` validation (maintainer sweep) (+2 more)
 
 ### Community 171 - "Community 171"
 Cohesion: 0.29
@@ -1737,7 +1737,7 @@ Nodes (6): Actual behavior, Environment, Expected behavior, Related, Steps to re
 
 ### Community 172 - "Community 172"
 Cohesion: 0.25
-Nodes (7): Always Do, CLI, GitNexus — Code Intelligence, Never Do, Resources, TerraVolt roadmap, Workspace notes
+Nodes (7): Always Do, CLI, GitNexus — Code Intelligence, Never Do, Resources, Terravolt roadmap, Workspace notes
 
 ### Community 173 - "Community 173"
 Cohesion: 0.29
@@ -2837,7 +2837,7 @@ Nodes (4): Agent policies (safety), Branching, Data handling, Destructive operat
 
 ### Community 447 - "Community 447"
 Cohesion: 0.40
-Nodes (4): Layers, Layout ( evolving ), Purpose, TerraVolt Godot MCP — system overview
+Nodes (4): Layers, Layout ( evolving ), Purpose, Terravolt Godot MCP — system overview
 
 ### Community 448 - "Community 448"
 Cohesion: 0.40
@@ -3165,7 +3165,7 @@ Nodes (8): cfg, coordinator, envFile, fixture, godotBinary, here, repoRoot, stat
 
 ### Community 1142 - "Community 1142"
 Cohesion: 0.22
-Nodes (8): Can two agents use one daemon?, Do I need Godot open?, FAQ, How do I add a new tool?, How do I report a bug?, Is this safe to use on big projects?, What’s the difference between Godot MCP Pro / tomyud1 / Coding-Solo and TerraVolt?, Why isn’t my project recognized?
+Nodes (8): Can two agents use one daemon?, Do I need Godot open?, FAQ, How do I add a new tool?, How do I report a bug?, Is this safe to use on big projects?, What’s the difference between Godot MCP Pro / tomyud1 / Coding-Solo and Terravolt?, Why isn’t my project recognized?
 
 ### Community 1143 - "Community 1143"
 Cohesion: 0.20

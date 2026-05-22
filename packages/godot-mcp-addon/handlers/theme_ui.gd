@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltThemeUiHandlers
+class_name TerravoltThemeUiHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Ui := preload("./theme_ui_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -140,4 +140,4 @@ func _scan() -> void:
 
 
 func _err(code: int, symbol: String) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(code, symbol, symbol, {})}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(code, symbol, symbol, {})}

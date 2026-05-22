@@ -1,4 +1,4 @@
-# TerraVolt Godot MCP — fundamentals contract (pre–Phase 1)
+# Terravolt Godot MCP — fundamentals contract (pre–Phase 1)
 
 This document **executes** the non-code baseline from the SRS: agreed contracts and repo gates
 **before** [execution_roadmap.md](execution_roadmap.md) Phase 1 (`plugin.cfg` / `main.gd` /

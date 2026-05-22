@@ -1,15 +1,15 @@
 @tool
 extends RefCounted
-class_name TerraVoltAnalysisHandlers
+class_name TerravoltAnalysisHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Analysis := preload("./analysis_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()

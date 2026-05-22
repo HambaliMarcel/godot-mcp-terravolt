@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltTestingHelpers
+class_name TerravoltTestingHelpers
 
 ## testing.* helpers (task 23).
 
@@ -77,7 +77,7 @@ static func run_tests(params: Dictionary) -> Dictionary:
 
 static func run_scenario(params: Dictionary, scene_root: Node) -> Dictionary:
 	## Orchestrate a sequence of test steps: input | wait | assert | screenshot.
-	## Mirrors the godot-mcp-pro "run_test_scenario" pattern but uses TerraVolt's
+	## Mirrors the godot-mcp-pro "run_test_scenario" pattern but uses Terravolt's
 	## headless-friendly primitives (no editor dependency required).
 	var steps: Array = params.get("steps", []) as Array
 	if steps.is_empty():

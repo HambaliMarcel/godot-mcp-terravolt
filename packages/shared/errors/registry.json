@@ -42,7 +42,7 @@
       "category": "editor",
       "severity": "error",
       "recoverable": true,
-      "hint": "Open the Godot editor with the TerraVolt addon enabled.",
+      "hint": "Open the Godot editor with the Terravolt addon enabled.",
       "since": "0.3.0"
     },
     {
@@ -465,7 +465,7 @@
       "category": "headless",
       "severity": "error",
       "recoverable": true,
-      "hint": "Path or RPC blocked by TerraVolt allowlisting; stay within `--project`.",
+      "hint": "Path or RPC blocked by Terravolt allowlisting; stay within `--project`.",
       "since": "0.2.0"
     },
     {

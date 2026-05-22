@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltMacroHelpers
+class_name TerravoltMacroHelpers
 
 ## Macro orchestrator — composes lower-level helpers internally (task 24).
 

@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltAnalysisHelpers
+class_name TerravoltAnalysisHelpers
 
 const _Assets := preload("./asset_helpers.gd")
 const _Res := preload("./resource_helpers.gd")

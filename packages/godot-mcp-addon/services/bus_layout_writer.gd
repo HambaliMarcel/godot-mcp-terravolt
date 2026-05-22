@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltBusLayoutWriter
+class_name TerravoltBusLayoutWriter
 
 ## Persist AudioServer bus layout to the project default_bus_layout resource (task 21).
 

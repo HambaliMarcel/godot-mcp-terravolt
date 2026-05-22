@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-## TerraVolt playable demo — 2D top-down character.
+## Terravolt playable demo — 2D top-down character.
 ##
 ## Move with arrow keys (ui_left / ui_right / ui_up / ui_down).
 ## Press ui_accept (Enter/Space) to cycle the player's color.

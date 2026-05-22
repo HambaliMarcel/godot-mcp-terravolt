@@ -1,15 +1,15 @@
 @tool
 extends EditorPlugin
 
-## TerraVolt MCP — Phase 1 addon (tasks 02–04).
+## Terravolt MCP — Phase 1 addon (tasks 02–04).
 
 const ADDON_VERSION := "0.1.0"
 
 const _StatusDockScr = preload("./editor_ui/status_dock.gd")
 
-var _logger: TerraVoltLogger = null
-var _dispatcher: TerraVoltDispatcher = null
-var _server: TerraVoltMCPServer = null
+var _logger: TerravoltLogger = null
+var _dispatcher: TerravoltDispatcher = null
+var _server: TerravoltMCPServer = null
 var _dock: MarginContainer = null
 
 var _tree_budget_ms: int = -1_000_000
@@ -17,13 +17,13 @@ var _tree_budget_ms: int = -1_000_000
 
 func _enter_tree() -> void:
 	_define_settings()
-	_logger = TerraVoltLogger.new()
+	_logger = TerravoltLogger.new()
 	_logger.addon_version_string = ADDON_VERSION
 	_logger.configure_from_project()
-	_logger.log_info("TerraVolt MCP addon entered tree", {})
+	_logger.log_info("Terravolt MCP addon entered tree", {})
 
-	_dispatcher = TerraVoltDispatcher.new()
-	_server = TerraVoltMCPServer.new()
+	_dispatcher = TerravoltDispatcher.new()
+	_server = TerravoltMCPServer.new()
 	_server.configure(_dispatcher, _logger)
 	_dispatcher.configure(_logger, _server, self, ADDON_VERSION)
 
@@ -85,9 +85,9 @@ func _enter_tree() -> void:
 	_install_runtime_bridge_autoload()
 
 	_dock = _StatusDockScr.new()
-	_dock.name = "TerraVoltMCPStatus"
-	(_dock as TerraVoltStatusDock).setup(self, _logger, _dispatcher, _server)
-	add_control_to_bottom_panel(_dock, "TerraVolt MCP")
+	_dock.name = "TerravoltMCPStatus"
+	(_dock as TerravoltStatusDock).setup(self, _logger, _dispatcher, _server)
+	add_control_to_bottom_panel(_dock, "Terravolt MCP")
 
 	var base := get_editor_interface().get_base_control()
 	if base and base.get_tree():
@@ -125,7 +125,7 @@ func _exit_tree() -> void:
 		_dock = null
 
 	if _logger:
-		_logger.log_info("TerraVolt MCP addon exited tree", {})
+		_logger.log_info("Terravolt MCP addon exited tree", {})
 	if _server:
 
 		_server.stop()
@@ -145,9 +145,9 @@ func _on_settings_changed() -> void:
 	if _logger:
 		_logger.configure_from_project()
 
-	if _dock and (_dock as TerraVoltStatusDock).has_method(&"mark_live_settings_maybe_stale"):
+	if _dock and (_dock as TerravoltStatusDock).has_method(&"mark_live_settings_maybe_stale"):
 
-		(_dock as TerraVoltStatusDock).mark_live_settings_maybe_stale()
+		(_dock as TerravoltStatusDock).mark_live_settings_maybe_stale()
 
 
 
@@ -236,11 +236,11 @@ func _install_runtime_bridge_autoload() -> void:
 	var path := _runtime_bridge_script_path()
 	if not FileAccess.file_exists(path):
 		return
-	if ProjectSettings.has_setting("autoload/TerraVoltRuntimeBridge"):
+	if ProjectSettings.has_setting("autoload/TerravoltRuntimeBridge"):
 		return
-	add_autoload_singleton("TerraVoltRuntimeBridge", path)
+	add_autoload_singleton("TerravoltRuntimeBridge", path)
 
 
 func _remove_runtime_bridge_autoload() -> void:
-	if ProjectSettings.has_setting("autoload/TerraVoltRuntimeBridge"):
-		remove_autoload_singleton("TerraVoltRuntimeBridge")
+	if ProjectSettings.has_setting("autoload/TerravoltRuntimeBridge"):
+		remove_autoload_singleton("TerravoltRuntimeBridge")

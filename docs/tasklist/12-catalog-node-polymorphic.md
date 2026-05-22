@@ -1,6 +1,6 @@
 # 12 — Catalog: `node.*` (Phase 3 work-unit #2)
 
-> The `node.*` category is the **polymorphic core** of TerraVolt. Every other category eventually
+> The `node.*` category is the **polymorphic core** of Terravolt. Every other category eventually
 > delegates here for tree manipulation. Get the contract right and the rest of Phase 3 becomes a
 > parade of thin wrappers.
 

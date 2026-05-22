@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltProjectHandlers
+class_name TerravoltProjectHandlers
 
 const _Utils := preload("./handler_utils.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 const _LOCKED_PREFIXES: PackedStringArray = PackedStringArray(["application/config/features"])
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -167,8 +167,8 @@ func _h_set_settings(ctx: Dictionary) -> Dictionary:
 		if _is_locked(k) and not confirm_high_risk:
 			return {
 				"ok": false,
-				"error": TerraVoltErrors.tv_rpc_error(
-					TerraVoltErrors.PROJECT_SETTING_LOCKED,
+				"error": TerravoltErrors.tv_rpc_error(
+					TerravoltErrors.PROJECT_SETTING_LOCKED,
 					"project.setting_locked",
 					"High-risk or locked key; pass confirm_high_risk=true.",
 					{"key": k}

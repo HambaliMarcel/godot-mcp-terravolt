@@ -7,7 +7,7 @@ when something looks broken.
 
 ```
 ┌──────────────────────┐    stdio (JSON-RPC)    ┌────────────────────────────┐
-│  Cursor / MCP client │ ─────────────────────▶ │ TerraVolt MCP router       │
+│  Cursor / MCP client │ ─────────────────────▶ │ Terravolt MCP router       │
 │  (terravolt-godot-mcp)│ ◀───────────────────── │ packages/mcp-server/dist   │
 └──────────────────────┘                        └─────────────┬──────────────┘
                                                               │
@@ -16,7 +16,7 @@ when something looks broken.
         │ ws://127.0.0.1:6505 (JSON-RPC 2.0)                   │
         ▼                                                      │
 ┌────────────────────────────────────┐                        │
-│ Godot editor + TerraVolt addon     │ persistent             │
+│ Godot editor + Terravolt addon     │ persistent             │
 │ packages/godot-mcp-addon/main.gd   │ socket                 │
 │ (mcp_server.gd → dispatcher.gd)    │                        │
 └────────────────────────────────────┘                        │
@@ -36,7 +36,7 @@ when something looks broken.
 
 ## Editor mode
 
-Used when the Godot editor is open and the TerraVolt addon is enabled.
+Used when the Godot editor is open and the Terravolt addon is enabled.
 
 1. **Daemon listens** — `mcp_server.gd` binds a WebSocket server on `127.0.0.1:6505` (configurable
    in **Project Settings → terravolt_mcp**).
@@ -70,8 +70,8 @@ $env:TERRAVOLT_GODOT_PROJECT = "C:\path\to\my-godot-project"
 npm run addon:link
 ```
 
-In Godot: **Project → Project Settings → Plugins → TerraVolt MCP → Enable.** The bottom panel
-**TerraVolt MCP** then shows status / start / stop / log.
+In Godot: **Project → Project Settings → Plugins → Terravolt MCP → Enable.** The bottom panel
+**Terravolt MCP** then shows status / start / stop / log.
 
 ## Headless mode
 
@@ -130,7 +130,7 @@ and `addon_parse.test.mjs` against a real Godot 4.6.3 stable mono binary.
 ## Common pitfalls
 
 - **`transport.not_connected` on every call**: the editor isn't running with the addon enabled.
-  Check that **TerraVolt MCP** is enabled in Project Settings → Plugins, or rely on
+  Check that **Terravolt MCP** is enabled in Project Settings → Plugins, or rely on
   `headless.start_project` for tools that support the fallback.
 - **`headless.binary_missing` (`-33810`)**: run `npm run env:godot`. On Windows, prefer
   `_console.exe`.

@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltPhysicsHelpers
+class_name TerravoltPhysicsHelpers
 
 ## Shared physics helpers (task 19).
 

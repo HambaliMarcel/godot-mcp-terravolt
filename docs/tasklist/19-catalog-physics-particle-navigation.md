@@ -279,7 +279,7 @@ Phase 3, work-unit #9. Prerequisite: `18` shipped.
 | Risk                                                           | Mitigation                                                                                                                       |
 | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Bake is CPU-heavy; can stall the editor.                       | Run bakes on a background thread where possible; otherwise stream progress via `event.navigation.bake_progress`.                 |
-| Layer index 0 vs 1 confusion.                                  | TerraVolt always uses **1-indexed** layer numbers in inputs/outputs; document explicitly.                                        |
+| Layer index 0 vs 1 confusion.                                  | Terravolt always uses **1-indexed** layer numbers in inputs/outputs; document explicitly.                                        |
 | GPU particles unavailable on some platforms.                   | Detect via `RenderingServer.has_feature("particles_gpu")`; auto-fallback to `CPUParticles*`; surface `particle.gpu_unsupported`. |
 | Raycasts outside `_physics_process` return stale results.      | Always run inside the physics step (use runtime bridge `process_priority`); document caveat.                                     |
 | Adding shape with wrong dimension (`BoxShape3D` on a 2D body). | Pre-check dimension; raise `physics.dimension_mismatch`.                                                                         |

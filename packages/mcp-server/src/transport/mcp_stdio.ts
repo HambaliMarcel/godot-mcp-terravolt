@@ -84,7 +84,7 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
     {
       capabilities: { tools: { listChanged: false } },
       instructions:
-        "TerraVolt bridges Cursor MCP stdio to editor (:6505) and optional Godot headless TCP (task 07).",
+        "Terravolt bridges Cursor MCP stdio to editor (:6505) and optional Godot headless TCP (task 07).",
     },
   );
 

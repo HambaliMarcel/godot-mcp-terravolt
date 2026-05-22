@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltScene3dHelpers
+class_name TerravoltScene3dHelpers
 
 ## Shared 3D scene authoring helpers (task 22).
 

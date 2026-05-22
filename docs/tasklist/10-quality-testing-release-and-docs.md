@@ -2,7 +2,7 @@
 
 > **Goal**: ship. Build the full QA matrix, integration harness, vibe-coding end-to-end scenarios,
 > performance benchmarks, documentation site, support matrix, versioning policy, release pipeline,
-> security review, and post-release maintenance plan. After this file, **TerraVolt Godot MCP `1.0`**
+> security review, and post-release maintenance plan. After this file, **Terravolt Godot MCP `1.0`**
 > is releasable.
 
 ---
@@ -111,7 +111,7 @@ Macro tests additionally exercise rollback on partial failure.
 A scripted end-to-end story the agent (or a test harness) can replay:
 
 1. Start with `tests/_fixtures/empty/`.
-2. `project.ensure_addons` → confirm TerraVolt MCP enabled.
+2. `project.ensure_addons` → confirm Terravolt MCP enabled.
 3. `scene.create` → main scene with `Node3D` root.
 4. `node.add` → camera, light, ground (StaticBody3D + CollisionShape3D).
 5. `macro.scaffold_player_controller_3d` → player rig.
@@ -264,7 +264,7 @@ Address in `SECURITY.md`:
 
 ### 10.6.12 Telemetry & privacy
 
-- TerraVolt does **not** phone home. No telemetry is emitted off-machine.
+- Terravolt does **not** phone home. No telemetry is emitted off-machine.
 - All metrics (`tools.metrics`, `tools.bottlenecks`) are local and accessible only via MCP tools.
 
 ### 10.6.13 FAQ outline
@@ -275,7 +275,7 @@ Topics:
 - "Can two agents use one daemon?" (single-client v1).
 - "How do I add a new tool?" (link to `06` and `08`).
 - "Why isn't my project recognized?" (resolution order in `07 §7.6.7`).
-- "What's the difference between Godot MCP Pro / tomyud1 / Coding-Solo and TerraVolt?" (the
+- "What's the difference between Godot MCP Pro / tomyud1 / Coding-Solo and Terravolt?" (the
   comparison from `references/reference-repos-map.md`).
 - "Is this safe to use on big projects?" (yes, envelopes from `09`).
 - "How do I report a bug?" (link to GitHub issues + telemetry capture instructions).
@@ -502,7 +502,7 @@ Per `tutorials/export/exporting_pcks.rst` and `command_line_tutorial.rst`:
   instructions (`addon:link`).
 - The **router npm package** packs `dist/`, `package.json`, the bin entry, and a slim README.
 - A **catalog snapshot JSON** (`catalog-<version>.json`) is included as a release asset so external
-  tooling can introspect TerraVolt's tool surface without installing the package.
+  tooling can introspect Terravolt's tool surface without installing the package.
 
 ### A.7 Self-contained mode for CI
 
@@ -515,7 +515,7 @@ Per `data_paths.rst` §"Self-contained mode":
 ### A.8 Performance baselines (engine-anchored)
 
 - Cold engine boot per `--benchmark` typically lands in 0.5–2 s depending on platform. Use this as
-  the floor for TerraVolt's `headless.start_project` SLA from `10 §10.6.5` (target < 5 s).
+  the floor for Terravolt's `headless.start_project` SLA from `10 §10.6.5` (target < 5 s).
 - `Engine.get_frames_per_second()` and `Performance.get_monitor(Performance.TIME_FPS)` provide the
   FPS reading used by `runtime.get_performance`.
 - `Performance.MEMORY_STATIC_MAX` and `MEMORY_MESSAGE_BUFFER_MAX` reveal memory pressure during long
@@ -524,12 +524,12 @@ Per `data_paths.rst` §"Self-contained mode":
 ### A.9 Recovery Mode safeguard
 
 - Per `command_line_tutorial.rst` Run Options: `--recovery-mode` disables plugins. The release notes
-  and FAQ must remind users that TerraVolt MCP is **disabled** under recovery mode and link to the
+  and FAQ must remind users that Terravolt MCP is **disabled** under recovery mode and link to the
   documented workaround (open the editor normally to re-enable the plugin).
 
 ### A.10 Security review additions
 
-- TerraVolt's WebSocket listens loopback by default per `00 §A.1`/`03 §A.7`. Document the threat
+- Terravolt's WebSocket listens loopback by default per `00 §A.1`/`03 §A.7`. Document the threat
   model: if `bind_address` is changed to `0.0.0.0`, _any_ process on the local network can connect —
   recommend pairing with `terravolt_mcp/security/require_token`.
 - Logs may contain user-supplied content (script source from `script.set`, asset paths). Redaction
@@ -547,7 +547,7 @@ Per `data_paths.rst` §"Self-contained mode":
 
 - GDScript projects: tests through GUT or gdUnit4.
 - C# projects: `--build-solutions` then `dotnet test` if the project ships unit tests in
-  xUnit/NUnit; TerraVolt's `headless.run_tests` shells to the right command based on project
+  xUnit/NUnit; Terravolt's `headless.run_tests` shells to the right command based on project
   detection.
 
 ### A.13 Risks added

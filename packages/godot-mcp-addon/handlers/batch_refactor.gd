@@ -1,17 +1,17 @@
 @tool
 extends RefCounted
-class_name TerraVoltBatchRefactorHandlers
+class_name TerravoltBatchRefactorHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Assets := preload("./asset_helpers.gd")
 const _Res := preload("./resource_helpers.gd")
 const _Journal := preload("../services/batch_journal.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -51,7 +51,7 @@ func _h_apply(ctx: Dictionary) -> Dictionary:
 	if p.has("confirm_token"):
 		var expected := _Journal.token_for_plan(plan)
 		if str(p.get("confirm_token", "")) != expected:
-			return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.BATCH_CONFIRM_MISMATCH, "batch.confirm_mismatch", "confirm_token does not match plan.", {})}
+			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.BATCH_CONFIRM_MISMATCH, "batch.confirm_mismatch", "confirm_token does not match plan.", {})}
 	var snapshots := _snapshot_plan_files(plan)
 	var executed := _execute_plan(plan, false)
 	var revert_token := str(Time.get_ticks_msec()) + executed.get("total_edits", 0)
@@ -60,7 +60,7 @@ func _h_apply(ctx: Dictionary) -> Dictionary:
 	executed["summary"] = "%d ops on %d files" % [plan.get("ops", []).size(), executed.get("total_files", 0)]
 	_Journal.append_apply(plan, executed, snapshots)
 	if executed.get("ops_failed", 0) > 0:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.BATCH_PARTIAL_FAILURE, "batch.partial_failure", "Some batch ops failed.", executed)}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.BATCH_PARTIAL_FAILURE, "batch.partial_failure", "Some batch ops failed.", executed)}
 	_scan()
 	return {"ok": true, "result": executed}
 
@@ -124,7 +124,7 @@ func _h_change_class(ctx: Dictionary) -> Dictionary:
 	var dry := bool(p.get("dry_run", false))
 	var executed := _execute_plan(plan, dry)
 	if executed.get("ops_failed", 0) > 0:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.BATCH_INCOMPATIBLE_CLASSES, "batch.incompatible_classes", "Class conversion failed.", executed)}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.BATCH_INCOMPATIBLE_CLASSES, "batch.incompatible_classes", "Class conversion failed.", executed)}
 	return {"ok": true, "result": {"converted": executed.get("edits", []), "applied": not dry, "dry_run": dry}}
 
 

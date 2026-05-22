@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltPhysicsHandlers
+class_name TerravoltPhysicsHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Phys := preload("./physics_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -230,8 +230,8 @@ func _h_set_gravity(ctx: Dictionary) -> Dictionary:
 func _err_shape_unknown(kind: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PHYSICS_SHAPE_KIND_UNKNOWN,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PHYSICS_SHAPE_KIND_UNKNOWN,
 			"physics.shape_kind_unknown",
 			"Unknown physics shape or body kind.",
 			{"kind": kind},
@@ -242,8 +242,8 @@ func _err_shape_unknown(kind: String) -> Dictionary:
 func _err_dimension_mismatch() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PHYSICS_DIMENSION_MISMATCH,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PHYSICS_DIMENSION_MISMATCH,
 			"physics.dimension_mismatch",
 			"Node dimension does not match requested shape or operation.",
 			{},
@@ -254,8 +254,8 @@ func _err_dimension_mismatch() -> Dictionary:
 func _err_batch_too_large() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PHYSICS_BATCH_TOO_LARGE,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PHYSICS_BATCH_TOO_LARGE,
 			"physics.batch_too_large",
 			"Raycast batch exceeds physics_raycast_max_per_call.",
 			{"max": _Phys.RAYCAST_MAX_PER_CALL},

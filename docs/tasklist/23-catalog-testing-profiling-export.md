@@ -2,7 +2,7 @@
 
 > The release-side categories. `testing.*` runs automated tests against the project (GUT / gdUnit4 /
 > custom), asserts state, and compares screenshots. `profile.*` exposes Godot's performance monitors
-> and adds TerraVolt's own per-tool counters. `export.*` drives release builds — presets, platform
+> and adds Terravolt's own per-tool counters. `export.*` drives release builds — presets, platform
 > exports, template info.
 
 ---
@@ -115,7 +115,7 @@ Phase 3, work-unit #13. Prerequisite: `22` shipped.
 ### `profile.monitor`
 
 - **Purpose:** sample Godot's built-in performance monitors (FPS, draw calls, mem, etc.) plus
-  TerraVolt custom monitors.
+  Terravolt custom monitors.
 - **Inputs:**
   `{ keys?: [string] (default common set), window_ms?: int, samples?: int (default 1) }`.
 - **Outputs:**

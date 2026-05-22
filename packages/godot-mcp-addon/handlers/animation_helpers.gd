@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltAnimationHelpers
+class_name TerravoltAnimationHelpers
 
 const _Res := preload("./resource_helpers.gd")
 const _Err := preload("../error_codes.gd")

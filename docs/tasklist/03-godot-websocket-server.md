@@ -357,13 +357,13 @@ Per `websocket.rst` §"Minimal server example", a Godot 4 WS _server_ is compose
   - On close, captures `get_close_code() → int` (1000=normal; -1=abrupt) and
     `get_close_reason() → String`.
 
-TerraVolt's `MCPServer` (file `03 §3.7`) maps 1:1 to this pattern.
+Terravolt's `MCPServer` (file `03 §3.7`) maps 1:1 to this pattern.
 
 ### A.2 Frame disambiguation rule
 
 - After every `get_packet()`, **immediately** call `was_string_packet()` and stash the result; the
   boolean is only valid until the next read.
-- For TerraVolt: only **text** frames carry JSON-RPC. **Binary** frames are rejected with
+- For Terravolt: only **text** frames carry JSON-RPC. **Binary** frames are rejected with
   `transport.unsupported_frame` (`-33006`) unless a future phase adds a binary capability.
 
 ### A.3 Polling cadence
@@ -376,9 +376,9 @@ TerraVolt's `MCPServer` (file `03 §3.7`) maps 1:1 to this pattern.
 - Backpressure: if `get_available_packet_count()` is large in a single tick, drain in a bounded loop
   (e.g. cap at 32 per tick) to keep the editor responsive.
 
-### A.4 Connection state ↔ TerraVolt FSM mapping
+### A.4 Connection state ↔ Terravolt FSM mapping
 
-| Godot state        | TerraVolt FSM (`3.7.1`) | Action                                                                                                     |
+| Godot state        | Terravolt FSM (`3.7.1`) | Action                                                                                                     |
 | ------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `STATE_CONNECTING` | `handshaking`           | Wait; poll.                                                                                                |
 | `STATE_OPEN`       | `ready`                 | Begin reading/writing.                                                                                     |
@@ -390,7 +390,7 @@ TerraVolt's `MCPServer` (file `03 §3.7`) maps 1:1 to this pattern.
 - Godot 4's `WebSocketPeer` honors WS-level **ping/pong control frames** but the documented API does
   **not** expose explicit `ping()` / `pong()` methods in user code — the peer responds to remote
   pings automatically and the server detects activity via `get_ready_state()` + `poll()`.
-- **Therefore**, for TerraVolt's heartbeat:
+- **Therefore**, for Terravolt's heartbeat:
   - **Primary mode (`heartbeat_mode = "rpc"`):** send a JSON-RPC `server.heartbeat` notification at
     interval; expect a peer reply within `heartbeat_timeout_ms`. This is reliable and observable.
   - **Optional probe (`heartbeat_mode = "control_frame"`):** rely on `get_ready_state()` transitions
@@ -404,7 +404,7 @@ TerraVolt's `MCPServer` (file `03 §3.7`) maps 1:1 to this pattern.
 
 Per WS specification (referenced by `websocket.rst`):
 
-| Code         | Meaning                                | TerraVolt use                                           |
+| Code         | Meaning                                | Terravolt use                                           |
 | ------------ | -------------------------------------- | ------------------------------------------------------- |
 | `1000`       | Normal closure.                        | Graceful peer disconnect.                               |
 | `1001`       | Going away.                            | Daemon shutdown (`_exit_tree`).                         |
@@ -419,7 +419,7 @@ The daemon should call `close(code, reason)` on its WS peer object when it initi
 ### A.7 Bind address policy
 
 - `TCPServer.listen(port, "*")` binds **all interfaces**; `"127.0.0.1"` binds loopback only.
-- TerraVolt default: loopback (per `00 §0.7` security stance). The `bind_address` setting from
+- Terravolt default: loopback (per `00 §0.7` security stance). The `bind_address` setting from
   `02 §2.6.6` flows directly into `listen()`'s second argument.
 - For Windows: binding to `127.0.0.1` typically avoids the Windows Defender Firewall prompt; binding
   to `0.0.0.0` will trigger it on first run.
@@ -427,7 +427,7 @@ The daemon should call `close(code, reason)` on its WS peer object when it initi
 ### A.8 Multi-peer reservation (future)
 
 - Per `high_level_multiplayer.rst`, `WebSocketMultiplayerPeer` is the multi-client variant.
-  TerraVolt v1 stays single-client per `03 §3.6.4`. If multi-client is added later:
+  Terravolt v1 stays single-client per `03 §3.6.4`. If multi-client is added later:
   - Replace `TCPServer` + per-peer `WebSocketPeer` with
     `WebSocketMultiplayerPeer.create_server(port, ...)`.
   - Connection lifecycle moves to `peer_connected(id)` / `peer_disconnected(id)` signals.

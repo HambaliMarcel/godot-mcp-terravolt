@@ -1,6 +1,6 @@
 @tool
 extends RefCounted
-class_name TerraVoltMCPServer
+class_name TerravoltMCPServer
 
 signal connection_state_changed(new_state: int, details: Dictionary)
 signal peer_connected_signal(peer_id: int, addr: String)
@@ -13,8 +13,8 @@ enum ConnState { IDLE = 0, LISTENING = 1, CLIENT_CONNECTED = 2, ERROR = 3 }
 const MAX_INBOUND_FRAMES_PER_TICK := 32
 const MAX_QUEUE := 1024
 
-var dispatcher: TerraVoltDispatcher = null
-var logger: TerraVoltLogger = null
+var dispatcher: TerravoltDispatcher = null
+var logger: TerravoltLogger = null
 
 var _tcp := TCPServer.new()
 var _running := false
@@ -26,7 +26,7 @@ var _peer_seq := 1
 var _heartbeat_accum := 0.0
 
 
-func configure(p_dispatcher: TerraVoltDispatcher, p_logger: TerraVoltLogger) -> void:
+func configure(p_dispatcher: TerravoltDispatcher, p_logger: TerravoltLogger) -> void:
 	dispatcher = p_dispatcher
 	logger = p_logger
 
@@ -87,7 +87,7 @@ func start() -> void:
 			logger.log_force("error", "transport", "bind_failed", {"port": port, "bind": bind_s, "code": err})
 		emit_signal(&"transport_diagnostic", {"event": "bind_failed"})
 		_listen_label = "bind_failed %s:%d" % [bind_s, port]
-		_set_fsm(ConnState.ERROR, {"cause": TerraVoltErrors.symbol_for(TerraVoltErrors.TRANSPORT_BIND_FAILED)})
+		_set_fsm(ConnState.ERROR, {"cause": TerravoltErrors.symbol_for(TerravoltErrors.TRANSPORT_BIND_FAILED)})
 		return
 	_running = true
 	_listen_label = "%s:%d" % [bind_s, port]
@@ -258,7 +258,7 @@ func _enqueue_in(peer: Dictionary, txt: String) -> bool:
 	if q.size() >= MAX_QUEUE:
 		if logger:
 			logger.log_force("warn", "transport", "queue_overflow_drop", {"peer_id": peer.get(&"id", -1)})
-		emit_signal(&"transport_diagnostic", {"code": TerraVoltErrors.TRANSPORT_QUEUE_OVERFLOW})
+		emit_signal(&"transport_diagnostic", {"code": TerravoltErrors.TRANSPORT_QUEUE_OVERFLOW})
 		q.remove_at(0)
 	q.append(txt)
 	peer[&"inbound_queue"] = q
@@ -294,7 +294,7 @@ func _poll_peer(peer: Dictionary) -> void:
 		if _active_peer_by_id.size() >= maxp:
 			if logger:
 				logger.log_force("warn", "transport", "peer_busy", {"peer_id": peer.get(&"id", -1)})
-			emit_signal(&"transport_diagnostic", {"code": TerraVoltErrors.TRANSPORT_PEER_BUSY})
+			emit_signal(&"transport_diagnostic", {"code": TerravoltErrors.TRANSPORT_PEER_BUSY})
 			emit_signal(&"peer_disconnected_signal", int(peer.get(&"id", -1)), "peer_busy")
 			ws.close(1008, "policy violation: server busy")
 			_remove_hs(peer)
@@ -307,15 +307,15 @@ func _poll_peer(peer: Dictionary) -> void:
 		if not ws.was_string_packet():
 			if logger:
 				logger.log_force("warn", "transport", "binary_rejected", {"peer_id": peer.get(&"id", -1)})
-			emit_signal(&"transport_diagnostic", {"code": TerraVoltErrors.TRANSPORT_UNSUPPORTED_FRAME})
+			emit_signal(&"transport_diagnostic", {"code": TerravoltErrors.TRANSPORT_UNSUPPORTED_FRAME})
 			if dispatcher:
 				var bogus := JSON.stringify(
 					{
 						"jsonrpc": "2.0",
 						"id": null,
 						"error":
-						TerraVoltErrors.tv_rpc_error(
-							TerraVoltErrors.TRANSPORT_UNSUPPORTED_FRAME,
+						TerravoltErrors.tv_rpc_error(
+							TerravoltErrors.TRANSPORT_UNSUPPORTED_FRAME,
 							"Binary unsupported",
 							"Send UTF-8 JSON-RPC text frames",
 							{}

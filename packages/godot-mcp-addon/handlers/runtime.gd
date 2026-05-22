@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltRuntimeHandlers
+class_name TerravoltRuntimeHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Proxy := preload("../services/runtime_proxy.gd")
 const _Session := preload("../services/runtime_session.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -152,8 +152,8 @@ func _h_play(_ctx: Dictionary) -> Dictionary:
 			if scene.is_empty():
 				return {
 					"ok": false,
-					"error": TerraVoltErrors.tv_rpc_error(
-						TerraVoltErrors.PROTOCOL_INVALID_PARAMS,
+					"error": TerravoltErrors.tv_rpc_error(
+						TerravoltErrors.PROTOCOL_INVALID_PARAMS,
 						"protocol.invalid_params",
 						"scene required for mode specific.",
 						{}
@@ -228,8 +228,8 @@ func _spawn_headless_game(params: Dictionary) -> Dictionary:
 	if pid <= 0:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.RUNTIME_SPAWN_FAILED,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.RUNTIME_SPAWN_FAILED,
 				"runtime.spawn_failed",
 				"Failed to spawn headless game process.",
 				{"exe": exe}

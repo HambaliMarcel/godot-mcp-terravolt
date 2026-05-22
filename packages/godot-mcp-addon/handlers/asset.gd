@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltAssetHandlers
+class_name TerravoltAssetHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Assets := preload("./asset_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -134,14 +134,14 @@ func _h_add(ctx: Dictionary) -> Dictionary:
 			if FileAccess.file_exists(local):
 				bytes = FileAccess.get_file_as_bytes(local)
 	if bytes.is_empty():
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.ASSET_TOO_LARGE, "asset.too_large", "No asset bytes provided.", {})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.ASSET_TOO_LARGE, "asset.too_large", "No asset bytes provided.", {})}
 	if bytes.size() > _Assets.MAX_INLINE_KB * 1024:
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.ASSET_TOO_LARGE, "asset.too_large", "Asset exceeds inline byte limit.", {"max_kb": _Assets.MAX_INLINE_KB})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.ASSET_TOO_LARGE, "asset.too_large", "Asset exceeds inline byte limit.", {"max_kb": _Assets.MAX_INLINE_KB})}
 	var added := _Assets.add_asset(path, bytes, bool(p.get("overwrite", false)))
 	if added.get("exists", false):
 		return _err_path_exists(path)
 	if added.get("too_large", false):
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.ASSET_TOO_LARGE, "asset.too_large", "Asset exceeds inline byte limit.", {})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.ASSET_TOO_LARGE, "asset.too_large", "Asset exceeds inline byte limit.", {})}
 	_scan()
 	return {"ok": true, "result": {"added": true, "path": added.path, "size_bytes": added.size_bytes, "kind": added.kind, "import_triggered": true}}
 
@@ -153,7 +153,7 @@ func _h_delete(ctx: Dictionary) -> Dictionary:
 		return _err_path_not_found(path)
 	var deleted := _Assets.delete_asset(path, bool(p.get("force", false)))
 	if deleted.get("blocked", false):
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.RESOURCE_DEPENDENCY_BLOCK, "resource.dependency_block", "Asset has inbound references.", {"path": path})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.RESOURCE_DEPENDENCY_BLOCK, "resource.dependency_block", "Asset has inbound references.", {"path": path})}
 	if not deleted.get("deleted", false):
 		return _err_path_not_found(path)
 	_scan()
@@ -211,7 +211,7 @@ func _h_batch_presets(ctx: Dictionary) -> Dictionary:
 	var p := _Utils.params_dict(ctx)
 	var preset := str(p.get("preset", ""))
 	if not _Assets.IMPORT_PRESETS.has(preset):
-		return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.ASSET_PRESET_UNKNOWN, "asset.preset_unknown", "Unknown import preset.", {"preset": preset})}
+		return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.ASSET_PRESET_UNKNOWN, "asset.preset_unknown", "Unknown import preset.", {"preset": preset})}
 	var patch: Dictionary = _Assets.IMPORT_PRESETS[preset]
 	var targets: Array = []
 	if p.has("paths"):
@@ -259,8 +259,8 @@ func _scan() -> void:
 
 
 func _err_path_not_found(path: String) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.RESOURCE_PATH_NOT_FOUND, "resource.path_not_found", "Asset file not found.", {"path": path})}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.RESOURCE_PATH_NOT_FOUND, "resource.path_not_found", "Asset file not found.", {"path": path})}
 
 
 func _err_path_exists(path: String) -> Dictionary:
-	return {"ok": false, "error": TerraVoltErrors.tv_rpc_error(TerraVoltErrors.ASSET_PATH_EXISTS, "asset.path_exists", "Asset path already exists.", {"path": path})}
+	return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.ASSET_PATH_EXISTS, "asset.path_exists", "Asset path already exists.", {"path": path})}

@@ -1,16 +1,16 @@
 @tool
 extends RefCounted
-class_name TerraVoltResourceHandlers
+class_name TerravoltResourceHandlers
 
 const _Utils := preload("./handler_utils.gd")
 const _Res := preload("./resource_helpers.gd")
 
-var _dispatcher: TerraVoltDispatcher
-var _logger: TerraVoltLogger
+var _dispatcher: TerravoltDispatcher
+var _logger: TerravoltLogger
 var _revisions: Dictionary = {}
 
 
-func attach(dispatcher: TerraVoltDispatcher, logger: TerraVoltLogger) -> void:
+func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
 	_dispatcher = dispatcher
 	_logger = logger
 	_register_all()
@@ -152,8 +152,8 @@ func _h_delete(ctx: Dictionary) -> Dictionary:
 	if not bool(p.get("force", false)) and not dependents.is_empty():
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.RESOURCE_DEPENDENCY_BLOCK,
+			"error": TerravoltErrors.tv_rpc_error(
+				TerravoltErrors.RESOURCE_DEPENDENCY_BLOCK,
 				"resource.dependency_block",
 				"Resource is referenced by other files; pass force=true to delete anyway.",
 				{"path": path, "dependents": dependents}
@@ -302,8 +302,8 @@ func _scan() -> void:
 func _err_path_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_PATH_NOT_FOUND,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_PATH_NOT_FOUND,
 			"resource.path_not_found",
 			"Resource file not found at the given path.",
 			{"path": path}
@@ -314,8 +314,8 @@ func _err_path_not_found(path: String) -> Dictionary:
 func _err_path_exists(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_PATH_EXISTS,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_PATH_EXISTS,
 			"resource.path_exists",
 			"Resource already exists at the target path.",
 			{"path": path}
@@ -326,8 +326,8 @@ func _err_path_exists(path: String) -> Dictionary:
 func _err_class_unknown(cls: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_CLASS_UNKNOWN,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_CLASS_UNKNOWN,
 			"resource.class_unknown",
 			"Unknown Godot resource class.",
 			{"class": cls}
@@ -338,8 +338,8 @@ func _err_class_unknown(cls: String) -> Dictionary:
 func _err_json_schema() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.RESOURCE_JSON_SCHEMA_MISMATCH,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.RESOURCE_JSON_SCHEMA_MISMATCH,
 			"resource.json_schema_mismatch",
 			"JSON payload does not match the resource export schema.",
 			{}
@@ -350,8 +350,8 @@ func _err_json_schema() -> Dictionary:
 func _err_idempotency() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
+		"error": TerravoltErrors.tv_rpc_error(
+			TerravoltErrors.PROTOCOL_IDEMPOTENCY_CONFLICT,
 			"protocol.idempotency_conflict",
 			"Revision mismatch (if_match).",
 			{}

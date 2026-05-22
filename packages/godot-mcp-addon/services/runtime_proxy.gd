@@ -1,5 +1,5 @@
 extends RefCounted
-class_name TerraVoltRuntimeProxy
+class_name TerravoltRuntimeProxy
 
 ## Forwards JSON-RPC to the game-process runtime bridge (TCP newline-delimited).
 

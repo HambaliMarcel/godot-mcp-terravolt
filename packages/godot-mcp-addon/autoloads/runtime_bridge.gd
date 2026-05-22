@@ -14,7 +14,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	var port := _Helpers.bridge_port()
 	if _tcp.listen(port, "127.0.0.1") != OK:
-		push_warning("TerraVolt runtime bridge: listen failed on port %d" % port)
+		push_warning("Terravolt runtime bridge: listen failed on port %d" % port)
 		return
 	_bound = true
 	printerr("TERRAVOLT_RUNTIME_PORT=%d\n" % _tcp.get_local_port())
