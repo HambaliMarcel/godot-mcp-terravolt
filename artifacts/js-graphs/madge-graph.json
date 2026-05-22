@@ -35,6 +35,7 @@
     "packages/mcp-server/dist/logger.d.ts"
   ],
   "packages/mcp-server/dist/headless/headlessCoordinator.js": [
+    "packages/mcp-server/dist/catalog/loadRegistry.js",
     "packages/mcp-server/dist/headless/godotBinary.js",
     "packages/mcp-server/dist/headless/headlessSession.js",
     "packages/mcp-server/dist/headless/headlessTcpClient.js",
@@ -174,6 +175,7 @@
     "packages/mcp-server/src/logger.ts"
   ],
   "packages/mcp-server/src/headless/headlessCoordinator.ts": [
+    "packages/mcp-server/src/catalog/loadRegistry.ts",
     "packages/mcp-server/src/config.ts",
     "packages/mcp-server/src/headless/godotBinary.ts",
     "packages/mcp-server/src/headless/headlessSession.ts",
@@ -260,7 +262,16 @@
     "packages/mcp-server/src/tools/registry.ts",
     "packages/mcp-server/src/transport/godot_ws_client.ts"
   ],
+  "packages/mcp-server/tests/integration/headless.test.mjs": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js"
+  ],
   "packages/mcp-server/tests/smoke.test.mjs": [],
+  "packages/mcp-server/tests/unit/godotBinary.test.mjs": [
+    "packages/mcp-server/dist/headless/godotBinary.js"
+  ],
+  "packages/mcp-server/tests/unit/metrics.test.mjs": [
+    "packages/mcp-server/dist/telemetry/metrics.js"
+  ],
   "references/godot-mcp-coding-solo/scripts/build.js": [],
   "references/godot-mcp-coding-solo/src/index.ts": [],
   "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js": [],
@@ -377,7 +388,16 @@
   "scripts/patch-headless-files.mjs": [],
   "scripts/planned.mjs": [],
   "scripts/regen-graphs.mjs": [],
+  "scripts/release-check.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/release-notes.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
   "scripts/run-gitnexus.mjs": [],
+  "scripts/setup-godot-env.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
   "tools/.linear-batch/generate-child-save-payloads.js": [],
   "tools/.linear-batch/prep-descriptions.js": [],
   "tools/.linear-batch/write-parent-arg-oneline.js": [],

@@ -120,6 +120,7 @@
       ],
       "dependents": [
         "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+        "packages/mcp-server/dist/headless/headlessCoordinator.js",
         "packages/mcp-server/dist/transport/mcp_stdio.js",
         "packages/mcp-server/dist/tools/registry.d.ts"
       ],
@@ -144,7 +145,8 @@
         "packages/mcp-server/node_modules/zod/src/v4/classic/tests/string.test.ts",
         "packages/mcp-server/src/catalog/loadRegistry.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
-        "scripts/catalog-sync.mjs"
+        "scripts/catalog-sync.mjs",
+        "scripts/release-check.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -175,6 +177,8 @@
         "packages/mcp-server/src/headless/godotBinary.ts",
         "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
         "packages/mcp-server/src/index.ts",
+        "packages/mcp-server/tests/integration/headless.test.mjs",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs",
         "references/godot-mcp-coding-solo/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
         "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
@@ -185,7 +189,10 @@
         "scripts/lib/repo_root.mjs",
         "scripts/patch-headless-files.mjs",
         "scripts/regen-graphs.mjs",
+        "scripts/release-check.mjs",
+        "scripts/release-notes.mjs",
         "scripts/run-gitnexus.mjs",
+        "scripts/setup-godot-env.mjs",
         "tools/.linear-batch/generate-child-save-payloads.js",
         "tools/.linear-batch/prep-descriptions.js",
         "tools/.linear-batch/write-parent-arg-oneline.js",
@@ -224,6 +231,7 @@
         "packages/mcp-server/src/catalog/repoRoot.ts",
         "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
         "packages/mcp-server/src/index.ts",
+        "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/smoke.test.mjs",
         "references/godot-mcp-coding-solo/scripts/build.js",
         "references/godot-mcp-coding-solo/src/index.ts",
@@ -330,7 +338,9 @@
         "packages/mcp-server/src/headless/headlessSession.ts",
         "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
         "packages/mcp-server/src/index.ts",
+        "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/smoke.test.mjs",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs",
         "references/godot-mcp-coding-solo/scripts/build.js",
         "references/godot-mcp-coding-solo/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
@@ -341,7 +351,10 @@
         "scripts/catalog-sync.mjs",
         "scripts/lib/repo_root.mjs",
         "scripts/regen-graphs.mjs",
+        "scripts/release-check.mjs",
+        "scripts/release-notes.mjs",
         "scripts/run-gitnexus.mjs",
+        "scripts/setup-godot-env.mjs",
         "tools/.linear-batch/generate-child-save-payloads.js",
         "tools/.linear-batch/prep-descriptions.js",
         "tools/.linear-batch/write-parent-arg-oneline.js",
@@ -629,7 +642,8 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/dist/headless/headlessCoordinator.js"
+        "packages/mcp-server/dist/headless/headlessCoordinator.js",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -649,7 +663,9 @@
         "packages/mcp-server/dist/headless/godotBinary.js",
         "packages/mcp-server/node_modules/@types/node/constants.d.ts",
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/src/headless/godotBinary.ts"
+        "packages/mcp-server/src/headless/godotBinary.ts",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs",
+        "scripts/setup-godot-env.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -746,7 +762,9 @@
         "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
         "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
         "scripts/regen-graphs.mjs",
-        "scripts/run-gitnexus.mjs"
+        "scripts/release-notes.mjs",
+        "scripts/run-gitnexus.mjs",
+        "scripts/setup-godot-env.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -798,6 +816,23 @@
     {
       "source": "packages/mcp-server/dist/headless/headlessCoordinator.js",
       "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/loadRegistry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/catalog/loadRegistry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
         {
           "dynamic": false,
           "module": "./godotBinary.js",
@@ -890,7 +925,8 @@
         "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
         "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
         "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts",
-        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts"
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts",
+        "packages/mcp-server/tests/integration/headless.test.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -2107,7 +2143,8 @@
       "dependents": [
         "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
         "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
-        "packages/mcp-server/dist/mcp/register_router_only_tools.js"
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js",
+        "packages/mcp-server/tests/unit/metrics.test.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -9442,7 +9479,10 @@
       "dependents": [
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
         "packages/mcp-server/node_modules/@types/node/test.d.ts",
-        "packages/mcp-server/tests/smoke.test.mjs"
+        "packages/mcp-server/tests/integration/headless.test.mjs",
+        "packages/mcp-server/tests/smoke.test.mjs",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs",
+        "packages/mcp-server/tests/unit/metrics.test.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -9787,7 +9827,10 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/tests/smoke.test.mjs"
+        "packages/mcp-server/tests/integration/headless.test.mjs",
+        "packages/mcp-server/tests/smoke.test.mjs",
+        "packages/mcp-server/tests/unit/godotBinary.test.mjs",
+        "packages/mcp-server/tests/unit/metrics.test.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -9873,6 +9916,7 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/tests/integration/headless.test.mjs",
         "packages/mcp-server/tests/smoke.test.mjs"
       ],
       "orphan": false,
@@ -42948,6 +42992,7 @@
       ],
       "dependents": [
         "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+        "packages/mcp-server/src/headless/headlessCoordinator.ts",
         "packages/mcp-server/src/transport/mcp_stdio.ts",
         "packages/mcp-server/src/tools/registry.ts"
       ],
@@ -43309,6 +43354,23 @@
     {
       "source": "packages/mcp-server/src/headless/headlessCoordinator.ts",
       "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/loadRegistry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/catalog/loadRegistry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
         {
           "dynamic": false,
           "module": "../config.js",
@@ -44833,6 +44895,139 @@
       "valid": true
     },
     {
+      "source": "packages/mcp-server/tests/integration/headless.test.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../../dist/headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "assert",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "assert",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "node:test",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "node:test",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "packages/mcp-server/tests/smoke.test.mjs",
       "dependencies": [
         {
@@ -44936,6 +45131,182 @@
           ],
           "protocol": "node:",
           "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/tests/unit/godotBinary.test.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../../dist/headless/godotBinary.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/godotBinary.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "assert",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "assert",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "node:test",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "node:test",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "os",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "os",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/tests/unit/metrics.test.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../../dist/telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/telemetry/metrics.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "assert",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "assert",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "node:test",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "node:test",
           "coreModule": true,
           "followable": false,
           "couldNotResolve": false,
@@ -47162,7 +47533,10 @@
         }
       ],
       "dependents": [
-        "scripts/catalog-sync.mjs"
+        "scripts/catalog-sync.mjs",
+        "scripts/release-check.mjs",
+        "scripts/release-notes.mjs",
+        "scripts/setup-godot-env.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -47281,6 +47655,164 @@
       "valid": true
     },
     {
+      "source": "scripts/release-check.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./lib/repo_root.mjs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "scripts/lib/repo_root.mjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "crypto",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "crypto",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "scripts/release-notes.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./lib/repo_root.mjs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "scripts/lib/repo_root.mjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "scripts/run-gitnexus.mjs",
       "dependencies": [
         {
@@ -47348,6 +47880,103 @@
           ],
           "protocol": "node:",
           "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "scripts/setup-godot-env.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./lib/repo_root.mjs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "scripts/lib/repo_root.mjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "os",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "os",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
           "coreModule": true,
           "followable": false,
           "couldNotResolve": false,
@@ -47577,8 +48206,8 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 966,
-    "totalDependenciesCruised": 2046,
+    "totalCruised": 972,
+    "totalDependenciesCruised": 2077,
     "optionsUsed": {
       "baseDir": "H:\\Godot MCP Marcel",
       "combinedDependencies": false,
