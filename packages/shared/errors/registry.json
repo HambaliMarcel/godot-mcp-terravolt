@@ -1,0 +1,40 @@
+{
+  "codes": [
+    {
+      "code": -33100,
+      "symbol": "protocol.invalid_jsonrpc_version",
+      "category": "protocol",
+      "severity": "error",
+      "recoverable": false,
+      "hint": "Ensure jsonrpc is exactly 2.0 and required fields are present.",
+      "since": "0.1.0"
+    },
+    {
+      "code": -33102,
+      "symbol": "protocol.invalid_params",
+      "category": "protocol",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Fix parameters to match the tool JSON Schema.",
+      "since": "0.1.0"
+    },
+    {
+      "code": -33104,
+      "symbol": "protocol.catalog_mismatch",
+      "category": "protocol",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Regenerate catalog with npm run catalog:sync and restart router and Godot addon.",
+      "since": "0.1.0"
+    },
+    {
+      "code": -33000,
+      "symbol": "transport.bind_failed",
+      "category": "transport",
+      "severity": "error",
+      "recoverable": false,
+      "hint": "Check port availability and permissions on the daemon host.",
+      "since": "0.1.0"
+    }
+  ]
+}

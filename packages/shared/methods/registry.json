@@ -1,0 +1,75 @@
+{
+  "catalog_version": "0.1.0",
+  "methods": [
+    {
+      "method": "ping",
+      "category": "server",
+      "since": "0.1.0",
+      "description": "JSON-RPC health check to the Godot daemon.",
+      "inputSchema": { "type": "object", "additionalProperties": false },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "ok": { "type": "boolean" },
+          "ts": { "type": "integer" }
+        }
+      },
+      "mcpTool": {
+        "name": "ping",
+        "title": "Ping Godot daemon",
+        "description": "Health check; returns daemon round-trip latency and timestamp."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": []
+    },
+    {
+      "method": "server.info",
+      "category": "server",
+      "since": "0.1.0",
+      "description": "Daemon identity, versions, listen address, and catalog metadata.",
+      "inputSchema": { "type": "object", "additionalProperties": false },
+      "outputSchema": { "type": "object" },
+      "mcpTool": {
+        "name": "server.info",
+        "title": "Godot server.info",
+        "description": "Daemon identity, addon/engine versions, uptime, listen address, supported method count, catalog hash."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": []
+    },
+    {
+      "method": "log.tail",
+      "category": "log",
+      "since": "0.1.0",
+      "description": "Tail structured daemon log records.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "lines": { "type": "integer", "minimum": 1, "maximum": 1000 },
+          "level": { "type": "string", "enum": ["debug", "info", "warn", "error"] }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": { "type": "array" },
+      "mcpTool": {
+        "name": "log.tail",
+        "title": "Tail daemon log",
+        "description": "Tail the daemon structured log (user://mcp_log.txt)."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": []
+    }
+  ]
+}
