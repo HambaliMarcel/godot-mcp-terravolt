@@ -10,6 +10,16 @@ The shared method catalog tracks its own `catalog_version` inside
 
 ## [Unreleased]
 
+### Added — Phase 3 catalog (task 15)
+
+- **`asset.*`** (12 methods) and **`batch_refactor.*`** (8 methods) in catalog **`0.7.0`**:
+  `handlers/asset.gd`, `handlers/batch_refactor.gd`, `handlers/asset_helpers.gd`,
+  `services/batch_journal.gd`.
+- Import sidecar read/write, unused-asset detection, batch preview/apply with confirm tokens.
+- Fixture `tests/_fixtures/asset_zoo/`; integration test
+  `tests/integration/asset/asset_batch_refactor_headless.test.mjs`.
+- Catalog docs: `docs/catalog/asset.md`, `docs/catalog/batch_refactor.md`.
+
 ### Added — Phase 3 catalog (task 14)
 
 - **`resource.*`** (15 methods) and **`shader.*`** (6 methods) in catalog **`0.6.0`**:

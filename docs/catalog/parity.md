@@ -63,7 +63,18 @@ For full per-tool details (inputs, results, errors), see
 | `resource.list`, `resource.get`, `resource.create`, `resource.update`, `resource.duplicate`, `resource.delete`, `resource.export_json`, `resource.import_json` | yes    | yes          | JSON export is deterministic (sorted keys). |
 | `resource.get_dependencies`, `resource.get_dependents`, `resource.validate`, `resource.diff`                                                                   | yes    | yes          | Dependency walk via `ResourceLoader`.       |
 | `resource.rename`, `resource.replace_references`, `resource.set_uid`                                                                                           | yes    | no           | Editor-first v1 (reference rewrites).       |
-| `shader.list`, `shader.read`, `shader.write`, `shader.compile_check`, `shader.list_params`, `shader.set_material_params`                                       | yes    | yes          | Compile via temp save + reload.             |
+| `shader.list`, `shader.read`, `shader.write`, `shader.compile_check`, `shader.list_params`, `shader.set_material_params`                                       | yes    | yes          | Probe-uniform compile check heuristic.      |
+
+### Asset & batch_refactor (catalog 0.7.0)
+
+| `method`                                                                                                                                                                   | Editor | Headless TCP | Notes                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | ---------------------------------------------------- |
+| `asset.list`, `asset.import_status`, `asset.get_import_settings`, `asset.set_import_settings`, `asset.add`, `asset.delete`, `asset.rename`                                 | yes    | yes          | `.import` sidecar parse/write; reference rewrite.    |
+| `asset.metadata`, `asset.find_unused`                                                                                                                                      | yes    | yes          | Text-reference scan includes `load`/`preload`.       |
+| `asset.reimport`, `asset.batch_import_presets`                                                                                                                             | yes    | partial      | Headless notes editor/`godot --import` for reimport. |
+| `asset.preview`                                                                                                                                                            | yes    | no           | `editor.not_available`.                              |
+| `batch_refactor.preview`, `batch_refactor.apply`, `batch_refactor.rename_class`, `batch_refactor.move_folder`, `batch_refactor.replace_in_files`, `batch_refactor.history` | yes    | yes          | Confirm token from preview hash.                     |
+| `batch_refactor.normalize_names`, `batch_refactor.change_class`                                                                                                            | yes    | partial      | Headless v1 stubs for complex scene rewrites.        |
 
 ## Headless-only methods (no editor counterpart)
 
