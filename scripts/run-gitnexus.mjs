@@ -10,7 +10,7 @@ import { spawnSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const cli = join(repoRoot, "node_modules", "gitnexus", "dist", "cli", "index.js");
 
