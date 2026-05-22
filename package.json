@@ -5,18 +5,35 @@
   "description": "Godot MCP (TerraVolt) — omni-protocol tooling: Graphify + GitNexus",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
+  "workspaces": [
+    "packages/mcp-server"
+  ],
   "scripts": {
+    "lint": "npm run lint --workspace @terravolt/godot-mcp",
+    "lint:fix": "npm run lint:fix --workspace @terravolt/godot-mcp",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "npm run typecheck --workspace @terravolt/godot-mcp",
+    "build:server": "npm run build --workspace @terravolt/godot-mcp",
+    "dev:server": "node scripts/planned.mjs dev:server",
+    "test:server": "npm run test --workspace @terravolt/godot-mcp",
+    "test:e2e": "node scripts/planned.mjs test:e2e",
+    "addon:link": "node scripts/planned.mjs addon:link",
+    "addon:unlink": "node scripts/planned.mjs addon:unlink",
+    "release": "node scripts/planned.mjs release",
     "intel:graphs": "node scripts/regen-graphs.mjs",
     "intel:gitnexus": "node scripts/run-gitnexus.mjs",
-    "intel:graphify": "py -3 -m graphify update .",
-    "intel:graphify:cluster": "py -3 -m graphify cluster-only .",
+    "intel:graphify": "cross-env GRAPHIFY_VIZ_NODE_LIMIT=8000 py -3 -m graphify update .",
+    "intel:graphify:cluster": "cross-env GRAPHIFY_VIZ_NODE_LIMIT=8000 py -3 -m graphify cluster-only .",
     "omni:intel": "npm run intel:gitnexus && npm run intel:graphs && npm run intel:graphify"
   },
   "devDependencies": {
     "dependency-cruiser": "^17.0.0",
     "gitnexus": "^1.6.4",
-    "madge": "^8.0.0"
+    "madge": "^8.0.0",
+    "prettier": "^3.4.2",
+    "cross-env": "^7.0.3"
   }
 }

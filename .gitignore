@@ -39,6 +39,9 @@ graphify-out/cache/
 # Leftover from git filter-branch (if present)
 .git-rewrite/
 
+# Build output
+dist/
+
 # Linear roadmap bulk import resume ledger (personal machine)
 .linear_children_import_done.tsv
 

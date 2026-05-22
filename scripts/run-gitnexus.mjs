@@ -21,7 +21,7 @@ const env = {
 
 if (!existsSync(cli)) {
   console.error(
-    "[intel:gitnexus] missing `node_modules/gitnexus` — run `npm install` in the repo root."
+    "[intel:gitnexus] missing `node_modules/gitnexus` — run `npm install` in the repo root.",
   );
   process.exit(1);
 }

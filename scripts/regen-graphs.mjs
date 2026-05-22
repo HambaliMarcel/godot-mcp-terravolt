@@ -24,26 +24,25 @@ MCP reference clones under \`references/godot-mcp-*\` are scanned; **\`reference
 
 Refresh \`docs/repo-layout.md\` / \`docs/architecture/overview.md\` when product layout under \`packages/\` changes materially.
 `,
-  "utf8"
+  "utf8",
 );
 
 try {
   execSync(
     `npx depcruise --config "${depConfig}" -T json -f "${join(outDir, "dependency-graph.json")}" .`,
-    { cwd: repoRoot, stdio: "inherit", shell: true }
+    { cwd: repoRoot, stdio: "inherit", shell: true },
   );
 } catch {
   console.warn(
-    "[intel:graphs] dependency-cruiser reported issues or no matching files — see output above."
+    "[intel:graphs] dependency-cruiser reported issues or no matching files — see output above.",
   );
 }
 
 try {
-  const exclude =
-    "(references/godot-docs|node_modules|artifacts|graphify-out|\\.git)";
+  const exclude = "(references/godot-docs|node_modules|artifacts|graphify-out|\\.git)";
   const out = execSync(
     `npx madge . --extensions ts,tsx,js,jsx,mjs,cjs --exclude "${exclude}" --json`,
-    { cwd: repoRoot, encoding: "utf8", shell: true }
+    { cwd: repoRoot, encoding: "utf8", shell: true },
   );
   writeFileSync(join(outDir, "madge-graph.json"), out, "utf8");
 } catch {
@@ -54,9 +53,9 @@ try {
         info: "madge could not build graph (no JS/TS modules yet or parse issue)",
       },
       null,
-      2
+      2,
     ),
-    "utf8"
+    "utf8",
   );
 }
 

@@ -1,0 +1,10 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+coverage/
+.gitnexus/
+graphify-out/
+artifacts/
+references/
+**/package-lock.json
