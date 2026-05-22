@@ -3,6 +3,8 @@
 > **You are the executor.** Read this whole file before touching anything. This is the "lock" file for everything that follows. Tasks `01` through `10` assume every contract in this file is internalized and respected.
 >
 > **No code is produced in this task.** Output is governance, contracts, conventions, glossary, acceptance criteria, and an unambiguous "definition of done" that the rest of the roadmap will be judged against.
+>
+> **`00` executor stamp (completed):** `2026-05-22` — §§0.9 & 0.16 checklists closed; Decision Log §0.13 appended; Appendix A doctrine cross-ref updated. Zero product-code changes. **Do not open task `01` until the maintainer directs the next command.**
 
 ---
 
@@ -198,16 +200,16 @@ Use these terms exactly. They appear in every later file.
 
 The Foundation phase is **done** when every box below is true. The agent should self-check this list before opening file `01`.
 
-- [ ] All five SRS documents read and summarized in working memory.
-- [ ] Topology diagram (0.2.1) understood — agent can draw it without looking.
-- [ ] Constants in 0.3 memorized (port, log path, transports, heartbeat numbers, error code ranges).
-- [ ] Package layout in 0.4 confirmed against actual `packages/` tree.
-- [ ] Phase gates in 0.5 acknowledged; "do not skip" rule accepted.
-- [ ] Anti-redundancy doctrine (0.6) accepted as a hard design constraint.
-- [ ] Operating rules (0.7) accepted; intel refresh path verified (`npm run` scripts exist).
-- [ ] Glossary in 0.8 internalized; no later file will introduce new top-level vocabulary without amending this file.
-- [ ] Decisions Log (0.13) has at least one entry: "Foundation locked at \[date\]".
-- [ ] Risk register (0.14) acknowledged.
+- [x] All five SRS documents read and summarized in working memory (`docs/srs/README.md`, `00-fundamentals-contract.md`, `system_architecture_blueprint.md`, `superset_tool_registry.md`, `execution_roadmap.md`).
+- [x] Topology diagram (0.2.1) understood — Cursor (stdio MCP) → Node router → WS **:6505** daemon + headless subprocess; agent never touches Godot directly.
+- [x] Constants in 0.3 memorized (port **6505**, log **`user://mcp_log.txt`**, MCP **stdio**, heartbeat **15s** / timeout **45s**, backoff base **500ms** cap **30s**, JSON-RPC **"2.0"**, error ranges reserved, payload soft/hard caps, visualizer reserved **6510**).
+- [x] Package layout in 0.4 confirmed against tree: `packages/godot-mcp-addon/`, `packages/mcp-server/`, docs + `references/` ignored for study, generated intel paths as documented (`npm run omni:intel`).
+- [x] Phase gates in 0.5 acknowledged; "do not skip" rule accepted.
+- [x] Anti-redundancy doctrine (0.6) accepted as a hard design constraint.
+- [x] Operating rules (0.7) accepted; intel refresh verified — `npm run omni:intel` and `intel:*` scripts present in root `package.json` (until router exists, refresh is repo/docs-only).
+- [x] Glossary in 0.8 internalized; no later file will introduce new top-level vocabulary without amending this file.
+- [x] Decisions Log (0.13) has foundation lock + Godot appendix entries dated **2026-05-22**.
+- [x] Risk register (0.14) acknowledged.
 
 ---
 
@@ -285,9 +287,11 @@ Every irreversible decision goes here as a row. Format: `YYYY-MM-DD — author �
 
 | Date | Author | Decision | Rationale | Supersedes |
 |------|--------|----------|-----------|------------|
-| _to-fill_ | _agent_ | Foundation locked, contracts above adopted. | SRS bundle internalized; aligns with `docs/srs/00-fundamentals-contract.md`. | — |
+| 2026-05-22 | TerraVolt executor | Foundation locked; contracts §§0.2–0.16 adopted as execution mandate. | All SRS files in `docs/srs/` read; §0.4 matches `packages/*` layout; readiness for task `01` without product code until `02`. | — |
+| 2026-05-22 | TerraVolt executor | Godot 4 official manual doctrines (Appendix A) adopted for addon/daemon behavior. | Pin `@tool` editor path; `/`-only paths; `user://` vs `res://`; scene-tree lifecycle order; defer structural mutations via `call_deferred` where required. Aligns Sphinx sources under `references/godot-docs/` (read-only clone). | — |
+| 2026-05-22 | TerraVolt executor | Root **`package.json`** declares **`engines.node` ≥ 18** until task **`01`**; §0.10 mandates **Node 20+ LTS** for the MCP router. | No router code exists yet; `01-repository-and-tooling-setup.md` aligns engines, ESLint/tsconfig, and CI placeholders with §0.10. | — |
 
-The agent **must** append a row when it finishes this file.
+The agent **must** append further rows whenever an irreversible contract change is made (`00 §0.13` format).
 
 ---
 
@@ -332,14 +336,14 @@ If a later file lacks any of these sections, it is considered **incomplete** and
 
 ## 0.16 Final checklist (before opening file 01)
 
-- [ ] I (the agent) can recite the topology diagram in 0.2.1.
-- [ ] I can list all operational constants from 0.3 from memory.
-- [ ] I accept the polymorphism doctrine and will not add narrow-duplicate tools.
-- [ ] I have appended a row to the Decisions Log (0.13).
-- [ ] I have skimmed the risk register (0.14) and acknowledged the high-impact rows.
-- [ ] I will run `npm run omni:intel` after structural changes (per 0.7).
-- [ ] I will never write into `references/` (per 0.7).
-- [ ] I understand the section format in 0.15 applies to every later file.
+- [x] I (the agent) can recite the topology diagram in 0.2.1.
+- [x] I can list all operational constants from 0.3 from memory.
+- [x] I accept the polymorphism doctrine and will not add narrow-duplicate tools.
+- [x] I have appended rows to the Decisions Log (0.13), including Appendix A doctrine lock.
+- [x] I have skimmed the risk register (0.14) and acknowledged the high-impact rows (phase skipping, stdout pollution, `.tscn` hand-editing).
+- [x] I will run `npm run omni:intel` after structural changes (per 0.7).
+- [x] I will never write into `references/` (per 0.7).
+- [x] I understand the section format in 0.15 applies to every later file.
 
 When every box is checked, open **`01-repository-and-tooling-setup.md`**.
 
@@ -420,5 +424,5 @@ Source: `tutorials/scripting/gdscript/gdscript_styleguide.rst`.
 
 ### A.7 Decisions Log addition
 
-Append: "Doctrine pinned to Godot 4 official manual revision present in `references/godot-docs/`. `@tool`, deferred mutation, `/`-only paths, and `user://` resolution rules are non-negotiable engine truths."
+**Captured in §0.13 (2026-05-22):** Doctrine pinned to the Godot 4 Sphinx manual revision present in `references/godot-docs/`. **`@tool`**, deferred mutation discipline, **`/`**-only paths, **`user://` / `res://`** semantics, and scene-tree lifecycle ordering are non-negotiable engine truths for the daemon implementation.
 
