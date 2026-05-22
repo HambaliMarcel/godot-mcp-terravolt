@@ -312,10 +312,11 @@ Phase 3, work-unit #5. Prerequisite: `14` shipped.
 
 ## 15.13 Handoff checklist to file `16`
 
-- [ ] Catalog version `0.7.0` pushed.
-- [ ] 89 tools total live.
-- [ ] Revert journal verified to round-trip a 50-op plan.
-- [ ] Open `16-catalog-editor-and-analysis.md`.
+- [x] Catalog version **0.7.0** pushed (cumulative **0.8.0**).
+- [x] **98** daemon methods at land (**111** cumulative).
+- [ ] Revert journal verified to round-trip a 50-op plan _(journal shipped; large-plan E2E
+      deferred)_.
+- [x] Open `16-catalog-editor-and-analysis.md`.
 
 ## 15.14 Commit template
 

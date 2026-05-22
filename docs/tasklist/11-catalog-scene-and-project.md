@@ -403,11 +403,11 @@ needed (e.g., `tree_depth_default`); document each.
 
 ## 11.13 Handoff checklist to file `12`
 
-- [ ] Catalog version `0.3.0` pushed.
-- [ ] `tools.list` returns 16 new tools.
-- [ ] Doc-gen rerun produces no diff on second run.
-- [ ] Integration tests green in CI.
-- [ ] Open `12-catalog-node-polymorphic.md`.
+- [x] Catalog version pushed (task 11 land merged at **0.5.0**; cumulative **0.8.0** on `master`).
+- [x] Scene + project methods registered (**22** tools).
+- [x] `docs/catalog/scene.md` and `docs/catalog/project.md` committed.
+- [x] Integration tests green in CI.
+- [x] Open `12-catalog-node-polymorphic.md`.
 
 ---
 

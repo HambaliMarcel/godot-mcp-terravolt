@@ -2,7 +2,31 @@
 
 **Canonical docs:** `docs/tasklist/00*.md` … `16-catalog-editor-and-analysis.md`
 
-**Last sweep:** 2026-05-22 (maintainer re-validation after tasks **00–16** land)
+**Last sweep:** 2026-05-22 (maintainer audit — tasks **00–16** complete; task **17+** awaiting
+command)
+
+## Deliverables matrix (00–16)
+
+| Task  | Topic             | Key artifacts                                                      | Status              |
+| ----- | ----------------- | ------------------------------------------------------------------ | ------------------- |
+| 00–01 | Foundation, repo  | Contracts, monorepo, CI, `.githooks/`                              | Done                |
+| 02–04 | Godot daemon      | `packages/godot-mcp-addon/` plugin, WS, dispatcher, logging        | Done                |
+| 05–06 | MCP router        | `packages/mcp-server/`, `registry.json`, `catalog-sync.mjs`        | Done                |
+| 07    | Headless          | `headless_driver.gd`, `catalog_ops.gd`, 92/111 headless parity     | Partial (by design) |
+| 08    | ~200-tool catalog | 111 methods through task 16; tasks **17–25** remain                | In progress         |
+| 09    | Context/errors    | `tools.bottlenecks`, `context.fetch_raw`, 65 error codes           | Partial             |
+| 10    | QA/release        | CI workflows, 18 tests, `release:check`, user guides               | Foundation done     |
+| 11    | scene + project   | `handlers/scene.gd`, `project.gd`, integration tests, catalog docs | Done                |
+| 12    | node              | `handlers/node.gd`, denylist, integration test                     | Done                |
+| 13    | script + signal   | `script.gd`, `signal.gd`, `script_helpers.gd`, integration test    | Done                |
+| 14    | resource + shader | `resource.gd`, `shader.gd`, `resource_zoo/`, integration test      | Done                |
+| 15    | asset + batch     | `asset.gd`, `batch_refactor.gd`, `batch_journal.gd`, `asset_zoo/`  | Done                |
+| 16    | editor + analysis | `editor.gd`, `analysis.gd`, error buffer, integration test         | Done                |
+
+**Registry builders:** `scripts/build-registry-{11..16}.mjs`  
+**Integration tests:** 10 headless suites under `packages/mcp-server/tests/integration/`  
+**Catalog docs:**
+`docs/catalog/{scene,project,node,script,signal,resource,shader,asset,batch_refactor,editor,analysis}.md`
 
 ## Automated checks
 
@@ -79,6 +103,17 @@ Run from repo root (`npm install` once):
 - **Headless partial:** `batch_refactor.normalize_names`, `asset.reimport`, `editor.*` (except
   `error_log_tail`), resource UID/rename ops — see `docs/catalog/parity.md`.
 - **§08 remaining:** runtime, animation, physics, etc. in tasklists **17–25**.
+
+## Intentionally incomplete (wait for task 17+)
+
+| Item                                                  | Owner task      | Notes                                                    |
+| ----------------------------------------------------- | --------------- | -------------------------------------------------------- |
+| `runtime.*` and remaining §08 categories              | **17–25**       | Not started — await user command for task 17             |
+| `event.editor.error_logged` live stream               | 16 backlog / 09 | Tail works; burst/throttle stream not shipped            |
+| Editor UI E2E (screenshot/focus/undo golden)          | 10 backlog      | Headless + parse-check cover compile/runtime paths       |
+| ~200-method catalog target                            | **08**          | 111 live; ~89 methods remain in tasklists 17–25          |
+| Performance benchmarks (`09 §9.10`, dependency index) | **09** / 14     | Not blocking 00–16 closure                               |
+| 50-op batch revert round-trip E2E                     | **15**          | Journal + revert_token shipped; large-plan test deferred |
 
 ## References
 

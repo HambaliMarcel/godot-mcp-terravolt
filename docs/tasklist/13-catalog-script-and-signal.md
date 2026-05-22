@@ -303,10 +303,10 @@ Phase 3, work-unit #3. Prerequisite: `12` shipped.
 
 ## 13.13 Handoff checklist to file `14`
 
-- [ ] Catalog version `0.5.0` pushed.
-- [ ] 48 tools total live.
-- [ ] `script.validate` benchmarked against `09 §9.10` budgets.
-- [ ] Open `14-catalog-resource-and-shader.md`.
+- [x] Catalog version **0.5.0** pushed (cumulative **0.8.0**).
+- [x] **57** daemon methods at land (**111** cumulative).
+- [ ] `script.validate` benchmarked against `09 §9.10` budgets _(deferred — task 09)_.
+- [x] Open `14-catalog-resource-and-shader.md`.
 
 ## 13.14 Commit template
 

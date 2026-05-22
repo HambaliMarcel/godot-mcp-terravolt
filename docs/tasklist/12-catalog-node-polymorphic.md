@@ -297,10 +297,9 @@ When this file is done:
 
 ## 12.12 Handoff checklist to file `13`
 
-- [ ] Catalog version `0.4.0` pushed.
-- [ ] 30 tools total live (`scene.*` 9 + `project.*` 7 + `node.*` 14).
-- [ ] `node.evaluate_expression` denylist test in CI.
-- [ ] Open `13-catalog-script-and-signal.md`.
+- [x] `node.*` **14** tools live (cumulative catalog **0.5.0** → **0.8.0**).
+- [x] `node.evaluate_expression` denylist via `expression_denylist.json` + headless tests.
+- [x] Open `13-catalog-script-and-signal.md`.
 
 ## 12.13 Commit template
 

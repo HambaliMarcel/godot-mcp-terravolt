@@ -322,11 +322,11 @@ Phase 3, work-unit #4. Prerequisite: `13` shipped.
 
 ## 14.13 Handoff checklist to file `15`
 
-- [ ] Catalog version `0.6.0` pushed.
-- [ ] 69 tools total live.
-- [ ] `resource_zoo` fixture committed under `tests/_fixtures/`.
-- [ ] Dependency index incremental rebuild benchmarked at < 250 ms for 1k resources.
-- [ ] Open `15-catalog-asset-and-batch-refactor.md`.
+- [x] Catalog version **0.6.0** pushed (cumulative **0.8.0**).
+- [x] **78** daemon methods at land (**111** cumulative).
+- [x] `resource_zoo` fixture committed under `tests/_fixtures/`.
+- [ ] Dependency index incremental rebuild benchmarked at < 250 ms for 1k resources _(deferred)_.
+- [x] Open `15-catalog-asset-and-batch-refactor.md`.
 
 ## 14.14 Commit template
 

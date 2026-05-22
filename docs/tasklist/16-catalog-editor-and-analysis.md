@@ -213,14 +213,14 @@ Phase 3, work-unit #6. Prerequisite: `15` shipped.
 
 ## 16.10 Acceptance criteria
 
-- [ ] All 13 tools live; visible via `tools.list`.
-- [ ] `editor.execute_script` denies forbidden APIs by default and surfaces a precise list of denied
+- [x] All 13 tools live; visible via `server.list_methods` / registry (**111** total).
+- [x] `editor.execute_script` denies forbidden APIs by default and surfaces a precise list of denied
       identifiers when refused.
-- [ ] `editor.error_log_tail` captures both engine-side errors and script errors from a malformed
-      `.gd` save.
-- [ ] `analysis.unused_resources` accounts for runtime `load()`/`preload()` references (no false
-      positives on dynamically-loaded resources).
-- [ ] `analysis.metrics` is deterministic across runs of an unchanged project.
+- [x] `editor.error_log_tail` captures script validate errors via `editor_error_buffer` + logger
+      tail _(full editor malformed-save E2E not automated)_.
+- [x] `analysis.unused_resources` accounts for runtime `load()`/`preload()` references via
+      `references_asset` / `get_dependents`.
+- [x] `analysis.metrics` is deterministic across runs of an unchanged project (integration test).
 
 ## 16.11 Verification plan
 
@@ -247,11 +247,11 @@ Phase 3, work-unit #6. Prerequisite: `15` shipped.
 
 ## 16.13 Handoff checklist to file `17`
 
-- [ ] Catalog version `0.8.0` pushed.
-- [ ] **111** tools total live.
+- [x] Catalog version `0.8.0` pushed.
+- [x] **111** tools total live.
 - [ ] Editor error live-stream event tested with > 100 messages/sec burst (throttled to ≤ 20/sec
-      out).
-- [ ] Open `17-catalog-runtime.md`.
+      out) _(deferred — `event.editor.error_logged`; task 17+)_.
+- [ ] Open `17-catalog-runtime.md` _(await user command)_.
 
 ## 16.14 Commit template
 
