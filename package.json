@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "intel:graphs": "node tools/intel/regen-graphs.mjs",
-    "intel:gitnexus": "gitnexus analyze",
+    "intel:gitnexus": "node tools/intel/run-gitnexus.mjs",
     "intel:graphify": "py -3 -m graphify update .",
     "intel:graphify:cluster": "py -3 -m graphify cluster-only .",
     "omni:intel": "npm run intel:gitnexus && npm run intel:graphs && npm run intel:graphify"
