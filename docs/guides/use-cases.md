@@ -8,7 +8,12 @@ This is the **rookie-friendly** companion to `docs/guides/tools-reference.md`. E
 - **What Cursor does under the hood** — which MCP tool runs.
 - **Impact on Godot** — what happens in the engine.
 
-Total surface: **13 MCP tools** in 3 buckets. Pick whichever bucket matches your moment.
+Total surface: **218 daemon methods** across **27 categories**, exposed to Cursor via **13 MCP
+router tools** plus `context.fetch_raw` for any catalog method. Pick whichever bucket matches your
+moment.
+
+> Category reference: [`docs/catalog/`](../catalog/) · Coverage:
+> [`docs/coverage/catalog-coverage.md`](../coverage/catalog-coverage.md)
 
 ---
 
@@ -244,21 +249,24 @@ Here is a realistic sequence — every line is a prompt you can paste into Curso
 
 ## What's NOT supported yet (so you don't waste time asking)
 
-These are intentionally **not** wired up in v0.1.0 — tracked in
-`docs/tasklist/08-toolset-implementation.md`:
+These remain **partial or backlog** at catalog **0.16.0**:
 
 | Want to…                                    | Status                                 |
 | ------------------------------------------- | -------------------------------------- |
-| Move nodes around in a scene from Cursor    | Backlog (§08 `scene.*`, `node.*`)      |
-| Have the AI edit `.tres` resources directly | Backlog (§08 `resource.*`)             |
-| Run a test scene programmatically           | Backlog (§08 `runtime.run_tests`)      |
-| Export a release build via prompt           | Backlog (§08 `runtime.export_release`) |
-| Compile-check C# (`.cs`) files              | Backlog (§08 `.NET` pipeline)          |
+| Per-category MCP tools (218 as first-class) | Backlog — use `context.fetch_raw` today |
+| Browser project visualizer `:6510`          | Backlog — use Graphify/GitNexus        |
+| Compile-check C# (`.cs`) files              | Backlog (§10)                          |
+| Full macro apply (12/15 templates)          | Partial — dry-run works                |
 | Drive two Godot editors at once             | Roadmap (`docs/roadmap.md`)            |
 
-When those land, this page will grow new buckets. For now, use the 13 tools above plus the existing
-Cursor editing tools (the AI can still read your `.gd`/`.tscn` files from disk and write changes —
-it just can't yet ask Godot to mutate the scene tree directly).
+Everything else from the original §08 backlog — scene/node mutators, resources, runtime bridge,
+export, testing, audio, input, 3D scene sugar, macros — is **live**. See
+[`docs/demos/vibe-coding-walkthrough.md`](../demos/vibe-coding-walkthrough.md) for an end-to-end
+prompt script.
+
+When new router tools land, this page will gain dedicated sections. For now, use the 13 router tools
+plus `context.fetch_raw` for any of the 218 daemon methods — or read category docs under
+`docs/catalog/`.
 
 ---
 

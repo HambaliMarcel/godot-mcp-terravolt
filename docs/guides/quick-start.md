@@ -81,7 +81,9 @@ If `TERRAVOLT_GODOT_BINARY` is set you can also run the full real-Godot integrat
 
 ```powershell
 npm run test:server
-# 11/11 tests pass: smoke (2), unit (6), real-Godot integration (3).
+# 29/29 tests pass: smoke, unit, real-Godot integration (20 headless suites).
+npm run validate:catalog
+# Registry integrity + headless dispatch gate (task 25).
 ```
 
 ## 5. Plug into Cursor
@@ -103,12 +105,22 @@ Add to your Cursor `mcp.json` (workspace `.cursor/mcp.json` or `~/.cursor/mcp.js
 }
 ```
 
-Restart Cursor. The MCP tools panel should list all 13 tools:
+Restart Cursor. The MCP tools panel lists **13 router tools**; the full **218-method** catalog is
+available via `context.fetch_raw`:
 
 - `ping`, `server.info`, `log.tail`
 - `tools.list`, `tools.describe`, `tools.metrics`, `tools.bottlenecks`, `tools.health`,
   `context.fetch_raw`
 - `headless.start_project`, `headless.status`, `headless.stop`, `headless.validate_script`
+
+Example category calls via `context.fetch_raw`:
+
+```jsonc
+{ "method": "scene.list", "params": {} }
+{ "method": "macro.basic_2d_level", "params": { "project_path": "C:\\path\\to\\game", "dry_run": true } }
+{ "method": "input.list_actions", "params": {} }
+{ "method": "export.list_presets", "params": {} }
+```
 
 Per-tool payloads live in **[`mcp-usage.md`](mcp-usage.md)** and full parameter/result schemas in
 **[`tools-reference.md`](tools-reference.md)**.
