@@ -66,9 +66,22 @@ Mirror **`01` §A.3 / §1.6.4**: clone/symlink TerraVolt’s **`packages/godot-m
 `addons/terravolt_mcp/` (task **`02`**). Until then, bootstrap a disposable project **outside** the
 MCP monorepo, e.g. `%USERPROFILE%\Documents\TerravoltMcpDev\`:
 
-- Minimal `project.godot` pinned to **`4.6`** `config/features`,
-- **`run/main_scene`** pointing at a trivial `Main.tscn`,
-- Smoke test with `godot --path <sandbox> --headless --quit`.
+- Minimal **`project.godot`** pinned to **`4.6`** via `config/features`,
+- **`run/main_scene`** set to **`res://Main.tscn`** alongside a trivial `Main.tscn`,
+- Prefer saving **`project.godot` / `.tscn`** as UTF-8 **without BOM** (avoid rare parser issues on
+  Windows).
+
+After creating those files manually, **bootstrap the `.godot` cache once** — this prevents the GUI
+from opening a half-initialised project and then failing **Play** with “no main scene”:
+
+```powershell
+godot --path "$env:USERPROFILE\Documents\TerravoltMcpDev" --headless --import --quit-after 120
+godot --path "$env:USERPROFILE\Documents\TerravoltMcpDev" --headless --quit
+```
+
+If the alert still appears, assign the scene explicitly:
+
+**Project → Project Settings → Application → Run → Main Scene → choose `Main.tscn`** (then save).
 
 ## Related
 
