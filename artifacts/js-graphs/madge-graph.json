@@ -1,5 +1,10 @@
 {
   "config/dependency-cruiser.config.cjs": [],
+  "packages/mcp-server/dist/health.d.ts": [],
+  "packages/mcp-server/dist/health.js": [],
+  "packages/mcp-server/eslint.config.mjs": [],
+  "packages/mcp-server/src/health.ts": [],
+  "packages/mcp-server/tests/smoke.test.mjs": [],
   "references/godot-mcp-coding-solo/scripts/build.js": [],
   "references/godot-mcp-coding-solo/src/index.ts": [],
   "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js": [],
@@ -108,6 +113,12 @@
   ],
   "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
   "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
+  "scripts/planned.mjs": [],
   "scripts/regen-graphs.mjs": [],
-  "scripts/run-gitnexus.mjs": []
+  "scripts/run-gitnexus.mjs": [],
+  "tools/.linear-batch/generate-child-save-payloads.js": [],
+  "tools/.linear-batch/prep-descriptions.js": [],
+  "tools/.linear-batch/write-parent-arg-oneline.js": [],
+  "tools/.linear-batch/write-ter44-cumulative.js": [],
+  "tools/.linear-batch/write-ter44-update.js": []
 }
