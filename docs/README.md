@@ -9,6 +9,7 @@
 | [srs/](srs/README.md) | **SRS** — architecture blueprint, tool registry, execution roadmap, pre–Phase 1 fundamentals contract |
 | [contributing/git-hooks.md](contributing/git-hooks.md) | Optional Git hooks (e.g. Cursor co-author strip) |
 | [contributing/agent-guidelines.md](contributing/agent-guidelines.md) | Safety / branching notes for automation |
+| [linear-roadmap-tracking.md](linear-roadmap-tracking.md) | **Linear**: Godot MCP roadmap project, epic TER map, bulk child importer |
 
 Root-level governance: [**LICENSE**](../LICENSE), [**CONTRIBUTING**](../CONTRIBUTING.md), [**CODE_OF_CONDUCT**](../CODE_OF_CONDUCT.md), [**SECURITY**](../SECURITY.md).
 
