@@ -1,2 +1,5 @@
 # Vendor / reference clones — patterns only; keep GitNexus focused on first-party code
 references/
+
+# Regenerated analyzer dumps
+artifacts/

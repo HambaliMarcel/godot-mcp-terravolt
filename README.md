@@ -1,23 +1,37 @@
 # godot-mcp-terravolt
 
-Godot MCP integration for TerraVolt.
+TerraVolt **Godot ⇄ MCP** workspace: Node/intel toolchain at the repo root, product code slated for **`packages/`**, narrative docs in **`docs/`**.
 
-## Omni protocol stack (this repo)
+## Repository layout
 
-Aligned with [HambaliMarcel/omni-protocol](https://github.com/HambaliMarcel/omni-protocol) conventions:
+| Path | Responsibility |
+|------|----------------|
+| **`docs/`** | Architecture overview, agent context map, contributing (see [docs/README.md](docs/README.md)) |
+| **`packages/`** | MCP server + Godot addon placeholders ([packages/README.md](packages/README.md)) |
+| **`config/`** | Shared analyzers (`dependency-cruiser`, future linters) |
+| **`tools/intel/`** | Scripts invoked by npm for graphs / codegen helpers |
+| **`artifacts/`** | Regenerated analyzer output (safe to commit; refresh with npm scripts below) |
+| **`graphify-out/`** | [Graphify](https://github.com/safishamsi/graphify) KG (default path; Cursor rule `.cursor/rules/graphify.mdc`) |
+| **`references/`** | Local clones of upstream Godot MCP repos — **gitignored** (see clones below) |
 
-| Piece | What to run |
-|--------|-------------|
-| **JS module graphs (Omni)** | `npm install` then `npm run intel:graphs` → `graphs/` (dependency-cruiser + madge) |
-| **GitNexus** | `npm run intel:gitnexus` → local `.gitnexus/` (gitignored). Reference clones under `references/` are omitted via `.gitnexusignore`. See `AGENTS.md`. |
-| **Cursor** | Workspace MCP: `.cursor/mcp.json` (GitNexus). Rules: `.cursor/rules/terravolt-omni.mdc` |
-| **[Graphify](https://github.com/safishamsi/graphify) (knowledge graph)** | **`npm run intel:graphify`** → `graphify-out/` (AST). Rule: `.cursor/rules/graphify.mdc`. Patterns: `.graphifyignore`. Use `py -3 -m graphify query "..."` once `graphify-out/graph.json` exists. Optional: **`npm run intel:graphify:cluster`**. Global Cursor rule in `%USERPROFILE%\.cursor\rules\graphify.mdc` may overlap this repo rule. |
+## Omni / intel stack
 
-Intel refresh checklist: `.cursor/workflows/intel-refresh.md`
+| Piece | Command / output |
+|--------|-------------------|
+| **JS module graphs** | `npm install` then **`npm run intel:graphs`** → `artifacts/js-graphs/` |
+| **GitNexus** | **`npm run intel:gitnexus`** → `.gitnexus/` (gitignored index). Omit `references/` via `.gitnexusignore`. See `AGENTS.md`. |
+| **Graphify (KG)** | **`npm run intel:graphify`** → `graphify-out/`; **`npm run intel:graphify:cluster`** Optional. Patterns: `.graphifyignore`. |
+| **Combined** | **`npm run omni:intel`** |
+
+Operational checklist: [.cursor/workflows/intel-refresh.md](.cursor/workflows/intel-refresh.md)  
+Architecture: [docs/architecture/overview.md](docs/architecture/overview.md)
+
+## Workspace agents (Cursor)
+
+- MCP: [.cursor/mcp.json](.cursor/mcp.json) (**GitNexus**)
+- Rules: [.cursor/rules/terravolt-omni.mdc](.cursor/rules/terravolt-omni.mdc), `graphify.mdc`
 
 ## Reference repos (local)
-
-`references/` is gitignored. Clone into it for side‑by‑side study:
 
 ```bash
 git clone --depth 1 https://github.com/youichi-uda/godot-mcp-pro.git references/godot-mcp-pro
@@ -27,23 +41,8 @@ git clone --depth 1 https://github.com/Coding-Solo/godot-mcp.git references/godo
 
 ## Status
 
-Early scaffold — omni tooling; reference repos are local only (see above).
+Early scaffold — structure reserved for MCP server + Godot addon implementation.
 
-## Git: dropping `Co-authored-by: Cursor <cursoragent@cursor.com>`
+## Contributing (Git hooks)
 
-Historic commits on `origin` were rewritten **without** that trailer. After you pull, anyone with an old clone should:
-
-```bash
-git fetch origin
-git reset --hard origin/master
-```
-
-To **stop future local commits** from re-adding the Cursor agent line, point Git at this repo’s hook (run once per clone):
-
-```bash
-git config core.hooksPath .githooks
-```
-
-Hooks are not auto-enabled for security; you must run the command above. The `commit-msg` script only removes that one `Co-authored-by` line.
-
-Also check **Cursor → Settings** for any option that adds a co-author line to git commits and disable it if you prefer not to rely on the hook.
+Optional Cursor co-author handling: [docs/contributing/git-hooks.md](docs/contributing/git-hooks.md).

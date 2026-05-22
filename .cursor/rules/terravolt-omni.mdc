@@ -6,9 +6,9 @@ alwaysApply: true
 
 # TerraVolt Omni (this workspace)
 
-- Read `architecture/SYSTEM_OVERVIEW.md` before broad refactors.
-- **Module graphs (Omni tooling)**: `graphs/` via `npm run intel:graphs` after JS/TS layout changes.
-- **Knowledge graph ([safishamsi/graphify](https://github.com/safishamsi/graphify))**: outputs under `graphify-out/`; use Graphify CLI queries when `graphify-out/graph.json` exists (Cursor user rule **`graphify.mdc`** applies globally).
-- **GitNexus**: use MCP tools for impact and exploration when the repo is indexed. If tools report a stale index, run `npm run intel:gitnexus` from the repo root first.
-- **References**: `references/` holds upstream clones for study only — do not treat them as this product's source of truth.
-- Prefer `context-map/README.md` ordering when deciding what context to load.
+- Read `docs/architecture/overview.md` before broad refactors.
+- **JS module graphs (Omni)**: refresh with `npm run intel:graphs` → `artifacts/js-graphs/` when Node/TS layout under `packages/` or `tools/` changes.
+- **Knowledge graph ([safishamsi/graphify](https://github.com/safishamsi/graphify))**: `graphify-out/` (`npm run intel:graphify`); Cursor `graphify.mdc` guides query-first use.
+- **GitNexus**: use MCP tools; if stale, run `npm run intel:gitnexus` from repo root.
+- **Vendor boundary**: `references/` is upstream study material only—not product source.
+- Load context using `docs/context/context-map.md` ordering.

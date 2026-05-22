@@ -24,7 +24,11 @@ node_modules/
 # Graphify (optional: commit graphify-out/ for team — ignore volatile files per upstream README)
 graphify-out/manifest.json
 graphify-out/cost.json
+graphify-out/cache/
 
 # Third-party reference clones (see README — not vendored in git)
 references/
+
+# Leftover from git filter-branch (if present)
+.git-rewrite/
 

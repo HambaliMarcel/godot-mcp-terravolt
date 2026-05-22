@@ -1,0 +1,4 @@
+{
+  "config/dependency-cruiser.config.cjs": [],
+  "tools/intel/regen-graphs.mjs": []
+}

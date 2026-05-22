@@ -1,16 +1,16 @@
 # Graph Report - Godot MCP Marcel  (2026-05-22)
 
 ## Corpus Check
-- 18 files · ~4,146 words
+- 23 files · ~4,587 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 146 nodes · 128 edges · 19 communities (15 shown, 4 thin omitted)
+- 177 nodes · 151 edges · 27 communities (18 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4614a5cb`
+- Built from commit: `9ed926d3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,23 +33,31 @@
 - [[_COMMUNITY_Community 15|Community 15]]
 - [[_COMMUNITY_Community 16|Community 16]]
 - [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `Impact Analysis with GitNexus` - 8 edges
-2. `Debugging with GitNexus` - 7 edges
-3. `Exploring Codebases with GitNexus` - 7 edges
-4. `Refactoring with GitNexus` - 7 edges
-5. `scripts` - 6 edges
-6. `Commands` - 6 edges
-7. `GitNexus Guide` - 6 edges
-8. `GitNexus — Code Intelligence` - 5 edges
+1. `godot-mcp-terravolt` - 8 edges
+2. `Impact Analysis with GitNexus` - 8 edges
+3. `Debugging with GitNexus` - 7 edges
+4. `Exploring Codebases with GitNexus` - 7 edges
+5. `Refactoring with GitNexus` - 7 edges
+6. `scripts` - 6 edges
+7. `Commands` - 6 edges
+8. `GitNexus Guide` - 6 edges
 9. `GitNexus — Code Intelligence` - 5 edges
-10. `Tools` - 5 edges
+10. `GitNexus — Code Intelligence` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (19 total, 4 thin omitted)
+## Communities (27 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -104,23 +112,35 @@ Cohesion: 0.40
 Nodes (4): args, command, mcpServers, gitnexus
 
 ### Community 13 - "Community 13"
-Cohesion: 0.50
-Nodes (3): godot-mcp-terravolt, Omni protocol stack (this repo), Status
+Cohesion: 0.20
+Nodes (9): code:bash (git clone --depth 1 https://github.com/youichi-uda/godot-mcp), Contributing (Git hooks), godot-mcp-terravolt, Omni / intel stack, Omni protocol stack (this repo), Reference repos (local), Repository layout, Status (+1 more)
+
+### Community 19 - "Community 19"
+Cohesion: 0.40
+Nodes (4): Layers, Layout, Purpose, TerraVolt Godot MCP — system overview
+
+### Community 20 - "Community 20"
+Cohesion: 0.40
+Nodes (4): code:bash (git fetch origin), code:bash (git config core.hooksPath .githooks), Dropping `Co-authored-by: Cursor <cursoragent@cursor.com>`, Git hooks (optional)
+
+### Community 21 - "Community 21"
+Cohesion: 0.40
+Nodes (4): depConfig, out, outDir, repoRoot
 
 ## Knowledge Gaps
-- **85 isolated node(s):** `name`, `version`, `private`, `description`, `license` (+80 more)
+- **104 isolated node(s):** `name`, `version`, `private`, `description`, `license` (+99 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Refactoring with GitNexus` connect `Community 5` to `Community 8`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `Checklists` connect `Community 8` to `Community 5`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `Checklists` connect `Community 8` to `Community 5`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
-  _85 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _104 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

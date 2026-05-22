@@ -13,6 +13,8 @@ module.exports = {
         "^coverage",
         "^references",
         "^\\.gitnexus",
+        "^artifacts/js-graphs",
+        "^graphify-out",
       ],
     },
   },

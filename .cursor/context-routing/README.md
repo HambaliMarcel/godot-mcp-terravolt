@@ -1,7 +1,11 @@
 # Context routing (priority)
 
-1. Structural — `architecture/SYSTEM_OVERVIEW.md`, `graphs/*.json`, GitNexus outputs.
-2. Intent — root `README.md`, future `specs/`.
-3. References — `references/` (third-party; use for patterns only).
+Routing details live in **`docs/context/context-map.md`**.
+
+Rough order:
+
+1. Structural — `docs/architecture/overview.md`, `artifacts/js-graphs/*.json`, GitNexus outputs.
+2. Intent — root `README.md`, `packages/*/README.md`, future `docs/specs/`.
+3. References — `references/` (third-party patterns only).
 
 Compression tip: paste **paths** and short excerpts, not whole generated JSON blobs.

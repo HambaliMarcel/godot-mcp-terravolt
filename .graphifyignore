@@ -5,5 +5,8 @@ references/
 node_modules/
 .gitnexus/
 
-# Generated JS graphs (separate from graphify-out KG)
-graphs/
+# Generated outputs (keep KG focused on hand-written sources)
+artifacts/
+
+# Graphify AST cache (optional speed-up; often gitignored in teams)
+graphify-out/cache/

@@ -1,14 +1,14 @@
 {
   "modules": [
     {
-      "source": ".dependency-cruiser.js",
+      "source": "config/dependency-cruiser.config.cjs",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
       "valid": true
     },
     {
-      "source": "scripts/regen-graphs.mjs",
+      "source": "tools/intel/regen-graphs.mjs",
       "dependencies": [
         {
           "dynamic": false,
@@ -99,7 +99,7 @@
       ],
       "dependencies": [],
       "dependents": [
-        "scripts/regen-graphs.mjs"
+        "tools/intel/regen-graphs.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -116,7 +116,7 @@
       ],
       "dependencies": [],
       "dependents": [
-        "scripts/regen-graphs.mjs"
+        "tools/intel/regen-graphs.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -133,7 +133,7 @@
       ],
       "dependencies": [],
       "dependents": [
-        "scripts/regen-graphs.mjs"
+        "tools/intel/regen-graphs.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -150,7 +150,7 @@
       ],
       "dependencies": [],
       "dependents": [
-        "scripts/regen-graphs.mjs"
+        "tools/intel/regen-graphs.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -173,7 +173,7 @@
         "path": "^node_modules"
       },
       "exclude": {
-        "path": "^node_modules|^dist|^coverage|^references|^\\.gitnexus"
+        "path": "^node_modules|^dist|^coverage|^references|^\\.gitnexus|^artifacts/js-graphs|^graphify-out"
       },
       "exoticRequireStrings": [],
       "externalModuleResolutionStrategy": "node_modules",
@@ -184,10 +184,10 @@
         "tsd",
         "amd"
       ],
-      "outputTo": "graphs/dependency-graph.json",
+      "outputTo": "H:\\Godot MCP Marcel\\artifacts\\js-graphs\\dependency-graph.json",
       "outputType": "json",
       "preserveSymlinks": false,
-      "rulesFile": ".dependency-cruiser.js",
+      "rulesFile": "H:\\Godot MCP Marcel\\config\\dependency-cruiser.config.cjs",
       "skipAnalysisNotInRules": false,
       "tsPreCompilationDeps": true,
       "args": "."
