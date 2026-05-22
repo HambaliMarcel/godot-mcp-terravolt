@@ -19,6 +19,7 @@ const PROTOCOL_INVALID_JSONRPC_VERSION := -33100
 const PROTOCOL_METHOD_NOT_FOUND := -33101
 const PROTOCOL_INVALID_PARAMS := -33102
 const PROTOCOL_BATCH_TOO_LARGE := -33103
+const PROTOCOL_CATALOG_MISMATCH := -33104
 #endregion
 
 #region auth
@@ -61,7 +62,8 @@ static func category_for(tv_code: int) -> String:
 		PROTOCOL_INVALID_JSONRPC_VERSION,
 		PROTOCOL_METHOD_NOT_FOUND,
 		PROTOCOL_INVALID_PARAMS,
-		PROTOCOL_BATCH_TOO_LARGE:
+		PROTOCOL_BATCH_TOO_LARGE,
+		PROTOCOL_CATALOG_MISMATCH:
 			return "protocol"
 		AUTH_TOKEN_REQUIRED,
 		AUTH_TOKEN_INVALID:
@@ -99,6 +101,8 @@ static func symbol_for(tv_code: int) -> String:
 			return "protocol.invalid_params"
 		PROTOCOL_BATCH_TOO_LARGE:
 			return "protocol.batch_too_large"
+		PROTOCOL_CATALOG_MISMATCH:
+			return "protocol.catalog_mismatch"
 		AUTH_TOKEN_REQUIRED:
 			return "auth.token_required"
 		AUTH_TOKEN_INVALID:

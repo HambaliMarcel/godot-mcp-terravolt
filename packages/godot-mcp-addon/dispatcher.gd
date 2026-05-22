@@ -2,6 +2,8 @@
 extends RefCounted
 class_name TerraVoltDispatcher
 
+const _CatalogMeta := preload("./_generated/catalog_meta.gd")
+
 ## Strict JSON-RPC 2.0 dispatch + built-in plumbing methods (task 04).
 
 signal rpc_ledger_record(
@@ -318,6 +320,16 @@ func _handle_single(peer_id: int, elt: Variant) -> Variant:
 
 
 func _register_builtin() -> void:
+	register(
+		"dispatch.cancel",
+		{
+			"type": "object",
+			"properties": {"target_id": {"type": ["integer", "string", "null"]}},
+			"additionalProperties": false
+		},
+		_h_dispatch_cancel
+	)
+
 	register("ping", {"type": "object", "properties": {}, "additionalProperties": false}, _h_ping)
 
 	register(
@@ -360,7 +372,7 @@ func _register_builtin() -> void:
 		{
 			"type": "object",
 			"properties": {
-				"lines": {"type": "integer", "minimum": 1, "maximum": 500},
+				"lines": {"type": "integer", "minimum": 1, "maximum": 1000},
 				"level": {"type": "string"}
 			},
 			"additionalProperties": false
@@ -380,6 +392,20 @@ func _register_builtin() -> void:
 		},
 		_h_log_set_level
 	)
+
+
+func _h_dispatch_cancel(ctx: Dictionary) -> Dictionary:
+	var tid: Variant = null
+	var p := ctx.get("params")
+	if typeof(p) == TYPE_DICTIONARY:
+		tid = (p as Dictionary).get("target_id", null)
+	logger.log_force(
+		"debug",
+		"dispatch",
+		"cancel_notification",
+		{"peer_id": ctx.get("peer_id", -1), "target_id": tid}
+	)
+	return {"ok": true, "result": null}
 
 
 func _h_ping(_ctx: Dictionary) -> Dictionary:
@@ -453,6 +479,8 @@ func _h_server_info(_ctx: Dictionary) -> Dictionary:
 		"supported_methods_count": _methods.size(),
 		"log_path": lp,
 		"log_path_resolved": lp,
+		"catalog_version": _CatalogMeta.CATALOG_VERSION,
+		"registry_sha256": _CatalogMeta.REGISTRY_SHA256,
 	}
 	return {"ok": true, "result": info}
 
