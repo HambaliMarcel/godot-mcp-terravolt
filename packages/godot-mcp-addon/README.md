@@ -53,7 +53,9 @@ Terravolt settings namespace: **`terravolt_mcp/...`** (port, bind, heartbeat, lo
 Implemented per **`docs/tasklist/02`**–**`04`**:
 
 - **`02`** — plugin shell, bottom panel, project settings defaults, link scripts.
-- **`03`** — `TCPServer` + `WebSocketPeer` listener, single-client policy, heartbeat.
+- **`03`** — `TCPServer` + `WebSocketPeer` listener, single-client policy, heartbeat. Default
+  **`heartbeat_mode=control_frame`** drives native WS ping via `WebSocketPeer.set_heartbeat_interval`;
+  use **`rpc`** or **`both`** for JSON-RPC `server.heartbeat` notifications plus data-idle timeout pruning.
 - **`04`** — JSON-RPC 2.0 dispatch, TerraVolt error envelope, rotation logger, RPC plumbing methods (`ping`, `echo`, `server.info`, …).
 
 ## Automated tests

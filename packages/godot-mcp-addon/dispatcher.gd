@@ -424,14 +424,14 @@ func _h_server_shutdown(ctx: Dictionary) -> Dictionary:
 		)
 		return {"ok": false, "error": deny}
 	var svc := server_ref.get_ref()
-	if svc != null and svc.has_method("request_restart_after_shutdown_rpc"):
-		svc.call(&"request_restart_after_shutdown_rpc", ctx)
+	if svc != null and svc.has_method("stop"):
+		svc.call(&"stop")
 
 	var reason := ""
 	if typeof(ctx[&"params"]) == TYPE_DICTIONARY:
 		reason = str((ctx[&"params"] as Dictionary).get(&"reason", ""))
 	logger.log_force("warn", "lifecycle", "remote_shutdown_requested", {"peer_id": ctx["peer_id"], "reason": reason})
-	return {"ok": true, "result": {"ok": true, "accepted": false, "hint": "Stop the daemon manually from the dock"}}
+	return {"ok": true, "result": {"ok": true, "accepted": true}}
 
 
 func _h_server_info(_ctx: Dictionary) -> Dictionary:
@@ -441,6 +441,7 @@ func _h_server_info(_ctx: Dictionary) -> Dictionary:
 		listen = str(s.call(&"get_listen_label"))
 	var gv := Engine.get_version_info()
 	var gv_string := gv.get(&"string", JSON.stringify(gv))
+	var lp := logger.resolved_log_path_absolute()
 	var info := {
 		"name": "terravolt-godot-mcp",
 		"version": "0.1.0",
@@ -450,7 +451,8 @@ func _h_server_info(_ctx: Dictionary) -> Dictionary:
 		"listen_address": listen,
 		"uptime_sec": uptime_sec(),
 		"supported_methods_count": _methods.size(),
-		"log_path_resolved": logger.resolved_log_path_absolute(),
+		"log_path": lp,
+		"log_path_resolved": lp,
 	}
 	return {"ok": true, "result": info}
 

@@ -97,11 +97,6 @@ func start() -> void:
 	_set_fsm(ConnState.LISTENING, {"label": _listen_label})
 
 
-func request_restart_after_shutdown_rpc(_ctx: Dictionary) -> void:
-	if logger:
-		logger.log_force("info", "lifecycle", "shutdown_rpc_acknowledged", {"peer_id": _ctx.get("peer_id", -1)})
-
-
 func process_tick(delta: float) -> void:
 	if not _running:
 		return
@@ -185,6 +180,9 @@ func _promote_to_ready(peer: Dictionary) -> void:
 	emit_signal(&"transport_diagnostic", {"event": "peer_ready", "peer_id": pid})
 	var hello := "{\"note\":\"terravolt_mcp_server_hello_opaque\"}"
 	var ws: WebSocketPeer = peer[&"ws"] as WebSocketPeer
+	var hb_ms := int(ProjectSettings.get_setting("terravolt_mcp/server/heartbeat_interval_ms", 15000))
+	var hb_secs_ws: float = clampf(float(hb_ms) / 1000.0, 0.0, 86400.0)
+	ws.set_heartbeat_interval(hb_secs_ws)
 	ws.send_text(hello)
 	_set_fsm(ConnState.CLIENT_CONNECTED, {"peer_id": pid})
 
@@ -196,6 +194,9 @@ func _drive_heartbeat(delta: float) -> void:
 	var hb_secs := float(ProjectSettings.get_setting("terravolt_mcp/server/heartbeat_interval_ms", 15000)) / 1000.0
 	var tout_ms := float(ProjectSettings.get_setting("terravolt_mcp/server/heartbeat_timeout_ms", 45000))
 	var now_ms := Time.get_ticks_msec()
+	# When using native WS ping/pong only, `last_activity_ms` tracks data frames; pruning on that
+	# timer would drop quiet JSON-RPC peers. Rely on WebSocketPeer.heartbeat_interval + engine close.
+	var skip_data_idle_prune := mode == "control_frame"
 	_heartbeat_accum += delta
 
 	if hb_secs <= 0.0:
@@ -213,6 +214,9 @@ func _drive_heartbeat(delta: float) -> void:
 				var note := dispatcher.enqueue_server_notification_obj("server.heartbeat", {"tick": now_ms})
 				_enqueue_out(peer_ld, note)
 				emit_signal(&"heartbeat_pulse", "out", int(peer_ld[&"id"]))
+
+	if skip_data_idle_prune:
+		return
 
 	for kp in _active_peer_by_id.keys():
 		var dp2 := (_active_peer_by_id[kp] as Dictionary)
