@@ -2,7 +2,6 @@ import WebSocket from "ws";
 import type { Config } from "../config.js";
 import { DaemonJsonRpcError, TRANSPORT_NOT_CONNECTED, isRecord } from "../diagnostics/errors.js";
 import { mapGodotJsonRpcError } from "../diagnostics/map_godot_error.js";
-import { nextJsonRpcId } from "../jsonrpc/framing.js";
 import { PendingRequests } from "../jsonrpc/pending.js";
 import type { Logger } from "../logger.js";
 
@@ -81,7 +80,7 @@ export class GodotWsClient {
     if (!this.isConnected()) {
       throw this.notConnectedErr();
     }
-    const id = nextJsonRpcId(this.idState);
+    const id = this.allocJsonRpcId();
     const body = JSON.stringify({
       jsonrpc: "2.0",
       id,
@@ -112,6 +111,11 @@ export class GodotWsClient {
   dispose(): void {
     this.pending.dispose();
     this.stop();
+  }
+
+  private allocJsonRpcId(): number {
+    this.idState.n += 1;
+    return this.idState.n;
   }
 
   private notConnectedErr(): Error {

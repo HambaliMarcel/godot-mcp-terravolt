@@ -13,7 +13,6 @@ export type Config = {
   readonly logLevel: LogLevel;
   readonly requestTimeoutMs: number;
   readonly maxPayloadBytes: number;
-  readonly enableHeadlessFallback: boolean;
   readonly token: string | undefined;
   readonly notificationFilter: "all" | "events";
   readonly packageVersion: string;
@@ -62,7 +61,6 @@ export function loadConfig(argv: string[], packageVersion: string): ParseResult 
       "log-level": { type: "string" },
       "request-timeout-ms": { type: "string" },
       "max-payload-bytes": { type: "string" },
-      "enable-headless-fallback": { type: "boolean" },
       token: { type: "string" },
       notifications: { type: "string" },
     },
@@ -92,7 +90,6 @@ export function loadConfig(argv: string[], packageVersion: string): ParseResult 
     logLevel: parseLogLevel(v["log-level"] ?? envString("TERRAVOLT_LOG_LEVEL") ?? "info"),
     requestTimeoutMs: parseIntOpt(v["request-timeout-ms"], 30_000),
     maxPayloadBytes: parseIntOpt(v["max-payload-bytes"], 4 * 1024 * 1024),
-    enableHeadlessFallback: Boolean(v["enable-headless-fallback"]),
     token: v["token"] ?? envString("TERRAVOLT_TOKEN"),
     notificationFilter,
     packageVersion,
