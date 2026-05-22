@@ -1,0 +1,6 @@
+{
+  "texture": [".png", ".jpg", ".jpeg", ".webp", ".exr", ".svg"],
+  "audio": [".ogg", ".wav", ".mp3"],
+  "model": [".gltf", ".glb", ".fbx", ".obj"],
+  "font": [".ttf", ".otf", ".woff", ".woff2"]
+}

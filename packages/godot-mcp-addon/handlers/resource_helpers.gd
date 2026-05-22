@@ -35,7 +35,7 @@ static func file_exists(path: String) -> bool:
 
 
 static func resource_uid(res_path: String) -> Variant:
-	var uid := ResourceUID.path_to_id(res_path)
+	var uid: int = ResourceLoader.get_resource_uid(res_path)
 	if uid != ResourceUID.INVALID_ID and ResourceUID.has_id(uid):
 		return ResourceUID.id_to_text(uid)
 	return null
@@ -125,11 +125,7 @@ static func _collect_resources(base: String, dir_abs: String, include_imported: 
 			continue
 		var rel := full.substr(base.length()).replace("\\", "/").lstrip("/")
 		var res_path := "res://%s" % rel
-		var cls := ""
-		if name.ends_with(".gdshader") or name.ends_with(".shader"):
-			cls = "Shader"
-		elif ResourceLoader.exists(res_path):
-			cls = str(ResourceLoader.get_resource_type(res_path))
+		var cls := resource_class_from_path(res_path, full)
 		out.append(
 			{
 				"path": res_path,
@@ -244,7 +240,7 @@ static func apply_properties(obj: Object, patch: Dictionary) -> Dictionary:
 	for k in patch.keys():
 		var key := str(k)
 		var before: Variant = obj.get(key) if obj.has_method("get") else null
-		var after_v := json_to_variant(patch[k])
+		var after_v: Variant = json_to_variant(patch[k])
 		obj.set(key, after_v)
 		applied[key] = {"before": variant_to_json(before), "after": variant_to_json(after_v)}
 	return applied

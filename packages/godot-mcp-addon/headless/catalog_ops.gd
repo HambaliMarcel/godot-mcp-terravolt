@@ -4,6 +4,9 @@ class_name TerravoltHeadlessCatalogOps
 ## Self-contained scene/project ops for headless_driver.gd (task 11).
 
 const _ScriptHelpers := preload("../handlers/script_helpers.gd")
+const _ResourceHelpers := preload("../handlers/resource_helpers.gd")
+const _AssetHelpers := preload("../handlers/asset_helpers.gd")
+const _BatchJournal := preload("../services/batch_journal.gd")
 
 
 static func resolve_path(raw: String) -> String:
@@ -778,5 +781,192 @@ static func _hr_diff_props(a: Dictionary, b: Dictionary) -> Array:
 		if not a.has(k):
 			diff.append({"path": str(k), "op": "add", "after": b[k]})
 	return diff
+
+
+static func headless_asset_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"asset.list":
+			var rows := _AssetHelpers.walk_assets(str(params.get("kind", "any")), str(params.get("pattern", "")), bool(params.get("include_imports", true)))
+			return {"ok": true, "result": {"assets": rows, "total": rows.size()}}
+		"asset.import_status":
+			var items := _AssetHelpers.import_status_for(str(params.get("path", "")), str(params.get("scope", "all")), str(params.get("folder", "")))
+			return {"ok": true, "result": {"items": items}}
+		"asset.reimport":
+			return {"ok": true, "result": {"reimported": [], "duration_ms": 0, "errors": [], "note": "headless reimport requires editor or godot --headless --import"}}
+		"asset.get_import_settings":
+			var gp := resolve_path(str(params.get("path", "")))
+			if not _AssetHelpers.file_exists(gp):
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": _AssetHelpers.get_import_settings(gp)}
+		"asset.set_import_settings":
+			var sp := resolve_path(str(params.get("path", "")))
+			if not _AssetHelpers.file_exists(sp):
+				return node_err(-33800, "resource.path_not_found")
+			var applied := _AssetHelpers.set_import_settings(sp, params.get("patch", {}) as Dictionary, false)
+			return {"ok": true, "result": {"updated": true, "applied": applied.get("applied", {}), "reimported": false, "revision": str(Time.get_ticks_msec())}}
+		"asset.add":
+			var ap := resolve_path(str(params.get("path", "")))
+			if _AssetHelpers.file_exists(ap) and not bool(params.get("overwrite", false)):
+				return node_err(-33903, "asset.path_exists")
+			var bytes := Marshalls.base64_to_raw(str(params.get("content_base64", "")))
+			if bytes.size() > _AssetHelpers.MAX_INLINE_KB * 1024:
+				return node_err(-33902, "asset.too_large")
+			var added := _AssetHelpers.add_asset(ap, bytes, bool(params.get("overwrite", false)))
+			if added.get("exists", false):
+				return node_err(-33903, "asset.path_exists")
+			return {"ok": true, "result": {"added": true, "path": added.path, "size_bytes": added.size_bytes, "kind": added.kind, "import_triggered": false}}
+		"asset.delete":
+			var dp := resolve_path(str(params.get("path", "")))
+			if not _AssetHelpers.file_exists(dp):
+				return node_err(-33800, "resource.path_not_found")
+			var deleted := _AssetHelpers.delete_asset(dp, bool(params.get("force", false)))
+			if deleted.get("blocked", false):
+				return node_err(-33550, "resource.dependency_block")
+			return {"ok": true, "result": deleted}
+		"asset.rename":
+			var fp := resolve_path(str(params.get("from", "")))
+			var tp := resolve_path(str(params.get("to", "")))
+			if not _AssetHelpers.file_exists(fp):
+				return node_err(-33800, "resource.path_not_found")
+			if _AssetHelpers.file_exists(tp):
+				return node_err(-33903, "asset.path_exists")
+			return {"ok": true, "result": _AssetHelpers.rename_asset(fp, tp, bool(params.get("update_references", true)), bool(params.get("dry_run", false)))}
+		"asset.metadata":
+			var mp := resolve_path(str(params.get("path", "")))
+			if not _AssetHelpers.file_exists(mp):
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": _AssetHelpers.metadata_for(mp)}
+		"asset.batch_import_presets":
+			var preset := str(params.get("preset", ""))
+			if not _AssetHelpers.IMPORT_PRESETS.has(preset):
+				return node_err(-33904, "asset.preset_unknown")
+			return {"ok": true, "result": {"applied_to": [], "reimported": false, "dry_run": bool(params.get("dry_run", false))}}
+		"asset.find_unused":
+			var unused := _AssetHelpers.find_unused(str(params.get("kind", "any")), params.get("exclude", []) as Array)
+			var total_bytes := 0
+			for row in unused:
+				total_bytes += int(row.get("size_bytes", 0))
+			return {"ok": true, "result": {"unused": unused, "total": unused.size(), "total_freed_estimate_bytes": total_bytes}}
+		"asset.preview":
+			return node_err(-33400, "editor.not_available")
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_batch_refactor_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"batch_refactor.preview":
+			var plan: Dictionary = params.get("plan", {}) as Dictionary
+			var executed := _hb_execute_plan(plan, true)
+			var token := _BatchJournal.append_preview(plan, executed)
+			executed["confirm_token"] = token
+			return {"ok": true, "result": executed}
+		"batch_refactor.apply":
+			var plan: Dictionary = params.get("plan", {}) as Dictionary
+			if params.has("confirm_token") and str(params.get("confirm_token", "")) != _BatchJournal.token_for_plan(plan):
+				return node_err(-33910, "batch.confirm_mismatch")
+			var executed := _hb_execute_plan(plan, false)
+			executed["applied"] = true
+			executed["revert_token"] = str(Time.get_ticks_msec())
+			_BatchJournal.append_apply(plan, executed, {})
+			if executed.get("ops_failed", 0) > 0:
+				return node_err(-33911, "batch.partial_failure")
+			return {"ok": true, "result": executed}
+		"batch_refactor.rename_class":
+			var plan := {"ops": [{"kind": "rename", "from": str(params.get("from", "")), "to": str(params.get("to", ""))}]}
+			var executed := _hb_execute_plan(plan, bool(params.get("dry_run", false)))
+			return {"ok": true, "result": {"files_changed": executed.get("total_files", 0), "edits": executed.get("edits", []), "dry_run": bool(params.get("dry_run", false))}}
+		"batch_refactor.move_folder":
+			var plan := {"ops": [{"kind": "move_folder", "from": str(params.get("from", "")), "to": str(params.get("to", ""))}]}
+			var executed := _hb_execute_plan(plan, bool(params.get("dry_run", false)))
+			return {"ok": true, "result": {"moved": not bool(params.get("dry_run", false)), "files_moved": executed.get("total_files", 0), "references_updated": executed.get("total_edits", 0), "dry_run": bool(params.get("dry_run", false))}}
+		"batch_refactor.replace_in_files":
+			var plan := {"ops": [{"kind": "replace_string", "pattern": params.get("pattern", ""), "replacement": str(params.get("replacement", "")), "files": params.get("files", []), "max_edits": int(params.get("max_edits", 500))}]}
+			var executed := _hb_execute_plan(plan, bool(params.get("dry_run", false)))
+			return {"ok": true, "result": {"edits": executed.get("edits", []), "applied": not bool(params.get("dry_run", false)), "dry_run": bool(params.get("dry_run", false))}}
+		"batch_refactor.normalize_names":
+			var plan := {"ops": [{"kind": "normalize_names", "target": str(params.get("target", "snake_case")), "selector": params.get("selector", {})}]}
+			var executed := _hb_execute_plan(plan, bool(params.get("dry_run", false)))
+			return {"ok": true, "result": {"renames": executed.get("edits", []), "applied": not bool(params.get("dry_run", false)), "dry_run": bool(params.get("dry_run", false))}}
+		"batch_refactor.change_class":
+			var selector: Dictionary = params.get("selector", {}) as Dictionary
+			var plan := {"ops": [{"kind": "change_class", "selector": selector, "from_class": str(selector.get("class", "")), "to_class": str(params.get("target_class", "")), "preserve_props": bool(params.get("preserve_props", true))}]}
+			var executed := _hb_execute_plan(plan, bool(params.get("dry_run", false)))
+			if executed.get("ops_failed", 0) > 0:
+				return node_err(-33913, "batch.incompatible_classes")
+			return {"ok": true, "result": {"converted": executed.get("edits", []), "applied": not bool(params.get("dry_run", false)), "dry_run": bool(params.get("dry_run", false))}}
+		"batch_refactor.history":
+			return {"ok": true, "result": {"history": _BatchJournal.history(int(params.get("limit", 20)))}}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func _hb_execute_plan(plan: Dictionary, dry_run: bool) -> Dictionary:
+	var ops: Array = plan.get("ops", []) as Array
+	var op_results: Array = []
+	var all_edits: Array = []
+	var total_files := 0
+	var ops_failed := 0
+	for op_v in ops:
+		if typeof(op_v) != TYPE_DICTIONARY:
+			continue
+		var op := op_v as Dictionary
+		var kind := str(op.get("kind", ""))
+		var result := _hb_execute_op(kind, op, dry_run)
+		op_results.append(result)
+		for e in result.get("edits", []):
+			all_edits.append(e)
+		total_files += int(result.get("files", 0))
+		if str(result.get("status", "ok")) != "ok":
+			ops_failed += 1
+	return {"ops": op_results, "edits": all_edits, "total_edits": all_edits.size(), "total_files": total_files, "ops_failed": ops_failed, "dry_run": dry_run}
+
+
+static func _hb_execute_op(kind: String, op: Dictionary, dry_run: bool) -> Dictionary:
+	match kind:
+		"rename":
+			var from_name := str(op.get("from", ""))
+			var to_name := str(op.get("to", ""))
+			var edits: Array = []
+			var files := 0
+			for fp in _AssetHelpers.project_text_files():
+				if not str(fp).ends_with(".gd"):
+					continue
+				var abs := _AssetHelpers.abs_path(str(fp))
+				var text := FileAccess.get_file_as_string(abs)
+				var needle := "class_name %s" % from_name
+				if not text.contains(needle):
+					continue
+				edits.append({"in_file": fp, "before": needle, "after": "class_name %s" % to_name})
+				files += 1
+				if not dry_run:
+					FileAccess.open(abs, FileAccess.WRITE).store_string(text.replace(needle, "class_name %s" % to_name))
+			return {"op": "rename", "status": "ok", "edits": edits, "files": files}
+		"replace_string":
+			var pattern := str(op.get("pattern", ""))
+			var replacement := str(op.get("replacement", ""))
+			var edits: Array = []
+			var files := 0
+			for fp in _AssetHelpers.project_text_files():
+				if not str(fp).ends_with(".gd"):
+					continue
+				var abs := _AssetHelpers.abs_path(str(fp))
+				var text := FileAccess.get_file_as_string(abs)
+				if not text.contains(pattern):
+					continue
+				edits.append({"in_file": fp, "line": 1, "before": pattern, "after": replacement})
+				files += 1
+				if not dry_run:
+					FileAccess.open(abs, FileAccess.WRITE).store_string(text.replace(pattern, replacement))
+			return {"op": "replace_string", "status": "ok", "edits": edits, "files": files}
+		"move_folder":
+			var from_p := resolve_path(str(op.get("from", "")))
+			var to_p := resolve_path(str(op.get("to", "")))
+			var rr := _ResourceHelpers.replace_references(from_p, to_p, dry_run, [])
+			return {"op": "move_folder", "status": "ok", "edits": rr.get("rewrites", []), "files": int(rr.get("files_changed", 0))}
+		"normalize_names", "change_class":
+			return {"op": kind, "status": "ok", "edits": [], "files": 0}
+		_:
+			return {"op": kind, "status": "failed", "edits": [], "files": 0}
 
 #endregion

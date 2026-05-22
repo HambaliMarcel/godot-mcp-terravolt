@@ -41,6 +41,10 @@ func _enter_tree() -> void:
 	resource_handlers.attach(_dispatcher, _logger)
 	var shader_handlers := preload("./handlers/shader.gd").new()
 	shader_handlers.attach(_dispatcher, _logger)
+	var asset_handlers := preload("./handlers/asset.gd").new()
+	asset_handlers.attach(_dispatcher, _logger)
+	var batch_handlers := preload("./handlers/batch_refactor.gd").new()
+	batch_handlers.attach(_dispatcher, _logger)
 
 	_dock = _StatusDockScr.new()
 	_dock.name = "TerraVoltMCPStatus"

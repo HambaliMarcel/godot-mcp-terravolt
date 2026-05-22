@@ -65,7 +65,7 @@ static func globalize(path: String) -> String:
 
 
 static func scene_uid(res_path: String) -> Variant:
-	var uid := ResourceUID.path_to_id(res_path)
+	var uid: int = ResourceLoader.get_resource_uid(res_path)
 	if uid != ResourceUID.INVALID_ID and ResourceUID.has_id(uid):
 		return ResourceUID.id_to_text(uid)
 	return null

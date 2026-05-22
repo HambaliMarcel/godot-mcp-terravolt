@@ -467,6 +467,87 @@
       "recoverable": true,
       "hint": "Path or RPC blocked by TerraVolt allowlisting; stay within `--project`.",
       "since": "0.2.0"
+    },
+    {
+      "code": -33900,
+      "symbol": "asset.import_timeout",
+      "category": "asset",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Asset reimport exceeded import_timeout_ms.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33901,
+      "symbol": "asset.unknown_setting",
+      "category": "asset",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Import setting key is not recognized for this importer.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33902,
+      "symbol": "asset.too_large",
+      "category": "asset",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Inline asset payload exceeds asset_max_inline_bytes.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33903,
+      "symbol": "asset.path_exists",
+      "category": "asset",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Target asset path already exists; set overwrite=true to replace.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33904,
+      "symbol": "asset.preset_unknown",
+      "category": "asset",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Unknown import preset name.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33910,
+      "symbol": "batch.confirm_mismatch",
+      "category": "batch_refactor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "confirm_token does not match the previewed plan hash.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33911,
+      "symbol": "batch.partial_failure",
+      "category": "batch_refactor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "One or more batch ops failed during apply.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33912,
+      "symbol": "batch.too_many_edits",
+      "category": "batch_refactor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Replace operation exceeded max_edits ceiling.",
+      "since": "0.7.0"
+    },
+    {
+      "code": -33913,
+      "symbol": "batch.incompatible_classes",
+      "category": "batch_refactor",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Target class is unknown or incompatible with source nodes.",
+      "since": "0.7.0"
     }
   ]
 }

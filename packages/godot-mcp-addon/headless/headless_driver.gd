@@ -249,6 +249,13 @@ func _dispatch(line: String) -> String:
 			return JSON.stringify(_wr_err(rid, re))
 		"shader.list", "shader.read", "shader.write", "shader.compile_check", "shader.list_params", "shader.set_material_params":
 			return JSON.stringify(_headless_shader(rid, method, pd))
+		"asset.list", "asset.import_status", "asset.reimport", "asset.get_import_settings", "asset.set_import_settings", "asset.add", "asset.delete", "asset.rename", "asset.metadata", "asset.batch_import_presets", "asset.find_unused":
+			return JSON.stringify(_headless_asset(rid, method, pd))
+		"asset.preview":
+			var ap := _err(-32603, "editor.not_available", _EDITOR_NOT_AVAILABLE, "Asset preview requires editor.", {})
+			return JSON.stringify(_wr_err(rid, ap))
+		"batch_refactor.preview", "batch_refactor.apply", "batch_refactor.rename_class", "batch_refactor.move_folder", "batch_refactor.replace_in_files", "batch_refactor.normalize_names", "batch_refactor.change_class", "batch_refactor.history":
+			return JSON.stringify(_headless_batch_refactor(rid, method, pd))
 		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
 			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
 			return JSON.stringify(_wr_err(rid, na))
@@ -346,5 +353,25 @@ func _headless_shader(rid: Variant, method: String, pd: Dictionary) -> Dictionar
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "shader.error")), int(g.get("code", -33800)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_asset(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_asset_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "asset.error")), int(g.get("code", -33900)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_batch_refactor(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_batch_refactor_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "batch.error")), int(g.get("code", -33910)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))

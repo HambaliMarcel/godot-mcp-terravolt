@@ -90,6 +90,18 @@ const SHADER_PARAM_UNKNOWN := -33807
 const SHADER_PARAM_TYPE_MISMATCH := -33808
 #endregion
 
+#region asset / batch_refactor (task 15)
+const ASSET_IMPORT_TIMEOUT := -33900
+const ASSET_UNKNOWN_SETTING := -33901
+const ASSET_TOO_LARGE := -33902
+const ASSET_PATH_EXISTS := -33903
+const ASSET_PRESET_UNKNOWN := -33904
+const BATCH_CONFIRM_MISMATCH := -33910
+const BATCH_PARTIAL_FAILURE := -33911
+const BATCH_TOO_MANY_EDITS := -33912
+const BATCH_INCOMPATIBLE_CLASSES := -33913
+#endregion
+
 #region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
 const HEADLESS_BINARY_MISSING := -33810
 const HEADLESS_NO_PROJECT := -33811
@@ -172,6 +184,15 @@ const _CODE_TO_SYMBOL := {
 	SHADER_COMPILE_TIMEOUT: "shader.compile_timeout",
 	SHADER_PARAM_UNKNOWN: "shader.param_unknown",
 	SHADER_PARAM_TYPE_MISMATCH: "shader.param_type_mismatch",
+	ASSET_IMPORT_TIMEOUT: "asset.import_timeout",
+	ASSET_UNKNOWN_SETTING: "asset.unknown_setting",
+	ASSET_TOO_LARGE: "asset.too_large",
+	ASSET_PATH_EXISTS: "asset.path_exists",
+	ASSET_PRESET_UNKNOWN: "asset.preset_unknown",
+	BATCH_CONFIRM_MISMATCH: "batch.confirm_mismatch",
+	BATCH_PARTIAL_FAILURE: "batch.partial_failure",
+	BATCH_TOO_MANY_EDITS: "batch.too_many_edits",
+	BATCH_INCOMPATIBLE_CLASSES: "batch.incompatible_classes",
 	PROJECT_SETTING_LOCKED: "project.setting_locked",
 	HEADLESS_BINARY_MISSING: "headless.binary_missing",
 	HEADLESS_NO_PROJECT: "headless.no_project",

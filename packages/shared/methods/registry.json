@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.6.0",
+  "catalog_version": "0.7.0",
   "methods": [
     {
       "method": "ping",
@@ -3023,6 +3023,753 @@
         "shader.param_type_mismatch",
         "protocol.idempotency_conflict"
       ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.list",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "List source asset files under res://.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "include_imports": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.list",
+        "title": "asset.list",
+        "description": "List source asset files under res://."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.import_status",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Report import status for assets.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "folder": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.import_status",
+        "title": "asset.import_status",
+        "description": "Report import status for assets."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.reimport",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Trigger reimport for asset(s).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "folder": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.reimport",
+        "title": "asset.reimport",
+        "description": "Trigger reimport for asset(s)."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["asset.import_timeout"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.get_import_settings",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Read import settings from .import sidecar.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.get_import_settings",
+        "title": "asset.get_import_settings",
+        "description": "Read import settings from .import sidecar."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.set_import_settings",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Patch import settings and optionally reimport.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "patch"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "patch": {
+            "type": "object"
+          },
+          "reimport_after": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.set_import_settings",
+        "title": "asset.set_import_settings",
+        "description": "Patch import settings and optionally reimport."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["asset.unknown_setting", "resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.add",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Add a new asset from base64 or file URL.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "content_base64": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.add",
+        "title": "asset.add",
+        "description": "Add a new asset from base64 or file URL."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["asset.too_large", "asset.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.delete",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Delete an asset and its import sidecar.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "force": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.delete",
+        "title": "asset.delete",
+        "description": "Delete an asset and its import sidecar."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.rename",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Rename/move an asset with optional reference rewrites.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "update_references": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.rename",
+        "title": "asset.rename",
+        "description": "Rename/move an asset with optional reference rewrites."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found", "asset.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.preview",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Generate a preview thumbnail for an asset.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "size": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.preview",
+        "title": "asset.preview",
+        "description": "Generate a preview thumbnail for an asset."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": false
+    },
+    {
+      "method": "asset.metadata",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Read intrinsic metadata for an asset.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.metadata",
+        "title": "asset.metadata",
+        "description": "Read intrinsic metadata for an asset."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.batch_import_presets",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Apply import preset settings to many assets.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["preset"],
+        "properties": {
+          "preset": {
+            "type": "string"
+          },
+          "paths": {
+            "type": "array"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.batch_import_presets",
+        "title": "asset.batch_import_presets",
+        "description": "Apply import preset settings to many assets."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["asset.preset_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "asset.find_unused",
+      "category": "asset",
+      "since": "0.7.0",
+      "description": "Find assets with no inbound references.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "exclude": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "asset.find_unused",
+        "title": "asset.find_unused",
+        "description": "Find assets with no inbound references."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.preview",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Preview a batch refactor plan without applying.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["plan"],
+        "properties": {
+          "plan": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.preview",
+        "title": "batch_refactor.preview",
+        "description": "Preview a batch refactor plan without applying."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.apply",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Apply a previewed batch refactor plan.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["plan"],
+        "properties": {
+          "plan": {
+            "type": "object"
+          },
+          "confirm_token": {
+            "type": "string"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.apply",
+        "title": "batch_refactor.apply",
+        "description": "Apply a previewed batch refactor plan."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["batch.confirm_mismatch", "batch.partial_failure"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.rename_class",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Rename a GDScript class_name project-wide.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "also_rename_file": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.rename_class",
+        "title": "batch_refactor.rename_class",
+        "description": "Rename a GDScript class_name project-wide."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.move_folder",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Move a folder and rewrite references.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.move_folder",
+        "title": "batch_refactor.move_folder",
+        "description": "Move a folder and rewrite references."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.replace_in_files",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Project-wide find-and-replace in text files.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["pattern", "replacement"],
+        "properties": {
+          "pattern": {},
+          "replacement": {
+            "type": "string"
+          },
+          "files": {
+            "type": "array"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "max_edits": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.replace_in_files",
+        "title": "batch_refactor.replace_in_files",
+        "description": "Project-wide find-and-replace in text files."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["batch.too_many_edits"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.normalize_names",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Normalize file names to a casing convention.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target", "selector"],
+        "properties": {
+          "target": {
+            "type": "string"
+          },
+          "selector": {
+            "type": "object"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.normalize_names",
+        "title": "batch_refactor.normalize_names",
+        "description": "Normalize file names to a casing convention."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.change_class",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "Swap node/resource classes where compatible.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["selector", "target_class"],
+        "properties": {
+          "selector": {
+            "type": "object"
+          },
+          "target_class": {
+            "type": "string"
+          },
+          "preserve_props": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.change_class",
+        "title": "batch_refactor.change_class",
+        "description": "Swap node/resource classes where compatible."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["batch.incompatible_classes"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "batch_refactor.history",
+      "category": "batch_refactor",
+      "since": "0.7.0",
+      "description": "List recent batch_refactor.apply calls.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "batch_refactor.history",
+        "title": "batch_refactor.history",
+        "description": "List recent batch_refactor.apply calls."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
       "examples": [],
       "headlessFallback": true
     }
