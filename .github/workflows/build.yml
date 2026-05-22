@@ -1,0 +1,11 @@
+# Placeholder — assemble release artefacts in docs/tasklist/10-quality-testing-release-and-docs.md
+name: Build (reserved)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Reserve path for packaging + distribution pipeline."
