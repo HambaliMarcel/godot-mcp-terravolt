@@ -322,11 +322,11 @@ The dock subscribes to these signals from `MCPServer`:
 
 ## 3.12 Handoff checklist to file `04`
 
-- [ ] `MCPServer` exposes `inbound_queue` / `outbound_queue` per peer.
-- [ ] All transport-level events emit structured records ready to be persisted by `04`'s logger.
-- [ ] Heartbeat policy ready for either native control frames or JSON-RPC `ping` fallback.
-- [ ] Dock signals (§3.7.3) defined and wired.
-- [ ] No JSON-RPC parsing performed in this layer. Frames are opaque text/bytes here.
+- [x] `MCPServer` exposes `inbound_queue` / `outbound_queue` per peer.
+- [x] All transport-level events emit structured records ready to be persisted by `04`'s logger.
+- [x] Heartbeat policy ready for either native control frames or JSON-RPC `ping` fallback.
+- [x] Dock signals (§3.7.3) defined and wired.
+- [x] No JSON-RPC parsing performed in this layer. Frames are opaque text/bytes here.
 
 When done, open **`04-jsonrpc-dispatch-and-logging.md`**.
 

@@ -397,12 +397,16 @@ so any tool can tail-and-parse line by line.
 
 ## 4.12 Handoff checklist to file `05`
 
-- [ ] Round-trip `ping` works between addon and a generic WS client.
-- [ ] `server.info`, `server.list_methods`, `echo`, `log.tail`, `log.set_level`, `server.heartbeat`
+- [x] Round-trip `ping` works between addon and a generic WS client.
+- [x] `server.info`, `server.list_methods`, `echo`, `log.tail`, `log.set_level`, `server.heartbeat`
       all answer correctly.
-- [ ] Error envelope shape stable and documented.
-- [ ] Logger writes to `user://mcp_log.txt` with rotation.
-- [ ] **Phase 1 complete.** Phase 2 may begin.
+- [x] Error envelope shape stable and documented.
+- [x] Logger writes to `user://mcp_log.txt` with rotation.
+- [x] **Phase 1 complete.** Phase 2 may begin.
+
+> **Verification note (2026-05-22):** Static review against this spec + dispatcher/server fixes (WS
+> `heartbeat_interval`, `control_frame` idle prune, gated `server.shutdown` → `stop()`). Operators
+> should still run one Godot IDE enable/disable smoke before shipping **`05`** if they have not yet.
 
 When done, open **`05-node-mcp-router.md`**.
 
