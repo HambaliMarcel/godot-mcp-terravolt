@@ -3,7 +3,14 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const routerEntry = join(dirname(fileURLToPath(import.meta.url)), "..", "packages", "mcp-server", "dist", "index.js");
+const routerEntry = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "packages",
+  "mcp-server",
+  "dist",
+  "index.js",
+);
 const transport = new StdioClientTransport({
   command: process.execPath,
   args: [routerEntry],

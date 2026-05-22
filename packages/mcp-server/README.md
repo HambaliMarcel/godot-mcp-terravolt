@@ -66,31 +66,31 @@ Source of truth: `packages/shared/methods/registry.json` (daemon-bridged) plus
 
 ### Daemon-bridged (via shared catalog)
 
-| MCP tool       | Daemon JSON-RPC | Headless fallback     | Notes                                          |
-| -------------- | --------------- | --------------------- | ---------------------------------------------- |
-| `ping`         | `ping`          | yes (`ping@headless`) | Round-trip `{ daemonTs, roundTripMs }`.        |
-| `server_info`  | `server.info`   | yes                   | Includes `catalog_version`, `registry_sha256`. |
-| `log_tail`     | `log.tail`      | no                    | Editor-only; tails `user://mcp_log.txt`.       |
+| MCP tool      | Daemon JSON-RPC | Headless fallback     | Notes                                          |
+| ------------- | --------------- | --------------------- | ---------------------------------------------- |
+| `ping`        | `ping`          | yes (`ping@headless`) | Round-trip `{ daemonTs, roundTripMs }`.        |
+| `server_info` | `server.info`   | yes                   | Includes `catalog_version`, `registry_sha256`. |
+| `log_tail`    | `log.tail`      | no                    | Editor-only; tails `user://mcp_log.txt`.       |
 
 ### Router-only
 
-| Tool                  | Purpose                                                                  |
-| --------------------- | ------------------------------------------------------------------------ |
-| `tools_list`          | Enumerate tools (`category`, `safe` filters).                            |
-| `tools_describe`      | Single-tool metadata + schemas.                                          |
-| `tools_metrics`       | Per-tool counters + latency.                                             |
-| `tools_bottlenecks`   | Tools ranked by avg latency (`topN`).                                    |
-| `tools_health`        | AJV smoke + daemon `server.info` + catalog SHA + headless resolvability. |
-| `context_fetch_raw`   | Run an arbitrary JSON-RPC method on the daemon (raw passthrough).        |
+| Tool                | Purpose                                                                  |
+| ------------------- | ------------------------------------------------------------------------ |
+| `tools_list`        | Enumerate tools (`category`, `safe` filters).                            |
+| `tools_describe`    | Single-tool metadata + schemas.                                          |
+| `tools_metrics`     | Per-tool counters + latency.                                             |
+| `tools_bottlenecks` | Tools ranked by avg latency (`topN`).                                    |
+| `tools_health`      | AJV smoke + daemon `server.info` + catalog SHA + headless resolvability. |
+| `context_fetch_raw` | Run an arbitrary JSON-RPC method on the daemon (raw passthrough).        |
 
 ### Headless lifecycle
 
-| Tool                         | Purpose                                                                 |
-| ---------------------------- | ----------------------------------------------------------------------- |
-| `headless_start_project`     | Spawn `godot --headless --script headless_driver.gd` against a project. |
-| `headless_status`            | Live session snapshot.                                                  |
-| `headless_stop`              | SIGTERM / SIGKILL the session.                                          |
-| `headless_validate_script`   | GDScript compile check via `script.validate_syntax`.                    |
+| Tool                       | Purpose                                                                 |
+| -------------------------- | ----------------------------------------------------------------------- |
+| `headless_start_project`   | Spawn `godot --headless --script headless_driver.gd` against a project. |
+| `headless_status`          | Live session snapshot.                                                  |
+| `headless_stop`            | SIGTERM / SIGKILL the session.                                          |
+| `headless_validate_script` | GDScript compile check via `script.validate_syntax`.                    |
 
 Daemon-backed tool inputs are AJV-validated against the registry `inputSchema` before dispatch.
 

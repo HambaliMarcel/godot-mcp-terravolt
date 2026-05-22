@@ -81,8 +81,9 @@ If `TERRAVOLT_GODOT_BINARY` is set you can also run the full real-Godot integrat
 
 ```powershell
 npm run test:server
-# 31/31 tests pass: smoke, unit, real-Godot integration (21 headless suites incl. android.*,
-# plus an exhaustive 156/156 coverage smoke that dispatches every safe catalog method).
+# 43/43 tests pass: smoke, unit (incl. transport resilience + hybrid_mode), real-Godot
+# integration (21 headless suites incl. android.*, an exhaustive 156/156 coverage smoke
+# that dispatches every safe catalog method, plus mode_status + _mode override e2e).
 npm run validate:catalog
 # Registry integrity + headless dispatch gate (tasks 25 + 26).
 npm run release:check
@@ -108,13 +109,54 @@ Add to your Cursor `mcp.json` (workspace `.cursor/mcp.json` or `~/.cursor/mcp.js
 }
 ```
 
-Restart Cursor. The MCP tools panel lists **13 router tools**; the full **222-method** catalog
-(`catalog_version` 0.17.0) is available via `context.fetch_raw`:
+Restart Cursor. The MCP tools panel lists **14 router tools**; the full **222-method** catalog
+(`catalog_version` 0.17.0) is available via `context_fetch_raw`:
 
-- `ping`, `server.info`, `log.tail`
-- `tools.list`, `tools.describe`, `tools.metrics`, `tools.bottlenecks`, `tools.health`,
-  `context.fetch_raw`
-- `headless.start_project`, `headless.status`, `headless.stop`, `headless.validate_script`
+- `ping`, `server_info`, `log_tail`
+- `tools_list`, `tools_describe`, `tools_metrics`, `tools_bottlenecks`, `tools_health`,
+  `mode_status`, `context_fetch_raw`
+- `headless_start_project`, `headless_status`, `headless_stop`, `headless_validate_script`
+
+### Hybrid mode (head ↔ headless)
+
+Terravolt is **hybrid by default**:
+
+- When the **Godot editor is open** (with the addon enabled), every daemon-bridged tool talks to the
+  live window — you see edits land in real time.
+- When the editor is **not** available, the router auto-spawns a **headless Godot** session and
+  serves the same call from disk state. The 201 `headlessFallback: true` methods continue to work.
+
+Every response carries a `route_mode` so you always know who served the call:
+
+```jsonc
+{ "ok": true, "tool": "scene_list", "method": "scene.list@editor",   "route_mode": "editor",   "result": {...} }
+{ "ok": true, "tool": "scene_list", "method": "scene.list@headless", "route_mode": "headless", "result": {...} }
+```
+
+Call `mode_status` for a one-shot hybrid snapshot:
+
+```jsonc
+{
+  "result": {
+    "editor": { "alive": true, "port": 6505, "catalog_version": "0.17.0", "hello_received": true },
+    "headless": { "alive": false, "available": true },
+    "recommended_mode": "editor",
+    "hybrid_ready": true,
+    "advice": [
+      "Hybrid ready: editor will serve calls by default; pass `_mode: \"headless\"` per tool call to force the headless path.",
+    ],
+  },
+}
+```
+
+You can also **force a path per call** by adding `_mode` to any daemon-bridged tool's arguments:
+
+- `_mode: "auto"` (default) — editor first, headless on transport error.
+- `_mode: "editor"` — never fall back; surface the editor error if it's not reachable.
+- `_mode: "headless"` — skip the WebSocket entirely; useful for parity testing or while another
+  client owns the editor's single peer slot.
+
+The `_mode` field is stripped before the daemon receives the payload.
 
 Example category calls via `context.fetch_raw`:
 
@@ -152,6 +194,62 @@ In Cursor (or any MCP client) call `tools.health` with `{}`. A healthy response 
 If `daemon_server_info_ok: false` but `headless_godot_executable_resolvable: true`, the router will
 still serve `ping`, `server.info`, `headless.start_project`, `headless.validate_script`, etc. —
 fallback works.
+
+When `daemon_server_info_ok` is `false` the response now includes a `transport_diagnostics` block
+with the actual cause:
+
+```jsonc
+{
+  "transport_diagnostics": {
+    "url": "ws://127.0.0.1:6505",
+    "port_reachable": true,
+    "hello_received": false,
+    "last_close_code": 1008,
+    "last_close_reason": "policy violation: server busy",
+    "peer_busy_count": 3,
+    "likely_cause": "transport.peer_busy",
+    "hint": "Only one MCP client allowed per Godot editor. Close other Cursor windows / scripts, then restart this MCP server.",
+  },
+}
+```
+
+`likely_cause` is one of:
+
+- `transport.port_closed` — Godot isn't open in **editor** mode. Run
+  `Godot.exe --path <project> --editor` and enable the Terravolt MCP plugin (don't press **F5**; the
+  game window does not host the MCP server).
+- `transport.peer_busy` — another MCP client owns the peer slot. The addon now defaults to
+  `max_peers = 2` and auto-evicts stale peers on the next handshake. If a real zombie client is
+  connected, call `server_force_disconnect` from this client (once it briefly connects), click
+  **Restart** on the Terravolt MCP dock, or kill the stale `node packages/mcp-server/dist/index.js`
+  process(es).
+- `transport.persistent_peer_busy` — sustained `peer_busy` (10+ rejects in a row) tripped the
+  router's circuit breaker. Reconnects are paused at the max backoff to stop the storm. After you
+  clear the stale peer, call **`transport_reset`** to clear the circuit and resume reconnects
+  immediately.
+- `transport.no_session` — port listens, but the daemon never promoted us to `ready`. Restart the
+  Terravolt MCP server from the editor bottom panel.
+
+### Recovering from a `peer_busy` storm
+
+If `tools_health` shows `circuit_broken: true` or you see thousands of `peer_busy` lines in the
+Godot log, the most common cause is multiple Node.js MCP processes leaking from previous Cursor
+sessions. Cleanup:
+
+```powershell
+# Windows / PowerShell
+Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" |
+  Where-Object { $_.CommandLine -like "*Godot MCP Marcel*dist*" } |
+  ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+```
+
+```bash
+# macOS / Linux
+pkill -f 'packages/mcp-server/dist/index.js'
+```
+
+Then restart the Terravolt MCP server from Cursor's MCP settings and click **Restart** on the Godot
+Terravolt MCP dock. Calling `transport_reset` will also force one immediate reconnect.
 
 ## 7. Next steps
 
