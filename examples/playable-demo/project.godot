@@ -1,0 +1,22 @@
+; TerraVolt MCP — playable demo project.
+;
+; This is the canonical "press Play" demo for TerraVolt. It is intentionally
+; self-contained (no autoloads, no addon required) so the editor's F5 just
+; works out of the box on any Godot 4.x install.
+;
+; To wire the TerraVolt MCP addon in here, copy `packages/godot-mcp-addon/`
+; into `addons/terravolt_mcp/`, enable it in Project > Project Settings >
+; Plugins, and restart the editor.
+
+config_version=5
+
+[application]
+
+config/name="terravolt-playable-demo"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -119,6 +119,20 @@ $env:TERRAVOLT_GODOT_BINARY = (Get-Content .terravolt/godot-env.json | ConvertFr
 npm run test:server         # now also runs the real-Godot integration + addon parse-check
 ```
 
+### Press-Play demo
+
+Want to see Godot launch end-to-end with a movable character? Open
+[`examples/playable-demo/project.godot`](examples/playable-demo/) in the editor (Project Manager >
+Import) or run it headless from the CLI:
+
+```powershell
+& $env:TERRAVOLT_GODOT_BINARY --path examples/playable-demo
+```
+
+It's self-contained (no autoloads, no addon required) so F5 just works. The fixtures under
+`tests/_fixtures/` are deliberately scene-less — they exist as project roots for `godot --headless`
+and will show "no main scene defined" if you press Play on them; that is by design.
+
 ## Status
 
 Phases 1–4 (tasklists `00`–`26`) are in master with full real-Godot end-to-end coverage. Tracker:
