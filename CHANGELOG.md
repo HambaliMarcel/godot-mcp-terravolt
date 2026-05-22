@@ -65,7 +65,7 @@ The shared method catalog tracks its own `catalog_version` inside
 - `docs/README.md` re-indexed to expose the new guide tier (`quick-start.md`, `mcp-usage.md`,
   `tools-reference.md`, `godot-integration.md`, `headless-only.md`, `troubleshooting.md`).
 - New `docs/guides/tools-reference.md` — authoritative per-tool input/result/error reference for all
-  12 registered tools.
+  13 registered tools.
 - New `docs/guides/mcp-usage.md` — concrete `tools/call` payloads for every tool and a Node SDK
   example mirroring the E2E test.
 - New `docs/guides/godot-integration.md` — editor vs headless connection flow + verification matrix.

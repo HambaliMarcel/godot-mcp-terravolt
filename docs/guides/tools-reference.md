@@ -9,7 +9,7 @@ page is the operator-facing summary.
 > `{ ok: false, message, app_code?, autoHeal?, … }`.
 
 Catalog version: **`0.2.0`** (router `0.1.0`).  
-Total tools: **12** — 3 daemon-bridged + 5 router-local + 4 headless.
+Total tools: **13** — 3 daemon-bridged + 6 router-local + 4 headless.
 
 ## At a glance
 
@@ -286,6 +286,7 @@ Disable `autoHeal` per process with `--disable-auto-heal`. Stable application er
 ## See also
 
 - `docs/guides/quick-start.md` — install & smoke test.
+- `docs/guides/use-cases.md` — rookie-friendly walkthrough of each feature with game-dev scenarios.
 - `docs/guides/mcp-usage.md` — concrete Cursor / SDK invocation patterns.
 - `docs/guides/godot-integration.md` — editor vs headless connection flow.
 - `docs/guides/headless-only.md` — CI / no-editor mode.

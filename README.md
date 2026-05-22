@@ -5,7 +5,7 @@
 > GUI open.
 
 - Router version `0.1.0` · Catalog version `0.2.0`
-- **12** MCP tools registered today (3 daemon-bridged, 5 router-local, 4 headless lifecycle)
+- **13** MCP tools registered today (3 daemon-bridged, 6 router-local, 4 headless lifecycle)
 - Verified against real **Godot 4.6.3 stable mono** on Windows; 11/11 router tests including a real
   `@modelcontextprotocol/sdk` end-to-end smoke
 
@@ -65,18 +65,19 @@ Full step-by-step (with troubleshooting) lives in
 
 ## Detailed guides
 
-| Guide                                                  | Read it when…                                      |
-| ------------------------------------------------------ | -------------------------------------------------- |
-| [Quick start](docs/guides/quick-start.md)              | first install / wiring Cursor                      |
-| [MCP usage](docs/guides/mcp-usage.md)                  | you want `tools/call` payload shapes per tool      |
-| [Tools reference](docs/guides/tools-reference.md)      | you need the authoritative parameter/result list   |
-| [Godot integration](docs/guides/godot-integration.md)  | you want to understand the editor vs headless flow |
-| [Headless-only workflow](docs/guides/headless-only.md) | CI, agents, no display                             |
-| [Troubleshooting](docs/guides/troubleshooting.md)      | something fails — start here                       |
-| [FAQ](docs/faq.md)                                     | strategic / scope questions                        |
-| [Support matrix](docs/support-matrix.md)               | OS + Godot + Node combos we test                   |
-| [v1 release readiness](docs/release/v1-readiness.md)   | tracking ship gates                                |
-| [Roadmap](docs/roadmap.md)                             | post-1.0 items                                     |
+| Guide                                                   | Read it when…                                      |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| [Quick start](docs/guides/quick-start.md)               | first install / wiring Cursor                      |
+| [Use cases (rookie-friendly)](docs/guides/use-cases.md) | you want game-dev scenarios for every feature      |
+| [MCP usage](docs/guides/mcp-usage.md)                   | you want `tools/call` payload shapes per tool      |
+| [Tools reference](docs/guides/tools-reference.md)       | you need the authoritative parameter/result list   |
+| [Godot integration](docs/guides/godot-integration.md)   | you want to understand the editor vs headless flow |
+| [Headless-only workflow](docs/guides/headless-only.md)  | CI, agents, no display                             |
+| [Troubleshooting](docs/guides/troubleshooting.md)       | something fails — start here                       |
+| [FAQ](docs/faq.md)                                      | strategic / scope questions                        |
+| [Support matrix](docs/support-matrix.md)                | OS + Godot + Node combos we test                   |
+| [v1 release readiness](docs/release/v1-readiness.md)    | tracking ship gates                                |
+| [Roadmap](docs/roadmap.md)                              | post-1.0 items                                     |
 
 ## What ships in this repo
 

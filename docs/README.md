@@ -5,14 +5,15 @@ this index is the navigator for everything in `docs/`.
 
 ## Guides (operator-facing)
 
-| Path                                                         | Purpose                                                         |
-| ------------------------------------------------------------ | --------------------------------------------------------------- |
-| [`guides/quick-start.md`](guides/quick-start.md)             | First install, smoke test, Cursor wiring (under 10 minutes).    |
-| [`guides/mcp-usage.md`](guides/mcp-usage.md)                 | Per-tool `tools/call` payloads + Node SDK example.              |
-| [`guides/tools-reference.md`](guides/tools-reference.md)     | Authoritative list of every MCP tool (inputs, results, errors). |
-| [`guides/godot-integration.md`](guides/godot-integration.md) | Editor mode vs headless mode connection flow + diagrams.        |
-| [`guides/headless-only.md`](guides/headless-only.md)         | CI / agent workflow without the editor.                         |
-| [`guides/troubleshooting.md`](guides/troubleshooting.md)     | Symptom → fix table + `autoHeal` walkthrough.                   |
+| Path                                                         | Purpose                                                               |
+| ------------------------------------------------------------ | --------------------------------------------------------------------- |
+| [`guides/quick-start.md`](guides/quick-start.md)             | First install, smoke test, Cursor wiring (under 10 minutes).          |
+| [`guides/use-cases.md`](guides/use-cases.md)                 | Rookie-friendly walkthrough of every feature with game-dev use cases. |
+| [`guides/mcp-usage.md`](guides/mcp-usage.md)                 | Per-tool `tools/call` payloads + Node SDK example.                    |
+| [`guides/tools-reference.md`](guides/tools-reference.md)     | Authoritative list of every MCP tool (inputs, results, errors).       |
+| [`guides/godot-integration.md`](guides/godot-integration.md) | Editor mode vs headless mode connection flow + diagrams.              |
+| [`guides/headless-only.md`](guides/headless-only.md)         | CI / agent workflow without the editor.                               |
+| [`guides/troubleshooting.md`](guides/troubleshooting.md)     | Symptom → fix table + `autoHeal` walkthrough.                         |
 
 ## Status & release
 

@@ -103,7 +103,7 @@ Add to your Cursor `mcp.json` (workspace `.cursor/mcp.json` or `~/.cursor/mcp.js
 }
 ```
 
-Restart Cursor. The MCP tools panel should list all 12 tools:
+Restart Cursor. The MCP tools panel should list all 13 tools:
 
 - `ping`, `server.info`, `log.tail`
 - `tools.list`, `tools.describe`, `tools.metrics`, `tools.bottlenecks`, `tools.health`,

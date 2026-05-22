@@ -22,7 +22,7 @@ Run from repo root (`npm install` once):
 `packages/mcp-server/tests/integration/mcp_e2e.test.mjs` spawns the compiled router via
 `@modelcontextprotocol/sdk` `StdioClientTransport` and exercises:
 
-1. MCP `tools/list` — confirms all 12 expected tools (`ping`, `server.info`, `log.tail`,
+1. MCP `tools/list` — confirms all 13 expected tools (`ping`, `server.info`, `log.tail`,
    `tools.{list,describe,metrics,bottlenecks,health}`, `context.fetch_raw`,
    `headless.{start_project,status,stop,validate_script}`).
 2. `headless.start_project` → boots **real `Godot_v4.6.3-stable_mono_win64`** from
@@ -98,7 +98,7 @@ The user-facing documentation was finalized against the verified state of the co
 - Root `README.md` rewritten as the product entry — quick start, "why", guide index, status table.
 - `docs/README.md` re-indexed into Guides / Status & release / Architecture / Execution /
   Contributing sections.
-- New `docs/guides/tools-reference.md` — authoritative reference for all 12 registered MCP tools
+- New `docs/guides/tools-reference.md` — authoritative reference for all 13 registered MCP tools
   (inputs, results, errors).
 - New `docs/guides/mcp-usage.md` — concrete `tools/call` payloads per tool + a Node SDK example that
   mirrors `mcp_e2e.test.mjs`.
