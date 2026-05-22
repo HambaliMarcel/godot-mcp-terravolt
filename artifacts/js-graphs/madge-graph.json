@@ -1,9 +1,21 @@
 {
   "config/dependency-cruiser.config.cjs": [],
-  "packages/mcp-server/dist/catalog/loadRegistry.d.ts": [],
-  "packages/mcp-server/dist/catalog/loadRegistry.js": [],
+  "packages/mcp-server/dist/catalog/loadRegistry.d.ts": [
+    "packages/mcp-server/dist/catalog/methodRegistry.types.d.ts"
+  ],
+  "packages/mcp-server/dist/catalog/loadRegistry.js": [
+    "packages/mcp-server/dist/catalog/repoRoot.js"
+  ],
+  "packages/mcp-server/dist/catalog/methodRegistry.types.d.ts": [],
+  "packages/mcp-server/dist/catalog/methodRegistry.types.js": [],
+  "packages/mcp-server/dist/catalog/repoRoot.d.ts": [],
+  "packages/mcp-server/dist/catalog/repoRoot.js": [],
   "packages/mcp-server/dist/config.d.ts": [],
   "packages/mcp-server/dist/config.js": [],
+  "packages/mcp-server/dist/diagnostics/autoheal_hints.d.ts": [],
+  "packages/mcp-server/dist/diagnostics/autoheal_hints.js": [
+    "packages/mcp-server/dist/catalog/loadRegistry.js"
+  ],
   "packages/mcp-server/dist/diagnostics/errors.d.ts": [],
   "packages/mcp-server/dist/diagnostics/errors.js": [],
   "packages/mcp-server/dist/diagnostics/map_godot_error.d.ts": [],
@@ -12,6 +24,32 @@
   ],
   "packages/mcp-server/dist/headless/driver.d.ts": [],
   "packages/mcp-server/dist/headless/driver.js": [],
+  "packages/mcp-server/dist/headless/godotBinary.d.ts": [],
+  "packages/mcp-server/dist/headless/godotBinary.js": [],
+  "packages/mcp-server/dist/headless/godotCli.d.ts": [
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/headless/godotCli.js": [],
+  "packages/mcp-server/dist/headless/headlessCoordinator.d.ts": [
+    "packages/mcp-server/dist/config.d.ts",
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/headless/headlessCoordinator.js": [
+    "packages/mcp-server/dist/headless/godotBinary.js",
+    "packages/mcp-server/dist/headless/headlessSession.js",
+    "packages/mcp-server/dist/headless/headlessTcpClient.js",
+    "packages/mcp-server/dist/headless/resolveTerravoltRoot.js"
+  ],
+  "packages/mcp-server/dist/headless/headlessSession.d.ts": [
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/headless/headlessSession.js": [],
+  "packages/mcp-server/dist/headless/headlessTcpClient.d.ts": [
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/headless/headlessTcpClient.js": [],
+  "packages/mcp-server/dist/headless/resolveTerravoltRoot.d.ts": [],
+  "packages/mcp-server/dist/headless/resolveTerravoltRoot.js": [],
   "packages/mcp-server/dist/health.d.ts": [],
   "packages/mcp-server/dist/health.js": [],
   "packages/mcp-server/dist/index.d.ts": [],
@@ -32,6 +70,59 @@
     "packages/mcp-server/dist/config.d.ts"
   ],
   "packages/mcp-server/dist/logger.js": [],
+  "packages/mcp-server/dist/mcp/local_router_tool_defs.d.ts": [
+    "packages/mcp-server/dist/tools/registry.d.ts"
+  ],
+  "packages/mcp-server/dist/mcp/local_router_tool_defs.js": [],
+  "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
+    "packages/mcp-server/dist/tools/registry.d.ts",
+    "packages/mcp-server/dist/transport/godot_ws_client.d.ts"
+  ],
+  "packages/mcp-server/dist/mcp/register_daemon_bridge.js": [
+    "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+    "packages/mcp-server/dist/diagnostics/errors.js",
+    "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+    "packages/mcp-server/dist/mcp/register_tool_compat.js",
+    "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+    "packages/mcp-server/dist/telemetry/metrics.js",
+    "packages/mcp-server/dist/tools/registry.js",
+    "packages/mcp-server/dist/transport/godot_ws_client.js"
+  ],
+  "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
+    "packages/mcp-server/dist/tools/registry.d.ts"
+  ],
+  "packages/mcp-server/dist/mcp/register_headless_router_tools.js": [
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+    "packages/mcp-server/dist/mcp/register_tool_compat.js",
+    "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+    "packages/mcp-server/dist/telemetry/metrics.js",
+    "packages/mcp-server/dist/tools/registry.js"
+  ],
+  "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts": [
+    "packages/mcp-server/dist/catalog/methodRegistry.types.d.ts",
+    "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
+    "packages/mcp-server/dist/tools/registry.d.ts",
+    "packages/mcp-server/dist/transport/godot_ws_client.d.ts"
+  ],
+  "packages/mcp-server/dist/mcp/register_router_only_tools.js": [
+    "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+    "packages/mcp-server/dist/mcp/register_tool_compat.js",
+    "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+    "packages/mcp-server/dist/telemetry/metrics.js",
+    "packages/mcp-server/dist/tools/registry.js",
+    "packages/mcp-server/dist/transport/godot_ws_client.js"
+  ],
+  "packages/mcp-server/dist/mcp/register_tool_compat.d.ts": [],
+  "packages/mcp-server/dist/mcp/register_tool_compat.js": [],
+  "packages/mcp-server/dist/mcp/tool_result_envelopes.d.ts": [
+    "packages/mcp-server/dist/tools/registry.d.ts"
+  ],
+  "packages/mcp-server/dist/mcp/tool_result_envelopes.js": [
+    "packages/mcp-server/dist/diagnostics/errors.js"
+  ],
   "packages/mcp-server/dist/telemetry/metrics.d.ts": [],
   "packages/mcp-server/dist/telemetry/metrics.js": [],
   "packages/mcp-server/dist/tools/registry.d.ts": [
@@ -45,7 +136,6 @@
   "packages/mcp-server/dist/transport/godot_ws_client.js": [
     "packages/mcp-server/dist/diagnostics/errors.js",
     "packages/mcp-server/dist/diagnostics/map_godot_error.js",
-    "packages/mcp-server/dist/jsonrpc/framing.js",
     "packages/mcp-server/dist/jsonrpc/pending.js"
   ],
   "packages/mcp-server/dist/transport/mcp_stdio.d.ts": [
@@ -56,31 +146,96 @@
   ],
   "packages/mcp-server/dist/transport/mcp_stdio.js": [
     "packages/mcp-server/dist/catalog/loadRegistry.js",
-    "packages/mcp-server/dist/diagnostics/errors.js",
-    "packages/mcp-server/dist/telemetry/metrics.js",
+    "packages/mcp-server/dist/headless/headlessCoordinator.js",
+    "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+    "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+    "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+    "packages/mcp-server/dist/mcp/register_router_only_tools.js",
     "packages/mcp-server/dist/tools/registry.js",
     "packages/mcp-server/dist/transport/godot_ws_client.js"
   ],
   "packages/mcp-server/eslint.config.mjs": [],
-  "packages/mcp-server/src/catalog/loadRegistry.ts": [],
+  "packages/mcp-server/src/catalog/loadRegistry.ts": [
+    "packages/mcp-server/src/catalog/methodRegistry.types.ts",
+    "packages/mcp-server/src/catalog/repoRoot.ts"
+  ],
+  "packages/mcp-server/src/catalog/methodRegistry.types.ts": [],
+  "packages/mcp-server/src/catalog/repoRoot.ts": [],
   "packages/mcp-server/src/config.ts": [],
+  "packages/mcp-server/src/diagnostics/autoheal_hints.ts": [
+    "packages/mcp-server/src/catalog/loadRegistry.ts"
+  ],
   "packages/mcp-server/src/diagnostics/errors.ts": [],
   "packages/mcp-server/src/diagnostics/map_godot_error.ts": [
     "packages/mcp-server/src/diagnostics/errors.ts"
   ],
-  "packages/mcp-server/src/headless/driver.ts": [],
+  "packages/mcp-server/src/headless/godotBinary.ts": [],
+  "packages/mcp-server/src/headless/godotCli.ts": [
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/headless/headlessCoordinator.ts": [
+    "packages/mcp-server/src/config.ts",
+    "packages/mcp-server/src/headless/godotBinary.ts",
+    "packages/mcp-server/src/headless/headlessSession.ts",
+    "packages/mcp-server/src/headless/headlessTcpClient.ts",
+    "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/headless/headlessSession.ts": [
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/headless/headlessTcpClient.ts": [
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/headless/resolveTerravoltRoot.ts": [],
   "packages/mcp-server/src/index.ts": [
     "packages/mcp-server/src/config.ts",
     "packages/mcp-server/src/logger.ts",
     "packages/mcp-server/src/transport/mcp_stdio.ts"
   ],
-  "packages/mcp-server/src/jsonrpc/framing.ts": [],
   "packages/mcp-server/src/jsonrpc/pending.ts": [
     "packages/mcp-server/src/diagnostics/errors.ts",
     "packages/mcp-server/src/logger.ts"
   ],
   "packages/mcp-server/src/logger.ts": [
     "packages/mcp-server/src/config.ts"
+  ],
+  "packages/mcp-server/src/mcp/local_router_tool_defs.ts": [
+    "packages/mcp-server/src/tools/registry.ts"
+  ],
+  "packages/mcp-server/src/mcp/register_daemon_bridge.ts": [
+    "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/headless/headlessCoordinator.ts",
+    "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+    "packages/mcp-server/src/mcp/register_tool_compat.ts",
+    "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+    "packages/mcp-server/src/telemetry/metrics.ts",
+    "packages/mcp-server/src/tools/registry.ts",
+    "packages/mcp-server/src/transport/godot_ws_client.ts"
+  ],
+  "packages/mcp-server/src/mcp/register_headless_router_tools.ts": [
+    "packages/mcp-server/src/headless/headlessCoordinator.ts",
+    "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+    "packages/mcp-server/src/mcp/register_tool_compat.ts",
+    "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+    "packages/mcp-server/src/telemetry/metrics.ts",
+    "packages/mcp-server/src/tools/registry.ts"
+  ],
+  "packages/mcp-server/src/mcp/register_router_only_tools.ts": [
+    "packages/mcp-server/src/catalog/methodRegistry.types.ts",
+    "packages/mcp-server/src/headless/headlessCoordinator.ts",
+    "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+    "packages/mcp-server/src/mcp/register_tool_compat.ts",
+    "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+    "packages/mcp-server/src/telemetry/metrics.ts",
+    "packages/mcp-server/src/tools/registry.ts",
+    "packages/mcp-server/src/transport/godot_ws_client.ts"
+  ],
+  "packages/mcp-server/src/mcp/register_tool_compat.ts": [],
+  "packages/mcp-server/src/mcp/tool_result_envelopes.ts": [
+    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/tools/registry.ts"
   ],
   "packages/mcp-server/src/telemetry/metrics.ts": [],
   "packages/mcp-server/src/tools/registry.ts": [
@@ -90,16 +245,18 @@
     "packages/mcp-server/src/config.ts",
     "packages/mcp-server/src/diagnostics/errors.ts",
     "packages/mcp-server/src/diagnostics/map_godot_error.ts",
-    "packages/mcp-server/src/jsonrpc/framing.ts",
     "packages/mcp-server/src/jsonrpc/pending.ts",
     "packages/mcp-server/src/logger.ts"
   ],
   "packages/mcp-server/src/transport/mcp_stdio.ts": [
     "packages/mcp-server/src/catalog/loadRegistry.ts",
     "packages/mcp-server/src/config.ts",
-    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/headless/headlessCoordinator.ts",
     "packages/mcp-server/src/logger.ts",
-    "packages/mcp-server/src/telemetry/metrics.ts",
+    "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+    "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+    "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+    "packages/mcp-server/src/mcp/register_router_only_tools.ts",
     "packages/mcp-server/src/tools/registry.ts",
     "packages/mcp-server/src/transport/godot_ws_client.ts"
   ],
@@ -213,7 +370,11 @@
   "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
   "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
   "scripts/addon-link.mjs": [],
-  "scripts/catalog-sync.mjs": [],
+  "scripts/catalog-sync.mjs": [
+    "scripts/lib/repo_root.mjs"
+  ],
+  "scripts/lib/repo_root.mjs": [],
+  "scripts/patch-headless-files.mjs": [],
   "scripts/planned.mjs": [],
   "scripts/regen-graphs.mjs": [],
   "scripts/run-gitnexus.mjs": [],

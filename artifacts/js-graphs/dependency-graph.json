@@ -9,14 +9,60 @@
     },
     {
       "source": "packages/mcp-server/dist/catalog/loadRegistry.d.ts",
-      "dependencies": [],
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./methodRegistry.types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/catalog/methodRegistry.types.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
       "dependents": [],
-      "orphan": true,
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/catalog/methodRegistry.types.js",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/catalog/loadRegistry.d.ts",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts"
+      ],
+      "orphan": false,
       "valid": true
     },
     {
       "source": "packages/mcp-server/dist/catalog/loadRegistry.js",
       "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./repoRoot.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/catalog/repoRoot.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
         {
           "dynamic": false,
           "module": "crypto",
@@ -35,6 +81,167 @@
           "circular": false,
           "valid": true
         },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+        "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/tools/registry.d.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "crypto",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/catalog/loadRegistry.js",
+        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/node_modules/zod/src/v4/classic/tests/string.test.ts",
+        "packages/mcp-server/src/catalog/loadRegistry.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
+        "scripts/catalog-sync.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "fs",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/catalog/loadRegistry.js",
+        "packages/mcp-server/dist/catalog/repoRoot.js",
+        "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+        "packages/mcp-server/dist/headless/godotBinary.js",
+        "packages/mcp-server/dist/headless/resolveTerravoltRoot.js",
+        "packages/mcp-server/dist/index.js",
+        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/src/catalog/loadRegistry.ts",
+        "packages/mcp-server/src/catalog/repoRoot.ts",
+        "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+        "packages/mcp-server/src/headless/godotBinary.ts",
+        "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
+        "packages/mcp-server/src/index.ts",
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "scripts/addon-link.mjs",
+        "scripts/catalog-sync.mjs",
+        "scripts/lib/repo_root.mjs",
+        "scripts/patch-headless-files.mjs",
+        "scripts/regen-graphs.mjs",
+        "scripts/run-gitnexus.mjs",
+        "tools/.linear-batch/generate-child-save-payloads.js",
+        "tools/.linear-batch/prep-descriptions.js",
+        "tools/.linear-batch/write-parent-arg-oneline.js",
+        "tools/.linear-batch/write-ter44-cumulative.js",
+        "tools/.linear-batch/write-ter44-update.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "url",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/catalog/loadRegistry.js",
+        "packages/mcp-server/dist/catalog/repoRoot.js",
+        "packages/mcp-server/dist/headless/resolveTerravoltRoot.js",
+        "packages/mcp-server/dist/index.js",
+        "packages/mcp-server/node_modules/undici-types/agent.d.ts",
+        "packages/mcp-server/node_modules/undici-types/dispatcher.d.ts",
+        "packages/mcp-server/node_modules/undici-types/client.d.ts",
+        "packages/mcp-server/node_modules/undici-types/fetch.d.ts",
+        "packages/mcp-server/node_modules/undici-types/pool.d.ts",
+        "packages/mcp-server/node_modules/undici-types/api.d.ts",
+        "packages/mcp-server/node_modules/undici-types/balanced-pool.d.ts",
+        "packages/mcp-server/node_modules/undici-types/diagnostics-channel.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/src/catalog/loadRegistry.ts",
+        "packages/mcp-server/src/catalog/repoRoot.ts",
+        "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
+        "packages/mcp-server/src/index.ts",
+        "packages/mcp-server/tests/smoke.test.mjs",
+        "references/godot-mcp-coding-solo/scripts/build.js",
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
+        "scripts/addon-link.mjs",
+        "scripts/lib/repo_root.mjs",
+        "scripts/regen-graphs.mjs",
+        "scripts/run-gitnexus.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/catalog/repoRoot.js",
+      "dependencies": [
         {
           "dynamic": false,
           "module": "fs",
@@ -91,67 +298,7 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/dist/transport/mcp_stdio.js",
-        "packages/mcp-server/dist/tools/registry.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "crypto",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/catalog/loadRegistry.js",
-        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
-        "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/node_modules/zod/src/v4/classic/tests/string.test.ts",
-        "packages/mcp-server/src/catalog/loadRegistry.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
-        "scripts/catalog-sync.mjs"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "fs",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/catalog/loadRegistry.js",
-        "packages/mcp-server/dist/index.js",
-        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
-        "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/src/catalog/loadRegistry.ts",
-        "packages/mcp-server/src/index.ts",
-        "references/godot-mcp-coding-solo/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
-        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
-        "scripts/addon-link.mjs",
-        "scripts/catalog-sync.mjs",
-        "scripts/regen-graphs.mjs",
-        "scripts/run-gitnexus.mjs",
-        "tools/.linear-batch/generate-child-save-payloads.js",
-        "tools/.linear-batch/prep-descriptions.js",
-        "tools/.linear-batch/write-parent-arg-oneline.js",
-        "tools/.linear-batch/write-ter44-cumulative.js",
-        "tools/.linear-batch/write-ter44-update.js"
+        "packages/mcp-server/dist/catalog/loadRegistry.js"
       ],
       "orphan": false,
       "valid": true
@@ -168,10 +315,20 @@
       ],
       "dependencies": [],
       "dependents": [
-        "packages/mcp-server/dist/catalog/loadRegistry.js",
+        "packages/mcp-server/dist/catalog/repoRoot.js",
+        "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+        "packages/mcp-server/dist/headless/godotBinary.js",
+        "packages/mcp-server/dist/headless/headlessCoordinator.js",
+        "packages/mcp-server/dist/headless/headlessSession.js",
+        "packages/mcp-server/dist/headless/resolveTerravoltRoot.js",
         "packages/mcp-server/dist/index.js",
         "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/src/catalog/loadRegistry.ts",
+        "packages/mcp-server/src/catalog/repoRoot.ts",
+        "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+        "packages/mcp-server/src/headless/godotBinary.ts",
+        "packages/mcp-server/src/headless/headlessCoordinator.ts",
+        "packages/mcp-server/src/headless/headlessSession.ts",
+        "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
         "packages/mcp-server/src/index.ts",
         "packages/mcp-server/tests/smoke.test.mjs",
         "references/godot-mcp-coding-solo/scripts/build.js",
@@ -182,6 +339,7 @@
         "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
         "scripts/addon-link.mjs",
         "scripts/catalog-sync.mjs",
+        "scripts/lib/repo_root.mjs",
         "scripts/regen-graphs.mjs",
         "scripts/run-gitnexus.mjs",
         "tools/.linear-batch/generate-child-save-payloads.js",
@@ -194,43 +352,17 @@
       "valid": true
     },
     {
-      "source": "url",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
+      "source": "packages/mcp-server/dist/catalog/methodRegistry.types.d.ts",
       "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/catalog/loadRegistry.js",
-        "packages/mcp-server/dist/index.js",
-        "packages/mcp-server/node_modules/undici-types/agent.d.ts",
-        "packages/mcp-server/node_modules/undici-types/dispatcher.d.ts",
-        "packages/mcp-server/node_modules/undici-types/client.d.ts",
-        "packages/mcp-server/node_modules/undici-types/fetch.d.ts",
-        "packages/mcp-server/node_modules/undici-types/pool.d.ts",
-        "packages/mcp-server/node_modules/undici-types/api.d.ts",
-        "packages/mcp-server/node_modules/undici-types/balanced-pool.d.ts",
-        "packages/mcp-server/node_modules/undici-types/diagnostics-channel.d.ts",
-        "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/src/catalog/loadRegistry.ts",
-        "packages/mcp-server/src/index.ts",
-        "packages/mcp-server/tests/smoke.test.mjs",
-        "references/godot-mcp-coding-solo/scripts/build.js",
-        "references/godot-mcp-coding-solo/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/scripts/build-visualizer.js",
-        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
-        "scripts/addon-link.mjs",
-        "scripts/catalog-sync.mjs",
-        "scripts/regen-graphs.mjs",
-        "scripts/run-gitnexus.mjs"
-      ],
-      "orphan": false,
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/catalog/repoRoot.d.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
       "valid": true
     },
     {
@@ -263,6 +395,7 @@
         }
       ],
       "dependents": [
+        "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
         "packages/mcp-server/dist/index.js",
         "packages/mcp-server/dist/logger.d.ts",
         "packages/mcp-server/dist/transport/godot_ws_client.d.ts",
@@ -293,6 +426,76 @@
       "valid": true
     },
     {
+      "source": "packages/mcp-server/dist/diagnostics/autoheal_hints.d.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/loadRegistry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/catalog/loadRegistry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "packages/mcp-server/dist/diagnostics/errors.d.ts",
       "dependencies": [],
       "dependents": [],
@@ -304,9 +507,10 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/dist/diagnostics/map_godot_error.js",
-        "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
         "packages/mcp-server/dist/transport/godot_ws_client.js",
-        "packages/mcp-server/dist/jsonrpc/pending.js"
+        "packages/mcp-server/dist/jsonrpc/pending.js",
+        "packages/mcp-server/dist/mcp/tool_result_envelopes.js"
       ],
       "orphan": false,
       "valid": true
@@ -354,6 +558,575 @@
     },
     {
       "source": "packages/mcp-server/dist/headless/driver.js",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/godotBinary.d.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/godotBinary.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "os",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "os",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/headless/headlessCoordinator.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "os",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/headless/godotBinary.js",
+        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/src/headless/godotBinary.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/godotCli.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/logger.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/logger.js",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/headless/godotCli.d.ts",
+        "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
+        "packages/mcp-server/dist/headless/headlessSession.d.ts",
+        "packages/mcp-server/dist/headless/headlessTcpClient.d.ts",
+        "packages/mcp-server/dist/index.js",
+        "packages/mcp-server/dist/jsonrpc/pending.d.ts",
+        "packages/mcp-server/dist/transport/godot_ws_client.d.ts",
+        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/godotCli.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "child_process",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/headless/godotCli.js",
+        "packages/mcp-server/dist/headless/headlessSession.js",
+        "packages/mcp-server/dist/headless/headlessSession.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/src/headless/godotCli.ts",
+        "packages/mcp-server/src/headless/headlessCoordinator.ts",
+        "packages/mcp-server/src/headless/headlessSession.ts",
+        "packages/mcp-server/tests/smoke.test.mjs",
+        "references/godot-mcp-coding-solo/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
+        "scripts/regen-graphs.mjs",
+        "scripts/run-gitnexus.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessCoordinator.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../config.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/config.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/logger.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./godotBinary.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/godotBinary.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./headlessSession.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessSession.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./headlessTcpClient.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessTcpClient.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./resolveTerravoltRoot.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/resolveTerravoltRoot.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessSession.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/headless/headlessCoordinator.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessTcpClient.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "net",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "net",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/headless/headlessCoordinator.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "net",
+      "followable": false,
+      "coreModule": true,
+      "couldNotResolve": false,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "core",
+        "import"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/headless/headlessTcpClient.js",
+        "packages/mcp-server/node_modules/undici-types/connector.d.ts",
+        "packages/mcp-server/node_modules/undici-types/diagnostics-channel.d.ts",
+        "packages/mcp-server/node_modules/@types/node/process.d.ts",
+        "packages/mcp-server/src/headless/headlessTcpClient.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/resolveTerravoltRoot.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/headless/headlessCoordinator.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessSession.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/logger.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "type-only",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/headlessTcpClient.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/logger.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/headless/resolveTerravoltRoot.d.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -494,18 +1267,6 @@
       "valid": true
     },
     {
-      "source": "packages/mcp-server/dist/logger.js",
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/index.js",
-        "packages/mcp-server/dist/jsonrpc/pending.d.ts",
-        "packages/mcp-server/dist/transport/godot_ws_client.d.ts",
-        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
       "source": "packages/mcp-server/dist/transport/mcp_stdio.js",
       "dependencies": [
         {
@@ -527,14 +1288,14 @@
         },
         {
           "dynamic": false,
-          "module": "../diagnostics/errors.js",
+          "module": "../headless/headlessCoordinator.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "import"
           ],
-          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -544,14 +1305,65 @@
         },
         {
           "dynamic": false,
-          "module": "../telemetry/metrics.js",
+          "module": "../mcp/local_router_tool_defs.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "import"
           ],
-          "resolved": "packages/mcp-server/dist/telemetry/metrics.js",
+          "resolved": "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../mcp/register_daemon_bridge.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../mcp/register_headless_router_tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../mcp/register_router_only_tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_router_only_tools.js",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -624,23 +1436,6 @@
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
-        },
-        {
-          "dynamic": false,
-          "module": "zod",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "npm",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/node_modules/zod/index.cjs",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
         }
       ],
       "dependents": [
@@ -661,8 +1456,16 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts",
+        "packages/mcp-server/dist/mcp/register_tool_compat.d.ts",
         "packages/mcp-server/dist/transport/mcp_stdio.d.ts",
-        "packages/mcp-server/src/transport/mcp_stdio.ts"
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_tool_compat.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
       ],
       "orphan": false,
       "valid": true
@@ -687,88 +1490,18 @@
       "valid": true
     },
     {
-      "source": "packages/mcp-server/dist/telemetry/metrics.js",
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/transport/mcp_stdio.js"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "packages/mcp-server/dist/tools/registry.js",
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/transport/mcp_stdio.js",
-        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "packages/mcp-server/dist/transport/godot_ws_client.js",
+      "source": "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
       "dependencies": [
         {
           "dynamic": false,
-          "module": "../diagnostics/errors.js",
+          "module": "zod",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
-            "local",
+            "npm",
             "import"
           ],
-          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "dynamic": false,
-          "module": "../diagnostics/map_godot_error.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/dist/diagnostics/map_godot_error.js",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "dynamic": false,
-          "module": "../jsonrpc/framing.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/dist/jsonrpc/framing.js",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "dynamic": false,
-          "module": "../jsonrpc/pending.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/dist/jsonrpc/pending.js",
+          "resolved": "packages/mcp-server/node_modules/zod/index.cjs",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -779,43 +1512,9 @@
       ],
       "dependents": [
         "packages/mcp-server/dist/transport/mcp_stdio.js",
-        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "packages/mcp-server/dist/jsonrpc/framing.js",
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/dist/transport/godot_ws_client.js"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "packages/mcp-server/dist/jsonrpc/pending.js",
-      "dependencies": [
-        {
-          "dynamic": false,
-          "module": "../diagnostics/errors.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "packages/mcp-server/dist/transport/godot_ws_client.js"
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js"
       ],
       "orphan": false,
       "valid": true
@@ -842,8 +1541,9 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/dist/transport/mcp_stdio.js",
-        "packages/mcp-server/src/transport/mcp_stdio.ts"
+        "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+        "packages/mcp-server/dist/mcp/local_router_tool_defs.d.ts",
+        "packages/mcp-server/src/mcp/local_router_tool_defs.ts"
       ],
       "orphan": false,
       "valid": true
@@ -1256,7 +1956,546 @@
       "valid": true
     },
     {
+      "source": "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/autoheal_hints.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/autoheal_hints.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/telemetry/metrics.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/transport/godot_ws_client.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_tool_compat.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/telemetry/metrics.js",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/tools/registry.js",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js",
+        "packages/mcp-server/dist/mcp/local_router_tool_defs.d.ts",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts",
+        "packages/mcp-server/dist/mcp/tool_result_envelopes.d.ts",
+        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/transport/godot_ws_client.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../diagnostics/map_godot_error.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/map_godot_error.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../jsonrpc/pending.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/jsonrpc/pending.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js",
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts",
+        "packages/mcp-server/dist/transport/mcp_stdio.d.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/jsonrpc/pending.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/godot_ws_client.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_tool_compat.js",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/diagnostics/errors.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/mcp/register_daemon_bridge.js",
+        "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+        "packages/mcp-server/dist/mcp/register_router_only_tools.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_headless_router_tools.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/telemetry/metrics.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_tool_compat.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_router_only_tools.js",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/telemetry/metrics.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/transport/godot_ws_client.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/local_router_tool_defs.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/register_tool_compat.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/mcp/tool_result_envelopes.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/dist/transport/mcp_stdio.js"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "packages/mcp-server/dist/jsonrpc/framing.d.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/jsonrpc/framing.js",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -1302,6 +2541,327 @@
             "import"
           ],
           "resolved": "packages/mcp-server/dist/config.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/local_router_tool_defs.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "zod",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "npm",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/node_modules/zod/index.cjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_daemon_bridge.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/transport/godot_ws_client.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_headless_router_tools.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_router_only_tools.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/methodRegistry.types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/catalog/methodRegistry.types.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/headless/headlessCoordinator.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/transport/godot_ws_client.js",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/register_tool_compat.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/dist/mcp/tool_result_envelopes.d.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/dist/tools/registry.js",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -1825,24 +3385,6 @@
       ],
       "dependents": [
         "packages/mcp-server/node_modules/@types/node/ts5.6/index.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "os",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "type-import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/node_modules/@types/node/constants.d.ts",
-        "packages/mcp-server/node_modules/@types/node/process.d.ts"
       ],
       "orphan": false,
       "valid": true
@@ -3075,25 +4617,6 @@
         "packages/mcp-server/node_modules/undici-types/client.d.ts",
         "packages/mcp-server/node_modules/undici-types/diagnostics-channel.d.ts",
         "packages/mcp-server/node_modules/undici-types/proxy-agent.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "net",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/node_modules/undici-types/connector.d.ts",
-        "packages/mcp-server/node_modules/undici-types/diagnostics-channel.d.ts",
-        "packages/mcp-server/node_modules/@types/node/process.d.ts"
       ],
       "orphan": false,
       "valid": true
@@ -7954,29 +9477,6 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/node_modules/@types/node/process.d.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "child_process",
-      "followable": false,
-      "coreModule": true,
-      "couldNotResolve": false,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "core",
-        "type-import"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/node_modules/@types/node/process.d.ts",
-        "packages/mcp-server/tests/smoke.test.mjs",
-        "references/godot-mcp-coding-solo/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-        "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
-        "scripts/regen-graphs.mjs",
-        "scripts/run-gitnexus.mjs"
       ],
       "orphan": false,
       "valid": true
@@ -41358,6 +42858,41 @@
       "dependencies": [
         {
           "dynamic": false,
+          "module": "./methodRegistry.types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/catalog/methodRegistry.types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./repoRoot.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/catalog/repoRoot.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
           "module": "crypto",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
@@ -41374,6 +42909,64 @@
           "circular": false,
           "valid": true
         },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/tools/registry.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/catalog/methodRegistry.types.ts",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/src/catalog/loadRegistry.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/catalog/repoRoot.ts",
+      "dependencies": [
         {
           "dynamic": false,
           "module": "fs",
@@ -41430,8 +43023,7 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/src/transport/mcp_stdio.ts",
-        "packages/mcp-server/src/tools/registry.ts"
+        "packages/mcp-server/src/catalog/loadRegistry.ts"
       ],
       "orphan": false,
       "valid": true
@@ -41459,10 +43051,74 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/src/index.ts",
         "packages/mcp-server/src/logger.ts",
+        "packages/mcp-server/src/headless/headlessCoordinator.ts",
+        "packages/mcp-server/src/index.ts",
         "packages/mcp-server/src/transport/mcp_stdio.ts",
         "packages/mcp-server/src/transport/godot_ws_client.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/loadRegistry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/catalog/loadRegistry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts"
       ],
       "orphan": false,
       "valid": true
@@ -41472,9 +43128,10 @@
       "dependencies": [],
       "dependents": [
         "packages/mcp-server/src/diagnostics/map_godot_error.ts",
-        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
         "packages/mcp-server/src/transport/godot_ws_client.ts",
-        "packages/mcp-server/src/jsonrpc/pending.ts"
+        "packages/mcp-server/src/jsonrpc/pending.ts",
+        "packages/mcp-server/src/mcp/tool_result_envelopes.ts"
       ],
       "orphan": false,
       "valid": true
@@ -41507,10 +43164,473 @@
       "valid": true
     },
     {
-      "source": "packages/mcp-server/src/headless/driver.ts",
-      "dependencies": [],
+      "source": "packages/mcp-server/src/headless/godotBinary.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "os",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "os",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/headless/headlessCoordinator.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/headless/godotCli.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/logger.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
       "dependents": [],
-      "orphan": true,
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/logger.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "./config.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/config.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/headless/godotCli.ts",
+        "packages/mcp-server/src/headless/headlessCoordinator.ts",
+        "packages/mcp-server/src/headless/headlessSession.ts",
+        "packages/mcp-server/src/headless/headlessTcpClient.ts",
+        "packages/mcp-server/src/index.ts",
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/transport/godot_ws_client.ts",
+        "packages/mcp-server/src/jsonrpc/pending.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/headless/headlessCoordinator.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../config.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/config.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/logger.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./godotBinary.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/godotBinary.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./headlessSession.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/headlessSession.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./headlessTcpClient.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/headlessTcpClient.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./resolveTerravoltRoot.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "type-import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/headless/headlessSession.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/logger.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "child_process",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "child_process",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/headless/headlessCoordinator.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/headless/headlessTcpClient.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../logger.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/logger.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "net",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "net",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/headless/headlessCoordinator.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/headless/resolveTerravoltRoot.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "url",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/headless/headlessCoordinator.ts"
+      ],
+      "orphan": false,
       "valid": true
     },
     {
@@ -41627,37 +43747,6 @@
       "valid": true
     },
     {
-      "source": "packages/mcp-server/src/logger.ts",
-      "dependencies": [
-        {
-          "dynamic": false,
-          "module": "./config.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "type-only",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/src/config.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "packages/mcp-server/src/index.ts",
-        "packages/mcp-server/src/transport/mcp_stdio.ts",
-        "packages/mcp-server/src/transport/godot_ws_client.ts",
-        "packages/mcp-server/src/jsonrpc/pending.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
       "source": "packages/mcp-server/src/transport/mcp_stdio.ts",
       "dependencies": [
         {
@@ -41697,14 +43786,14 @@
         },
         {
           "dynamic": false,
-          "module": "../diagnostics/errors.js",
+          "module": "../headless/headlessCoordinator.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "import"
           ],
-          "resolved": "packages/mcp-server/src/diagnostics/errors.ts",
+          "resolved": "packages/mcp-server/src/headless/headlessCoordinator.ts",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -41732,14 +43821,14 @@
         },
         {
           "dynamic": false,
-          "module": "../telemetry/metrics.js",
+          "module": "../mcp/local_router_tool_defs.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "import"
           ],
-          "resolved": "packages/mcp-server/src/telemetry/metrics.ts",
+          "resolved": "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -41749,14 +43838,14 @@
         },
         {
           "dynamic": false,
-          "module": "../tools/registry.js",
+          "module": "../mcp/register_daemon_bridge.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "import"
           ],
-          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "resolved": "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -41766,12 +43855,63 @@
         },
         {
           "dynamic": false,
-          "module": "../tools/registry.js",
+          "module": "../mcp/register_daemon_bridge.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
           "dependencyTypes": [
             "local",
             "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../mcp/register_headless_router_tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../mcp/register_router_only_tools.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_router_only_tools.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
             "import"
           ],
           "resolved": "packages/mcp-server/src/tools/registry.ts",
@@ -41846,23 +43986,6 @@
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
-        },
-        {
-          "dynamic": false,
-          "module": "zod",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "npm",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/node_modules/zod/index.cjs",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
         }
       ],
       "dependents": [
@@ -41891,10 +44014,49 @@
       "valid": true
     },
     {
-      "source": "packages/mcp-server/src/telemetry/metrics.ts",
-      "dependencies": [],
+      "source": "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "zod",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "npm",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/node_modules/zod/index.cjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
       "dependents": [
-        "packages/mcp-server/src/transport/mcp_stdio.ts"
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
       ],
       "orphan": false,
       "valid": true
@@ -41922,7 +44084,221 @@
         }
       ],
       "dependents": [
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/autoheal_hints.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/diagnostics/autoheal_hints.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/diagnostics/errors.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/headlessCoordinator.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/telemetry/metrics.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/transport/godot_ws_client.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_tool_compat.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
         "packages/mcp-server/src/transport/mcp_stdio.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/telemetry/metrics.ts",
+      "dependencies": [],
+      "dependents": [
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
       ],
       "orphan": false,
       "valid": true
@@ -41984,23 +44360,6 @@
         },
         {
           "dynamic": false,
-          "module": "../jsonrpc/framing.js",
-          "moduleSystem": "es6",
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "import"
-          ],
-          "resolved": "packages/mcp-server/src/jsonrpc/framing.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "dynamic": false,
           "module": "../jsonrpc/pending.js",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
@@ -42036,16 +44395,9 @@
         }
       ],
       "dependents": [
-        "packages/mcp-server/src/transport/mcp_stdio.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "packages/mcp-server/src/jsonrpc/framing.ts",
-      "dependencies": [],
-      "dependents": [
-        "packages/mcp-server/src/transport/godot_ws_client.ts"
+        "packages/mcp-server/src/transport/mcp_stdio.ts",
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
       ],
       "orphan": false,
       "valid": true
@@ -42091,6 +44443,391 @@
       ],
       "dependents": [
         "packages/mcp-server/src/transport/godot_ws_client.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/mcp/register_tool_compat.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../diagnostics/errors.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/diagnostics/errors.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/mcp/register_daemon_bridge.ts",
+        "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+        "packages/mcp-server/src/mcp/register_router_only_tools.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/mcp/register_headless_router_tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/headlessCoordinator.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/telemetry/metrics.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_tool_compat.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/transport/mcp_stdio.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "packages/mcp-server/src/mcp/register_router_only_tools.ts",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "../catalog/methodRegistry.types.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/catalog/methodRegistry.types.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../headless/headlessCoordinator.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "type-only",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/headless/headlessCoordinator.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../telemetry/metrics.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/telemetry/metrics.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../tools/registry.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/tools/registry.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "../transport/godot_ws_client.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/transport/godot_ws_client.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./local_router_tool_defs.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/local_router_tool_defs.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./register_tool_compat.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/register_tool_compat.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "./tool_result_envelopes.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "packages/mcp-server/src/mcp/tool_result_envelopes.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "@modelcontextprotocol/sdk/server/mcp.js",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@modelcontextprotocol/sdk/server/mcp.js",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "packages/mcp-server/src/transport/mcp_stdio.ts"
       ],
       "orphan": false,
       "valid": true
@@ -44292,6 +47029,23 @@
       "dependencies": [
         {
           "dynamic": false,
+          "module": "./lib/repo_root.mjs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "scripts/lib/repo_root.mjs",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
           "module": "crypto",
           "moduleSystem": "es6",
           "exoticallyRequired": false,
@@ -44343,6 +47097,50 @@
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "scripts/lib/repo_root.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "dynamic": false,
+          "module": "path",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "path",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
         },
         {
           "dynamic": false,
@@ -44355,6 +47153,34 @@
           ],
           "protocol": "node:",
           "resolved": "url",
+          "coreModule": true,
+          "followable": false,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "scripts/catalog-sync.mjs"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "scripts/patch-headless-files.mjs",
+      "dependencies": [
+        {
+          "dynamic": false,
+          "module": "fs",
+          "moduleSystem": "es6",
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "core",
+            "import"
+          ],
+          "protocol": "node:",
+          "resolved": "fs",
           "coreModule": true,
           "followable": false,
           "couldNotResolve": false,
@@ -44751,8 +47577,8 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 921,
-    "totalDependenciesCruised": 1913,
+    "totalCruised": 966,
+    "totalDependenciesCruised": 2046,
     "optionsUsed": {
       "baseDir": "H:\\Godot MCP Marcel",
       "combinedDependencies": false,
