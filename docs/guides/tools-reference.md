@@ -8,8 +8,10 @@ page is the operator-facing summary.
 > Every tool returns the same MCP envelope: `{ ok: true, tool, method, latencyMs, result }` or
 > `{ ok: false, message, app_code?, autoHeal?, … }`.
 
-Catalog version: **`0.2.0`** (router `0.1.0`).  
-Total tools: **13** — 3 daemon-bridged + 6 router-local + 4 headless.
+Catalog version: **`0.8.0`** (router `0.1.0`).  
+Total MCP tools: **13** — 3 daemon-bridged + 6 router-local + 4 headless.  
+Daemon catalog: **111** JSON-RPC methods — use [`context.fetch_raw`](#contextfetch_raw) or
+editor/headless TCP for the full set; see [`docs/catalog/`](../catalog/).
 
 ## At a glance
 
@@ -174,10 +176,10 @@ End-to-end probe: AJV smoke + daemon `server.info` + catalog SHA parity + headle
     "checks": {
       "ajv_object_ok": true,
       "daemon_server_info_ok": true,
-      "router_catalog_version": "0.2.0",
-      "daemon_catalog_version": "0.2.0",
-      "router_registry_sha256": "930063cfac74…",
-      "daemon_registry_sha256": "930063cfac74…",
+      "router_catalog_version": "0.8.0",
+      "daemon_catalog_version": "0.8.0",
+      "router_registry_sha256": "3982a6cb4a06…",
+      "daemon_registry_sha256": "3982a6cb4a06…",
       "protocol_catalog_match": true,
       "protocol_catalog_mismatch_detected": false,
       "headless_godot_executable_resolvable": true,

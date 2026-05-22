@@ -25,3 +25,7 @@ Default: feature branches; merge via PR when collaborating.
 Prefer **[`docs/repo-layout.md`](../repo-layout.md)** and
 **[`docs/context/context-map.md`](../context/context-map.md)** so agents load the canonical tree
 order before editing `packages/` or `scripts/`.
+
+After editing or formatting `packages/shared/methods/registry.json`, always run
+`npm run catalog:sync` before commit — `release:check` asserts `catalog_meta.gd` SHA256 matches
+registry bytes.
