@@ -1,0 +1,19 @@
+# Godot
+.import/
+*.translation
+.mono/
+data_*/
+xcuserdata/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Logs & temp
+*.log
+*.tmp
+~*
