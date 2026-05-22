@@ -49,6 +49,24 @@ func _enter_tree() -> void:
 	editor_handlers.attach(_dispatcher, _logger)
 	var analysis_handlers := preload("./handlers/analysis.gd").new()
 	analysis_handlers.attach(_dispatcher, _logger)
+	var animation_handlers := preload("./handlers/animation.gd").new()
+	animation_handlers.attach(_dispatcher, _logger)
+	var animation_tree_handlers := preload("./handlers/animation_tree.gd").new()
+	animation_tree_handlers.attach(_dispatcher, _logger)
+	var physics_handlers := preload("./handlers/physics.gd").new()
+	physics_handlers.attach(_dispatcher, _logger)
+	var particle_handlers := preload("./handlers/particle.gd").new()
+	particle_handlers.attach(_dispatcher, _logger)
+	var navigation_handlers := preload("./handlers/navigation.gd").new()
+	navigation_handlers.attach(_dispatcher, _logger)
+	var runtime_handlers := preload("./handlers/runtime.gd").new()
+	runtime_handlers.attach(_dispatcher, _logger)
+	var tilemap_handlers := preload("./handlers/tilemap.gd").new()
+	tilemap_handlers.attach(_dispatcher, _logger)
+	var theme_ui_handlers := preload("./handlers/theme_ui.gd").new()
+	theme_ui_handlers.attach(_dispatcher, _logger)
+
+	_install_runtime_bridge_autoload()
 
 	_dock = _StatusDockScr.new()
 	_dock.name = "TerraVoltMCPStatus"
@@ -72,6 +90,7 @@ func _enter_tree() -> void:
 
 
 func _exit_tree() -> void:
+	_remove_runtime_bridge_autoload()
 	set_process(false)
 	var base := get_editor_interface().get_base_control()
 
@@ -178,6 +197,9 @@ func _define_settings() -> void:
 	_set_def("terravolt_mcp/context/max_tree_nodes", 5000)
 	_set_def("terravolt_mcp/context/max_payload_kb", 4096)
 
+	_set_def("terravolt_mcp/runtime/port", 6506)
+	_info("terravolt_mcp/runtime/port", TYPE_INT, PROPERTY_HINT_RANGE, "1024,65535,1")
+
 	_info("terravolt_mcp/server/auto_start_on_open", TYPE_BOOL)
 	_info("terravolt_mcp/server/bind_address", TYPE_STRING)
 	_info("terravolt_mcp/logging/path", TYPE_STRING)
@@ -188,3 +210,21 @@ func _define_settings() -> void:
 func restart() -> void:
 	if _server:
 		_server.restart()
+
+
+func _runtime_bridge_script_path() -> String:
+	return get_script().resource_path.get_base_dir().path_join("autoloads/runtime_bridge.gd")
+
+
+func _install_runtime_bridge_autoload() -> void:
+	var path := _runtime_bridge_script_path()
+	if not FileAccess.file_exists(path):
+		return
+	if ProjectSettings.has_setting("autoload/TerraVoltRuntimeBridge"):
+		return
+	add_autoload_singleton("TerraVoltRuntimeBridge", path)
+
+
+func _remove_runtime_bridge_autoload() -> void:
+	if ProjectSettings.has_setting("autoload/TerraVoltRuntimeBridge"):
+		remove_autoload_singleton("TerraVoltRuntimeBridge")

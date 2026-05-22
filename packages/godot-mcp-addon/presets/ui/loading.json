@@ -1,0 +1,16 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "LoadingScreen",
+  "anchors": true,
+  "children": [
+    {
+      "type": "VBoxContainer",
+      "name": "Layout",
+      "children": [
+        { "type": "Label", "name": "Status", "text": "Loading..." },
+        { "type": "ProgressBar", "name": "Bar" }
+      ]
+    }
+  ]
+}

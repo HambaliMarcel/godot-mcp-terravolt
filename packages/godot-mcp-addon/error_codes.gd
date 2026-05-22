@@ -109,6 +109,53 @@ const EDITOR_SCRIPT_FORBIDDEN_API := -33922
 const EDITOR_UNSUPPORTED_IN_VERSION := -33923
 #endregion
 
+#region runtime (task 17)
+const RUNTIME_NO_SESSION := -33930
+const RUNTIME_BRIDGE_UNAVAILABLE := -33931
+const RUNTIME_UI_NOT_FOUND := -33932
+const RUNTIME_NAVIGATE_TIMEOUT := -33933
+const RUNTIME_GAME_PAUSED := -33934
+const RUNTIME_BRIDGE_RPC_FAILED := -33935
+const RUNTIME_SPAWN_FAILED := -33936
+const RUNTIME_HANDSHAKE_FAILED := -33937
+const RUNTIME_RECORDING_NOT_ACTIVE := -33938
+const RUNTIME_BUFFER_NOT_FOUND := -33939
+#endregion
+
+#region animation / animation_tree (task 18)
+const ANIMATION_NAME_EXISTS := -33940
+const ANIMATION_UNKNOWN := -33941
+const ANIMATION_TRACK_KIND_UNKNOWN := -33942
+const ANIMATION_EXPORTER_MISSING := -33943
+const ANIMATION_PLAYER_NOT_FOUND := -33944
+const ANIMATION_TREE_PARAMETER_UNKNOWN := -33945
+const ANIMATION_TREE_STATE_EXISTS := -33946
+const ANIMATION_TREE_STATE_UNKNOWN := -33947
+const ANIMATION_TREE_NOT_FOUND := -33948
+const ANIMATION_TREE_TRANSITION_UNKNOWN := -33949
+#endregion
+
+#region physics / particle / navigation (task 19)
+const PHYSICS_SHAPE_KIND_UNKNOWN := -33950
+const PHYSICS_DIMENSION_MISMATCH := -33951
+const PHYSICS_BATCH_TOO_LARGE := -33952
+const PARTICLE_GPU_UNSUPPORTED := -33953
+const NAVIGATION_BAKE_TIMEOUT := -33954
+#endregion
+
+#region tilemap / theme_ui (task 20)
+const TILEMAP_CELL_BATCH_TOO_LARGE := -33960
+const TILEMAP_ATLAS_UNKNOWN := -33961
+const TILEMAP_TERRAIN_UNKNOWN := -33962
+const TILEMAP_LAYER_UNKNOWN := -33963
+const TILEMAP_NODE_INVALID := -33964
+const THEME_TARGET_MISSING := -33965
+const THEME_PROPERTY_UNKNOWN := -33966
+const THEME_STYLEBOX_INVALID := -33967
+const THEME_FONT_LOAD_FAILED := -33968
+const THEME_PREVIEW_FAILED := -33969
+#endregion
+
 #region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
 const HEADLESS_BINARY_MISSING := -33810
 const HEADLESS_NO_PROJECT := -33811
@@ -204,6 +251,41 @@ const _CODE_TO_SYMBOL := {
 	EDITOR_SCRIPT_TIMEOUT: "editor.script_timeout",
 	EDITOR_SCRIPT_FORBIDDEN_API: "editor.script_forbidden_api",
 	EDITOR_UNSUPPORTED_IN_VERSION: "editor.unsupported_in_version",
+	RUNTIME_NO_SESSION: "runtime.no_session",
+	RUNTIME_BRIDGE_UNAVAILABLE: "runtime.bridge_unavailable",
+	RUNTIME_UI_NOT_FOUND: "runtime.ui_not_found",
+	RUNTIME_NAVIGATE_TIMEOUT: "runtime.navigate_timeout",
+	RUNTIME_GAME_PAUSED: "runtime.game_paused",
+	RUNTIME_BRIDGE_RPC_FAILED: "runtime.bridge_rpc_failed",
+	RUNTIME_SPAWN_FAILED: "runtime.spawn_failed",
+	RUNTIME_HANDSHAKE_FAILED: "runtime.handshake_failed",
+	RUNTIME_RECORDING_NOT_ACTIVE: "runtime.recording_not_active",
+	RUNTIME_BUFFER_NOT_FOUND: "runtime.buffer_not_found",
+	ANIMATION_NAME_EXISTS: "animation.name_exists",
+	ANIMATION_UNKNOWN: "animation.unknown",
+	ANIMATION_TRACK_KIND_UNKNOWN: "animation.track_kind_unknown",
+	ANIMATION_EXPORTER_MISSING: "animation.exporter_missing",
+	ANIMATION_PLAYER_NOT_FOUND: "animation.player_not_found",
+	ANIMATION_TREE_PARAMETER_UNKNOWN: "animation_tree.parameter_unknown",
+	ANIMATION_TREE_STATE_EXISTS: "animation_tree.state_exists",
+	ANIMATION_TREE_STATE_UNKNOWN: "animation_tree.state_unknown",
+	ANIMATION_TREE_NOT_FOUND: "animation_tree.not_found",
+	ANIMATION_TREE_TRANSITION_UNKNOWN: "animation_tree.transition_unknown",
+	PHYSICS_SHAPE_KIND_UNKNOWN: "physics.shape_kind_unknown",
+	PHYSICS_DIMENSION_MISMATCH: "physics.dimension_mismatch",
+	PHYSICS_BATCH_TOO_LARGE: "physics.batch_too_large",
+	PARTICLE_GPU_UNSUPPORTED: "particle.gpu_unsupported",
+	NAVIGATION_BAKE_TIMEOUT: "navigation.bake_timeout",
+	TILEMAP_CELL_BATCH_TOO_LARGE: "tilemap.cell_batch_too_large",
+	TILEMAP_ATLAS_UNKNOWN: "tilemap.atlas_unknown",
+	TILEMAP_TERRAIN_UNKNOWN: "tilemap.terrain_unknown",
+	TILEMAP_LAYER_UNKNOWN: "tilemap.layer_unknown",
+	TILEMAP_NODE_INVALID: "tilemap.node_invalid",
+	THEME_TARGET_MISSING: "theme.target_missing",
+	THEME_PROPERTY_UNKNOWN: "theme.property_unknown",
+	THEME_STYLEBOX_INVALID: "theme.stylebox_invalid",
+	THEME_FONT_LOAD_FAILED: "theme.font_load_failed",
+	THEME_PREVIEW_FAILED: "theme.preview_failed",
 	PROJECT_SETTING_LOCKED: "project.setting_locked",
 	HEADLESS_BINARY_MISSING: "headless.binary_missing",
 	HEADLESS_NO_PROJECT: "headless.no_project",

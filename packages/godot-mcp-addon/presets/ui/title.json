@@ -1,0 +1,16 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "TitleScreen",
+  "anchors": true,
+  "children": [
+    {
+      "type": "VBoxContainer",
+      "name": "Layout",
+      "children": [
+        { "type": "Label", "name": "TitleLabel", "text": "{{title}}" },
+        { "type": "Button", "name": "StartButton", "text": "Start" }
+      ]
+    }
+  ]
+}

@@ -4,25 +4,27 @@ class_name TerraVoltHandlerUtils
 
 ## Shared helpers for category handlers (task 11+).
 
+const _Err := preload("../error_codes.gd")
+
 
 static func params_dict(ctx: Dictionary) -> Dictionary:
 	var p: Variant = ctx.get("params")
 	return p as Dictionary if typeof(p) == TYPE_DICTIONARY else {}
 
 
-static func editor_plugin(dispatcher: TerraVoltDispatcher) -> EditorPlugin:
+static func editor_plugin(dispatcher: Variant) -> EditorPlugin:
 	var wr: WeakRef = dispatcher.editor_plugin_ref
 	if wr == null:
 		return null
 	return wr.get_ref() as EditorPlugin
 
 
-static func require_editor(dispatcher: TerraVoltDispatcher) -> Dictionary:
+static func require_editor(dispatcher: Variant) -> Dictionary:
 	if not OS.has_feature("editor"):
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_NOT_AVAILABLE,
+			"error": _Err.tv_rpc_error(
+				_Err.EDITOR_NOT_AVAILABLE,
 				"editor.not_available",
 				"Open the Godot editor with the TerraVolt addon enabled, or use a headless-capable method.",
 				{}
@@ -32,8 +34,8 @@ static func require_editor(dispatcher: TerraVoltDispatcher) -> Dictionary:
 	if plug == null:
 		return {
 			"ok": false,
-			"error": TerraVoltErrors.tv_rpc_error(
-				TerraVoltErrors.EDITOR_NOT_AVAILABLE,
+			"error": _Err.tv_rpc_error(
+				_Err.EDITOR_NOT_AVAILABLE,
 				"editor.not_available",
 				"Editor plugin reference is unavailable.",
 				{}
@@ -208,8 +210,8 @@ static func instantiate_type(type_name: String) -> Node:
 static func err_scene_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SCENE_PATH_NOT_FOUND,
+		"error": _Err.tv_rpc_error(
+			_Err.SCENE_PATH_NOT_FOUND,
 			"scene.path_not_found",
 			"Scene file not found at the given path.",
 			{"path": path}
@@ -220,8 +222,8 @@ static func err_scene_not_found(path: String) -> Dictionary:
 static func err_node_not_found(path: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.SCENE_NODE_PATH_NOT_FOUND,
+		"error": _Err.tv_rpc_error(
+			_Err.SCENE_NODE_PATH_NOT_FOUND,
 			"scene.node_path_not_found",
 			"Node path not found in the active scene.",
 			{"path": path}
@@ -232,8 +234,8 @@ static func err_node_not_found(path: String) -> Dictionary:
 static func err_no_active_scene() -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.EDITOR_NO_ACTIVE_SCENE,
+		"error": _Err.tv_rpc_error(
+			_Err.EDITOR_NO_ACTIVE_SCENE,
 			"editor.no_active_scene",
 			"No scene is currently being edited.",
 			{}
@@ -244,8 +246,8 @@ static func err_no_active_scene() -> Dictionary:
 static func err_type_unknown(type_name: String) -> Dictionary:
 	return {
 		"ok": false,
-		"error": TerraVoltErrors.tv_rpc_error(
-			TerraVoltErrors.NODE_TYPE_UNKNOWN,
+		"error": _Err.tv_rpc_error(
+			_Err.NODE_TYPE_UNKNOWN,
 			"node.type_unknown",
 			"Unknown or non-Node Godot class.",
 			{"type": type_name}
@@ -304,7 +306,7 @@ static func read_node_properties(
 	node: Node, prop_filter: Variant, include_hint: bool, include_export: bool
 ) -> Dictionary:
 	var out: Dictionary = {}
-	var want_all := prop_filter == "all" or prop_filter == null
+	var want_all: bool = prop_filter == "all" or prop_filter == null
 	var want_keys: Array = []
 	if typeof(prop_filter) == TYPE_ARRAY:
 		for k in prop_filter:
@@ -328,7 +330,7 @@ static func read_node_properties(
 
 static func node_snapshot(node: Node, scene_root: Node, prop_filter: Variant = "all") -> Dictionary:
 	var script_path: Variant = null
-	var scr := node.get_script()
+	var scr: Variant = node.get_script()
 	if scr != null:
 		if scr is Script and (scr as Script).resource_path.length() > 0:
 			script_path = (scr as Script).resource_path

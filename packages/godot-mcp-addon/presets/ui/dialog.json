@@ -1,0 +1,22 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "DialogBox",
+  "anchors": true,
+  "children": [
+    {
+      "type": "Panel",
+      "name": "Panel",
+      "children": [
+        {
+          "type": "VBoxContainer",
+          "name": "Layout",
+          "children": [
+            { "type": "Label", "name": "DialogText", "text": "..." },
+            { "type": "Button", "name": "OkButton", "text": "OK" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "HUD",
+  "anchors": true,
+  "children": [
+    {
+      "type": "HBoxContainer",
+      "name": "TopBar",
+      "children": [
+        { "type": "Label", "name": "Score", "text": "Score: 0" },
+        { "type": "Label", "name": "Health", "text": "HP: 100" }
+      ]
+    }
+  ]
+}

@@ -140,13 +140,13 @@ static func _collect_resources(base: String, dir_abs: String, include_imported: 
 
 static func load_resource(path: String) -> Resource:
 	var p := resolve_path(path)
-	var abs := abs_path(p)
-	if not FileAccess.file_exists(abs):
-		return null
-	if ResourceLoader.exists(p):
-		return ResourceLoader.load(p, "", ResourceLoader.CACHE_MODE_IGNORE) as Resource
 	var res: Resource = ResourceLoader.load(p, "", ResourceLoader.CACHE_MODE_IGNORE) as Resource
-	return res
+	if res != null:
+		return res
+	var abs := abs_path(p)
+	if FileAccess.file_exists(abs):
+		return ResourceLoader.load(p, "", ResourceLoader.CACHE_MODE_IGNORE) as Resource
+	return null
 
 
 static func variant_to_json(v: Variant) -> Variant:

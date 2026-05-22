@@ -1,0 +1,21 @@
+{
+  "root_type": "Control",
+  "type": "Control",
+  "name": "SettingsScreen",
+  "anchors": true,
+  "children": [
+    {
+      "type": "VBoxContainer",
+      "name": "Layout",
+      "children": [
+        { "type": "Label", "name": "Heading", "text": "Settings" },
+        { "type": "CheckBox", "name": "Fullscreen", "text": "Fullscreen" },
+        { "type": "HBoxContainer", "name": "VolumeRow", "children": [
+          { "type": "Label", "name": "VolumeLabel", "text": "Volume" },
+          { "type": "HSlider", "name": "Volume" }
+        ]},
+        { "type": "Button", "name": "BackButton", "text": "Back" }
+      ]
+    }
+  ]
+}
