@@ -10,6 +10,8 @@ export async function launchHeadlessDriver(opts: {
   readonly driverGdPath: string;
   readonly bootTimeoutMs: number;
   readonly log: Logger;
+  readonly catalogVersion?: string;
+  readonly registrySha256?: string;
 }): Promise<{ proc: ChildProcess; port: number; host: string }> {
   const proj = path.resolve(opts.projectPath);
   const drv = path.resolve(opts.driverGdPath);
@@ -23,7 +25,11 @@ export async function launchHeadlessDriver(opts: {
   const proc = spawn(opts.godotBinary, args, {
     windowsHide: true,
     stdio: ["ignore", "ignore", "pipe"],
-    env: { ...process.env },
+    env: {
+      ...process.env,
+      TERRAVOLT_CATALOG_VERSION: opts.catalogVersion ?? "unknown",
+      TERRAVOLT_REGISTRY_SHA256: opts.registrySha256 ?? "unknown",
+    },
   });
 
   return await new Promise<{ proc: ChildProcess; port: number; host: string }>((promiseResolve, promiseReject) => {

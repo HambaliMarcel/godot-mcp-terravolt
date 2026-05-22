@@ -1,21 +1,42 @@
 ﻿extends SceneTree
 
-## Headless TerraVolt: newline-delimited JSON-RPC over TCP loopback.
-## Stderr announces: TERRAVOLT_HEADLESS_PORT=<port>
+## Headless TerraVolt driver: newline-delimited JSON-RPC over TCP loopback.
+## Self-contained — no `res://` dependency, so it works from any
+## `--path <project>` regardless of whether the addon is mounted.
+##
+## Stderr handshake (parsed by the Node router):
+##   TERRAVOLT_HEADLESS_PORT=<port>
+##
+## Catalog meta is injected through environment variables:
+##   TERRAVOLT_CATALOG_VERSION   (string)  default: "unknown"
+##   TERRAVOLT_REGISTRY_SHA256   (string)  default: "unknown"
 
-const _CatalogMeta := preload("../_generated/catalog_meta.gd")
-const TV := preload("../error_codes.gd")
+const _PROTOCOL_INVALID_JSONRPC_VERSION := -33100
+const _PROTOCOL_METHOD_NOT_FOUND := -33101
+const _PROTOCOL_INVALID_PARAMS := -33102
+const _TRANSPORT_UNSUPPORTED_FRAME := -33006
+const _MAX_LINE_BYTES_DEFAULT := 1048576
 
 var _tcp := TCPServer.new()
 var _peer: StreamPeerTCP
 var _buf := ""
 var _stop := false
+var _catalog_version := "unknown"
+var _registry_sha256 := "unknown"
 
 
 func _initialize() -> void:
+	_catalog_version = OS.get_environment("TERRAVOLT_CATALOG_VERSION")
+	if _catalog_version.is_empty():
+		_catalog_version = "unknown"
+	_registry_sha256 = OS.get_environment("TERRAVOLT_REGISTRY_SHA256")
+	if _registry_sha256.is_empty():
+		_registry_sha256 = "unknown"
+
 	if _tcp.listen(0, "127.0.0.1") != OK:
 		printerr("Terravolt headless: listen failed")
-		OS.exit(127)
+		quit(127)
+		return
 	printerr("TERRAVOLT_HEADLESS_PORT=%d\n" % _tcp.get_local_port())
 	process_frame.connect(_tick)
 
@@ -27,10 +48,13 @@ func _tick() -> void:
 	if _peer == null:
 		if _tcp.is_connection_available():
 			_peer = _tcp.take_connection()
+			_buf = ""
 		return
-	if _peer.get_status() != StreamPeerTCP.STATUS_CONNECTED:
-		printerr("Terravolt headless: peer disconnected")
-		_stop = true
+	_peer.poll()
+	var st := _peer.get_status()
+	if st != StreamPeerTCP.STATUS_CONNECTED:
+		_peer = null
+		_buf = ""
 		return
 
 	var nbytes := _peer.get_available_bytes()
@@ -72,28 +96,34 @@ func _wr_err(idv: Variant, err: Dictionary) -> Dictionary:
 	return {"jsonrpc": "2.0", "error": err, "id": idv}
 
 
+func _err(spec_code: int, message: String, tv_code: int, hint: String, context: Variant = null) -> Dictionary:
+	var data: Dictionary = {"tv_code": tv_code, "hint": hint}
+	if context != null and typeof(context) == TYPE_DICTIONARY:
+		data["context"] = context
+	return {"code": spec_code, "message": message, "data": data}
+
+
 func _dispatch(line: String) -> String:
-	var lim := int(ProjectSettings.get_setting("terravolt_mcp/transport/max_jsonrpc_line_bytes", 1048576))
-	if line.to_utf8_buffer().size() > lim:
-		var e := TV.json_rpc_error(-32603, "Frame too large", TV.TRANSPORT_UNSUPPORTED_FRAME, "", {})
+	if line.to_utf8_buffer().size() > _MAX_LINE_BYTES_DEFAULT:
+		var e := _err(-32603, "Frame too large", _TRANSPORT_UNSUPPORTED_FRAME, "", {})
 		return JSON.stringify(_wr_err(null, e))
 
-	var parsed := JSON.parse_string(line)
+	var parsed: Variant = JSON.parse_string(line)
 	if parsed == null or typeof(parsed) != TYPE_DICTIONARY:
-		var pe := TV.json_rpc_error(-32700, "Parse error", TV.PROTOCOL_INVALID_PARAMS, "", {})
+		var pe := _err(-32700, "Parse error", _PROTOCOL_INVALID_PARAMS, "", {})
 		return JSON.stringify(_wr_err(null, pe))
 
 	var obj := parsed as Dictionary
 	if str(obj.get("jsonrpc", "")) != "2.0":
-		var ve := TV.json_rpc_error(-32600, "Invalid Request", TV.PROTOCOL_INVALID_JSONRPC_VERSION, "", {})
+		var ve := _err(-32600, "Invalid Request", _PROTOCOL_INVALID_JSONRPC_VERSION, "", {})
 		var hid := obj.has("id")
 		return JSON.stringify(_wr_err(obj.get("id", null) if hid else null, ve))
 
-	var m := obj.get("method", null)
+	var m: Variant = obj.get("method", null)
 	var has_id := obj.has("id")
-	var rid := obj.get("id", null)
+	var rid: Variant = obj.get("id", null)
 	if typeof(m) != TYPE_STRING:
-		var me := TV.json_rpc_error(-32600, "Invalid Request", TV.PROTOCOL_INVALID_PARAMS, "method string", {})
+		var me := _err(-32600, "Invalid Request", _PROTOCOL_INVALID_PARAMS, "method string", {})
 		return JSON.stringify(_wr_err(rid if has_id else null, me))
 
 	var method := m as String
@@ -104,10 +134,12 @@ func _dispatch(line: String) -> String:
 	if has_id:
 		var bad := typeof(params_variant) != TYPE_DICTIONARY and typeof(params_variant) != TYPE_ARRAY
 		if bad:
-			var ip := TV.json_rpc_error(-32602, "Invalid params", TV.PROTOCOL_INVALID_PARAMS, "object/array", {})
+			var ip := _err(-32602, "Invalid params", _PROTOCOL_INVALID_PARAMS, "object/array", {})
 			return JSON.stringify(_wr_err(rid, ip))
 
-	var pd := {} if typeof(params_variant) != TYPE_DICTIONARY else (params_variant as Dictionary)
+	var pd: Dictionary = {}
+	if typeof(params_variant) == TYPE_DICTIONARY:
+		pd = params_variant as Dictionary
 
 	if not has_id:
 		printerr("Terravolt headless notification `%s`" % method)
@@ -120,8 +152,8 @@ func _dispatch(line: String) -> String:
 			var gv := Engine.get_version_info()
 			var info := {
 				"name": "terravolt-godot-headless",
-				"catalog_version": _CatalogMeta.CATALOG_VERSION,
-				"registry_sha256": _CatalogMeta.REGISTRY_SHA256,
+				"catalog_version": _catalog_version,
+				"registry_sha256": _registry_sha256,
 				"godot_version": gv.get("string", JSON.stringify(gv)),
 				"build_mode": "headless_tcp",
 				"supported_methods_count": 5,
@@ -136,7 +168,7 @@ func _dispatch(line: String) -> String:
 		"script.validate_syntax":
 			return JSON.stringify(_wr_ok(rid, _validate_syntax(pd)))
 		_:
-			var nf := TV.json_rpc_error(-32601, "Method not found", TV.PROTOCOL_METHOD_NOT_FOUND, "", {"method": method})
+			var nf := _err(-32601, "Method not found", _PROTOCOL_METHOD_NOT_FOUND, "", {"method": method})
 			return JSON.stringify(_wr_err(rid, nf))
 
 

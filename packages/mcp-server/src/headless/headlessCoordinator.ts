@@ -1,5 +1,6 @@
 ﻿import path from "node:path";
 
+import { loadMethodRegistry, registryContentSha256 } from "../catalog/loadRegistry.js";
 import type { Config } from "../config.js";
 import type { Logger } from "../logger.js";
 import { resolveGodotBinary } from "./godotBinary.js";
@@ -86,12 +87,23 @@ export class HeadlessCoordinator {
     await this.stop(false);
     const exe = this.godotExeOrThrow();
     const drv = this.resolveDriverPath();
+    let catalogVersion: string | undefined;
+    let registrySha256: string | undefined;
+    try {
+      catalogVersion = loadMethodRegistry().catalog_version;
+      registrySha256 = registryContentSha256();
+    } catch {
+      catalogVersion = undefined;
+      registrySha256 = undefined;
+    }
     const { proc, port, host } = await launchHeadlessDriver({
       godotBinary: exe,
       projectPath: path.resolve(projectPathAbsolute),
       driverGdPath: drv,
       bootTimeoutMs: this.cfg.headlessBootTimeoutMs,
       log: this.log,
+      catalogVersion,
+      registrySha256,
     });
 
     await tcpJsonRpcRequest({
