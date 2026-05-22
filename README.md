@@ -1,18 +1,8 @@
 # godot-mcp-terravolt
 
-TerraVolt **Godot ⇄ MCP** workspace: Node/intel toolchain at the repo root, product code slated for **`packages/`**, narrative docs in **`docs/`**.
+TerraVolt **Godot ⇄ MCP** monorepo: product code lands in **`packages/`**; onboarding, SRS, and agent context live in **`docs/`**.
 
-## Repository layout
-
-| Path | Responsibility |
-|------|----------------|
-| **`docs/`** | Architecture overview, agent context map, contributing (see [docs/README.md](docs/README.md)) |
-| **`packages/`** | MCP server + Godot addon placeholders ([packages/README.md](packages/README.md)) |
-| **`config/`** | Shared analyzers (`dependency-cruiser`, future linters) |
-| **`tools/intel/`** | Scripts invoked by npm for graphs / codegen helpers |
-| **`artifacts/`** | Regenerated analyzer output (safe to commit; refresh with npm scripts below) |
-| **`graphify-out/`** | [Graphify](https://github.com/safishamsi/graphify) KG (default path; Cursor rule `.cursor/rules/graphify.mdc`) |
-| **`references/`** | Local clones (**gitignored**): MCP repos indexed by GitNexus/Graphify; **`godot-docs/`** Sphinx tree excluded ([map](docs/references/reference-repos-map.md)). |
+**Canonical tree:** **[`docs/repo-layout.md`](docs/repo-layout.md)** — read this once before moving files.
 
 ## Omni / intel stack
 
@@ -41,9 +31,14 @@ git clone --depth 1 https://github.com/Coding-Solo/godot-mcp.git references/godo
 ```
 
 `godot-docs` is large (official [Sphinx](https://docs.godotengine.org/) manual source — see upstream [readme](https://github.com/godotengine/godot-docs)). **Architectural comparison** of MCP refs: **[docs/references/reference-repos-map.md](docs/references/reference-repos-map.md)**.
+
+## Documentation
+
+[docs/README.md](docs/README.md) · [architecture](docs/architecture/overview.md) · [SRS](docs/srs/README.md)
+
 ## Status
 
-Early scaffold — structure reserved for MCP server + Godot addon implementation.
+Early scaffold — structure reserved for MCP server + Godot addon implementation. **SRS:** [`docs/srs/README.md`](docs/srs/README.md) (architecture, tool registry, roadmap; fundamentals contract **before** Phase 1 coding).
 
 ## Contributing (Git hooks)
 

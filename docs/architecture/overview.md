@@ -2,25 +2,19 @@
 
 ## Purpose
 
-**godot-mcp-terravolt** is the TerraVolt workspace for an MCP ⇄ Godot bridge, guided by curated upstream comparisons under **`references/`** (local, gitignored).
+**godot-mcp-terravolt** bridges agents (MCP **stdio**) and the Godot 4 editor (planned WebSocket **`6505`**), guided by curated upstream clones under **`/references/`** (repo root, gitignored). Shippable first-party code lives in **`packages/`**.
 
-## Layers
+## Where to read next
 
-| Layer | Role |
-|--------|------|
-| **Documentation** | `docs/` — architecture, agent context priorities, contributing notes |
-| **Omni tooling (Cursor)** | `.cursor/rules`, `.cursor/workflows`, agent policies |
-| **Graphify knowledge graph** | `graphify-out/` (`npm run intel:graphify`); ignores in `.graphifyignore` |
-| **JS module graphs (Omni)** | `artifacts/js-graphs/` from `npm run intel:graphs` |
-| **GitNexus** | `.gitnexus/` index (`npm run intel:gitnexus`) |
-| **Config** | `config/` — e.g. dependency-cruiser |
-| **Build / intel scripts** | `tools/intel/` |
-| **Shippable code (future)** | `packages/mcp-server/`, `packages/godot-mcp-addon/` |
+| Topic | Doc |
+|--------|-----|
+| **Folders & tooling outputs** | [`docs/repo-layout.md`](../repo-layout.md) |
+| **Agent loading order** | [`docs/context/context-map.md`](../context/context-map.md) |
+| **Product blueprint & phases** | [`docs/srs/README.md`](../srs/README.md) |
+| **Upstream MCP anatomy** | [`docs/references/reference-repos-map.md`](../references/reference-repos-map.md) |
 
-## Layout
+Indexed for study: **`references/godot-mcp-*`**. **`references/godot-docs/`** stays local/manual only — omitted from GitNexus/Graphify in this workspace (Sphinx volume).
 
-| Area | Responsibility |
-|------|------------------|
-| `references/godot-mcp-*` | Indexed by **GitNexus** + **Graphify** for study (see **`docs/references/reference-repos-map.md`**); **`references/godot-docs/`** is local manual only — excluded from indexes. |
+## After structural changes
 
-After structural edits, refresh tooling: `.cursor/workflows/intel-refresh.md`.
+Refresh intel: **`npm run omni:intel`** (see [`.cursor/workflows/intel-refresh.md`](../../.cursor/workflows/intel-refresh.md)).
