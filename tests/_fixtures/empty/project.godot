@@ -1,0 +1,10 @@
+; Minimal Godot 4 project for headless integration smoke tests
+; (docs/tasklist/10 §10.6.2). Empty by design — only `project.godot` is
+; required so `godot --headless --path <dir>` accepts the project root.
+
+config_version=5
+
+[application]
+
+config/name="terravolt-headless-smoke"
+config/features=PackedStringArray("4.0")

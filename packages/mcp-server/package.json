@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "test": "node --test \"tests/smoke.test.mjs\""
+    "test": "node --test \"tests/smoke.test.mjs\" \"tests/unit/*.test.mjs\" \"tests/integration/*.test.mjs\""
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
