@@ -60,97 +60,45 @@ static func recoverable_for(tv_code: int) -> bool:
 			return true
 
 
+## Single canonical mapping (Dictionary keeps Godot's `match` parser happy and
+## makes future code additions a one-line change instead of two `match` arms).
+const _CODE_TO_SYMBOL := {
+	TRANSPORT_BIND_FAILED: "transport.bind_failed",
+	TRANSPORT_PEER_BUSY: "transport.peer_busy",
+	TRANSPORT_HANDSHAKE_FAILED: "transport.handshake_failed",
+	TRANSPORT_HEARTBEAT_TIMEOUT: "transport.heartbeat_timeout",
+	TRANSPORT_ABRUPT_CLOSE: "transport.abrupt_close",
+	TRANSPORT_QUEUE_OVERFLOW: "transport.queue_overflow",
+	TRANSPORT_UNSUPPORTED_FRAME: "transport.unsupported_frame",
+	PROTOCOL_INVALID_JSONRPC_VERSION: "protocol.invalid_jsonrpc_version",
+	PROTOCOL_METHOD_NOT_FOUND: "protocol.method_not_found",
+	PROTOCOL_INVALID_PARAMS: "protocol.invalid_params",
+	PROTOCOL_BATCH_TOO_LARGE: "protocol.batch_too_large",
+	PROTOCOL_CATALOG_MISMATCH: "protocol.catalog_mismatch",
+	AUTH_TOKEN_REQUIRED: "auth.token_required",
+	AUTH_TOKEN_INVALID: "auth.token_invalid",
+	DISPATCH_HANDLER_THREW: "dispatch.handler_threw",
+	EDITOR_NOT_AVAILABLE: "editor.not_available",
+	EDITOR_NO_OPEN_PROJECT: "editor.no_open_project",
+	HEADLESS_BINARY_MISSING: "headless.binary_missing",
+	HEADLESS_NO_PROJECT: "headless.no_project",
+	HEADLESS_SPAWN_FAILED: "headless.spawn_failed",
+	HEADLESS_DRIVER_HANDSHAKE_FAILED: "headless.driver_handshake_failed",
+	HEADLESS_SESSION_BUSY: "headless.session_busy",
+	HEADLESS_CRASHED: "headless.crashed",
+	HEADLESS_TIMEOUT: "headless.timeout",
+	HEADLESS_DISALLOWED: "headless.disallowed",
+}
+
+
 static func category_for(tv_code: int) -> String:
-	match tv_code:
-		TRANSPORT_BIND_FAILED,
-		TRANSPORT_PEER_BUSY,
-		TRANSPORT_HANDSHAKE_FAILED,
-		TRANSPORT_HEARTBEAT_TIMEOUT,
-		TRANSPORT_ABRUPT_CLOSE,
-		TRANSPORT_QUEUE_OVERFLOW,
-		TRANSPORT_UNSUPPORTED_FRAME:
-			return "transport"
-		PROTOCOL_INVALID_JSONRPC_VERSION,
-		PROTOCOL_METHOD_NOT_FOUND,
-		PROTOCOL_INVALID_PARAMS,
-		PROTOCOL_BATCH_TOO_LARGE,
-		PROTOCOL_CATALOG_MISMATCH:
-			return "protocol"
-		AUTH_TOKEN_REQUIRED,
-		AUTH_TOKEN_INVALID:
-			return "auth"
-		DISPATCH_HANDLER_THREW:
-			return "dispatch"
-		EDITOR_NOT_AVAILABLE,
-		EDITOR_NO_OPEN_PROJECT:
-			return "editor"
-		HEADLESS_BINARY_MISSING,
-		HEADLESS_NO_PROJECT,
-		HEADLESS_SPAWN_FAILED,
-		HEADLESS_DRIVER_HANDSHAKE_FAILED,
-		HEADLESS_SESSION_BUSY,
-		HEADLESS_CRASHED,
-		HEADLESS_TIMEOUT,
-		HEADLESS_DISALLOWED:
-			return "headless"
-		_:
-			return "internal"
+	var sym: String = _CODE_TO_SYMBOL.get(tv_code, "internal.unexpected")
+	var dot := sym.find(".")
+	return sym.substr(0, dot) if dot > 0 else "internal"
 
 
 static func symbol_for(tv_code: int) -> String:
-	match tv_code:
-		TRANSPORT_BIND_FAILED:
-			return "transport.bind_failed"
-		TRANSPORT_PEER_BUSY:
-			return "transport.peer_busy"
-		TRANSPORT_HANDSHAKE_FAILED:
-			return "transport.handshake_failed"
-		TRANSPORT_HEARTBEAT_TIMEOUT:
-			return "transport.heartbeat_timeout"
-		TRANSPORT_ABRUPT_CLOSE:
-			return "transport.abrupt_close"
-		TRANSPORT_QUEUE_OVERFLOW:
-			return "transport.queue_overflow"
-		TRANSPORT_UNSUPPORTED_FRAME:
-			return "transport.unsupported_frame"
-		PROTOCOL_INVALID_JSONRPC_VERSION:
-			return "protocol.invalid_jsonrpc_version"
-		PROTOCOL_METHOD_NOT_FOUND:
-			return "protocol.method_not_found"
-		PROTOCOL_INVALID_PARAMS:
-			return "protocol.invalid_params"
-		PROTOCOL_BATCH_TOO_LARGE:
-			return "protocol.batch_too_large"
-		PROTOCOL_CATALOG_MISMATCH:
-			return "protocol.catalog_mismatch"
-		AUTH_TOKEN_REQUIRED:
-			return "auth.token_required"
-		AUTH_TOKEN_INVALID:
-			return "auth.token_invalid"
-		DISPATCH_HANDLER_THREW:
-			return "dispatch.handler_threw"
-		EDITOR_NOT_AVAILABLE:
-			return "editor.not_available"
-		EDITOR_NO_OPEN_PROJECT:
-			return "editor.no_open_project"
-		HEADLESS_BINARY_MISSING:
-			return "headless.binary_missing"
-		HEADLESS_NO_PROJECT:
-			return "headless.no_project"
-		HEADLESS_SPAWN_FAILED:
-			return "headless.spawn_failed"
-		HEADLESS_DRIVER_HANDSHAKE_FAILED:
-			return "headless.driver_handshake_failed"
-		HEADLESS_SESSION_BUSY:
-			return "headless.session_busy"
-		HEADLESS_CRASHED:
-			return "headless.crashed"
-		HEADLESS_TIMEOUT:
-			return "headless.timeout"
-		HEADLESS_DISALLOWED:
-			return "headless.disallowed"
-		_:
-			return "internal.unexpected"
+	return _CODE_TO_SYMBOL.get(tv_code, "internal.unexpected")
 
 
 static func tv_rpc_error(tv_code: int, message: String, hint: String, context: Variant = null) -> Dictionary:

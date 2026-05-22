@@ -175,7 +175,14 @@ func _rotate_if_needed(abs_path: String) -> void:
 	var max_arch := int(ProjectSettings.get_setting("terravolt_mcp/logging/max_archives", 5))
 	if not FileAccess.file_exists(abs_path):
 		return
-	var sz := FileAccess.get_file_size(abs_path)
+	# Godot 4.6: there is no static `FileAccess.get_file_size` (see
+	# references/godot-docs/classes/class_fileaccess.rst). Open R-mode and
+	# read `get_length()` instead — the file handle closes on scope exit.
+	var sz_handle := FileAccess.open(abs_path, FileAccess.READ)
+	if sz_handle == null:
+		return
+	var sz := sz_handle.get_length()
+	sz_handle.close()
 	if sz <= max_kb * 1024:
 		return
 

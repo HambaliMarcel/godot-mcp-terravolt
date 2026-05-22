@@ -99,7 +99,7 @@ static func _validate_value(value: Variant, schema: Dictionary, path: PackedStri
 				return _err("additionalProperties", p_unknown)
 
 	if typeof(value) == TYPE_ARRAY and schema.has("items"):
-		var it := schema["items"]
+		var it: Variant = schema["items"]
 		var arr := value as Array
 		var i := 0
 		for elt in arr:
