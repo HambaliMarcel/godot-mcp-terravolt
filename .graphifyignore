@@ -1,12 +1,10 @@
-# Third-party reference clones (same boundary as .gitnexusignore)
-references/
+# Godot Sphinx documentation source (offline manual, not MCP product code)
+references/godot-docs/
 
 # Dependencies & tooling noise
 node_modules/
 .gitnexus/
 
-# Generated outputs (keep KG focused on hand-written sources)
+# Generated outputs & caches
 artifacts/
-
-# Graphify AST cache (optional speed-up; often gitignored in teams)
 graphify-out/cache/

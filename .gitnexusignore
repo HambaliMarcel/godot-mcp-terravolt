@@ -1,5 +1,13 @@
-# Vendor / reference clones — patterns only; keep GitNexus focused on first-party code
-references/
+# --- GitNexus: follow .gitignore for normal paths except we set GITNEXUS_NO_GITIGNORE=1
+# so clones under references/ ARE analyzed. Exclude noise here instead. ------------
 
-# Regenerated analyzer dumps
+# Sphinx manual clone (massive prose tree — use online docs / local grep instead)
+references/godot-docs/
+
+node_modules/
+
+# Generated / vendor dumps
 artifacts/
+graphify-out/
+dist/
+coverage/

@@ -11,7 +11,7 @@ module.exports = {
         "^node_modules",
         "^dist",
         "^coverage",
-        "^references",
+        "^references/godot-docs",
         "^\\.gitnexus",
         "^artifacts/js-graphs",
         "^graphify-out",
