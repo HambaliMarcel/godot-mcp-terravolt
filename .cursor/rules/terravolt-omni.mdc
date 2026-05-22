@@ -10,5 +10,5 @@ alwaysApply: true
 - **JS module graphs (Omni)**: refresh with `npm run intel:graphs` → `artifacts/js-graphs/` when Node/TS layout under `packages/` or `tools/` changes.
 - **Knowledge graph ([safishamsi/graphify](https://github.com/safishamsi/graphify))**: `graphify-out/` (`npm run intel:graphify`); Cursor `graphify.mdc` guides query-first use.
 - **GitNexus**: use MCP tools; if stale, run `npm run intel:gitnexus` from repo root.
-- **Vendor boundary**: `references/` is upstream study material only—not product source.
+- **Vendor boundary**: **`references/godot-mcp-*`** are upstream study material (indexed); **`references/godot-docs/`** is the official manual tree—excluded from Graphify/GitNexus here; skim **`docs/references/reference-repos-map.md`** before deep-diving clones.
 - Load context using `docs/context/context-map.md` ordering.

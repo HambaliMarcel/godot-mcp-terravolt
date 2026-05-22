@@ -21,8 +21,6 @@
 
 | Area | Responsibility |
 |------|------------------|
-| `references/` | Read-only clones of other Godot MCP projects — patterns only |
-| `packages/` | MCP server + Godot addon product code once implemented |
-| `artifacts/` | Regenerated analyzer output (committed for teammates when useful) |
+| `references/godot-mcp-*` | Indexed by **GitNexus** + **Graphify** for study (see **`docs/references/reference-repos-map.md`**); **`references/godot-docs/`** is local manual only — excluded from indexes. |
 
 After structural edits, refresh tooling: `.cursor/workflows/intel-refresh.md`.

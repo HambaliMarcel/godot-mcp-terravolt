@@ -4,7 +4,7 @@ Routing details live in **`docs/context/context-map.md`**.
 
 Rough order:
 
-1. Structural — `docs/architecture/overview.md`, `artifacts/js-graphs/*.json`, GitNexus outputs.
+1. Structural — `docs/architecture/overview.md`, `docs/references/reference-repos-map.md`, `artifacts/js-graphs/*.json`, GitNexus outputs.
 2. Intent — root `README.md`, `packages/*/README.md`, future `docs/specs/`.
 3. References — `references/` (third-party patterns only).
 

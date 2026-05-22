@@ -36,7 +36,7 @@ Do not commit `.env`, API keys, or tokens. Add patterns to `.gitignore` instead.
 | `tools/intel/` | Scripts invoked via `npm run` |
 | `artifacts/` | Regenerated analyzer output (commit only when intentional) |
 
-`references/` is for **upstream study clones only**, not TerraVolt product code.
+`references/godot-mcp-*` are upstream MCP study clones (**indexed** by GitNexus/Graphify in this workspace). **`references/godot-docs/`** is the official Sphinx manual — **human reading / search only** (excluded from those indexes because of volume). TerraVolt product code lives under **`packages/`** plus first-party tooling, not inside `references/`.
 
 ## Pull requests
 
