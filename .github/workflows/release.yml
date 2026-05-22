@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+
+      - name: Lint + typecheck + build
+        run: |
+          npm run lint
+          npm run typecheck
+          npm run build:server
+          npm run test:server
+
+      - name: Catalog parity + release gate
+        run: |
+          npm run catalog:sync
+          npm run release:check
+
+      - name: Draft release notes
+        id: notes
+        run: |
+          mkdir -p artifacts
+          npm run release:notes > artifacts/release-notes.md || true
+          cp packages/shared/methods/registry.json artifacts/catalog-snapshot.json
+
+      - name: Package addon zip
+        run: |
+          cd packages
+          zip -r ../artifacts/terravolt-mcp-addon-${GITHUB_REF_NAME}.zip godot-mcp-addon
+          cd ..
+
+      - name: Upload artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ github.ref_name }}
+          path: |
+            artifacts/release-notes.md
+            artifacts/catalog-snapshot.json
+            artifacts/terravolt-mcp-addon-*.zip
