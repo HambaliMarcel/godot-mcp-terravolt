@@ -135,6 +135,34 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
     inputSchemaJson: { type: "object", additionalProperties: false },
     outputSchemaJson: { type: "object" },
   },
+  {
+    kind: "local",
+    name: "mode_status",
+    title: "mode_status",
+    description:
+      "Hybrid-mode snapshot: editor (Godot window) availability, headless coordinator state, and recommended_mode for the next call. Daemon-bridged tools accept an optional `_mode: editor | headless | auto` to force a path.",
+    category: "tools",
+    safe: true,
+    mutates: false,
+    requiresEditor: false,
+    requiresRuntime: false,
+    inputSchemaJson: { type: "object", additionalProperties: false },
+    outputSchemaJson: { type: "object" },
+  },
+  {
+    kind: "local",
+    name: "transport_reset",
+    title: "transport_reset",
+    description:
+      "Reset the editor-mode transport: clear the peer-busy circuit breaker and force one immediate reconnect attempt. Use after evicting a stale Godot MCP peer.",
+    category: "tools",
+    safe: true,
+    mutates: true,
+    requiresEditor: false,
+    requiresRuntime: false,
+    inputSchemaJson: { type: "object", additionalProperties: false },
+    outputSchemaJson: { type: "object" },
+  },
 ];
 
 export type RouterOnlyToolName =
@@ -143,7 +171,9 @@ export type RouterOnlyToolName =
   | "tools_metrics"
   | "tools_health"
   | "tools_bottlenecks"
-  | "context_fetch_raw";
+  | "context_fetch_raw"
+  | "mode_status"
+  | "transport_reset";
 
 export function routerOnlyTool(name: RouterOnlyToolName): RegisteredRouterTool {
   const d = ROUTER_ONLY_TOOLS.find((t) => t.name === name);

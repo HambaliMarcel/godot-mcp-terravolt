@@ -7,6 +7,24 @@ import type { Logger } from "../logger.js";
 
 export type GodotNotificationSubscriber = (method: string, params: unknown) => void;
 
+/** Snapshot of the WebSocket transport for diagnostics (tools_health). */
+export interface GodotWsTransportDiagnostics {
+  readonly readyState: number | null;
+  readonly helloReceived: boolean;
+  readonly lastCloseCode: number | null;
+  readonly lastCloseReason: string | null;
+  readonly peerBusyCount: number;
+  readonly backoffAttempt: number;
+  readonly connectInFlight: boolean;
+  readonly url: string;
+}
+
+/** Daemon hello frame signalling the peer has been promoted to `ready`. */
+const HELLO_NOTE = "terravolt_mcp_server_hello_opaque";
+
+/** WS close codes the daemon uses to signal we hit the single-peer limit. */
+const CLOSE_POLICY_VIOLATION = 1008;
+
 export class GodotWsClient {
   private ws: WebSocket | null = null;
   private reconnectTimer: ReturnType<typeof setTimeout> | undefined;
@@ -19,6 +37,16 @@ export class GodotWsClient {
   private readonly subscribers = new Set<GodotNotificationSubscriber>();
   private started = false;
   private connectInFlight = false;
+  private helloReceived = false;
+  private lastCloseCode: number | null = null;
+  private lastCloseReason: string | null = null;
+  private peerBusyCount = 0;
+  // When sustained peer_busy is observed the router enters "circuit-broken"
+  // mode: reconnects are paused at the max backoff and tools surface a clearer
+  // `transport.persistent_peer_busy` error so the user sees the storm root
+  // cause (zombie MCP peer holding the slot) instead of an infinite retry.
+  private circuitBroken = false;
+  private static readonly PEER_BUSY_CIRCUIT_THRESHOLD = 10;
 
   constructor(
     private readonly cfg: Config,
@@ -58,6 +86,47 @@ export class GodotWsClient {
 
   isConnected(): boolean {
     return this.ws !== null && this.ws.readyState === WebSocket.OPEN;
+  }
+
+  /** True once the WebSocket is OPEN _and_ the daemon hello frame arrived. */
+  isReady(): boolean {
+    return this.isConnected() && this.helloReceived;
+  }
+
+  /** Diagnostic snapshot for tools_health / disconnectedHint. */
+  getTransportDiagnostics(): GodotWsTransportDiagnostics & {
+    readonly circuitBroken: boolean;
+  } {
+    return {
+      readyState: this.ws?.readyState ?? null,
+      helloReceived: this.helloReceived,
+      lastCloseCode: this.lastCloseCode,
+      lastCloseReason: this.lastCloseReason,
+      peerBusyCount: this.peerBusyCount,
+      backoffAttempt: this.backoffAttempt,
+      connectInFlight: this.connectInFlight,
+      url: this.lastUrl(),
+      circuitBroken: this.circuitBroken,
+    };
+  }
+
+  /**
+   * Reset the peer-busy circuit breaker so the router resumes reconnect
+   * attempts immediately. Intended for use after the operator clears the stale
+   * peer (e.g. via `server.force_disconnect`, the dock Restart button, or by
+   * killing the zombie MCP process).
+   */
+  resetPeerBusyCircuit(): void {
+    this.circuitBroken = false;
+    this.peerBusyCount = 0;
+    this.backoffAttempt = 0;
+    if (this.started && !this.isConnected() && !this.connectInFlight) {
+      this.scheduleReconnect(0);
+    }
+  }
+
+  private lastUrl(): string {
+    return `ws://${this.cfg.godotHost}:${this.cfg.godotPort}`;
   }
 
   /** Best-effort JSON-RPC notification toward the daemon (no response). */
@@ -124,12 +193,23 @@ export class GodotWsClient {
     return e;
   }
 
+  // Waits until the socket is OPEN and (best-effort) the daemon hello frame has
+  // arrived. The hello frame is the daemon's "promoted to ready" signal — without
+  // it we'd race the first RPC and lose it to a peer_busy disconnect. The hello
+  // grace period is bounded so we still proceed on OPEN if the daemon is too old
+  // to emit one.
   private async waitForSocket(maxMs: number): Promise<void> {
-    if (this.isConnected()) return;
+    if (this.isReady()) return;
     const deadline = Date.now() + maxMs;
+    const helloGraceUntil = Date.now() + Math.min(750, Math.max(150, Math.floor(maxMs / 4)));
     await new Promise<void>((resolve, reject) => {
       const step = (): void => {
-        if (this.isConnected()) {
+        if (this.isReady()) {
+          resolve();
+          return;
+        }
+        if (this.isConnected() && Date.now() >= helloGraceUntil) {
+          // Daemon hello did not arrive in time — proceed anyway for back-compat.
           resolve();
           return;
         }
@@ -156,13 +236,18 @@ export class GodotWsClient {
 
   private tryOpen(): void {
     if (!this.started || this.connectInFlight) return;
-    if (
-      this.ws &&
-      (this.ws.readyState === WebSocket.CONNECTING || this.ws.readyState === WebSocket.OPEN)
-    ) {
-      return;
+    if (this.ws) {
+      // Wait for any previous socket to fully close before opening a new one;
+      // overlapping handshakes are what cause the peer_busy reconnect storm.
+      const rs = this.ws.readyState;
+      if (rs === WebSocket.CONNECTING || rs === WebSocket.OPEN || rs === WebSocket.CLOSING) {
+        const wait = rs === WebSocket.CLOSING ? 100 : 250;
+        this.scheduleReconnect(wait);
+        return;
+      }
     }
     this.connectInFlight = true;
+    this.helloReceived = false;
     const url = `ws://${this.cfg.godotHost}:${this.cfg.godotPort}`;
     const ws = new WebSocket(url, {
       handshakeTimeout: this.cfg.connectTimeoutMs,
@@ -171,7 +256,6 @@ export class GodotWsClient {
     ws.on("open", () => {
       this.connectInFlight = false;
       this.stableConnectedAt = Date.now();
-      this.backoffAttempt = 0;
       this.lastPong = Date.now();
       this.log("info", "transport", "connected", { url });
       this.startPing();
@@ -185,20 +269,70 @@ export class GodotWsClient {
     ws.on("close", (code, reason) => {
       this.connectInFlight = false;
       this.stopPing();
-      this.log("warn", "transport", "disconnected", {
+      const wasReady = this.helloReceived;
+      this.helloReceived = false;
+      const reasonStr = reason.toString();
+      this.lastCloseCode = typeof code === "number" ? code : null;
+      this.lastCloseReason = reasonStr;
+
+      const peerBusy =
+        code === CLOSE_POLICY_VIOLATION || /server\s+busy|peer_busy/i.test(reasonStr);
+      if (peerBusy) this.peerBusyCount += 1;
+
+      // Trip the circuit if we've seen sustained peer_busy without ever getting
+      // ready. That's the unambiguous signature of a zombie peer holding the
+      // single-peer slot.
+      if (
+        peerBusy &&
+        !wasReady &&
+        this.peerBusyCount >= GodotWsClient.PEER_BUSY_CIRCUIT_THRESHOLD &&
+        !this.circuitBroken
+      ) {
+        this.circuitBroken = true;
+        this.log("error", "transport", "peer_busy_circuit_open", {
+          peer_busy_count: this.peerBusyCount,
+          hint:
+            "Another MCP client holds the Godot peer slot. Call " +
+            "server.force_disconnect from that client, or restart the Godot " +
+            "addon (Terravolt MCP dock -> Restart), or kill the zombie MCP " +
+            "process.",
+        });
+      }
+
+      this.log("warn", "transport", peerBusy ? "peer_busy" : "disconnected", {
         code,
-        reason: reason.toString(),
+        reason: reasonStr,
+        was_ready: wasReady,
+        peer_busy_count: this.peerBusyCount,
+        circuit_broken: this.circuitBroken,
       });
+
       const lived = Date.now() - this.stableConnectedAt;
-      if (lived >= 30_000) this.backoffAttempt = 0;
+      // Only reset backoff after a clean, healthy session that actually reached
+      // "ready" (hello received). peer_busy NEVER resets it.
+      if (!peerBusy && wasReady && lived >= 30_000) {
+        this.backoffAttempt = 0;
+      }
       this.ws = null;
-      const delay = Math.min(
-        this.cfg.reconnectMaxMs,
-        this.cfg.reconnectBaseMs * 2 ** this.backoffAttempt,
-      );
+
+      // Honour the policy violation by backing off longer so we don't hammer the
+      // single peer slot. Otherwise use normal exponential backoff. When the
+      // circuit is open we cap at reconnectMaxMs to avoid pointless storm.
+      const base = peerBusy
+        ? Math.max(2_000, this.cfg.reconnectBaseMs * 4)
+        : this.cfg.reconnectBaseMs;
+      const delay = this.circuitBroken
+        ? this.cfg.reconnectMaxMs
+        : Math.min(this.cfg.reconnectMaxMs, base * 2 ** this.backoffAttempt);
       this.backoffAttempt += 1;
-      const reset = new Error("transport_socket_closed");
-      (reset as NodeJS.ErrnoException).code = "transport_socket_closed";
+
+      const resetCode = this.circuitBroken
+        ? "transport.persistent_peer_busy"
+        : peerBusy
+          ? "transport.peer_busy"
+          : "transport_socket_closed";
+      const reset = new Error(resetCode);
+      (reset as NodeJS.ErrnoException).code = resetCode;
       this.pending.rejectAll(reset);
       this.scheduleReconnect(delay);
     });
@@ -242,6 +376,24 @@ export class GodotWsClient {
 
   private dispatchOne(msg: unknown): void {
     if (!isRecord(msg)) return;
+    // Daemon hello frame: opaque "session ready" marker emitted right after the
+    // server promotes the peer to ready. Treat it as the readiness signal so
+    // request() can stop racing peer_busy disconnects.
+    if (
+      !("id" in msg) &&
+      !("method" in msg) &&
+      typeof msg["note"] === "string" &&
+      msg["note"] === HELLO_NOTE
+    ) {
+      if (!this.helloReceived) {
+        this.helloReceived = true;
+        this.peerBusyCount = 0;
+        this.backoffAttempt = 0;
+        this.circuitBroken = false;
+        this.log("info", "transport", "session_ready", { url: this.lastUrl() });
+      }
+      return;
+    }
     if ("id" in msg && msg["id"] !== null && msg["id"] !== undefined) {
       const rawId = msg["id"];
       const idNum = typeof rawId === "number" ? rawId : Number.parseInt(String(rawId), 10);

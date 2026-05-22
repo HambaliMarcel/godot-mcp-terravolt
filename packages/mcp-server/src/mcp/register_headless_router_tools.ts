@@ -55,10 +55,16 @@ export function registerHeadlessRouterTools(args: {
         const latency = Date.now() - t0;
         metricsRecordToolEnd("headless_start_project", true, latency);
         return okStructured(
-          successEnvelope("headless_start_project", "headless", latency, {
-            ready: true,
-            ...headless.status(),
-          }),
+          successEnvelope(
+            "headless_start_project",
+            "headless",
+            latency,
+            {
+              ready: true,
+              ...headless.status(),
+            },
+            "headless",
+          ),
         );
       } catch (e) {
         metricsRecordToolEnd("headless_start_project", false, Date.now() - t0);
@@ -101,7 +107,9 @@ export function registerHeadlessRouterTools(args: {
       await headless.stop(Boolean(p.force));
       const latency = Date.now() - t0;
       metricsRecordToolEnd("headless_stop", true, latency);
-      return okStructured(successEnvelope("headless_stop", "headless", latency, { ok: true }));
+      return okStructured(
+        successEnvelope("headless_stop", "headless", latency, { ok: true }, "headless"),
+      );
     },
   );
 
@@ -128,7 +136,7 @@ export function registerHeadlessRouterTools(args: {
       const latency = Date.now() - t0;
       metricsRecordToolEnd("headless_status", true, latency);
       return okStructured(
-        successEnvelope("headless_status", "headless", latency, headless.status()),
+        successEnvelope("headless_status", "headless", latency, headless.status(), "headless"),
       );
     },
   );
@@ -180,7 +188,13 @@ export function registerHeadlessRouterTools(args: {
         metricsRecordToolEnd("headless_validate_script", true, latency);
 
         return okStructured(
-          successEnvelope("headless_validate_script", "script.validate_syntax", latency, res),
+          successEnvelope(
+            "headless_validate_script",
+            "script.validate_syntax",
+            latency,
+            res,
+            "headless",
+          ),
         );
       } catch (e) {
         metricsRecordToolEnd("headless_validate_script", false, Date.now() - t0);

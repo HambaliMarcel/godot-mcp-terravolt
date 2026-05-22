@@ -89,6 +89,10 @@ function registerDaemonRow(
         });
       }
 
+      // Optional per-call hybrid override: `_mode: "editor" | "headless" | "auto"`.
+      // Strip before validation so it never leaks into the daemon-side schema.
+      const modeOverride = extractModeOverride(paramsObj);
+
       const v = validateDaemonInput(meta.name, meta.inputSchemaJson, paramsObj);
       if (!v.ok) {
         const latency = Date.now() - t0;
@@ -99,7 +103,11 @@ function registerDaemonRow(
         });
       }
 
-      const finishOk = (raw: unknown, route: string): ReturnType<typeof okStructured> => {
+      const finishOk = (
+        raw: unknown,
+        route: string,
+        routeMode: "editor" | "headless",
+      ): ReturnType<typeof okStructured> => {
         const latencyMs = Date.now() - t0;
         metricsRecordToolEnd(meta.name, true, latencyMs);
         if (meta.name === "ping") {
@@ -107,22 +115,53 @@ function registerDaemonRow(
             typeof raw === "object" && raw !== null ? (raw as Record<string, unknown>) : {};
           const tsRaw = rr["ts"];
           const daemonTs = typeof tsRaw === "number" ? tsRaw : Number.NaN;
-          const body = successEnvelope(meta.name, route, latencyMs, {
-            ok: true,
-            daemonTs: Number.isFinite(daemonTs) ? daemonTs : undefined,
-            roundTripMs: latencyMs,
-            daemonResult: raw,
-          });
+          const body = successEnvelope(
+            meta.name,
+            route,
+            latencyMs,
+            {
+              ok: true,
+              daemonTs: Number.isFinite(daemonTs) ? daemonTs : undefined,
+              roundTripMs: latencyMs,
+              daemonResult: raw,
+            },
+            routeMode,
+          );
           return okStructured(body);
         }
-        return okStructured(successEnvelope(meta.name, route, latencyMs, raw));
+        return okStructured(successEnvelope(meta.name, route, latencyMs, raw, routeMode));
       };
+
+      // Force headless when caller asks for it. Skips the WS attempt entirely so
+      // we never compete with the editor's single peer slot.
+      if (modeOverride === "headless") {
+        if (!meta.headlessFallback || headless === undefined) {
+          metricsRecordToolEnd(meta.name, false, Date.now() - t0);
+          return errStructured("mode.headless_not_available", {
+            app_code: "mode.headless_not_available",
+            hint: meta.headlessFallback
+              ? "Headless coordinator missing from runtime (configure TERRAVOLT_GODOT_BINARY and TERRAVOLT_PROJECT_PATH)."
+              : `Tool '${meta.name}' requires the live editor and cannot run headless.`,
+          });
+        }
+        try {
+          await headless.ensureDefaultSession();
+          const raw = await headless.rpc(daemonMethod, paramsObj);
+          return finishOk(raw, `${daemonMethod}@headless`, "headless");
+        } catch (err) {
+          metricsRecordToolEnd(meta.name, false, Date.now() - t0);
+          return errStructured("mode.headless_failed", {
+            app_code: "mode.headless_failed",
+            hint: err instanceof Error ? err.message : String(err),
+          });
+        }
+      }
 
       try {
         const raw = await godot.request(daemonMethod, paramsObj, {
           signal: extra.signal,
         });
-        return finishOk(raw, daemonMethod);
+        return finishOk(raw, `${daemonMethod}@editor`, "editor");
       } catch (error: unknown) {
         const code =
           typeof (error as NodeJS.ErrnoException).code === "string"
@@ -130,13 +169,35 @@ function registerDaemonRow(
             : "";
 
         const transportDown =
-          code === TRANSPORT_NOT_CONNECTED || code === "transport_socket_closed";
+          code === TRANSPORT_NOT_CONNECTED ||
+          code === "transport_socket_closed" ||
+          code === "transport.peer_busy";
+
+        // editor-forced mode never falls back to headless.
+        if (modeOverride === "editor") {
+          metricsRecordToolEnd(meta.name, false, Date.now() - t0);
+          if (transportDown) {
+            return errStructured(
+              TRANSPORT_NOT_CONNECTED,
+              transportDisconnectedPayload(includeAutoHealHints),
+            );
+          }
+          if (error instanceof DaemonJsonRpcError) {
+            return errStructured(
+              typeof error.daemon["message"] === "string"
+                ? error.daemon["message"]
+                : String(error.message),
+              error.daemon,
+            );
+          }
+          return errStructured(error instanceof Error ? error.message : String(error));
+        }
 
         if (transportDown && meta.headlessFallback && headless !== undefined) {
           try {
             await headless.ensureDefaultSession();
             const raw = await headless.rpc(daemonMethod, paramsObj);
-            return finishOk(raw, `${daemonMethod}@headless`);
+            return finishOk(raw, `${daemonMethod}@headless`, "headless");
           } catch {
             metricsRecordToolEnd(meta.name, false, Date.now() - t0);
             return errStructured(
@@ -172,4 +233,25 @@ function registerDaemonRow(
       }
     },
   );
+}
+
+/**
+ * Pops an optional `_mode` field from the params dict and returns it. The mode
+ * lets the caller force one half of the hybrid path:
+ *
+ *   - `editor`   — never fall back to headless
+ *   - `headless` — skip the WebSocket attempt entirely
+ *   - `auto`     — default: editor first, headless on transport error
+ *
+ * `_mode` is stripped before the AJV daemon-input check so it never reaches the
+ * Godot side.
+ */
+function extractModeOverride(
+  params: Record<string, unknown>,
+): "editor" | "headless" | "auto" | undefined {
+  const raw = params["_mode"];
+  if (raw === undefined) return undefined;
+  delete params["_mode"];
+  if (raw === "editor" || raw === "headless" || raw === "auto") return raw;
+  return undefined;
 }

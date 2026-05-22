@@ -17,13 +17,34 @@ export function errStructured(message: string, data?: Record<string, unknown>) {
   };
 }
 
+/**
+ * Routing mode that served the call. Useful when running the router in hybrid
+ * mode where editor and headless can both serve a request.
+ */
+export type RouteMode = "editor" | "headless" | "router";
+
 export function successEnvelope(
   tool: string,
   method: string,
   latencyMs: number,
   result: unknown,
+  routeMode?: RouteMode,
 ): Record<string, unknown> {
-  return { ok: true, tool, method, latencyMs, result };
+  const mode: RouteMode = routeMode ?? inferRouteMode(method);
+  return { ok: true, tool, method, route_mode: mode, latencyMs, result };
+}
+
+function inferRouteMode(method: string): RouteMode {
+  if (method.endsWith("@headless")) return "headless";
+  if (method.endsWith("@editor")) return "editor";
+  if (
+    method === "local" ||
+    method.startsWith("local.") ||
+    method.startsWith("tools.") ||
+    method.startsWith("context.")
+  )
+    return "router";
+  return "editor";
 }
 
 export function disconnectedHint(): Record<string, unknown> {
