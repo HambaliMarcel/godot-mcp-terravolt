@@ -62,7 +62,11 @@ const tilemapMethods = [
     },
     {
       mutates: true,
-      errorCodes: ["tilemap.cell_batch_too_large", "tilemap.atlas_unknown", "tilemap.layer_unknown"],
+      errorCodes: [
+        "tilemap.cell_batch_too_large",
+        "tilemap.atlas_unknown",
+        "tilemap.layer_unknown",
+      ],
     },
   ),
   tool(

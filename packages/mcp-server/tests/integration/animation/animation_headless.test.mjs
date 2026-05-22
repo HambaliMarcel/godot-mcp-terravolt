@@ -68,7 +68,8 @@ test("animation.* headless round-trips", { skip: skip && skipReason }, async () 
     assert.equal(played.done, true);
 
     await assert.rejects(
-      () => coordinator.rpc("animation.preview_export", { player_path: "AnimPlayer", name: "idle" }),
+      () =>
+        coordinator.rpc("animation.preview_export", { player_path: "AnimPlayer", name: "idle" }),
       (err) => {
         assert.match(String(err), /editor\.not_available|33400/i);
         return true;

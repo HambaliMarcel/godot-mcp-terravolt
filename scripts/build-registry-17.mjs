@@ -275,4 +275,6 @@ const out = {
   methods: [...kept, ...runtimeMethods],
 };
 writeFileSync(regPath, `${JSON.stringify(out, null, 2)}\n`, "utf8");
-console.log(`Wrote ${out.methods.length} methods (catalog ${out.catalog_version}, +${runtimeMethods.length} runtime)`);
+console.log(
+  `Wrote ${out.methods.length} methods (catalog ${out.catalog_version}, +${runtimeMethods.length} runtime)`,
+);
