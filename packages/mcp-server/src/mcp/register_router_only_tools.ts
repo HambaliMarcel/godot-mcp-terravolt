@@ -44,14 +44,14 @@ export function registerRouterOnlyTools(args: {
 
   registerToolCompat(
     mcp,
-    "tools.list",
+    "tools_list",
     {
-      title: routerOnlyTool("tools.list").title,
-      description: routerOnlyTool("tools.list").description,
+      title: routerOnlyTool("tools_list").title,
+      description: routerOnlyTool("tools_list").description,
       inputSchema: ToolsListSchema,
     },
     async (argsInput: unknown, _extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("tools.list");
+      metricsRecordToolStart("tools_list");
       const t0 = Date.now();
       const p = ToolsListSchema.parse(argsInput);
       const items = routeCatalog.filter({
@@ -59,10 +59,10 @@ export function registerRouterOnlyTools(args: {
         safe: p.safe,
       });
       const latency = Date.now() - t0;
-      metricsRecordToolEnd("tools.list", true, latency);
+      metricsRecordToolEnd("tools_list", true, latency);
       return okStructured(
         successEnvelope(
-          "tools.list",
+          "tools_list",
           "local",
           latency,
           items.map((row) => ({
@@ -77,85 +77,85 @@ export function registerRouterOnlyTools(args: {
 
   registerToolCompat(
     mcp,
-    "tools.describe",
+    "tools_describe",
     {
-      title: routerOnlyTool("tools.describe").title,
-      description: routerOnlyTool("tools.describe").description,
+      title: routerOnlyTool("tools_describe").title,
+      description: routerOnlyTool("tools_describe").description,
       inputSchema: ToolsDescribeSchema,
     },
     async (argsInput: unknown, _extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("tools.describe");
+      metricsRecordToolStart("tools_describe");
       const t0 = Date.now();
       const { name } = ToolsDescribeSchema.parse(argsInput);
       const td = routeCatalog.describe(name);
       const latency = Date.now() - t0;
       if (!td) {
-        metricsRecordToolEnd("tools.describe", false, latency);
+        metricsRecordToolEnd("tools_describe", false, latency);
         return errStructured("tool.not_found", { name });
       }
-      metricsRecordToolEnd("tools.describe", true, latency);
+      metricsRecordToolEnd("tools_describe", true, latency);
       return okStructured(
-        successEnvelope("tools.describe", "local", latency, describeToolMeta(td)),
+        successEnvelope("tools_describe", "local", latency, describeToolMeta(td)),
       );
     },
   );
 
   registerToolCompat(
     mcp,
-    "tools.metrics",
+    "tools_metrics",
     {
-      title: routerOnlyTool("tools.metrics").title,
-      description: routerOnlyTool("tools.metrics").description,
+      title: routerOnlyTool("tools_metrics").title,
+      description: routerOnlyTool("tools_metrics").description,
     },
     async (_raw: unknown, _extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("tools.metrics");
+      metricsRecordToolStart("tools_metrics");
       const t0 = Date.now();
       const latency = Date.now() - t0;
-      metricsRecordToolEnd("tools.metrics", true, latency);
-      return okStructured(successEnvelope("tools.metrics", "local", latency, metricsSnapshot()));
+      metricsRecordToolEnd("tools_metrics", true, latency);
+      return okStructured(successEnvelope("tools_metrics", "local", latency, metricsSnapshot()));
     },
   );
 
   registerToolCompat(
     mcp,
-    "tools.bottlenecks",
+    "tools_bottlenecks",
     {
-      title: routerOnlyTool("tools.bottlenecks").title,
-      description: routerOnlyTool("tools.bottlenecks").description,
+      title: routerOnlyTool("tools_bottlenecks").title,
+      description: routerOnlyTool("tools_bottlenecks").description,
       inputSchema: ToolsBottlenecksSchema,
     },
     async (raw: unknown, _extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("tools.bottlenecks");
+      metricsRecordToolStart("tools_bottlenecks");
       const t0 = Date.now();
       const p = ToolsBottlenecksSchema.parse(raw);
       const topN = p.topN ?? 10;
       const report = metricsBottleneckReport(topN);
       const latency = Date.now() - t0;
-      metricsRecordToolEnd("tools.bottlenecks", true, latency);
-      return okStructured(successEnvelope("tools.bottlenecks", "local", latency, report));
+      metricsRecordToolEnd("tools_bottlenecks", true, latency);
+      return okStructured(successEnvelope("tools_bottlenecks", "local", latency, report));
     },
   );
 
   registerToolCompat(
     mcp,
-    "context.fetch_raw",
+    "context_fetch_raw",
     {
-      title: routerOnlyTool("context.fetch_raw").title,
-      description: routerOnlyTool("context.fetch_raw").description,
+      title: routerOnlyTool("context_fetch_raw").title,
+      description: routerOnlyTool("context_fetch_raw").description,
       inputSchema: ContextFetchRawSchema,
     },
     async (raw: unknown, extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("context.fetch_raw");
+      metricsRecordToolStart("context_fetch_raw");
       const t0 = Date.now();
       const p = ContextFetchRawSchema.parse(raw);
       try {
         const res = await godot.request(p.method, p.params ?? {}, { signal: extra.signal });
         const latency = Date.now() - t0;
-        metricsRecordToolEnd("context.fetch_raw", true, latency);
-        return okStructured(successEnvelope("context.fetch_raw", p.method, latency, res));
+        metricsRecordToolEnd("context_fetch_raw", true, latency);
+        return okStructured(successEnvelope("context_fetch_raw", p.method, latency, res));
       } catch (err: unknown) {
         const latency = Date.now() - t0;
-        metricsRecordToolEnd("context.fetch_raw", false, latency);
+        metricsRecordToolEnd("context_fetch_raw", false, latency);
         return errStructured(err instanceof Error ? err.message : String(err));
       }
     },
@@ -163,13 +163,13 @@ export function registerRouterOnlyTools(args: {
 
   registerToolCompat(
     mcp,
-    "tools.health",
+    "tools_health",
     {
-      title: routerOnlyTool("tools.health").title,
-      description: routerOnlyTool("tools.health").description,
+      title: routerOnlyTool("tools_health").title,
+      description: routerOnlyTool("tools_health").description,
     },
     async (_raw: unknown, _extra: { signal: AbortSignal }) => {
-      metricsRecordToolStart("tools.health");
+      metricsRecordToolStart("tools_health");
       const t0 = Date.now();
 
       let ajvOk = false;
@@ -222,10 +222,10 @@ export function registerRouterOnlyTools(args: {
 
       const pass = ajvOk && daemonOk && hashMatch;
       const latencyMs = Date.now() - t0;
-      metricsRecordToolEnd("tools.health", Boolean(pass), latencyMs);
+      metricsRecordToolEnd("tools_health", Boolean(pass), latencyMs);
 
       return okStructured(
-        successEnvelope("tools.health", "local.health", latencyMs, {
+        successEnvelope("tools_health", "local.health", latencyMs, {
           checks: {
             ajv_object_ok: ajvOk,
             daemon_server_info_ok: daemonOk,

@@ -60,6 +60,7 @@ tests/_fixtures/audio_zoo/.godot/
 tests/_fixtures/testing_zoo/.godot/
 examples/playable-demo/.godot/
 examples/playable-demo/**/*.uid
+packages/godot-mcp-addon/**/*.uid
 
 # Local debug probes (never commit)
 _probe_err.txt

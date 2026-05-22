@@ -1,4 +1,5 @@
 import type { MethodRegistryEntry } from "../catalog/loadRegistry.js";
+import { resolveMcpToolName, toMcpToolName } from "../mcp/mcp_tool_name.js";
 
 export type RegisteredRouterTool = {
   readonly kind: "daemon" | "local";
@@ -30,7 +31,7 @@ export class RouterToolCatalog {
   }
 
   describe(name: string): RegisteredRouterTool | undefined {
-    return this.byName.get(name);
+    return this.byName.get(resolveMcpToolName(name));
   }
 
   filter(opts: { category?: string; safe?: boolean }): RegisteredRouterTool[] {
@@ -51,7 +52,7 @@ export class RouterToolCatalog {
       if (!o?.name) continue;
       const title = o.title ?? m.method;
       const desc = o.description !== undefined ? o.description : m.description;
-      const name = o.name;
+      const name = toMcpToolName(o.name);
       const input = m.inputSchema as Record<string, unknown>;
       const output = m.outputSchema as Record<string, unknown> | undefined;
       this.add({

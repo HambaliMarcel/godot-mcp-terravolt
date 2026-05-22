@@ -57,36 +57,40 @@ Global install / `npx` use the **`terravolt-godot-mcp`** bin (see `package.json`
 
 ## Registered MCP tools
 
+MCP tool names use **underscores only** (`scene_list`, `tools_health`) for compatibility with
+Cursor, Claude Desktop, and other MCP hosts. Daemon JSON-RPC methods keep dotted names
+(`scene.list`, `server.info`). `context_fetch_raw` still accepts dotted `method` params.
+
 Source of truth: `packages/shared/methods/registry.json` (daemon-bridged) plus
 `src/mcp/local_router_tool_defs.ts` and `src/mcp/register_headless_router_tools.ts` (router-native).
 
 ### Daemon-bridged (via shared catalog)
 
-| MCP tool      | Daemon JSON-RPC | Headless fallback     | Notes                                          |
-| ------------- | --------------- | --------------------- | ---------------------------------------------- |
-| `ping`        | `ping`          | yes (`ping@headless`) | Round-trip `{ daemonTs, roundTripMs }`.        |
-| `server.info` | `server.info`   | yes                   | Includes `catalog_version`, `registry_sha256`. |
-| `log.tail`    | `log.tail`      | no                    | Editor-only; tails `user://mcp_log.txt`.       |
+| MCP tool       | Daemon JSON-RPC | Headless fallback     | Notes                                          |
+| -------------- | --------------- | --------------------- | ---------------------------------------------- |
+| `ping`         | `ping`          | yes (`ping@headless`) | Round-trip `{ daemonTs, roundTripMs }`.        |
+| `server_info`  | `server.info`   | yes                   | Includes `catalog_version`, `registry_sha256`. |
+| `log_tail`     | `log.tail`      | no                    | Editor-only; tails `user://mcp_log.txt`.       |
 
 ### Router-only
 
-| Tool                | Purpose                                                                  |
-| ------------------- | ------------------------------------------------------------------------ |
-| `tools.list`        | Enumerate tools (`category`, `safe` filters).                            |
-| `tools.describe`    | Single-tool metadata + schemas.                                          |
-| `tools.metrics`     | Per-tool counters + latency.                                             |
-| `tools.bottlenecks` | Tools ranked by avg latency (`topN`).                                    |
-| `tools.health`      | AJV smoke + daemon `server.info` + catalog SHA + headless resolvability. |
-| `context.fetch_raw` | Run an arbitrary JSON-RPC method on the daemon (raw passthrough).        |
+| Tool                  | Purpose                                                                  |
+| --------------------- | ------------------------------------------------------------------------ |
+| `tools_list`          | Enumerate tools (`category`, `safe` filters).                            |
+| `tools_describe`      | Single-tool metadata + schemas.                                          |
+| `tools_metrics`       | Per-tool counters + latency.                                             |
+| `tools_bottlenecks`   | Tools ranked by avg latency (`topN`).                                    |
+| `tools_health`        | AJV smoke + daemon `server.info` + catalog SHA + headless resolvability. |
+| `context_fetch_raw`   | Run an arbitrary JSON-RPC method on the daemon (raw passthrough).        |
 
 ### Headless lifecycle
 
-| Tool                       | Purpose                                                                 |
-| -------------------------- | ----------------------------------------------------------------------- |
-| `headless.start_project`   | Spawn `godot --headless --script headless_driver.gd` against a project. |
-| `headless.status`          | Live session snapshot.                                                  |
-| `headless.stop`            | SIGTERM / SIGKILL the session.                                          |
-| `headless.validate_script` | GDScript compile check via `script.validate_syntax`.                    |
+| Tool                         | Purpose                                                                 |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| `headless_start_project`     | Spawn `godot --headless --script headless_driver.gd` against a project. |
+| `headless_status`            | Live session snapshot.                                                  |
+| `headless_stop`              | SIGTERM / SIGKILL the session.                                          |
+| `headless_validate_script`   | GDScript compile check via `script.validate_syntax`.                    |
 
 Daemon-backed tool inputs are AJV-validated against the registry `inputSchema` before dispatch.
 

@@ -31,10 +31,11 @@ export const ContextFetchRawSchema = z
   })
   .strict();
 
+/** Router-native MCP tools (underscore ids — universal MCP host compatibility). */
 export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   {
     kind: "local",
-    name: "tools.list",
+    name: "tools_list",
     title: "List MCP tools",
     description: "List MCP tools with optional filters: category(string), safe(boolean).",
     category: "tools",
@@ -54,7 +55,7 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   },
   {
     kind: "local",
-    name: "tools.describe",
+    name: "tools_describe",
     title: "Describe MCP tool",
     description: "Return metadata + schemas for one tool from the compiled router snapshot.",
     category: "tools",
@@ -72,7 +73,7 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   },
   {
     kind: "local",
-    name: "tools.metrics",
+    name: "tools_metrics",
     title: "Router metrics",
     description: "Rolling tool-call telemetry required by Phase 2 tasklist 06.",
     category: "tools",
@@ -85,8 +86,8 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   },
   {
     kind: "local",
-    name: "tools.bottlenecks",
-    title: "tools.bottlenecks",
+    name: "tools_bottlenecks",
+    title: "tools_bottlenecks",
     description: "§09 — tools ranked by rolling average latency.",
     category: "tools",
     safe: true,
@@ -102,8 +103,8 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   },
   {
     kind: "local",
-    name: "context.fetch_raw",
-    title: "context.fetch_raw",
+    name: "context_fetch_raw",
+    title: "context_fetch_raw",
     description: "§09 — execute a JSON-RPC method on the daemon (pointer sugar; no envelope yet).",
     category: "tools",
     safe: true,
@@ -123,8 +124,8 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   },
   {
     kind: "local",
-    name: "tools.health",
-    title: "tools.health",
+    name: "tools_health",
+    title: "tools_health",
     description: "AJV sanity + daemon server.info probe + SHA256 parity for catalog JSON.",
     category: "tools",
     safe: true,
@@ -137,12 +138,12 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
 ];
 
 export type RouterOnlyToolName =
-  | "tools.list"
-  | "tools.describe"
-  | "tools.metrics"
-  | "tools.health"
-  | "tools.bottlenecks"
-  | "context.fetch_raw";
+  | "tools_list"
+  | "tools_describe"
+  | "tools_metrics"
+  | "tools_health"
+  | "tools_bottlenecks"
+  | "context_fetch_raw";
 
 export function routerOnlyTool(name: RouterOnlyToolName): RegisteredRouterTool {
   const d = ROUTER_ONLY_TOOLS.find((t) => t.name === name);

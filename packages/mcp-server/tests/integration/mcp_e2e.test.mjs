@@ -101,17 +101,17 @@ test(
       const names = new Set(tools.tools.map((t) => t.name));
       for (const want of [
         "ping",
-        "server.info",
-        "tools.list",
-        "tools.describe",
-        "tools.metrics",
-        "tools.bottlenecks",
-        "tools.health",
-        "context.fetch_raw",
-        "headless.start_project",
-        "headless.status",
-        "headless.stop",
-        "headless.validate_script",
+        "server_info",
+        "tools_list",
+        "tools_describe",
+        "tools_metrics",
+        "tools_bottlenecks",
+        "tools_health",
+        "context_fetch_raw",
+        "headless_start_project",
+        "headless_status",
+        "headless_stop",
+        "headless_validate_script",
       ]) {
         assert.ok(names.has(want), `missing tool: ${want}`);
       }
@@ -119,19 +119,19 @@ test(
       const unwrap = (res) => res.structuredContent ?? JSON.parse(res.content?.[0]?.text ?? "{}");
 
       const startRes = await client.callTool({
-        name: "headless.start_project",
+        name: "headless_start_project",
         arguments: { projectPath: fixture },
       });
       assert.ok(!startRes.isError, `start failed: ${JSON.stringify(startRes)}`);
       const startEnv = unwrap(startRes);
       assert.equal(startEnv.ok, true);
-      assert.equal(startEnv.tool, "headless.start_project");
+      assert.equal(startEnv.tool, "headless_start_project");
       assert.equal(startEnv.result?.ready, true);
       assert.equal(typeof startEnv.result?.pid, "number");
       assert.equal(typeof startEnv.result?.port, "number");
       assert.ok(startEnv.result.port > 0);
 
-      const statusRes = await client.callTool({ name: "headless.status", arguments: {} });
+      const statusRes = await client.callTool({ name: "headless_status", arguments: {} });
       const statusEnv = unwrap(statusRes);
       assert.equal(statusEnv.ok, true);
       assert.equal(statusEnv.result?.alive, true);
@@ -143,7 +143,7 @@ test(
 
       try {
         const valRes = await client.callTool({
-          name: "headless.validate_script",
+          name: "headless_validate_script",
           arguments: { path: scratch, projectPath: fixture },
         });
         const valEnv = unwrap(valRes);
@@ -168,7 +168,7 @@ test(
       );
       assert.equal(pingEnv.result?.ok, true);
 
-      const stopRes = await client.callTool({ name: "headless.stop", arguments: { force: true } });
+      const stopRes = await client.callTool({ name: "headless_stop", arguments: { force: true } });
       const stopEnv = unwrap(stopRes);
       assert.equal(stopEnv.ok, true);
     } finally {

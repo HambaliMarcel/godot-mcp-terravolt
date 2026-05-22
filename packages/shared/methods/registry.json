@@ -47,7 +47,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "server.info",
+        "name": "server_info",
         "title": "Godot server.info",
         "description": "Daemon identity, addon/engine versions, uptime, listen address, supported method count, catalog hash."
       },
@@ -74,7 +74,12 @@
           },
           "level": {
             "type": "string",
-            "enum": ["debug", "info", "warn", "error"]
+            "enum": [
+              "debug",
+              "info",
+              "warn",
+              "error"
+            ]
           }
         },
         "additionalProperties": false
@@ -83,7 +88,7 @@
         "type": "array"
       },
       "mcpTool": {
-        "name": "log.tail",
+        "name": "log_tail",
         "title": "Tail daemon log",
         "description": "Tail the daemon structured log (user://mcp_log.txt)."
       },
@@ -115,7 +120,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.list",
+        "name": "scene_list",
         "title": "scene.list",
         "description": "Enumerate .tscn/.scn files under res://."
       },
@@ -134,7 +139,9 @@
       "description": "Scene metadata without instantiating.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -148,7 +155,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.get",
+        "name": "scene_get",
         "title": "scene.get",
         "description": "Scene metadata without instantiating."
       },
@@ -156,7 +163,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.path_not_found"],
+      "errorCodes": [
+        "scene.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -167,7 +176,9 @@
       "description": "Open a scene tab in the editor.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -184,7 +195,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.open",
+        "name": "scene_open",
         "title": "scene.open",
         "description": "Open a scene tab in the editor."
       },
@@ -192,7 +203,10 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.path_not_found", "editor.not_available"],
+      "errorCodes": [
+        "scene.path_not_found",
+        "editor.not_available"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -219,7 +233,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.close",
+        "name": "scene_close",
         "title": "scene.close",
         "description": "Close the current or named scene tab."
       },
@@ -227,7 +241,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["editor.no_active_scene", "editor.not_available"],
+      "errorCodes": [
+        "editor.no_active_scene",
+        "editor.not_available"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -251,7 +268,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.save",
+        "name": "scene_save",
         "title": "scene.save",
         "description": "Save the currently-edited scene."
       },
@@ -259,7 +276,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.save_failed", "editor.no_active_scene"],
+      "errorCodes": [
+        "scene.save_failed",
+        "editor.no_active_scene"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -270,7 +290,9 @@
       "description": "Save the current scene under a new path.",
       "inputSchema": {
         "type": "object",
-        "required": ["new_path"],
+        "required": [
+          "new_path"
+        ],
         "properties": {
           "new_path": {
             "type": "string",
@@ -287,7 +309,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.save_as",
+        "name": "scene_save_as",
         "title": "scene.save_as",
         "description": "Save the current scene under a new path."
       },
@@ -295,7 +317,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.save_failed"],
+      "errorCodes": [
+        "scene.save_failed"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -306,7 +330,9 @@
       "description": "Create a new scene file with a typed root node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -329,7 +355,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.create",
+        "name": "scene_create",
         "title": "scene.create",
         "description": "Create a new scene file with a typed root node."
       },
@@ -337,7 +363,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.create_failed", "node.type_unknown"],
+      "errorCodes": [
+        "scene.create_failed",
+        "node.type_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -348,7 +377,9 @@
       "description": "Delete a scene file with optional dependency guard.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -365,7 +396,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.delete",
+        "name": "scene_delete",
         "title": "scene.delete",
         "description": "Delete a scene file with optional dependency guard."
       },
@@ -373,7 +404,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.path_not_found", "resource.dependency_block"],
+      "errorCodes": [
+        "scene.path_not_found",
+        "resource.dependency_block"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -384,7 +418,10 @@
       "description": "Instantiate a PackedScene under a parent node.",
       "inputSchema": {
         "type": "object",
-        "required": ["source_path", "parent_path"],
+        "required": [
+          "source_path",
+          "parent_path"
+        ],
         "properties": {
           "source_path": {
             "type": "string",
@@ -403,7 +440,11 @@
           },
           "edit_state": {
             "type": "string",
-            "enum": ["instance", "disabled", "main"]
+            "enum": [
+              "instance",
+              "disabled",
+              "main"
+            ]
           }
         },
         "additionalProperties": false
@@ -412,7 +453,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.instantiate",
+        "name": "scene_instantiate",
         "title": "scene.instantiate",
         "description": "Instantiate a PackedScene under a parent node."
       },
@@ -420,7 +461,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.path_not_found", "scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.path_not_found",
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -431,7 +475,10 @@
       "description": "Pack a subtree into a new .tscn file.",
       "inputSchema": {
         "type": "object",
-        "required": ["root_path", "output_path"],
+        "required": [
+          "root_path",
+          "output_path"
+        ],
         "properties": {
           "root_path": {
             "type": "string",
@@ -452,7 +499,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.pack",
+        "name": "scene_pack",
         "title": "scene.pack",
         "description": "Pack a subtree into a new .tscn file."
       },
@@ -460,7 +507,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.create_failed", "editor.no_active_scene"],
+      "errorCodes": [
+        "scene.create_failed",
+        "editor.no_active_scene"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -474,7 +524,10 @@
         "properties": {
           "envelope": {
             "type": "string",
-            "enum": ["summary", "raw"]
+            "enum": [
+              "summary",
+              "raw"
+            ]
           },
           "max_depth": {
             "type": "integer",
@@ -491,7 +544,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.get_tree",
+        "name": "scene_get_tree",
         "title": "scene.get_tree",
         "description": "Return the active scene tree (envelope-aware)."
       },
@@ -499,7 +552,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["editor.no_active_scene"],
+      "errorCodes": [
+        "editor.no_active_scene"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -510,7 +565,9 @@
       "description": "Return a subtree from a NodePath.",
       "inputSchema": {
         "type": "object",
-        "required": ["root_path"],
+        "required": [
+          "root_path"
+        ],
         "properties": {
           "root_path": {
             "type": "string",
@@ -518,7 +575,10 @@
           },
           "envelope": {
             "type": "string",
-            "enum": ["summary", "raw"]
+            "enum": [
+              "summary",
+              "raw"
+            ]
           },
           "max_depth": {
             "type": "integer",
@@ -535,7 +595,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.get_subtree",
+        "name": "scene_get_subtree",
         "title": "scene.get_subtree",
         "description": "Return a subtree from a NodePath."
       },
@@ -543,7 +603,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -554,7 +616,9 @@
       "description": "Search the active scene for nodes matching a selector.",
       "inputSchema": {
         "type": "object",
-        "required": ["selector"],
+        "required": [
+          "selector"
+        ],
         "properties": {
           "selector": {
             "type": "object"
@@ -574,7 +638,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.find_in_tree",
+        "name": "scene_find_in_tree",
         "title": "scene.find_in_tree",
         "description": "Search the active scene for nodes matching a selector."
       },
@@ -608,7 +672,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.validate",
+        "name": "scene_validate",
         "title": "scene.validate",
         "description": "Static integrity check for a scene or the active tree."
       },
@@ -616,7 +680,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.path_not_found"],
+      "errorCodes": [
+        "scene.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -627,7 +693,10 @@
       "description": "Replace a subtree with another scene or synthesized node.",
       "inputSchema": {
         "type": "object",
-        "required": ["at_path", "with"],
+        "required": [
+          "at_path",
+          "with"
+        ],
         "properties": {
           "at_path": {
             "type": "string",
@@ -649,7 +718,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene.replace",
+        "name": "scene_replace",
         "title": "scene.replace",
         "description": "Replace a subtree with another scene or synthesized node."
       },
@@ -657,7 +726,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found", "scene.path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found",
+        "scene.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -674,7 +746,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.info",
+        "name": "project_info",
         "title": "project.info",
         "description": "Consolidated project metadata."
       },
@@ -713,7 +785,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.get_settings",
+        "name": "project_get_settings",
         "title": "project.get_settings",
         "description": "Read one or many project settings."
       },
@@ -732,7 +804,9 @@
       "description": "Patch project settings.",
       "inputSchema": {
         "type": "object",
-        "required": ["patch"],
+        "required": [
+          "patch"
+        ],
         "properties": {
           "patch": {
             "type": "object"
@@ -753,7 +827,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.set_settings",
+        "name": "project_set_settings",
         "title": "project.set_settings",
         "description": "Patch project settings."
       },
@@ -761,7 +835,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["project.setting_locked"],
+      "errorCodes": [
+        "project.setting_locked"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -778,7 +854,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.list_autoloads",
+        "name": "project_list_autoloads",
         "title": "project.list_autoloads",
         "description": "List every autoload entry."
       },
@@ -797,7 +873,10 @@
       "description": "Register an autoload singleton.",
       "inputSchema": {
         "type": "object",
-        "required": ["name", "path"],
+        "required": [
+          "name",
+          "path"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -818,7 +897,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.add_autoload",
+        "name": "project_add_autoload",
         "title": "project.add_autoload",
         "description": "Register an autoload singleton."
       },
@@ -826,7 +905,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["node.type_unknown"],
+      "errorCodes": [
+        "node.type_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -837,7 +918,9 @@
       "description": "Unregister an autoload.",
       "inputSchema": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -850,7 +933,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.remove_autoload",
+        "name": "project_remove_autoload",
         "title": "project.remove_autoload",
         "description": "Unregister an autoload."
       },
@@ -869,7 +952,9 @@
       "description": "Set application/run/main_scene.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -886,7 +971,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "project.set_main_scene",
+        "name": "project_set_main_scene",
         "title": "project.set_main_scene",
         "description": "Set application/run/main_scene."
       },
@@ -894,7 +979,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.path_not_found"],
+      "errorCodes": [
+        "scene.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -905,7 +992,10 @@
       "description": "Add a new node under a parent in the active scene.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "type"],
+        "required": [
+          "parent_path",
+          "type"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -944,7 +1034,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.add",
+        "name": "node_add",
         "title": "node.add",
         "description": "Add a new node under a parent in the active scene."
       },
@@ -952,7 +1042,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["node.type_unknown", "scene.node_path_not_found", "node.name_collision"],
+      "errorCodes": [
+        "node.type_unknown",
+        "scene.node_path_not_found",
+        "node.name_collision"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -963,7 +1057,9 @@
       "description": "Remove a node and its subtree from the active scene.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -987,7 +1083,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.delete",
+        "name": "node_delete",
         "title": "node.delete",
         "description": "Remove a node and its subtree from the active scene."
       },
@@ -995,7 +1091,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1006,7 +1104,9 @@
       "description": "Clone a node under a target parent.",
       "inputSchema": {
         "type": "object",
-        "required": ["source_path"],
+        "required": [
+          "source_path"
+        ],
         "properties": {
           "source_path": {
             "type": "string",
@@ -1037,7 +1137,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.duplicate",
+        "name": "node_duplicate",
         "title": "node.duplicate",
         "description": "Clone a node under a target parent."
       },
@@ -1045,7 +1145,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1056,7 +1158,10 @@
       "description": "Reparent a node and/or change sibling order.",
       "inputSchema": {
         "type": "object",
-        "required": ["source_path", "target_parent_path"],
+        "required": [
+          "source_path",
+          "target_parent_path"
+        ],
         "properties": {
           "source_path": {
             "type": "string",
@@ -1087,7 +1192,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.move",
+        "name": "node_move",
         "title": "node.move",
         "description": "Reparent a node and/or change sibling order."
       },
@@ -1095,7 +1200,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found", "node.cycle_detected"],
+      "errorCodes": [
+        "scene.node_path_not_found",
+        "node.cycle_detected"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1106,7 +1214,10 @@
       "description": "Rename a node and optionally rewrite NodePath references.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "new_name"],
+        "required": [
+          "path",
+          "new_name"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1133,7 +1244,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.rename",
+        "name": "node_rename",
         "title": "node.rename",
         "description": "Rename a node and optionally rewrite NodePath references."
       },
@@ -1141,7 +1252,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found", "node.name_collision"],
+      "errorCodes": [
+        "scene.node_path_not_found",
+        "node.name_collision"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1152,7 +1266,9 @@
       "description": "Read node identity and serializable properties.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1167,7 +1283,10 @@
           },
           "envelope": {
             "type": "string",
-            "enum": ["summary", "raw"]
+            "enum": [
+              "summary",
+              "raw"
+            ]
           },
           "scene_path": {
             "type": "string",
@@ -1181,7 +1300,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.get",
+        "name": "node_get",
         "title": "node.get",
         "description": "Read node identity and serializable properties."
       },
@@ -1189,7 +1308,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1200,7 +1321,10 @@
       "description": "Polymorphic mutator: property writes, groups, meta, signal connect/disconnect in one call.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "ops"],
+        "required": [
+          "path",
+          "ops"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1225,7 +1349,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.modify",
+        "name": "node_modify",
         "title": "node.modify",
         "description": "Polymorphic mutator: property writes, groups, meta, signal connect/disconnect in one call."
       },
@@ -1259,7 +1383,10 @@
           },
           "scope": {
             "type": "string",
-            "enum": ["scene", "active"]
+            "enum": [
+              "scene",
+              "active"
+            ]
           },
           "scene_path": {
             "type": "string",
@@ -1273,7 +1400,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.list_groups",
+        "name": "node_list_groups",
         "title": "node.list_groups",
         "description": "List groups for a node or recursively for the scene."
       },
@@ -1292,7 +1419,9 @@
       "description": "Enumerate declared signals and connections on a node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1316,7 +1445,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.list_signals",
+        "name": "node_list_signals",
         "title": "node.list_signals",
         "description": "Enumerate declared signals and connections on a node."
       },
@@ -1324,7 +1453,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1335,14 +1466,19 @@
       "description": "Resolve a Selector to concrete NodePaths.",
       "inputSchema": {
         "type": "object",
-        "required": ["selector"],
+        "required": [
+          "selector"
+        ],
         "properties": {
           "selector": {
             "type": "object"
           },
           "expect": {
             "type": "string",
-            "enum": ["single", "many"]
+            "enum": [
+              "single",
+              "many"
+            ]
           },
           "scene_path": {
             "type": "string",
@@ -1356,7 +1492,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.find_path",
+        "name": "node_find_path",
         "title": "node.find_path",
         "description": "Resolve a Selector to concrete NodePaths."
       },
@@ -1364,7 +1500,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["selector.no_match"],
+      "errorCodes": [
+        "selector.no_match"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1375,7 +1513,10 @@
       "description": "Type query: class or script inheritance check.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "type"],
+        "required": [
+          "path",
+          "type"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1396,7 +1537,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.is_a",
+        "name": "node_is_a",
         "title": "node.is_a",
         "description": "Type query: class or script inheritance check."
       },
@@ -1404,7 +1545,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1415,7 +1558,10 @@
       "description": "Attach a script resource to a node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "script_path"],
+        "required": [
+          "path",
+          "script_path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1441,7 +1587,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.attach_script",
+        "name": "node_attach_script",
         "title": "node.attach_script",
         "description": "Attach a script resource to a node."
       },
@@ -1464,7 +1610,9 @@
       "description": "Remove the script from a node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1482,7 +1630,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.detach_script",
+        "name": "node_detach_script",
         "title": "node.detach_script",
         "description": "Remove the script from a node."
       },
@@ -1490,7 +1638,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene.node_path_not_found"],
+      "errorCodes": [
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1501,7 +1651,10 @@
       "description": "Evaluate a sandboxed Godot Expression against a node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "expression"],
+        "required": [
+          "path",
+          "expression"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1525,7 +1678,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "node.evaluate_expression",
+        "name": "node_evaluate_expression",
         "title": "node.evaluate_expression",
         "description": "Evaluate a sandboxed Godot Expression against a node."
       },
@@ -1563,7 +1716,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.list",
+        "name": "script_list",
         "title": "script.list",
         "description": "Enumerate script files under res://."
       },
@@ -1582,7 +1735,9 @@
       "description": "Read script contents (envelope-aware).",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1602,7 +1757,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.read",
+        "name": "script_read",
         "title": "script.read",
         "description": "Read script contents (envelope-aware)."
       },
@@ -1610,7 +1765,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["script.path_not_found"],
+      "errorCodes": [
+        "script.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1621,7 +1778,10 @@
       "description": "Create or overwrite a script file.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "content"],
+        "required": [
+          "path",
+          "content"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1642,7 +1802,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.write",
+        "name": "script_write",
         "title": "script.write",
         "description": "Create or overwrite a script file."
       },
@@ -1665,7 +1825,10 @@
       "description": "Apply line-range hunks to a script.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "hunks"],
+        "required": [
+          "path",
+          "hunks"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1683,7 +1846,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.patch",
+        "name": "script_patch",
         "title": "script.patch",
         "description": "Apply line-range hunks to a script."
       },
@@ -1691,7 +1854,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["script.path_not_found", "script.patch_conflict"],
+      "errorCodes": [
+        "script.path_not_found",
+        "script.patch_conflict"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1702,7 +1868,9 @@
       "description": "Compile-check a script.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1719,7 +1887,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.validate",
+        "name": "script_validate",
         "title": "script.validate",
         "description": "Compile-check a script."
       },
@@ -1742,7 +1910,9 @@
       "description": "Find symbol references across the project.",
       "inputSchema": {
         "type": "object",
-        "required": ["symbol"],
+        "required": [
+          "symbol"
+        ],
         "properties": {
           "symbol": {
             "type": "string"
@@ -1760,7 +1930,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.find_usages",
+        "name": "script_find_usages",
         "title": "script.find_usages",
         "description": "Find symbol references across the project."
       },
@@ -1779,7 +1949,11 @@
       "description": "Rename a symbol project-wide.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to", "kind"],
+        "required": [
+          "from",
+          "to",
+          "kind"
+        ],
         "properties": {
           "scope": {},
           "from": {
@@ -1804,7 +1978,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.rename_symbol",
+        "name": "script_rename_symbol",
         "title": "script.rename_symbol",
         "description": "Rename a symbol project-wide."
       },
@@ -1812,7 +1986,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["script.rename_conflict"],
+      "errorCodes": [
+        "script.rename_conflict"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -1823,7 +1999,9 @@
       "description": "Format a script file.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1840,7 +2018,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "script.format",
+        "name": "script_format",
         "title": "script.format",
         "description": "Format a script file."
       },
@@ -1848,7 +2026,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["script.path_not_found", "script.formatter_missing"],
+      "errorCodes": [
+        "script.path_not_found",
+        "script.formatter_missing"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1859,7 +2040,9 @@
       "description": "List user-declared signals on a node's script.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -1872,7 +2055,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.list_declared",
+        "name": "signal_list_declared",
         "title": "signal.list_declared",
         "description": "List user-declared signals on a node's script."
       },
@@ -1891,7 +2074,10 @@
       "description": "Add a signal declaration to a script.",
       "inputSchema": {
         "type": "object",
-        "required": ["script_path", "signal_name"],
+        "required": [
+          "script_path",
+          "signal_name"
+        ],
         "properties": {
           "script_path": {
             "type": "string",
@@ -1914,7 +2100,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.add_declaration",
+        "name": "signal_add_declaration",
         "title": "signal.add_declaration",
         "description": "Add a signal declaration to a script."
       },
@@ -1922,7 +2108,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["script.path_not_found", "signal.name_exists"],
+      "errorCodes": [
+        "script.path_not_found",
+        "signal.name_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1933,7 +2122,10 @@
       "description": "Remove a signal declaration from a script.",
       "inputSchema": {
         "type": "object",
-        "required": ["script_path", "signal_name"],
+        "required": [
+          "script_path",
+          "signal_name"
+        ],
         "properties": {
           "script_path": {
             "type": "string",
@@ -1950,7 +2142,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.remove_declaration",
+        "name": "signal_remove_declaration",
         "title": "signal.remove_declaration",
         "description": "Remove a signal declaration from a script."
       },
@@ -1958,7 +2150,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["script.path_not_found", "signal.unknown"],
+      "errorCodes": [
+        "script.path_not_found",
+        "signal.unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -1969,7 +2164,12 @@
       "description": "Connect a signal to a target method.",
       "inputSchema": {
         "type": "object",
-        "required": ["from_path", "signal_name", "to_path", "method"],
+        "required": [
+          "from_path",
+          "signal_name",
+          "to_path",
+          "method"
+        ],
         "properties": {
           "from_path": {
             "type": "string",
@@ -1998,7 +2198,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.connect",
+        "name": "signal_connect",
         "title": "signal.connect",
         "description": "Connect a signal to a target method."
       },
@@ -2006,7 +2206,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["signal.unknown", "signal.target_unknown", "signal.method_unknown"],
+      "errorCodes": [
+        "signal.unknown",
+        "signal.target_unknown",
+        "signal.method_unknown"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -2017,7 +2221,12 @@
       "description": "Disconnect a signal connection.",
       "inputSchema": {
         "type": "object",
-        "required": ["from_path", "signal_name", "to_path", "method"],
+        "required": [
+          "from_path",
+          "signal_name",
+          "to_path",
+          "method"
+        ],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2040,7 +2249,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.disconnect",
+        "name": "signal_disconnect",
         "title": "signal.disconnect",
         "description": "Disconnect a signal connection."
       },
@@ -2059,7 +2268,9 @@
       "description": "List outgoing signal connections on a node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2075,7 +2286,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.list_connections",
+        "name": "signal_list_connections",
         "title": "signal.list_connections",
         "description": "List outgoing signal connections on a node."
       },
@@ -2094,7 +2305,10 @@
       "description": "Reverse lookup for signal listeners.",
       "inputSchema": {
         "type": "object",
-        "required": ["from_path", "signal_name"],
+        "required": [
+          "from_path",
+          "signal_name"
+        ],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2113,7 +2327,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.find_listeners",
+        "name": "signal_find_listeners",
         "title": "signal.find_listeners",
         "description": "Reverse lookup for signal listeners."
       },
@@ -2132,7 +2346,9 @@
       "description": "Connect many signal pairs atomically.",
       "inputSchema": {
         "type": "object",
-        "required": ["connections"],
+        "required": [
+          "connections"
+        ],
         "properties": {
           "connections": {
             "type": "array"
@@ -2145,7 +2361,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.bulk_connect",
+        "name": "signal_bulk_connect",
         "title": "signal.bulk_connect",
         "description": "Connect many signal pairs atomically."
       },
@@ -2164,7 +2380,9 @@
       "description": "Disconnect many signal pairs.",
       "inputSchema": {
         "type": "object",
-        "required": ["connections"],
+        "required": [
+          "connections"
+        ],
         "properties": {
           "connections": {
             "type": "array"
@@ -2176,7 +2394,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.bulk_disconnect",
+        "name": "signal_bulk_disconnect",
         "title": "signal.bulk_disconnect",
         "description": "Disconnect many signal pairs."
       },
@@ -2212,7 +2430,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "signal.graph",
+        "name": "signal_graph",
         "title": "signal.graph",
         "description": "Export the signal graph as JSON/Mermaid/DOT."
       },
@@ -2248,7 +2466,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.list",
+        "name": "resource_list",
         "title": "resource.list",
         "description": "List resource files by class or glob."
       },
@@ -2267,7 +2485,9 @@
       "description": "Read resource properties (envelope-aware for large blobs).",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2287,7 +2507,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.get",
+        "name": "resource_get",
         "title": "resource.get",
         "description": "Read resource properties (envelope-aware for large blobs)."
       },
@@ -2295,7 +2515,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2306,7 +2528,10 @@
       "description": "Create a new resource and save it.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "class"],
+        "required": [
+          "path",
+          "class"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2329,7 +2554,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.create",
+        "name": "resource_create",
         "title": "resource.create",
         "description": "Create a new resource and save it."
       },
@@ -2337,7 +2562,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.class_unknown", "resource.path_exists"],
+      "errorCodes": [
+        "resource.class_unknown",
+        "resource.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2348,7 +2576,10 @@
       "description": "Patch properties on an existing resource.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "patch"],
+        "required": [
+          "path",
+          "patch"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2369,7 +2600,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.update",
+        "name": "resource_update",
         "title": "resource.update",
         "description": "Patch properties on an existing resource."
       },
@@ -2393,7 +2624,10 @@
       "description": "Duplicate a resource to a new path.",
       "inputSchema": {
         "type": "object",
-        "required": ["source_path", "target_path"],
+        "required": [
+          "source_path",
+          "target_path"
+        ],
         "properties": {
           "source_path": {
             "type": "string",
@@ -2418,7 +2652,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.duplicate",
+        "name": "resource_duplicate",
         "title": "resource.duplicate",
         "description": "Duplicate a resource to a new path."
       },
@@ -2426,7 +2660,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "resource.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2437,7 +2674,9 @@
       "description": "Delete a resource file.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2454,7 +2693,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.delete",
+        "name": "resource_delete",
         "title": "resource.delete",
         "description": "Delete a resource file."
       },
@@ -2462,7 +2701,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "resource.dependency_block"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2473,7 +2715,10 @@
       "description": "Rename or move a resource with optional reference rewrites.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to"],
+        "required": [
+          "from",
+          "to"
+        ],
         "properties": {
           "from": {
             "type": "string",
@@ -2498,7 +2743,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.rename",
+        "name": "resource_rename",
         "title": "resource.rename",
         "description": "Rename or move a resource with optional reference rewrites."
       },
@@ -2506,7 +2751,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "resource.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2517,7 +2765,9 @@
       "description": "List outbound dependencies of a resource.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2534,7 +2784,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.get_dependencies",
+        "name": "resource_get_dependencies",
         "title": "resource.get_dependencies",
         "description": "List outbound dependencies of a resource."
       },
@@ -2542,7 +2792,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2553,7 +2805,9 @@
       "description": "Reverse-lookup dependents of a resource.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2575,7 +2829,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.get_dependents",
+        "name": "resource_get_dependents",
         "title": "resource.get_dependents",
         "description": "Reverse-lookup dependents of a resource."
       },
@@ -2594,7 +2848,10 @@
       "description": "Rewrite project-wide references from one path to another.",
       "inputSchema": {
         "type": "object",
-        "required": ["from_path", "to_path"],
+        "required": [
+          "from_path",
+          "to_path"
+        ],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2619,7 +2876,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.replace_references",
+        "name": "resource_replace_references",
         "title": "resource.replace_references",
         "description": "Rewrite project-wide references from one path to another."
       },
@@ -2638,7 +2895,9 @@
       "description": "Export a resource as deterministic JSON.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2655,7 +2914,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.export_json",
+        "name": "resource_export_json",
         "title": "resource.export_json",
         "description": "Export a resource as deterministic JSON."
       },
@@ -2663,7 +2922,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2674,7 +2935,10 @@
       "description": "Import a resource from export JSON.",
       "inputSchema": {
         "type": "object",
-        "required": ["target_path", "json_string"],
+        "required": [
+          "target_path",
+          "json_string"
+        ],
         "properties": {
           "target_path": {
             "type": "string",
@@ -2694,7 +2958,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.import_json",
+        "name": "resource_import_json",
         "title": "resource.import_json",
         "description": "Import a resource from export JSON."
       },
@@ -2702,7 +2966,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.json_schema_mismatch", "resource.path_exists"],
+      "errorCodes": [
+        "resource.json_schema_mismatch",
+        "resource.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2713,7 +2980,9 @@
       "description": "Assign or rotate a resource UID.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2733,7 +3002,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.set_uid",
+        "name": "resource_set_uid",
         "title": "resource.set_uid",
         "description": "Assign or rotate a resource UID."
       },
@@ -2741,7 +3010,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2752,7 +3023,9 @@
       "description": "Validate a resource file loads cleanly.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2766,7 +3039,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.validate",
+        "name": "resource_validate",
         "title": "resource.validate",
         "description": "Validate a resource file loads cleanly."
       },
@@ -2785,7 +3058,10 @@
       "description": "Structured diff between two resources or JSON.",
       "inputSchema": {
         "type": "object",
-        "required": ["a", "b"],
+        "required": [
+          "a",
+          "b"
+        ],
         "properties": {
           "a": {
             "type": "string",
@@ -2800,7 +3076,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "resource.diff",
+        "name": "resource_diff",
         "title": "resource.diff",
         "description": "Structured diff between two resources or JSON."
       },
@@ -2808,7 +3084,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2830,7 +3108,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.list",
+        "name": "shader_list",
         "title": "shader.list",
         "description": "List shader code files and ShaderMaterial resources."
       },
@@ -2849,7 +3127,9 @@
       "description": "Read shader source from a .gdshader file.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2866,7 +3146,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.read",
+        "name": "shader_read",
         "title": "shader.read",
         "description": "Read shader source from a .gdshader file."
       },
@@ -2874,7 +3154,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2885,7 +3167,10 @@
       "description": "Create or overwrite a .gdshader file.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "content"],
+        "required": [
+          "path",
+          "content"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2906,7 +3191,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.write",
+        "name": "shader_write",
         "title": "shader.write",
         "description": "Create or overwrite a .gdshader file."
       },
@@ -2914,7 +3199,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_exists", "protocol.idempotency_conflict"],
+      "errorCodes": [
+        "resource.path_exists",
+        "protocol.idempotency_conflict"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2925,7 +3213,9 @@
       "description": "Validate a shader compiles.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2939,7 +3229,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.compile_check",
+        "name": "shader_compile_check",
         "title": "shader.compile_check",
         "description": "Validate a shader compiles."
       },
@@ -2947,7 +3237,10 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found", "shader.compile_timeout"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "shader.compile_timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2958,7 +3251,9 @@
       "description": "Enumerate shader uniform parameters.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -2972,7 +3267,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.list_params",
+        "name": "shader_list_params",
         "title": "shader.list_params",
         "description": "Enumerate shader uniform parameters."
       },
@@ -2980,7 +3275,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -2991,7 +3288,10 @@
       "description": "Set shader parameters on a ShaderMaterial.",
       "inputSchema": {
         "type": "object",
-        "required": ["material_path", "params"],
+        "required": [
+          "material_path",
+          "params"
+        ],
         "properties": {
           "material_path": {
             "type": "string",
@@ -3009,7 +3309,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "shader.set_material_params",
+        "name": "shader_set_material_params",
         "title": "shader.set_material_params",
         "description": "Set shader parameters on a ShaderMaterial."
       },
@@ -3050,7 +3350,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.list",
+        "name": "asset_list",
         "title": "asset.list",
         "description": "List source asset files under res://."
       },
@@ -3090,7 +3390,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.import_status",
+        "name": "asset_import_status",
         "title": "asset.import_status",
         "description": "Report import status for assets."
       },
@@ -3130,7 +3430,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.reimport",
+        "name": "asset_reimport",
         "title": "asset.reimport",
         "description": "Trigger reimport for asset(s)."
       },
@@ -3138,7 +3438,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["asset.import_timeout"],
+      "errorCodes": [
+        "asset.import_timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3149,7 +3451,9 @@
       "description": "Read import settings from .import sidecar.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3163,7 +3467,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.get_import_settings",
+        "name": "asset_get_import_settings",
         "title": "asset.get_import_settings",
         "description": "Read import settings from .import sidecar."
       },
@@ -3171,7 +3475,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3182,7 +3488,10 @@
       "description": "Patch import settings and optionally reimport.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "patch"],
+        "required": [
+          "path",
+          "patch"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3202,7 +3511,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.set_import_settings",
+        "name": "asset_set_import_settings",
         "title": "asset.set_import_settings",
         "description": "Patch import settings and optionally reimport."
       },
@@ -3210,7 +3519,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["asset.unknown_setting", "resource.path_not_found"],
+      "errorCodes": [
+        "asset.unknown_setting",
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3221,7 +3533,9 @@
       "description": "Add a new asset from base64 or file URL.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3244,7 +3558,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.add",
+        "name": "asset_add",
         "title": "asset.add",
         "description": "Add a new asset from base64 or file URL."
       },
@@ -3252,7 +3566,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["asset.too_large", "asset.path_exists"],
+      "errorCodes": [
+        "asset.too_large",
+        "asset.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3263,7 +3580,9 @@
       "description": "Delete an asset and its import sidecar.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3280,7 +3599,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.delete",
+        "name": "asset_delete",
         "title": "asset.delete",
         "description": "Delete an asset and its import sidecar."
       },
@@ -3288,7 +3607,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "resource.dependency_block"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3299,7 +3621,10 @@
       "description": "Rename/move an asset with optional reference rewrites.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to"],
+        "required": [
+          "from",
+          "to"
+        ],
         "properties": {
           "from": {
             "type": "string",
@@ -3324,7 +3649,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.rename",
+        "name": "asset_rename",
         "title": "asset.rename",
         "description": "Rename/move an asset with optional reference rewrites."
       },
@@ -3332,7 +3657,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["resource.path_not_found", "asset.path_exists"],
+      "errorCodes": [
+        "resource.path_not_found",
+        "asset.path_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3343,7 +3671,9 @@
       "description": "Generate a preview thumbnail for an asset.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3360,7 +3690,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.preview",
+        "name": "asset_preview",
         "title": "asset.preview",
         "description": "Generate a preview thumbnail for an asset."
       },
@@ -3368,7 +3698,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -3379,7 +3711,9 @@
       "description": "Read intrinsic metadata for an asset.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3393,7 +3727,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.metadata",
+        "name": "asset_metadata",
         "title": "asset.metadata",
         "description": "Read intrinsic metadata for an asset."
       },
@@ -3401,7 +3735,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["resource.path_not_found"],
+      "errorCodes": [
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3412,7 +3748,9 @@
       "description": "Apply import preset settings to many assets.",
       "inputSchema": {
         "type": "object",
-        "required": ["preset"],
+        "required": [
+          "preset"
+        ],
         "properties": {
           "preset": {
             "type": "string"
@@ -3433,7 +3771,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.batch_import_presets",
+        "name": "asset_batch_import_presets",
         "title": "asset.batch_import_presets",
         "description": "Apply import preset settings to many assets."
       },
@@ -3441,7 +3779,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["asset.preset_unknown"],
+      "errorCodes": [
+        "asset.preset_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3466,7 +3806,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "asset.find_unused",
+        "name": "asset_find_unused",
         "title": "asset.find_unused",
         "description": "Find assets with no inbound references."
       },
@@ -3485,7 +3825,9 @@
       "description": "Preview a batch refactor plan without applying.",
       "inputSchema": {
         "type": "object",
-        "required": ["plan"],
+        "required": [
+          "plan"
+        ],
         "properties": {
           "plan": {
             "type": "object"
@@ -3497,7 +3839,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.preview",
+        "name": "batch_refactor_preview",
         "title": "batch_refactor.preview",
         "description": "Preview a batch refactor plan without applying."
       },
@@ -3516,7 +3858,9 @@
       "description": "Apply a previewed batch refactor plan.",
       "inputSchema": {
         "type": "object",
-        "required": ["plan"],
+        "required": [
+          "plan"
+        ],
         "properties": {
           "plan": {
             "type": "object"
@@ -3532,7 +3876,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.apply",
+        "name": "batch_refactor_apply",
         "title": "batch_refactor.apply",
         "description": "Apply a previewed batch refactor plan."
       },
@@ -3540,7 +3884,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["batch.confirm_mismatch", "batch.partial_failure"],
+      "errorCodes": [
+        "batch.confirm_mismatch",
+        "batch.partial_failure"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3551,7 +3898,10 @@
       "description": "Rename a GDScript class_name project-wide.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to"],
+        "required": [
+          "from",
+          "to"
+        ],
         "properties": {
           "from": {
             "type": "string"
@@ -3572,7 +3922,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.rename_class",
+        "name": "batch_refactor_rename_class",
         "title": "batch_refactor.rename_class",
         "description": "Rename a GDScript class_name project-wide."
       },
@@ -3591,7 +3941,10 @@
       "description": "Move a folder and rewrite references.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to"],
+        "required": [
+          "from",
+          "to"
+        ],
         "properties": {
           "from": {
             "type": "string",
@@ -3613,7 +3966,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.move_folder",
+        "name": "batch_refactor_move_folder",
         "title": "batch_refactor.move_folder",
         "description": "Move a folder and rewrite references."
       },
@@ -3632,7 +3985,10 @@
       "description": "Project-wide find-and-replace in text files.",
       "inputSchema": {
         "type": "object",
-        "required": ["pattern", "replacement"],
+        "required": [
+          "pattern",
+          "replacement"
+        ],
         "properties": {
           "pattern": {},
           "replacement": {
@@ -3654,7 +4010,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.replace_in_files",
+        "name": "batch_refactor_replace_in_files",
         "title": "batch_refactor.replace_in_files",
         "description": "Project-wide find-and-replace in text files."
       },
@@ -3662,7 +4018,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["batch.too_many_edits"],
+      "errorCodes": [
+        "batch.too_many_edits"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3673,7 +4031,10 @@
       "description": "Normalize file names to a casing convention.",
       "inputSchema": {
         "type": "object",
-        "required": ["target", "selector"],
+        "required": [
+          "target",
+          "selector"
+        ],
         "properties": {
           "target": {
             "type": "string"
@@ -3691,7 +4052,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.normalize_names",
+        "name": "batch_refactor_normalize_names",
         "title": "batch_refactor.normalize_names",
         "description": "Normalize file names to a casing convention."
       },
@@ -3710,7 +4071,10 @@
       "description": "Swap node/resource classes where compatible.",
       "inputSchema": {
         "type": "object",
-        "required": ["selector", "target_class"],
+        "required": [
+          "selector",
+          "target_class"
+        ],
         "properties": {
           "selector": {
             "type": "object"
@@ -3731,7 +4095,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.change_class",
+        "name": "batch_refactor_change_class",
         "title": "batch_refactor.change_class",
         "description": "Swap node/resource classes where compatible."
       },
@@ -3739,7 +4103,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["batch.incompatible_classes"],
+      "errorCodes": [
+        "batch.incompatible_classes"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -3761,7 +4127,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "batch_refactor.history",
+        "name": "batch_refactor_history",
         "title": "batch_refactor.history",
         "description": "List recent batch_refactor.apply calls."
       },
@@ -3797,7 +4163,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.screenshot",
+        "name": "editor_screenshot",
         "title": "editor.screenshot",
         "description": "Capture a PNG of the editor or a named viewport."
       },
@@ -3805,7 +4171,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["editor.screenshot_too_large"],
+      "errorCodes": [
+        "editor.screenshot_too_large"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -3816,7 +4184,9 @@
       "description": "Select and frame a node in the scene tree dock.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string"
@@ -3831,7 +4201,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.focus_node",
+        "name": "editor_focus_node",
         "title": "editor.focus_node",
         "description": "Select and frame a node in the scene tree dock."
       },
@@ -3850,7 +4220,9 @@
       "description": "Open a script in the script editor at an optional line.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -3870,7 +4242,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.open_script",
+        "name": "editor_open_script",
         "title": "editor.open_script",
         "description": "Open a script in the script editor at an optional line."
       },
@@ -3900,7 +4272,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.run_undo",
+        "name": "editor_run_undo",
         "title": "editor.run_undo",
         "description": "Trigger editor undo steps."
       },
@@ -3930,7 +4302,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.run_redo",
+        "name": "editor_run_redo",
         "title": "editor.run_redo",
         "description": "Trigger editor redo steps."
       },
@@ -3949,7 +4321,9 @@
       "description": "Run a one-off @tool script inside the editor with deny-list gating.",
       "inputSchema": {
         "type": "object",
-        "required": ["source"],
+        "required": [
+          "source"
+        ],
         "properties": {
           "source": {
             "type": "string"
@@ -3973,7 +4347,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.execute_script",
+        "name": "editor_execute_script",
         "title": "editor.execute_script",
         "description": "Run a one-off @tool script inside the editor with deny-list gating."
       },
@@ -3981,7 +4355,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["editor.script_timeout", "editor.script_forbidden_api"],
+      "errorCodes": [
+        "editor.script_timeout",
+        "editor.script_forbidden_api"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -4009,7 +4386,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.error_log_tail",
+        "name": "editor_error_log_tail",
         "title": "editor.error_log_tail",
         "description": "Return recent editor errors and warnings."
       },
@@ -4039,7 +4416,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.reload_scripts",
+        "name": "editor_reload_scripts",
         "title": "editor.reload_scripts",
         "description": "Reload scripts in the editor."
       },
@@ -4058,7 +4435,9 @@
       "description": "Save, load, list, or delete named editor dock layouts.",
       "inputSchema": {
         "type": "object",
-        "required": ["action"],
+        "required": [
+          "action"
+        ],
         "properties": {
           "action": {
             "type": "string"
@@ -4073,7 +4452,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "editor.layout",
+        "name": "editor_layout",
         "title": "editor.layout",
         "description": "Save, load, list, or delete named editor dock layouts."
       },
@@ -4081,7 +4460,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["editor.unsupported_in_version"],
+      "errorCodes": [
+        "editor.unsupported_in_version"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -4111,7 +4492,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "analysis.scene_complexity",
+        "name": "analysis_scene_complexity",
         "title": "analysis.scene_complexity",
         "description": "Measure scene complexity (node count, depth, offenders)."
       },
@@ -4141,7 +4522,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "analysis.signal_flow",
+        "name": "analysis_signal_flow",
         "title": "analysis.signal_flow",
         "description": "Audit project signal declarations and flag orphan listeners."
       },
@@ -4174,7 +4555,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "analysis.unused_resources",
+        "name": "analysis_unused_resources",
         "title": "analysis.unused_resources",
         "description": "Find unused assets and resources across the project."
       },
@@ -4204,7 +4585,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "analysis.metrics",
+        "name": "analysis_metrics",
         "title": "analysis.metrics",
         "description": "Rolled-up LOC, scene, script, and resource metrics."
       },
@@ -4242,7 +4623,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.play",
+        "name": "runtime_play",
         "title": "runtime.play",
         "description": "Start the game in the editor (play main, current, or custom scene)."
       },
@@ -4272,7 +4653,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.stop",
+        "name": "runtime_stop",
         "title": "runtime.stop",
         "description": "Stop the running game session."
       },
@@ -4310,7 +4691,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.start_headless",
+        "name": "runtime_start_headless",
         "title": "runtime.start_headless",
         "description": "Spawn the project headless with the runtime bridge autoload."
       },
@@ -4336,7 +4717,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.status",
+        "name": "runtime_status",
         "title": "runtime.status",
         "description": "Check whether a runtime session is alive."
       },
@@ -4373,7 +4754,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.list_nodes",
+        "name": "runtime_list_nodes",
         "title": "runtime.list_nodes",
         "description": "Scene tree envelope for the running game."
       },
@@ -4381,7 +4762,10 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["runtime.no_session", "runtime.bridge_unavailable"],
+      "errorCodes": [
+        "runtime.no_session",
+        "runtime.bridge_unavailable"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4392,7 +4776,9 @@
       "description": "Read properties on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -4409,7 +4795,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.inspect_node",
+        "name": "runtime_inspect_node",
         "title": "runtime.inspect_node",
         "description": "Read properties on a live node."
       },
@@ -4417,7 +4803,10 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["runtime.no_session", "scene.node_path_not_found"],
+      "errorCodes": [
+        "runtime.no_session",
+        "scene.node_path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4428,7 +4817,10 @@
       "description": "Sandboxed expression evaluation against a live node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "expression"],
+        "required": [
+          "path",
+          "expression"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -4447,7 +4839,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.evaluate",
+        "name": "runtime_evaluate",
         "title": "runtime.evaluate",
         "description": "Sandboxed expression evaluation against a live node."
       },
@@ -4455,7 +4847,10 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["runtime.no_session", "expression.forbidden_identifier"],
+      "errorCodes": [
+        "runtime.no_session",
+        "expression.forbidden_identifier"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4466,7 +4861,10 @@
       "description": "Set a property on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "key"],
+        "required": [
+          "path",
+          "key"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -4483,7 +4881,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.set_property",
+        "name": "runtime_set_property",
         "title": "runtime.set_property",
         "description": "Set a property on a live node."
       },
@@ -4491,7 +4889,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "node.property_unknown"],
+      "errorCodes": [
+        "runtime.no_session",
+        "node.property_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4502,7 +4903,10 @@
       "description": "Call a method on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "method"],
+        "required": [
+          "path",
+          "method"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -4521,7 +4925,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.call_method",
+        "name": "runtime_call_method",
         "title": "runtime.call_method",
         "description": "Call a method on a live node."
       },
@@ -4529,7 +4933,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "node.method_unknown"],
+      "errorCodes": [
+        "runtime.no_session",
+        "node.method_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4540,7 +4947,10 @@
       "description": "Emit a signal on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "signal"],
+        "required": [
+          "path",
+          "signal"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -4559,7 +4969,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.emit_signal",
+        "name": "runtime_emit_signal",
         "title": "runtime.emit_signal",
         "description": "Emit a signal on a live node."
       },
@@ -4567,7 +4977,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "signal.unknown"],
+      "errorCodes": [
+        "runtime.no_session",
+        "signal.unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4578,7 +4991,9 @@
       "description": "Synthesize input events into the running game.",
       "inputSchema": {
         "type": "object",
-        "required": ["events"],
+        "required": [
+          "events"
+        ],
         "properties": {
           "events": {
             "type": "array"
@@ -4596,7 +5011,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.send_input",
+        "name": "runtime_send_input",
         "title": "runtime.send_input",
         "description": "Synthesize input events into the running game."
       },
@@ -4604,7 +5019,9 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session"],
+      "errorCodes": [
+        "runtime.no_session"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4615,7 +5032,9 @@
       "description": "Higher-level input macro built from named actions.",
       "inputSchema": {
         "type": "object",
-        "required": ["sequence"],
+        "required": [
+          "sequence"
+        ],
         "properties": {
           "sequence": {
             "type": "array"
@@ -4630,7 +5049,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.simulate_sequence",
+        "name": "runtime_simulate_sequence",
         "title": "runtime.simulate_sequence",
         "description": "Higher-level input macro built from named actions."
       },
@@ -4638,7 +5057,9 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session"],
+      "errorCodes": [
+        "runtime.no_session"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4649,7 +5070,9 @@
       "description": "Click a UI control by path or visible text.",
       "inputSchema": {
         "type": "object",
-        "required": ["selector"],
+        "required": [
+          "selector"
+        ],
         "properties": {
           "selector": {
             "type": "object"
@@ -4667,7 +5090,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.click_ui",
+        "name": "runtime_click_ui",
         "title": "runtime.click_ui",
         "description": "Click a UI control by path or visible text."
       },
@@ -4675,7 +5098,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "runtime.ui_not_found"],
+      "errorCodes": [
+        "runtime.no_session",
+        "runtime.ui_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4686,7 +5112,10 @@
       "description": "Drive a navigation agent or CharacterBody toward a target.",
       "inputSchema": {
         "type": "object",
-        "required": ["agent_path", "target"],
+        "required": [
+          "agent_path",
+          "target"
+        ],
         "properties": {
           "agent_path": {
             "type": "string",
@@ -4711,7 +5140,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.navigate",
+        "name": "runtime_navigate",
         "title": "runtime.navigate",
         "description": "Drive a navigation agent or CharacterBody toward a target."
       },
@@ -4719,7 +5148,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "runtime.navigate_timeout"],
+      "errorCodes": [
+        "runtime.no_session",
+        "runtime.navigate_timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4730,7 +5162,9 @@
       "description": "Start or stop recording live inputs.",
       "inputSchema": {
         "type": "object",
-        "required": ["action"],
+        "required": [
+          "action"
+        ],
         "properties": {
           "action": {
             "type": "string"
@@ -4745,7 +5179,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.record_inputs",
+        "name": "runtime_record_inputs",
         "title": "runtime.record_inputs",
         "description": "Start or stop recording live inputs."
       },
@@ -4753,7 +5187,9 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session"],
+      "errorCodes": [
+        "runtime.no_session"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4764,7 +5200,9 @@
       "description": "Replay a recorded input buffer.",
       "inputSchema": {
         "type": "object",
-        "required": ["buffer_id"],
+        "required": [
+          "buffer_id"
+        ],
         "properties": {
           "buffer_id": {
             "type": "string"
@@ -4782,7 +5220,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.replay_inputs",
+        "name": "runtime_replay_inputs",
         "title": "runtime.replay_inputs",
         "description": "Replay a recorded input buffer."
       },
@@ -4790,7 +5228,10 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session", "runtime.buffer_not_found"],
+      "errorCodes": [
+        "runtime.no_session",
+        "runtime.buffer_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4818,7 +5259,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.log_tail",
+        "name": "runtime_log_tail",
         "title": "runtime.log_tail",
         "description": "Tail the running game log ring buffer."
       },
@@ -4826,7 +5267,9 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["runtime.no_session"],
+      "errorCodes": [
+        "runtime.no_session"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4851,7 +5294,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.screenshot",
+        "name": "runtime_screenshot",
         "title": "runtime.screenshot",
         "description": "Capture the live game viewport as PNG base64."
       },
@@ -4859,7 +5302,10 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["runtime.no_session", "runtime.bridge_unavailable"],
+      "errorCodes": [
+        "runtime.no_session",
+        "runtime.bridge_unavailable"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4870,7 +5316,9 @@
       "description": "Mutate engine-wide runtime params (time scale, physics ticks, debug flags).",
       "inputSchema": {
         "type": "object",
-        "required": ["params"],
+        "required": [
+          "params"
+        ],
         "properties": {
           "params": {
             "type": "object"
@@ -4882,7 +5330,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "runtime.set_engine_param",
+        "name": "runtime_set_engine_param",
         "title": "runtime.set_engine_param",
         "description": "Mutate engine-wide runtime params (time scale, physics ticks, debug flags)."
       },
@@ -4890,7 +5338,9 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["runtime.no_session"],
+      "errorCodes": [
+        "runtime.no_session"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4916,7 +5366,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.list",
+        "name": "animation_list",
         "title": "animation.list",
         "description": "List AnimationPlayer nodes and their animations in a scene or project."
       },
@@ -4935,7 +5385,10 @@
       "description": "Create a new Animation in an AnimationPlayer library.",
       "inputSchema": {
         "type": "object",
-        "required": ["player_path", "name"],
+        "required": [
+          "player_path",
+          "name"
+        ],
         "properties": {
           "player_path": {
             "type": "string",
@@ -4967,7 +5420,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.create",
+        "name": "animation_create",
         "title": "animation.create",
         "description": "Create a new Animation in an AnimationPlayer library."
       },
@@ -4975,7 +5428,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation.name_exists"],
+      "errorCodes": [
+        "animation.name_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -4986,7 +5441,11 @@
       "description": "Add a track to an animation on an AnimationPlayer.",
       "inputSchema": {
         "type": "object",
-        "required": ["player_path", "animation", "track"],
+        "required": [
+          "player_path",
+          "animation",
+          "track"
+        ],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5015,7 +5474,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.add_track",
+        "name": "animation_add_track",
         "title": "animation.add_track",
         "description": "Add a track to an animation on an AnimationPlayer."
       },
@@ -5023,7 +5482,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation.unknown", "animation.track_kind_unknown"],
+      "errorCodes": [
+        "animation.unknown",
+        "animation.track_kind_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5034,7 +5496,12 @@
       "description": "Insert or replace keyframes on an animation track.",
       "inputSchema": {
         "type": "object",
-        "required": ["player_path", "animation", "track_index", "keys"],
+        "required": [
+          "player_path",
+          "animation",
+          "track_index",
+          "keys"
+        ],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5066,7 +5533,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.set_keyframes",
+        "name": "animation_set_keyframes",
         "title": "animation.set_keyframes",
         "description": "Insert or replace keyframes on an animation track."
       },
@@ -5074,7 +5541,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation.unknown"],
+      "errorCodes": [
+        "animation.unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5085,7 +5554,9 @@
       "description": "Play, queue, pause, or stop an animation on an AnimationPlayer.",
       "inputSchema": {
         "type": "object",
-        "required": ["player_path"],
+        "required": [
+          "player_path"
+        ],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5117,7 +5588,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.play",
+        "name": "animation_play",
         "title": "animation.play",
         "description": "Play, queue, pause, or stop an animation on an AnimationPlayer."
       },
@@ -5125,7 +5596,9 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation.unknown"],
+      "errorCodes": [
+        "animation.unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5136,7 +5609,10 @@
       "description": "Export an animation preview (GIF/MP4 best-effort; PNG sequence fallback).",
       "inputSchema": {
         "type": "object",
-        "required": ["player_path", "name"],
+        "required": [
+          "player_path",
+          "name"
+        ],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5165,7 +5641,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation.preview_export",
+        "name": "animation_preview_export",
         "title": "animation.preview_export",
         "description": "Export an animation preview (GIF/MP4 best-effort; PNG sequence fallback)."
       },
@@ -5173,7 +5649,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation.exporter_missing", "animation.unknown"],
+      "errorCodes": [
+        "animation.exporter_missing",
+        "animation.unknown"
+      ],
       "examples": [],
       "headlessFallback": false
     },
@@ -5184,7 +5663,9 @@
       "description": "Describe an AnimationTree root, states, transitions, and parameters.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path"],
+        "required": [
+          "tree_path"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5201,7 +5682,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.describe",
+        "name": "animation_tree_describe",
         "title": "animation_tree.describe",
         "description": "Describe an AnimationTree root, states, transitions, and parameters."
       },
@@ -5220,7 +5701,10 @@
       "description": "Enable or disable AnimationTree processing.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "active"],
+        "required": [
+          "tree_path",
+          "active"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5240,7 +5724,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.set_active",
+        "name": "animation_tree_set_active",
         "title": "animation_tree.set_active",
         "description": "Enable or disable AnimationTree processing."
       },
@@ -5259,7 +5743,11 @@
       "description": "Set a blend parameter or travel/advance a state-machine playback.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "parameter", "value"],
+        "required": [
+          "tree_path",
+          "parameter",
+          "value"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5283,7 +5771,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.set_parameter",
+        "name": "animation_tree_set_parameter",
         "title": "animation_tree.set_parameter",
         "description": "Set a blend parameter or travel/advance a state-machine playback."
       },
@@ -5291,7 +5779,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation_tree.parameter_unknown"],
+      "errorCodes": [
+        "animation_tree.parameter_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5302,7 +5792,10 @@
       "description": "Add a state to a StateMachine AnimationTree root.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "state"],
+        "required": [
+          "tree_path",
+          "state"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5322,7 +5815,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.add_state",
+        "name": "animation_tree_add_state",
         "title": "animation_tree.add_state",
         "description": "Add a state to a StateMachine AnimationTree root."
       },
@@ -5330,7 +5823,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation_tree.state_exists"],
+      "errorCodes": [
+        "animation_tree.state_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5341,7 +5836,10 @@
       "description": "Remove a state from a StateMachine root.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "name"],
+        "required": [
+          "tree_path",
+          "name"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5361,7 +5859,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.remove_state",
+        "name": "animation_tree_remove_state",
         "title": "animation_tree.remove_state",
         "description": "Remove a state from a StateMachine root."
       },
@@ -5369,7 +5867,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["animation_tree.state_unknown"],
+      "errorCodes": [
+        "animation_tree.state_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5380,7 +5880,12 @@
       "description": "Add a transition between two states in a StateMachine.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "from", "to", "transition"],
+        "required": [
+          "tree_path",
+          "from",
+          "to",
+          "transition"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5406,7 +5911,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.add_transition",
+        "name": "animation_tree_add_transition",
         "title": "animation_tree.add_transition",
         "description": "Add a transition between two states in a StateMachine."
       },
@@ -5425,7 +5930,11 @@
       "description": "Remove a transition between two states.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path", "from", "to"],
+        "required": [
+          "tree_path",
+          "from",
+          "to"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5448,7 +5957,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.remove_transition",
+        "name": "animation_tree_remove_transition",
         "title": "animation_tree.remove_transition",
         "description": "Remove a transition between two states."
       },
@@ -5467,7 +5976,9 @@
       "description": "Snapshot blend weights and active state-machine transition progress.",
       "inputSchema": {
         "type": "object",
-        "required": ["tree_path"],
+        "required": [
+          "tree_path"
+        ],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5484,7 +5995,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "animation_tree.blend_audit",
+        "name": "animation_tree_blend_audit",
         "title": "animation_tree.blend_audit",
         "description": "Snapshot blend weights and active state-machine transition progress."
       },
@@ -5503,7 +6014,11 @@
       "description": "Add a physics body node with optional collision shape under a parent.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "kind", "dimension"],
+        "required": [
+          "parent_path",
+          "kind",
+          "dimension"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -5543,7 +6058,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.add_body",
+        "name": "physics_add_body",
         "title": "physics.add_body",
         "description": "Add a physics body node with optional collision shape under a parent."
       },
@@ -5551,7 +6066,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["physics.shape_kind_unknown", "physics.dimension_mismatch"],
+      "errorCodes": [
+        "physics.shape_kind_unknown",
+        "physics.dimension_mismatch"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5562,7 +6080,9 @@
       "description": "Set collision layer and mask on a physics body.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -5577,7 +6097,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.set_layers",
+        "name": "physics_set_layers",
         "title": "physics.set_layers",
         "description": "Set collision layer and mask on a physics body."
       },
@@ -5585,7 +6105,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["physics.dimension_mismatch"],
+      "errorCodes": [
+        "physics.dimension_mismatch"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5607,7 +6129,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.list_layers",
+        "name": "physics_list_layers",
         "title": "physics.list_layers",
         "description": "List named physics layers from ProjectSettings."
       },
@@ -5626,7 +6148,11 @@
       "description": "Name or rename a physics layer index (1..32).",
       "inputSchema": {
         "type": "object",
-        "required": ["dimension", "index", "name"],
+        "required": [
+          "dimension",
+          "index",
+          "name"
+        ],
         "properties": {
           "dimension": {
             "type": "string"
@@ -5644,7 +6170,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.set_layer_name",
+        "name": "physics_set_layer_name",
         "title": "physics.set_layer_name",
         "description": "Name or rename a physics layer index (1..32)."
       },
@@ -5663,7 +6189,9 @@
       "description": "Cast one or more rays against the live physics space.",
       "inputSchema": {
         "type": "object",
-        "required": ["dimension"],
+        "required": [
+          "dimension"
+        ],
         "properties": {
           "dimension": {
             "type": "string"
@@ -5691,7 +6219,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.raycast",
+        "name": "physics_raycast",
         "title": "physics.raycast",
         "description": "Cast one or more rays against the live physics space."
       },
@@ -5699,7 +6227,9 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["physics.batch_too_large"],
+      "errorCodes": [
+        "physics.batch_too_large"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5710,7 +6240,9 @@
       "description": "Set global gravity vector and magnitude for 2D or 3D.",
       "inputSchema": {
         "type": "object",
-        "required": ["dimension"],
+        "required": [
+          "dimension"
+        ],
         "properties": {
           "dimension": {
             "type": "string"
@@ -5728,7 +6260,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "physics.set_gravity",
+        "name": "physics_set_gravity",
         "title": "physics.set_gravity",
         "description": "Set global gravity vector and magnitude for 2D or 3D."
       },
@@ -5747,7 +6279,10 @@
       "description": "Add a GPU or CPU particle system under a parent.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "dimension"],
+        "required": [
+          "parent_path",
+          "dimension"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -5784,7 +6319,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "particle.add_system",
+        "name": "particle_add_system",
         "title": "particle.add_system",
         "description": "Add a GPU or CPU particle system under a parent."
       },
@@ -5792,7 +6327,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["particle.gpu_unsupported"],
+      "errorCodes": [
+        "particle.gpu_unsupported"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5803,7 +6340,10 @@
       "description": "Patch properties on a ParticleProcessMaterial resource.",
       "inputSchema": {
         "type": "object",
-        "required": ["material_path", "patch"],
+        "required": [
+          "material_path",
+          "patch"
+        ],
         "properties": {
           "material_path": {
             "type": "string",
@@ -5821,7 +6361,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "particle.set_material",
+        "name": "particle_set_material",
         "title": "particle.set_material",
         "description": "Patch properties on a ParticleProcessMaterial resource."
       },
@@ -5829,7 +6369,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["protocol.idempotency_conflict", "resource.path_not_found"],
+      "errorCodes": [
+        "protocol.idempotency_conflict",
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5840,7 +6383,9 @@
       "description": "Render a short preview of a particle system.",
       "inputSchema": {
         "type": "object",
-        "required": ["system_path"],
+        "required": [
+          "system_path"
+        ],
         "properties": {
           "system_path": {
             "type": "string",
@@ -5862,7 +6407,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "particle.preview",
+        "name": "particle_preview",
         "title": "particle.preview",
         "description": "Render a short preview of a particle system."
       },
@@ -5881,7 +6426,10 @@
       "description": "Start, stop, restart, or one-shot emit a particle system.",
       "inputSchema": {
         "type": "object",
-        "required": ["system_path", "action"],
+        "required": [
+          "system_path",
+          "action"
+        ],
         "properties": {
           "system_path": {
             "type": "string",
@@ -5900,7 +6448,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "particle.set_emission",
+        "name": "particle_set_emission",
         "title": "particle.set_emission",
         "description": "Start, stop, restart, or one-shot emit a particle system."
       },
@@ -5934,7 +6482,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "particle.list_presets",
+        "name": "particle_list_presets",
         "title": "particle.list_presets",
         "description": "Enumerate particle presets and optionally apply one."
       },
@@ -5942,7 +6490,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["asset.preset_unknown"],
+      "errorCodes": [
+        "asset.preset_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -5953,7 +6503,10 @@
       "description": "Add a NavigationRegion2D/3D with navmesh resource.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "dimension"],
+        "required": [
+          "parent_path",
+          "dimension"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -5978,7 +6531,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.add_region",
+        "name": "navigation_add_region",
         "title": "navigation.add_region",
         "description": "Add a NavigationRegion2D/3D with navmesh resource."
       },
@@ -6027,7 +6580,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.bake",
+        "name": "navigation_bake",
         "title": "navigation.bake",
         "description": "Bake navigation mesh for a region or all regions in the scene."
       },
@@ -6035,7 +6588,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["navigation.bake_timeout"],
+      "errorCodes": [
+        "navigation.bake_timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6046,7 +6601,10 @@
       "description": "Add a NavigationAgent2D/3D child to a body.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "dimension"],
+        "required": [
+          "parent_path",
+          "dimension"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -6074,7 +6632,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.add_agent",
+        "name": "navigation_add_agent",
         "title": "navigation.add_agent",
         "description": "Add a NavigationAgent2D/3D child to a body."
       },
@@ -6117,7 +6675,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.set_layers",
+        "name": "navigation_set_layers",
         "title": "navigation.set_layers",
         "description": "Rename navigation layers and assign navigation_layers on agents."
       },
@@ -6136,7 +6694,11 @@
       "description": "Compute a navigation path between two points.",
       "inputSchema": {
         "type": "object",
-        "required": ["dimension", "from", "to"],
+        "required": [
+          "dimension",
+          "from",
+          "to"
+        ],
         "properties": {
           "dimension": {
             "type": "string"
@@ -6160,7 +6722,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.path",
+        "name": "navigation_path",
         "title": "navigation.path",
         "description": "Compute a navigation path between two points."
       },
@@ -6179,7 +6741,9 @@
       "description": "Toggle navigation debug overlay at runtime.",
       "inputSchema": {
         "type": "object",
-        "required": ["enabled"],
+        "required": [
+          "enabled"
+        ],
         "properties": {
           "enabled": {
             "type": "boolean"
@@ -6194,7 +6758,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "navigation.debug_overlay",
+        "name": "navigation_debug_overlay",
         "title": "navigation.debug_overlay",
         "description": "Toggle navigation debug overlay at runtime."
       },
@@ -6213,7 +6777,9 @@
       "description": "Describe a TileMapLayer or legacy TileMap (tileset, layers, used rect, atlas sources).",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -6226,7 +6792,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.describe",
+        "name": "tilemap_describe",
         "title": "tilemap.describe",
         "description": "Describe a TileMapLayer or legacy TileMap (tileset, layers, used rect, atlas sources)."
       },
@@ -6245,7 +6811,10 @@
       "description": "Set or clear cells in bulk on a tilemap layer.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "cells"],
+        "required": [
+          "path",
+          "cells"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -6265,7 +6834,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.set_cells",
+        "name": "tilemap_set_cells",
         "title": "tilemap.set_cells",
         "description": "Set or clear cells in bulk on a tilemap layer."
       },
@@ -6288,7 +6857,11 @@
       "description": "Fill a rectangle or polygon with one tile.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "source_id", "atlas_coords"],
+        "required": [
+          "path",
+          "source_id",
+          "atlas_coords"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -6319,7 +6892,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.fill",
+        "name": "tilemap_fill",
         "title": "tilemap.fill",
         "description": "Fill a rectangle or polygon with one tile."
       },
@@ -6327,7 +6900,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["tilemap.cell_batch_too_large"],
+      "errorCodes": [
+        "tilemap.cell_batch_too_large"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6338,7 +6913,9 @@
       "description": "Read tiles in a region or the used rect.",
       "inputSchema": {
         "type": "object",
-        "required": ["path"],
+        "required": [
+          "path"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -6360,7 +6937,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.query_cells",
+        "name": "tilemap_query_cells",
         "title": "tilemap.query_cells",
         "description": "Read tiles in a region or the used rect."
       },
@@ -6379,7 +6956,9 @@
       "description": "Describe a TileSet resource (sources, terrains, custom data).",
       "inputSchema": {
         "type": "object",
-        "required": ["tileset_path"],
+        "required": [
+          "tileset_path"
+        ],
         "properties": {
           "tileset_path": {
             "type": "string",
@@ -6392,7 +6971,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.tileset_info",
+        "name": "tilemap_tileset_info",
         "title": "tilemap.tileset_info",
         "description": "Describe a TileSet resource (sources, terrains, custom data)."
       },
@@ -6411,7 +6990,12 @@
       "description": "Paint cells using terrain auto-tiling.",
       "inputSchema": {
         "type": "object",
-        "required": ["path", "cells", "terrain_set", "terrain"],
+        "required": [
+          "path",
+          "cells",
+          "terrain_set",
+          "terrain"
+        ],
         "properties": {
           "path": {
             "type": "string",
@@ -6439,7 +7023,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "tilemap.terrain_paint",
+        "name": "tilemap_terrain_paint",
         "title": "tilemap.terrain_paint",
         "description": "Paint cells using terrain auto-tiling."
       },
@@ -6447,7 +7031,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["tilemap.terrain_unknown", "tilemap.cell_batch_too_large"],
+      "errorCodes": [
+        "tilemap.terrain_unknown",
+        "tilemap.cell_batch_too_large"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6474,7 +7061,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.describe",
+        "name": "theme_ui_describe",
         "title": "theme_ui.describe",
         "description": "Describe a Theme resource or per-Control theme overrides."
       },
@@ -6493,7 +7080,12 @@
       "description": "Set a theme color on a Theme resource or Control override.",
       "inputSchema": {
         "type": "object",
-        "required": ["target", "type", "name", "value"],
+        "required": [
+          "target",
+          "type",
+          "name",
+          "value"
+        ],
         "properties": {
           "target": {
             "type": "object",
@@ -6523,7 +7115,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.set_color",
+        "name": "theme_ui_set_color",
         "title": "theme_ui.set_color",
         "description": "Set a theme color on a Theme resource or Control override."
       },
@@ -6531,7 +7123,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["theme.target_missing"],
+      "errorCodes": [
+        "theme.target_missing"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6542,7 +7136,10 @@
       "description": "Set default or per-type font on a Theme or Control.",
       "inputSchema": {
         "type": "object",
-        "required": ["target", "font_path"],
+        "required": [
+          "target",
+          "font_path"
+        ],
         "properties": {
           "target": {
             "type": "object",
@@ -6578,7 +7175,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.set_font",
+        "name": "theme_ui_set_font",
         "title": "theme_ui.set_font",
         "description": "Set default or per-type font on a Theme or Control."
       },
@@ -6586,7 +7183,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["theme.target_missing", "theme.font_load_failed"],
+      "errorCodes": [
+        "theme.target_missing",
+        "theme.font_load_failed"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6597,7 +7197,12 @@
       "description": "Define or replace a StyleBox on a Theme or Control.",
       "inputSchema": {
         "type": "object",
-        "required": ["target", "type", "name", "stylebox"],
+        "required": [
+          "target",
+          "type",
+          "name",
+          "stylebox"
+        ],
         "properties": {
           "target": {
             "type": "object",
@@ -6629,7 +7234,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.set_stylebox",
+        "name": "theme_ui_set_stylebox",
         "title": "theme_ui.set_stylebox",
         "description": "Define or replace a StyleBox on a Theme or Control."
       },
@@ -6637,7 +7242,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["theme.target_missing", "theme.stylebox_invalid"],
+      "errorCodes": [
+        "theme.target_missing",
+        "theme.stylebox_invalid"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6648,7 +7256,9 @@
       "description": "Generate a PNG preview of a theme on sample widgets.",
       "inputSchema": {
         "type": "object",
-        "required": ["theme_path"],
+        "required": [
+          "theme_path"
+        ],
         "properties": {
           "theme_path": {
             "type": "string",
@@ -6667,7 +7277,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.preview",
+        "name": "theme_ui_preview",
         "title": "theme_ui.preview",
         "description": "Generate a PNG preview of a theme on sample widgets."
       },
@@ -6675,7 +7285,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["theme.preview_failed"],
+      "errorCodes": [
+        "theme.preview_failed"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6686,7 +7298,10 @@
       "description": "Scaffold a UI screen scene from a preset kind (title, settings, hud, pause, etc.).",
       "inputSchema": {
         "type": "object",
-        "required": ["output_path", "kind"],
+        "required": [
+          "output_path",
+          "kind"
+        ],
         "properties": {
           "output_path": {
             "type": "string",
@@ -6709,7 +7324,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "theme_ui.scaffold_screen",
+        "name": "theme_ui_scaffold_screen",
         "title": "theme_ui.scaffold_screen",
         "description": "Scaffold a UI screen scene from a preset kind (title, settings, hud, pause, etc.)."
       },
@@ -6735,7 +7350,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.list_buses",
+        "name": "audio_list_buses",
         "title": "audio.list_buses",
         "description": "Describe the AudioServer bus layout."
       },
@@ -6754,7 +7369,9 @@
       "description": "Add an audio bus.",
       "inputSchema": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -6773,7 +7390,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.add_bus",
+        "name": "audio_add_bus",
         "title": "audio.add_bus",
         "description": "Add an audio bus."
       },
@@ -6781,7 +7398,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["audio.bus_name_exists"],
+      "errorCodes": [
+        "audio.bus_name_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6810,7 +7429,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.remove_bus",
+        "name": "audio_remove_bus",
         "title": "audio.remove_bus",
         "description": "Remove an audio bus and optionally reassign sends."
       },
@@ -6818,7 +7437,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["audio.bus_unknown", "audio.cannot_remove_master"],
+      "errorCodes": [
+        "audio.bus_unknown",
+        "audio.cannot_remove_master"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6829,7 +7451,10 @@
       "description": "Patch bus volume, mute, solo, bypass, or send target.",
       "inputSchema": {
         "type": "object",
-        "required": ["bus", "patch"],
+        "required": [
+          "bus",
+          "patch"
+        ],
         "properties": {
           "bus": {},
           "patch": {
@@ -6842,7 +7467,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.set_bus",
+        "name": "audio_set_bus",
         "title": "audio.set_bus",
         "description": "Patch bus volume, mute, solo, bypass, or send target."
       },
@@ -6850,7 +7475,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["audio.bus_unknown"],
+      "errorCodes": [
+        "audio.bus_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6861,7 +7488,10 @@
       "description": "Add an AudioEffect to a bus.",
       "inputSchema": {
         "type": "object",
-        "required": ["bus", "kind"],
+        "required": [
+          "bus",
+          "kind"
+        ],
         "properties": {
           "bus": {},
           "kind": {
@@ -6881,7 +7511,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.add_effect",
+        "name": "audio_add_effect",
         "title": "audio.add_effect",
         "description": "Add an AudioEffect to a bus."
       },
@@ -6889,7 +7519,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["audio.bus_unknown", "audio.effect_kind_unknown"],
+      "errorCodes": [
+        "audio.bus_unknown",
+        "audio.effect_kind_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6900,7 +7533,9 @@
       "description": "Play a stream on a bus for preview.",
       "inputSchema": {
         "type": "object",
-        "required": ["stream_path"],
+        "required": [
+          "stream_path"
+        ],
         "properties": {
           "stream_path": {
             "type": "string",
@@ -6925,7 +7560,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "audio.preview_play",
+        "name": "audio_preview_play",
         "title": "audio.preview_play",
         "description": "Play a stream on a bus for preview."
       },
@@ -6933,7 +7568,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": ["audio.preview_unavailable", "resource.path_not_found"],
+      "errorCodes": [
+        "audio.preview_unavailable",
+        "resource.path_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -6955,7 +7593,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.list_actions",
+        "name": "input_list_actions",
         "title": "input.list_actions",
         "description": "List InputMap actions and bound events."
       },
@@ -6974,7 +7612,9 @@
       "description": "Create an input action with optional events.",
       "inputSchema": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -6993,7 +7633,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.add_action",
+        "name": "input_add_action",
         "title": "input.add_action",
         "description": "Create an input action with optional events."
       },
@@ -7001,7 +7641,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["input.action_exists", "input.action_name_invalid"],
+      "errorCodes": [
+        "input.action_exists",
+        "input.action_name_invalid"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7012,7 +7655,9 @@
       "description": "Remove an input action.",
       "inputSchema": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -7025,7 +7670,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.remove_action",
+        "name": "input_remove_action",
         "title": "input.remove_action",
         "description": "Remove an input action."
       },
@@ -7033,7 +7678,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["input.action_unknown"],
+      "errorCodes": [
+        "input.action_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7044,7 +7691,10 @@
       "description": "Replace all events bound to an action.",
       "inputSchema": {
         "type": "object",
-        "required": ["name", "events"],
+        "required": [
+          "name",
+          "events"
+        ],
         "properties": {
           "name": {
             "type": "string",
@@ -7060,7 +7710,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.set_action_events",
+        "name": "input_set_action_events",
         "title": "input.set_action_events",
         "description": "Replace all events bound to an action."
       },
@@ -7068,7 +7718,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["input.action_unknown"],
+      "errorCodes": [
+        "input.action_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7079,7 +7731,10 @@
       "description": "Rename an input action and optionally rewrite script references.",
       "inputSchema": {
         "type": "object",
-        "required": ["from", "to"],
+        "required": [
+          "from",
+          "to"
+        ],
         "properties": {
           "from": {
             "type": "string",
@@ -7102,7 +7757,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.rename_action",
+        "name": "input_rename_action",
         "title": "input.rename_action",
         "description": "Rename an input action and optionally rewrite script references."
       },
@@ -7110,7 +7765,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["input.action_unknown", "input.action_exists"],
+      "errorCodes": [
+        "input.action_unknown",
+        "input.action_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7121,7 +7779,9 @@
       "description": "Simulate pressing and releasing an action.",
       "inputSchema": {
         "type": "object",
-        "required": ["action"],
+        "required": [
+          "action"
+        ],
         "properties": {
           "action": {
             "type": "string",
@@ -7143,7 +7803,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.simulate_action",
+        "name": "input_simulate_action",
         "title": "input.simulate_action",
         "description": "Simulate pressing and releasing an action."
       },
@@ -7151,7 +7811,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["input.action_unknown"],
+      "errorCodes": [
+        "input.action_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7162,7 +7824,9 @@
       "description": "Describe an input event and matching actions.",
       "inputSchema": {
         "type": "object",
-        "required": ["event"],
+        "required": [
+          "event"
+        ],
         "properties": {
           "event": {
             "type": "object"
@@ -7174,7 +7838,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "input.describe_event",
+        "name": "input_describe_event",
         "title": "input.describe_event",
         "description": "Describe an input event and matching actions."
       },
@@ -7193,7 +7857,9 @@
       "description": "Add a MeshInstance3D with optional primitive or resource mesh and material.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path"],
+        "required": [
+          "parent_path"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7224,7 +7890,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.add_mesh_instance",
+        "name": "scene_3d_add_mesh_instance",
         "title": "scene_3d.add_mesh_instance",
         "description": "Add a MeshInstance3D with optional primitive or resource mesh and material."
       },
@@ -7232,7 +7898,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene_3d.primitive_unknown"],
+      "errorCodes": [
+        "scene_3d.primitive_unknown"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7243,7 +7911,9 @@
       "description": "Add a Camera3D with perspective/orthogonal/frustum projection and optional current toggle.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path"],
+        "required": [
+          "parent_path"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7278,7 +7948,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.add_camera",
+        "name": "scene_3d_add_camera",
         "title": "scene_3d.add_camera",
         "description": "Add a Camera3D with perspective/orthogonal/frustum projection and optional current toggle."
       },
@@ -7297,7 +7967,10 @@
       "description": "Add a directional, omni, or spot light with shadow and bake configuration.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "kind"],
+        "required": [
+          "parent_path",
+          "kind"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7338,7 +8011,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.add_light",
+        "name": "scene_3d_add_light",
         "title": "scene_3d.add_light",
         "description": "Add a directional, omni, or spot light with shadow and bake configuration."
       },
@@ -7357,7 +8030,9 @@
       "description": "Add or update a WorldEnvironment (sky, fog, ambient, tonemap, glow, SSAO, SSR).",
       "inputSchema": {
         "type": "object",
-        "required": ["spec"],
+        "required": [
+          "spec"
+        ],
         "properties": {
           "scene_root_path": {
             "type": "string",
@@ -7373,7 +8048,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.set_environment",
+        "name": "scene_3d_set_environment",
         "title": "scene_3d.set_environment",
         "description": "Add or update a WorldEnvironment (sky, fog, ambient, tonemap, glow, SSAO, SSR)."
       },
@@ -7392,7 +8067,10 @@
       "description": "Add a GridMap with a MeshLibrary and optionally seeded cells.",
       "inputSchema": {
         "type": "object",
-        "required": ["parent_path", "mesh_library_path"],
+        "required": [
+          "parent_path",
+          "mesh_library_path"
+        ],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7421,7 +8099,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.add_gridmap",
+        "name": "scene_3d_add_gridmap",
         "title": "scene_3d.add_gridmap",
         "description": "Add a GridMap with a MeshLibrary and optionally seeded cells."
       },
@@ -7429,7 +8107,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["scene_3d.mesh_library_unknown", "scene_3d.gridmap_cells_invalid"],
+      "errorCodes": [
+        "scene_3d.mesh_library_unknown",
+        "scene_3d.gridmap_cells_invalid"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7440,7 +8121,10 @@
       "description": "Position a camera to frame one or more subjects using their combined global AABB.",
       "inputSchema": {
         "type": "object",
-        "required": ["camera_path", "subjects"],
+        "required": [
+          "camera_path",
+          "subjects"
+        ],
         "properties": {
           "camera_path": {
             "type": "string",
@@ -7465,7 +8149,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "scene_3d.frame_subject",
+        "name": "scene_3d_frame_subject",
         "title": "scene_3d.frame_subject",
         "description": "Position a camera to frame one or more subjects using their combined global AABB."
       },
@@ -7495,7 +8179,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.list_suites",
+        "name": "testing_list_suites",
         "title": "testing.list_suites",
         "description": "Enumerate detected test suites."
       },
@@ -7540,7 +8224,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.run",
+        "name": "testing_run",
         "title": "testing.run",
         "description": "Run tests headless."
       },
@@ -7548,7 +8232,10 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["testing.framework_unknown", "testing.timeout"],
+      "errorCodes": [
+        "testing.framework_unknown",
+        "testing.timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7559,7 +8246,9 @@
       "description": "Assert runtime/editor state conditions.",
       "inputSchema": {
         "type": "object",
-        "required": ["assertions"],
+        "required": [
+          "assertions"
+        ],
         "properties": {
           "assertions": {
             "type": "array"
@@ -7571,7 +8260,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.assert_state",
+        "name": "testing_assert_state",
         "title": "testing.assert_state",
         "description": "Assert runtime/editor state conditions."
       },
@@ -7590,7 +8279,10 @@
       "description": "Compare a screenshot against a golden image.",
       "inputSchema": {
         "type": "object",
-        "required": ["source", "golden_path"],
+        "required": [
+          "source",
+          "golden_path"
+        ],
         "properties": {
           "source": {
             "type": "object"
@@ -7615,7 +8307,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.screenshot_compare",
+        "name": "testing_screenshot_compare",
         "title": "testing.screenshot_compare",
         "description": "Compare a screenshot against a golden image."
       },
@@ -7623,7 +8315,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": ["testing.golden_not_found"],
+      "errorCodes": [
+        "testing.golden_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7645,7 +8339,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.list_reports",
+        "name": "testing_list_reports",
         "title": "testing.list_reports",
         "description": "List saved test reports."
       },
@@ -7664,7 +8358,9 @@
       "description": "Fetch a saved test report by id.",
       "inputSchema": {
         "type": "object",
-        "required": ["id"],
+        "required": [
+          "id"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -7677,7 +8373,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.get_report",
+        "name": "testing_get_report",
         "title": "testing.get_report",
         "description": "Fetch a saved test report by id."
       },
@@ -7713,7 +8409,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "profile.monitor",
+        "name": "profile_monitor",
         "title": "profile.monitor",
         "description": "Sample Godot performance monitors."
       },
@@ -7749,7 +8445,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "profile.flamegraph",
+        "name": "profile_flamegraph",
         "title": "profile.flamegraph",
         "description": "Capture a profiling flamegraph snapshot."
       },
@@ -7757,7 +8453,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": ["profile.flamegraph_unavailable"],
+      "errorCodes": [
+        "profile.flamegraph_unavailable"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7775,7 +8473,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "export.list_presets",
+        "name": "export_list_presets",
         "title": "export.list_presets",
         "description": "List export presets configured for the project."
       },
@@ -7794,7 +8492,9 @@
       "description": "Run an export preset build.",
       "inputSchema": {
         "type": "object",
-        "required": ["preset"],
+        "required": [
+          "preset"
+        ],
         "properties": {
           "preset": {
             "type": "string",
@@ -7824,7 +8524,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "export.build",
+        "name": "export_build",
         "title": "export.build",
         "description": "Run an export preset build."
       },
@@ -7832,7 +8532,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["export.preset_unknown", "export.template_missing", "export.timeout"],
+      "errorCodes": [
+        "export.preset_unknown",
+        "export.template_missing",
+        "export.timeout"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7850,7 +8554,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "export.template_info",
+        "name": "export_template_info",
         "title": "export.template_info",
         "description": "Report installed export template status."
       },
@@ -7901,7 +8605,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.player_controller_2d",
+        "name": "macro_player_controller_2d",
         "title": "macro.player_controller_2d",
         "description": "Scaffold a 2D platformer player."
       },
@@ -7909,7 +8613,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -7955,7 +8663,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.player_controller_3d",
+        "name": "macro_player_controller_3d",
         "title": "macro.player_controller_3d",
         "description": "Scaffold a 3D first/third-person player."
       },
@@ -7963,7 +8671,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8009,7 +8721,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.enemy_with_state_machine",
+        "name": "macro_enemy_with_state_machine",
         "title": "macro.enemy_with_state_machine",
         "description": "Scaffold an enemy with patrol/chase states."
       },
@@ -8017,7 +8729,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8028,7 +8744,9 @@
       "description": "Scaffold a wave spawner.",
       "inputSchema": {
         "type": "object",
-        "required": ["enemy_scene_path"],
+        "required": [
+          "enemy_scene_path"
+        ],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -8064,7 +8782,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.enemy_wave_spawner",
+        "name": "macro_enemy_wave_spawner",
         "title": "macro.enemy_wave_spawner",
         "description": "Scaffold a wave spawner."
       },
@@ -8072,7 +8790,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8112,7 +8834,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.dialog_system",
+        "name": "macro_dialog_system",
         "title": "macro.dialog_system",
         "description": "Scaffold a dialog UI system."
       },
@@ -8120,7 +8842,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8160,7 +8886,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.inventory_system",
+        "name": "macro_inventory_system",
         "title": "macro.inventory_system",
         "description": "Scaffold an inventory UI."
       },
@@ -8168,7 +8894,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8202,7 +8932,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.save_load_system",
+        "name": "macro_save_load_system",
         "title": "macro.save_load_system",
         "description": "Scaffold save/load slots."
       },
@@ -8210,7 +8940,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8247,7 +8981,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.settings_menu",
+        "name": "macro_settings_menu",
         "title": "macro.settings_menu",
         "description": "Scaffold a settings menu scene."
       },
@@ -8255,7 +8989,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8295,7 +9033,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.main_menu",
+        "name": "macro_main_menu",
         "title": "macro.main_menu",
         "description": "Scaffold a main menu scene."
       },
@@ -8303,7 +9041,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8337,7 +9079,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.pause_overlay",
+        "name": "macro_pause_overlay",
         "title": "macro.pause_overlay",
         "description": "Scaffold a pause overlay."
       },
@@ -8345,7 +9087,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8379,7 +9125,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.hud_health_score",
+        "name": "macro_hud_health_score",
         "title": "macro.hud_health_score",
         "description": "Scaffold HUD health/score widgets."
       },
@@ -8387,7 +9133,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8424,7 +9174,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.day_night_cycle",
+        "name": "macro_day_night_cycle",
         "title": "macro.day_night_cycle",
         "description": "Scaffold a day/night cycle controller."
       },
@@ -8432,7 +9182,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8443,7 +9197,9 @@
       "description": "Scaffold a basic 2D level scene.",
       "inputSchema": {
         "type": "object",
-        "required": ["output_path"],
+        "required": [
+          "output_path"
+        ],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -8473,7 +9229,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.basic_2d_level",
+        "name": "macro_basic_2d_level",
         "title": "macro.basic_2d_level",
         "description": "Scaffold a basic 2D level scene."
       },
@@ -8481,7 +9237,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8492,7 +9252,9 @@
       "description": "Scaffold a basic 3D level scene.",
       "inputSchema": {
         "type": "object",
-        "required": ["output_path"],
+        "required": [
+          "output_path"
+        ],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -8519,7 +9281,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.basic_3d_level",
+        "name": "macro_basic_3d_level",
         "title": "macro.basic_3d_level",
         "description": "Scaffold a basic 3D level scene."
       },
@@ -8527,7 +9289,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8561,7 +9327,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "macro.localization_setup",
+        "name": "macro_localization_setup",
         "title": "macro.localization_setup",
         "description": "Scaffold localization tables and wiring."
       },
@@ -8569,7 +9335,11 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "errorCodes": [
+        "macro.not_implemented",
+        "macro.ops_limit",
+        "macro.file_exists"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8587,7 +9357,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "android.list_devices",
+        "name": "android_list_devices",
         "title": "android.list_devices",
         "description": "List Android devices visible to adb (parses `adb devices -l`)."
       },
@@ -8595,7 +9365,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["android.adb_not_found"],
+      "errorCodes": [
+        "android.adb_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8621,7 +9393,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "android.preset_info",
+        "name": "android_preset_info",
         "title": "android.preset_info",
         "description": "Inspect an Android export preset (export_path, package_name, runnable)."
       },
@@ -8629,7 +9401,9 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": ["android.preset_not_found"],
+      "errorCodes": [
+        "android.preset_not_found"
+      ],
       "examples": [],
       "headlessFallback": true
     },
@@ -8667,7 +9441,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "android.deploy",
+        "name": "android_deploy",
         "title": "android.deploy",
         "description": "Export APK + adb install -r + optional launch. Skip the export step with skip_export=true."
       },
@@ -8691,7 +9465,9 @@
       "description": "Run a scripted scenario: ordered [input|wait|assert|screenshot] steps with per-step results.",
       "inputSchema": {
         "type": "object",
-        "required": ["steps"],
+        "required": [
+          "steps"
+        ],
         "properties": {
           "steps": {
             "type": "array"
@@ -8710,7 +9486,7 @@
         "type": "object"
       },
       "mcpTool": {
-        "name": "testing.run_scenario",
+        "name": "testing_run_scenario",
         "title": "testing.run_scenario",
         "description": "Run a scripted scenario: ordered [input|wait|assert|screenshot] steps with per-step results."
       },
@@ -8718,7 +9494,9 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": ["testing.scenario_failed"],
+      "errorCodes": [
+        "testing.scenario_failed"
+      ],
       "examples": [],
       "headlessFallback": true
     }

@@ -6,6 +6,7 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { findTerravoltRepoRoot } from "./lib/repo_root.mjs";
+import { assertMcpToolName } from "./lib/mcp_tool_name.mjs";
 
 const root = findTerravoltRepoRoot(import.meta.url);
 const regPath = join(root, "packages", "shared", "methods", "registry.json");
@@ -74,6 +75,20 @@ for (const c of appCodes) {
 const missingSchema = methods.filter((m) => !m.inputSchema || !m.outputSchema);
 if (missingSchema.length) {
   failures.push(`${missingSchema.length} methods missing input/output schema`);
+}
+
+const badMcpNames = [];
+for (const m of methods) {
+  const n = m.mcpTool?.name;
+  if (!n) continue;
+  try {
+    assertMcpToolName(n);
+  } catch {
+    badMcpNames.push(n);
+  }
+}
+if (badMcpNames.length) {
+  failures.push(`invalid MCP tool names (use underscores): ${badMcpNames.slice(0, 8).join(", ")}`);
 }
 
 const headlessCount = methods.filter((m) => m.headlessFallback).length;
