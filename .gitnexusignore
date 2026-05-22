@@ -6,6 +6,9 @@ references/godot-docs/
 
 node_modules/
 
+# Local IDE caches (not product code)
+.claude/
+
 # Generated / vendor dumps
 artifacts/
 graphify-out/

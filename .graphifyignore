@@ -5,6 +5,9 @@ references/godot-docs/
 node_modules/
 .gitnexus/
 
+# Local IDE caches
+.claude/
+
 # Generated outputs & caches
 artifacts/
 graphify-out/cache/
