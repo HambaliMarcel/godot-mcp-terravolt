@@ -22,6 +22,7 @@ const _Scene3dHelpers := preload("../handlers/scene_3d_helpers.gd")
 const _TestingHelpers := preload("../handlers/testing_helpers.gd")
 const _ProfileHelpers := preload("../handlers/profile_helpers.gd")
 const _ExportHelpers := preload("../handlers/export_helpers.gd")
+const _AndroidHelpers := preload("../handlers/android_helpers.gd")
 const _MacroHelpers := preload("../handlers/macro_helpers.gd")
 const _RuntimeSession := preload("../services/runtime_session.gd")
 const _RuntimeProxy := preload("../services/runtime_proxy.gd")
@@ -1668,6 +1669,20 @@ static func headless_testing_dispatch(method: String, params: Dictionary, tree: 
 			return _TestingHelpers.list_reports(params)
 		"testing.get_report":
 			return _TestingHelpers.get_report(params)
+		"testing.run_scenario":
+			return _TestingHelpers.run_scenario(params, root)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_android_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"android.list_devices":
+			return _AndroidHelpers.list_devices(params)
+		"android.preset_info":
+			return _AndroidHelpers.preset_info(params)
+		"android.deploy":
+			return _AndroidHelpers.deploy(params)
 		_:
 			return node_err(-33101, "protocol.method_not_found")
 

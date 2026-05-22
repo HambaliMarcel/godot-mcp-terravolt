@@ -298,8 +298,10 @@ func _dispatch(line: String) -> String:
 			return JSON.stringify(_headless_input(rid, method, pd))
 		"scene_3d.add_mesh_instance", "scene_3d.add_camera", "scene_3d.add_light", "scene_3d.set_environment", "scene_3d.add_gridmap", "scene_3d.frame_subject":
 			return JSON.stringify(_headless_scene_3d(rid, method, pd))
-		"testing.list_suites", "testing.run", "testing.assert_state", "testing.screenshot_compare", "testing.list_reports", "testing.get_report":
+		"testing.list_suites", "testing.run", "testing.assert_state", "testing.screenshot_compare", "testing.list_reports", "testing.get_report", "testing.run_scenario":
 			return JSON.stringify(_headless_testing(rid, method, pd))
+		"android.list_devices", "android.preset_info", "android.deploy":
+			return JSON.stringify(_headless_android(rid, method, pd))
 		"profile.monitor", "profile.flamegraph":
 			return JSON.stringify(_headless_profile(rid, method, pd))
 		"export.list_presets", "export.build", "export.template_info":
@@ -597,5 +599,15 @@ func _headless_input(rid: Variant, method: String, pd: Dictionary) -> Dictionary
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "input.error")), int(g.get("code", -33977)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_android(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_android_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "android.error")), int(g.get("code", -33998)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))

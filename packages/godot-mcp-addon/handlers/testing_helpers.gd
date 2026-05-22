@@ -75,6 +75,108 @@ static func run_tests(params: Dictionary) -> Dictionary:
 	return {"ok": true, "result": report}
 
 
+static func run_scenario(params: Dictionary, scene_root: Node) -> Dictionary:
+	## Orchestrate a sequence of test steps: input | wait | assert | screenshot.
+	## Mirrors the godot-mcp-pro "run_test_scenario" pattern but uses TerraVolt's
+	## headless-friendly primitives (no editor dependency required).
+	var steps: Array = params.get("steps", []) as Array
+	if steps.is_empty():
+		return {
+			"ok": false,
+			"code": _Err.TESTING_SCENARIO_FAILED,
+			"message": "testing.scenario_failed",
+			"context": {"reason": "steps array is empty"},
+		}
+	var stop_on_fail := bool(params.get("stop_on_fail", true))
+	var per_step_timeout_ms := int(params.get("step_timeout_ms", 5000))
+	var t0 := Time.get_ticks_msec()
+	var results: Array = []
+	var all_ok := true
+
+	for i in range(steps.size()):
+		var raw_step: Variant = steps[i]
+		if typeof(raw_step) != TYPE_DICTIONARY:
+			results.append({"index": i, "ok": false, "reason": "step must be an object"})
+			all_ok = false
+			if stop_on_fail:
+				break
+			continue
+		var step := raw_step as Dictionary
+		var kind := str(step.get("type", ""))
+		var step_t0 := Time.get_ticks_msec()
+		var one: Dictionary = {"index": i, "type": kind}
+		match kind:
+			"wait":
+				var sec := float(step.get("seconds", 0.0))
+				if sec > 0.0:
+					OS.delay_msec(int(sec * 1000))
+				one["ok"] = true
+			"assert":
+				var spec: Dictionary = step.get("spec", {}) as Dictionary
+				var expect: Variant = step.get("expect")
+				var assertion_kind := str(step.get("kind", "expression"))
+				var single := _eval_assertion(assertion_kind, spec, expect, scene_root)
+				one["ok"] = bool(single.get("ok", false))
+				one["spec"] = spec
+				one["actual"] = single.get("actual", null)
+				one["expected"] = expect
+				if not one["ok"]:
+					one["reason"] = str(single.get("reason", "assertion failed"))
+			"input":
+				var action := str(step.get("action", "")).strip_edges()
+				if action.is_empty():
+					one["ok"] = false
+					one["reason"] = "input.action is required"
+				else:
+					var pressed := bool(step.get("pressed", true))
+					var ev := InputEventAction.new()
+					ev.action = action
+					ev.pressed = pressed
+					ev.strength = 1.0 if pressed else 0.0
+					Input.parse_input_event(ev)
+					one["ok"] = true
+					one["action"] = action
+					one["pressed"] = pressed
+			"screenshot":
+				var img := _capture_viewport_image()
+				if img == null or img.is_empty():
+					one["ok"] = false
+					one["reason"] = "viewport not available in this context"
+				else:
+					var save_to := str(step.get("save_to", "")).strip_edges()
+					if not save_to.is_empty():
+						var p := _resolve_path(save_to)
+						_ensure_parent_dir(_globalize(p))
+						img.save_png(_globalize(p))
+						one["saved_to"] = p
+					one["ok"] = true
+					one["width"] = img.get_width()
+					one["height"] = img.get_height()
+			_:
+				one["ok"] = false
+				one["reason"] = "unknown step type: %s" % kind
+		one["duration_ms"] = Time.get_ticks_msec() - step_t0
+		if int(one["duration_ms"]) > per_step_timeout_ms:
+			one["timed_out"] = true
+			one["ok"] = false
+		if not bool(one["ok"]):
+			all_ok = false
+		results.append(one)
+		if not bool(one["ok"]) and stop_on_fail:
+			break
+
+	return {
+		"ok": true,
+		"result": {
+			"ok": all_ok,
+			"steps_total": steps.size(),
+			"steps_run": results.size(),
+			"duration_ms": Time.get_ticks_msec() - t0,
+			"steps": results,
+		},
+	}
+
+
 static func assert_state(params: Dictionary, scene_root: Node) -> Dictionary:
 	var assertions: Array = params.get("assertions", []) as Array
 	var results: Array = []

@@ -79,6 +79,8 @@ func _enter_tree() -> void:
 	audio_handlers.attach(_dispatcher, _logger)
 	var input_handlers := preload("./handlers/input.gd").new()
 	input_handlers.attach(_dispatcher, _logger)
+	var android_handlers := preload("./handlers/android.gd").new()
+	android_handlers.attach(_dispatcher, _logger)
 
 	_install_runtime_bridge_autoload()
 

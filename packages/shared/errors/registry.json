@@ -1124,6 +1124,51 @@
       "recoverable": true,
       "hint": "An internal macro op failed; inspect daemon logs and dry_run plan.",
       "since": "0.16.0"
+    },
+    {
+      "code": -33997,
+      "symbol": "testing.scenario_failed",
+      "category": "testing",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "One or more scenario steps failed; inspect the report for the failing step index.",
+      "since": "0.17.0"
+    },
+    {
+      "code": -33998,
+      "symbol": "android.adb_not_found",
+      "category": "android",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Install Android platform-tools (adb) or set Editor Settings > Export > Android > Adb / TERRAVOLT_ANDROID_ADB.",
+      "since": "0.17.0"
+    },
+    {
+      "code": -33999,
+      "symbol": "android.preset_not_found",
+      "category": "android",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Configure an Android preset in Project > Export, or pass a valid preset_name/preset_index.",
+      "since": "0.17.0"
+    },
+    {
+      "code": -34010,
+      "symbol": "android.install_failed",
+      "category": "android",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "adb install -r failed; verify device is connected with `adb devices` and APK is signed.",
+      "since": "0.17.0"
+    },
+    {
+      "code": -34011,
+      "symbol": "android.export_failed",
+      "category": "android",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Godot --export-debug/release failed; check export templates and preset configuration.",
+      "since": "0.17.0"
     }
   ]
 }

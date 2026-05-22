@@ -58,6 +58,18 @@ func _register_all() -> void:
 	)
 	_dispatcher.register("testing.list_reports", _schema({"limit": {"type": "integer"}}, []), _h_list_reports)
 	_dispatcher.register("testing.get_report", _schema({"id": np}, ["id"]), _h_get_report)
+	_dispatcher.register(
+		"testing.run_scenario",
+		_schema(
+			{
+				"steps": {"type": "array"},
+				"stop_on_fail": {"type": "boolean"},
+				"step_timeout_ms": {"type": "integer", "minimum": 1},
+			},
+			["steps"]
+		),
+		_h_run_scenario
+	)
 
 
 func _schema(props: Dictionary, required: Array = []) -> Dictionary:
@@ -107,6 +119,11 @@ func _h_list_reports(ctx: Dictionary) -> Dictionary:
 
 func _h_get_report(ctx: Dictionary) -> Dictionary:
 	return _wrap(_H.get_report(_Utils.params_dict(ctx)))
+
+
+func _h_run_scenario(ctx: Dictionary) -> Dictionary:
+	var root := _scene_root()
+	return _wrap(_H.run_scenario(_Utils.params_dict(ctx), root))
 
 
 func _err(code: int, symbol: String) -> Dictionary:

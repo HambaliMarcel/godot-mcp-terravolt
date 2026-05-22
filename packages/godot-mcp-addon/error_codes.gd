@@ -181,6 +181,14 @@ const PROFILE_FLAMEGRAPH_UNAVAILABLE := -33993
 const EXPORT_PRESET_UNKNOWN := -33994
 const EXPORT_TEMPLATE_MISSING := -33995
 const EXPORT_TIMEOUT := -33996
+const TESTING_SCENARIO_FAILED := -33997
+#endregion
+
+#region android (task 26)
+const ANDROID_ADB_NOT_FOUND := -33998
+const ANDROID_PRESET_NOT_FOUND := -33999
+const ANDROID_INSTALL_FAILED := -34010
+const ANDROID_EXPORT_FAILED := -34011
 #endregion
 
 #region macro (task 24)
@@ -341,6 +349,11 @@ const _CODE_TO_SYMBOL := {
 	EXPORT_PRESET_UNKNOWN: "export.preset_unknown",
 	EXPORT_TEMPLATE_MISSING: "export.template_missing",
 	EXPORT_TIMEOUT: "export.timeout",
+	TESTING_SCENARIO_FAILED: "testing.scenario_failed",
+	ANDROID_ADB_NOT_FOUND: "android.adb_not_found",
+	ANDROID_PRESET_NOT_FOUND: "android.preset_not_found",
+	ANDROID_INSTALL_FAILED: "android.install_failed",
+	ANDROID_EXPORT_FAILED: "android.export_failed",
 	MACRO_NOT_IMPLEMENTED: "macro.not_implemented",
 	MACRO_OPS_LIMIT: "macro.ops_limit",
 	MACRO_SCENE_REQUIRED: "macro.scene_required",
