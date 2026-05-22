@@ -1,0 +1,14 @@
+---
+description: TerraVolt Omni — Graphify, GitNexus, and repo boundaries
+globs: "**/*"
+alwaysApply: true
+---
+
+# TerraVolt Omni (this workspace)
+
+- Read `architecture/SYSTEM_OVERVIEW.md` before broad refactors.
+- **Module graphs (Omni tooling)**: `graphs/` via `npm run intel:graphs` after JS/TS layout changes.
+- **Knowledge graph ([safishamsi/graphify](https://github.com/safishamsi/graphify))**: outputs under `graphify-out/`; use Graphify CLI queries when `graphify-out/graph.json` exists (Cursor user rule **`graphify.mdc`** applies globally).
+- **GitNexus**: use MCP tools for impact and exploration when the repo is indexed. If tools report a stale index, run `npm run intel:gitnexus` from the repo root first.
+- **References**: `references/` holds upstream clones for study only — do not treat them as this product's source of truth.
+- Prefer `context-map/README.md` ordering when deciding what context to load.
