@@ -1,16 +1,16 @@
 # Graph Report - Godot MCP Marcel  (2026-05-22)
 
 ## Corpus Check
-- 93 files · ~317,663 words
+- 95 files · ~316,798 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1711 nodes · 2046 edges · 126 communities (104 shown, 22 thin omitted)
+- 1785 nodes · 2120 edges · 136 communities (114 shown, 22 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6db1b523`
+- Built from commit: `8915e96c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -139,6 +139,16 @@
 - [[_COMMUNITY_Community 122|Community 122]]
 - [[_COMMUNITY_Community 123|Community 123]]
 - [[_COMMUNITY_Community 124|Community 124]]
+- [[_COMMUNITY_Community 126|Community 126]]
+- [[_COMMUNITY_Community 127|Community 127]]
+- [[_COMMUNITY_Community 128|Community 128]]
+- [[_COMMUNITY_Community 129|Community 129]]
+- [[_COMMUNITY_Community 130|Community 130]]
+- [[_COMMUNITY_Community 131|Community 131]]
+- [[_COMMUNITY_Community 132|Community 132]]
+- [[_COMMUNITY_Community 133|Community 133]]
+- [[_COMMUNITY_Community 134|Community 134]]
+- [[_COMMUNITY_Community 135|Community 135]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Changelog` - 42 edges
@@ -164,11 +174,11 @@
 - `init()` --calls--> `updateZoomIndicator()`  [EXTRACTED]
   references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
 
-## Communities (126 total, 22 thin omitted)
+## Communities (136 total, 22 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.12
-Nodes (15): description, devDependencies, dependency-cruiser, gitnexus, madge, license, name, private (+7 more)
+Cohesion: 0.11
+Nodes (17): description, devDependencies, dependency-cruiser, gitnexus, madge, engines, node, license (+9 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.13
@@ -219,12 +229,16 @@ Cohesion: 0.40
 Nodes (4): args, command, mcpServers, gitnexus
 
 ### Community 13 - "Community 13"
-Cohesion: 0.20
-Nodes (9): code:bash (git clone --depth 1 https://github.com/godotengine/godot-doc), Contributing (Git hooks), godot-mcp-terravolt, Omni / intel stack, Omni protocol stack (this repo), Reference repos (local), Repository layout, Status (+1 more)
+Cohesion: 0.18
+Nodes (10): code:bash (git clone --depth 1 https://github.com/godotengine/godot-doc), Contributing (Git hooks), Documentation, godot-mcp-terravolt, Omni / intel stack, Omni protocol stack (this repo), Reference repos (local), Repository layout (+2 more)
+
+### Community 14 - "Community 14"
+Cohesion: 0.33
+Nodes (5): depConfig, out, outDir, repoRoot, root
 
 ### Community 19 - "Community 19"
-Cohesion: 0.40
-Nodes (4): Layers, Layout, Purpose, TerraVolt Godot MCP — system overview
+Cohesion: 0.29
+Nodes (6): After structural changes, Layers, Layout, Purpose, TerraVolt Godot MCP — system overview, Where to read next
 
 ### Community 20 - "Community 20"
 Cohesion: 0.40
@@ -235,8 +249,8 @@ Cohesion: 0.40
 Nodes (4): depConfig, out, outDir, repoRoot
 
 ### Community 27 - "Community 27"
-Cohesion: 0.06
-Nodes (38): ConnectionCallback, ConnSlot, createBridge(), GodotInfo, PendingRequest, RUNTIME_ONLY_TOOLS, RuntimeStatusCallback, ClientStatusMessage (+30 more)
+Cohesion: 0.07
+Nodes (31): ConnectionCallback, ConnSlot, GodotInfo, PendingRequest, RUNTIME_ONLY_TOOLS, RuntimeStatusCallback, ClientStatusMessage, CreateScriptResult (+23 more)
 
 ### Community 28 - "Community 28"
 Cohesion: 0.04
@@ -326,6 +340,10 @@ Nodes (26): 3D Scene Tools (6), All 172 Tools, Analysis & Search Tools (4), Anim
 Cohesion: 0.14
 Nodes (22): calculateTreeLayout(), centerOnNodes(), draw(), drawExpandedSceneView(), drawSceneNode(), drawSceneOverview(), drawSceneView(), drawSceneViewPlaceholder() (+14 more)
 
+### Community 50 - "Community 50"
+Cohesion: 0.08
+Nodes (9): createBridge(), GodotBridge, blocker, cb(), closePromise, events, msgPromise, resultPromise (+1 more)
+
 ### Community 51 - "Community 51"
 Cohesion: 0.08
 Nodes (23): 0. Install Node.js (one-time setup), 1. Install the Godot plugin, 2. Add the server config to your AI client, 3. Restart your AI client, 42 Tools Across 6 Categories, 4. Restart your Godot project, Architecture, code:json ({) (+15 more)
@@ -384,7 +402,7 @@ Nodes (12): code:gdscript (# BAD — will cause errors), Collision & Pickup Area
 
 ### Community 65 - "Community 65"
 Cohesion: 0.17
-Nodes (11): [0.1.0] - 2025-01-28, [0.2.1] - 2026-02-17, [0.2.2] - 2026-02-23, [0.2.3] - 2026-02-23, [0.4.4] - 2026-04-16, Added, Changed, Changed (+3 more)
+Nodes (11): [0.1.0] - 2025-01-28, [0.2.1] - 2026-02-17, [0.2.3] - 2026-02-23, [0.2.8] - 2026-03-14, [0.4.4] - 2026-04-16, Added, Changed, Changed (+3 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.18
@@ -574,8 +592,40 @@ Nodes (3): [0.4.2] - 2026-04-09, Added, Fixed
 Cohesion: 0.67
 Nodes (3): [0.4.3] - 2026-04-14, Added, Fixed
 
+### Community 124 - "Community 124"
+Cohesion: 0.33
+Nodes (5): Agent guidelines (safety), Branching, Data handling, Destructive operations, Repo layout & intel
+
+### Community 126 - "Community 126"
+Cohesion: 0.24
+Nodes (11): DIRECTIVES FOR CURSOR, Directives for implementers, Execution roadmap, File 3: execution_roadmap.md, Fundamentals (pre–Phase 1), Objective, Phase 1: Godot plugin foundation, Phase 2: Node.js MCP router (+3 more)
+
+### Community 127 - "Community 127"
+Cohesion: 0.22
+Nodes (10): 1. Scene & node DOM (CRUD+), 2. Scripting & context (C# & GDScript), 3. Runtime & telemetry (live connection), 4. Vibe-code macros (advanced automation), Categorical schemas, DIRECTIVES FOR CURSOR, Directives for implementers, File 2: superset_tool_registry.md (+2 more)
+
+### Community 128 - "Community 128"
+Cohesion: 0.25
+Nodes (7): 1. Product topology (locked), 2. Wire protocol (locked), 3. Operational constants (locked), 4. Implementation placement (locked), 5. Phase gate (do not skip), 6. Reference study map, TerraVolt Godot MCP — fundamentals contract (pre–Phase 1)
+
+### Community 129 - "Community 129"
+Cohesion: 0.36
+Nodes (7): Architecture topology, Core requisites, DIRECTIVES FOR CURSOR, Directives for implementers, File 1: system_architecture_blueprint.md, Objective, System architecture blueprint
+
+### Community 130 - "Community 130"
+Cohesion: 0.40
+Nodes (4): cli, env, repoRoot, result
+
+### Community 132 - "Community 132"
+Cohesion: 0.33
+Nodes (5): Layers (conceptual), Local-only (never commit), Related, Repository layout (canonical), Top-level
+
+### Community 133 - "Community 133"
+Cohesion: 0.40
+Nodes (4): cli, env, repoRoot, result
+
 ## Knowledge Gaps
-- **992 isolated node(s):** `name`, `version`, `private`, `description`, `license` (+987 more)
+- **1038 isolated node(s):** `name`, `version`, `private`, `description`, `license` (+1033 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **22 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -583,16 +633,16 @@ Nodes (3): [0.4.3] - 2026-04-14, Added, Fixed
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Changelog` connect `Community 47` to `Community 62`, `Community 69`, `Community 71`, `Community 78`, `Community 83`, `Community 84`, `Community 85`, `Community 86`, `Community 87`, `Community 93`, `Community 94`, `Community 95`, `Community 96`, `Community 97`, `Community 98`, `Community 99`, `Community 100`, `Community 101`, `Community 102`, `Community 103`, `Community 104`, `Community 105`, `Community 106`, `Community 115`, `Community 116`, `Community 117`, `Community 118`, `Community 119`, `Community 120`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `GodotBridge` connect `Community 50` to `Community 8`, `Community 27`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **Why does `v1.3.0 — 2026-02-26` connect `Community 62` to `Community 47`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
-  _992 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1038 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+- **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
