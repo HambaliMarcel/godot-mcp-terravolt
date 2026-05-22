@@ -1,0 +1,40 @@
+{
+  "root_type": "CanvasLayer",
+  "layer": 10,
+  "children": [
+    {
+      "type": "PanelContainer",
+      "name": "Panel",
+      "anchors": "bottom_wide",
+      "children": [
+        {
+          "type": "HBoxContainer",
+          "name": "Row",
+          "children": [
+            {
+              "type": "TextureRect",
+              "name": "Portrait",
+              "visible": true
+            },
+            {
+              "type": "VBoxContainer",
+              "name": "TextColumn",
+              "children": [
+                {
+                  "type": "RichTextLabel",
+                  "name": "Body",
+                  "text": "Hello, traveler."
+                },
+                {
+                  "type": "VBoxContainer",
+                  "name": "Choices",
+                  "visible": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -156,6 +156,43 @@ const THEME_FONT_LOAD_FAILED := -33968
 const THEME_PREVIEW_FAILED := -33969
 #endregion
 
+#region audio / input (task 21)
+const AUDIO_BUS_NAME_EXISTS := -33970
+const AUDIO_BUS_UNKNOWN := -33971
+const AUDIO_CANNOT_REMOVE_MASTER := -33972
+const AUDIO_EFFECT_KIND_UNKNOWN := -33973
+const AUDIO_PREVIEW_UNAVAILABLE := -33974
+const INPUT_ACTION_EXISTS := -33975
+const INPUT_ACTION_NAME_INVALID := -33976
+const INPUT_ACTION_UNKNOWN := -33977
+#endregion
+
+#region scene_3d (task 22)
+const SCENE_3D_PRIMITIVE_UNKNOWN := -33980
+const SCENE_3D_MESH_LIBRARY_UNKNOWN := -33981
+const SCENE_3D_GRIDMAP_CELLS_INVALID := -33982
+#endregion
+
+#region testing / profile / export (task 23)
+const TESTING_FRAMEWORK_UNKNOWN := -33990
+const TESTING_TIMEOUT := -33991
+const TESTING_GOLDEN_NOT_FOUND := -33992
+const PROFILE_FLAMEGRAPH_UNAVAILABLE := -33993
+const EXPORT_PRESET_UNKNOWN := -33994
+const EXPORT_TEMPLATE_MISSING := -33995
+const EXPORT_TIMEOUT := -33996
+#endregion
+
+#region macro (task 24)
+const MACRO_NOT_IMPLEMENTED := -34000
+const MACRO_OPS_LIMIT := -34001
+const MACRO_SCENE_REQUIRED := -34002
+const MACRO_FILE_EXISTS := -34003
+const MACRO_TEMPLATE_MISSING := -34004
+const MACRO_HIGH_RISK := -34005
+const MACRO_APPLY_FAILED := -34006
+#endregion
+
 #region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
 const HEADLESS_BINARY_MISSING := -33810
 const HEADLESS_NO_PROJECT := -33811
@@ -286,6 +323,31 @@ const _CODE_TO_SYMBOL := {
 	THEME_STYLEBOX_INVALID: "theme.stylebox_invalid",
 	THEME_FONT_LOAD_FAILED: "theme.font_load_failed",
 	THEME_PREVIEW_FAILED: "theme.preview_failed",
+	AUDIO_BUS_NAME_EXISTS: "audio.bus_name_exists",
+	AUDIO_BUS_UNKNOWN: "audio.bus_unknown",
+	AUDIO_CANNOT_REMOVE_MASTER: "audio.cannot_remove_master",
+	AUDIO_EFFECT_KIND_UNKNOWN: "audio.effect_kind_unknown",
+	AUDIO_PREVIEW_UNAVAILABLE: "audio.preview_unavailable",
+	INPUT_ACTION_EXISTS: "input.action_exists",
+	INPUT_ACTION_NAME_INVALID: "input.action_name_invalid",
+	INPUT_ACTION_UNKNOWN: "input.action_unknown",
+	SCENE_3D_PRIMITIVE_UNKNOWN: "scene_3d.primitive_unknown",
+	SCENE_3D_MESH_LIBRARY_UNKNOWN: "scene_3d.mesh_library_unknown",
+	SCENE_3D_GRIDMAP_CELLS_INVALID: "scene_3d.gridmap_cells_invalid",
+	TESTING_FRAMEWORK_UNKNOWN: "testing.framework_unknown",
+	TESTING_TIMEOUT: "testing.timeout",
+	TESTING_GOLDEN_NOT_FOUND: "testing.golden_not_found",
+	PROFILE_FLAMEGRAPH_UNAVAILABLE: "profile.flamegraph_unavailable",
+	EXPORT_PRESET_UNKNOWN: "export.preset_unknown",
+	EXPORT_TEMPLATE_MISSING: "export.template_missing",
+	EXPORT_TIMEOUT: "export.timeout",
+	MACRO_NOT_IMPLEMENTED: "macro.not_implemented",
+	MACRO_OPS_LIMIT: "macro.ops_limit",
+	MACRO_SCENE_REQUIRED: "macro.scene_required",
+	MACRO_FILE_EXISTS: "macro.file_exists",
+	MACRO_TEMPLATE_MISSING: "macro.template_missing",
+	MACRO_HIGH_RISK: "macro.high_risk",
+	MACRO_APPLY_FAILED: "macro.apply_failed",
 	PROJECT_SETTING_LOCKED: "project.setting_locked",
 	HEADLESS_BINARY_MISSING: "headless.binary_missing",
 	HEADLESS_NO_PROJECT: "headless.no_project",

@@ -1,0 +1,27 @@
+extends CanvasLayer
+
+@export var player_path: NodePath = ^"../Player"
+
+@onready var _bar: ProgressBar = $HUDRoot/HealthBar
+@onready var _score: Label = $HUDRoot/ScoreLabel
+
+
+func _ready() -> void:
+	var player := get_node_or_null(player_path)
+	if player != null and player.has_signal("health_changed"):
+		player.health_changed.connect(_on_health_changed)
+	if player != null and player.has_signal("score_changed"):
+		player.score_changed.connect(_on_score_changed)
+	_on_health_changed(100, 100)
+	_on_score_changed(0)
+
+
+func _on_health_changed(current: int, maximum: int) -> void:
+	if _bar:
+		_bar.max_value = maximum
+		_bar.value = current
+
+
+func _on_score_changed(value: int) -> void:
+	if _score:
+		_score.text = "Score: %d" % value

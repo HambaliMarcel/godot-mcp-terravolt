@@ -1,0 +1,8 @@
+; Macro zoo — task 24 headless integration (empty starter project).
+
+config_version=5
+
+[application]
+config/name="Macro Zoo"
+config/features=PackedStringArray("4.3")
+run/main_scene="res://main.tscn"

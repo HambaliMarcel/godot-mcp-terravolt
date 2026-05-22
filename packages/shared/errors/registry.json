@@ -899,6 +899,231 @@
       "recoverable": true,
       "hint": "Theme preview image could not be rendered.",
       "since": "0.12.0"
+    },
+    {
+      "code": -33970,
+      "symbol": "audio.bus_name_exists",
+      "category": "audio",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "A bus with this name already exists.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33971,
+      "symbol": "audio.bus_unknown",
+      "category": "audio",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Bus name or index was not found.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33972,
+      "symbol": "audio.cannot_remove_master",
+      "category": "audio",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "The Master bus cannot be removed.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33973,
+      "symbol": "audio.effect_kind_unknown",
+      "category": "audio",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Effect kind is not in the allow-list for this catalog version.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33974,
+      "symbol": "audio.preview_unavailable",
+      "category": "audio",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "No audio output device (expected in headless CI).",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33975,
+      "symbol": "input.action_exists",
+      "category": "input",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "InputMap already has an action with this name.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33976,
+      "symbol": "input.action_name_invalid",
+      "category": "input",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Action name is empty, too long, or contains invalid characters.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33977,
+      "symbol": "input.action_unknown",
+      "category": "input",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "InputMap has no action with this name.",
+      "since": "0.13.0"
+    },
+    {
+      "code": -33980,
+      "symbol": "scene_3d.primitive_unknown",
+      "category": "scene_3d",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Unknown primitive mesh kind or mesh resource could not be loaded.",
+      "since": "0.14.0"
+    },
+    {
+      "code": -33981,
+      "symbol": "scene_3d.mesh_library_unknown",
+      "category": "scene_3d",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "mesh_library_path did not resolve to a MeshLibrary resource.",
+      "since": "0.14.0"
+    },
+    {
+      "code": -33982,
+      "symbol": "scene_3d.gridmap_cells_invalid",
+      "category": "scene_3d",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "GridMap cells array is malformed or exceeds tilemap_max_cells_per_call.",
+      "since": "0.14.0"
+    },
+    {
+      "code": -33990,
+      "symbol": "testing.framework_unknown",
+      "category": "testing",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "No GUT/gdUnit4 install detected for the requested framework.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33991,
+      "symbol": "testing.timeout",
+      "category": "testing",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Test subprocess exceeded timeout_ms.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33992,
+      "symbol": "testing.golden_not_found",
+      "category": "testing",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Golden or source image path is missing or unreadable.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33993,
+      "symbol": "profile.flamegraph_unavailable",
+      "category": "profile",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Script profiler requires a debug build or running game session.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33994,
+      "symbol": "export.preset_unknown",
+      "category": "export",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Preset name not found in export_presets.cfg.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33995,
+      "symbol": "export.template_missing",
+      "category": "export",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Install export templates for the running Godot version.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -33996,
+      "symbol": "export.timeout",
+      "category": "export",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Export subprocess exceeded export_default_timeout_ms.",
+      "since": "0.15.0"
+    },
+    {
+      "code": -34000,
+      "symbol": "macro.not_implemented",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Macro scaffold is planned but not implemented yet; inspect dry_run plan or use lower-level tools.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34001,
+      "symbol": "macro.ops_limit",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Macro exceeded macro_max_ops (200); split into smaller steps.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34002,
+      "symbol": "macro.scene_required",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Set scene_path or configure application/run/main_scene.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34003,
+      "symbol": "macro.file_exists",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Pass confirm_high_risk: true to overwrite existing generated files.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34004,
+      "symbol": "macro.template_missing",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Add a template under res://terravolt/macros/<name>/ or reinstall addon macros.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34005,
+      "symbol": "macro.high_risk",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "High-risk macro step requires confirm_high_risk: true.",
+      "since": "0.16.0"
+    },
+    {
+      "code": -34006,
+      "symbol": "macro.apply_failed",
+      "category": "macro",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "An internal macro op failed; inspect daemon logs and dry_run plan.",
+      "since": "0.16.0"
     }
   ]
 }

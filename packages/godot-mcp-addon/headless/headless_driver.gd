@@ -40,6 +40,9 @@ func _initialize() -> void:
 		printerr("Terravolt headless: listen failed")
 		quit(127)
 		return
+	var driver_path: String = get_script().resource_path
+	if not driver_path.is_empty():
+		OS.set_environment("TERRAVOLT_CATALOG_OPS_GD", driver_path.get_base_dir().path_join("catalog_ops.gd"))
 	printerr("TERRAVOLT_HEADLESS_PORT=%d\n" % _tcp.get_local_port())
 	_Ops.ensure_main_scene(self)
 	process_frame.connect(_tick)
@@ -283,6 +286,20 @@ func _dispatch(line: String) -> String:
 			return JSON.stringify(_headless_tilemap(rid, method, pd))
 		"theme_ui.describe", "theme_ui.set_color", "theme_ui.set_font", "theme_ui.set_stylebox", "theme_ui.preview", "theme_ui.scaffold_screen":
 			return JSON.stringify(_headless_theme_ui(rid, method, pd))
+		"audio.list_buses", "audio.add_bus", "audio.remove_bus", "audio.set_bus", "audio.add_effect", "audio.preview_play":
+			return JSON.stringify(_headless_audio(rid, method, pd))
+		"input.list_actions", "input.add_action", "input.remove_action", "input.set_action_events", "input.rename_action", "input.simulate_action", "input.describe_event":
+			return JSON.stringify(_headless_input(rid, method, pd))
+		"scene_3d.add_mesh_instance", "scene_3d.add_camera", "scene_3d.add_light", "scene_3d.set_environment", "scene_3d.add_gridmap", "scene_3d.frame_subject":
+			return JSON.stringify(_headless_scene_3d(rid, method, pd))
+		"testing.list_suites", "testing.run", "testing.assert_state", "testing.screenshot_compare", "testing.list_reports", "testing.get_report":
+			return JSON.stringify(_headless_testing(rid, method, pd))
+		"profile.monitor", "profile.flamegraph":
+			return JSON.stringify(_headless_profile(rid, method, pd))
+		"export.list_presets", "export.build", "export.template_info":
+			return JSON.stringify(_headless_export(rid, method, pd))
+		"macro.player_controller_2d", "macro.player_controller_3d", "macro.enemy_with_state_machine", "macro.enemy_wave_spawner", "macro.dialog_system", "macro.inventory_system", "macro.save_load_system", "macro.settings_menu", "macro.main_menu", "macro.pause_overlay", "macro.hud_health_score", "macro.day_night_cycle", "macro.basic_2d_level", "macro.basic_3d_level", "macro.localization_setup":
+			return JSON.stringify(_headless_macro(rid, method, pd))
 		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
 			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
 			return JSON.stringify(_wr_err(rid, na))
@@ -500,5 +517,79 @@ func _headless_theme_ui(rid: Variant, method: String, pd: Dictionary) -> Diction
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "theme.error")), int(g.get("code", -33965)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_macro(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_macro_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "macro.error")), int(g.get("code", -34000)), "", {"method": method})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_testing(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_testing_dispatch(method, pd, self)
+	if method == "testing.run" and g.get("ok", false):
+		return _wr_ok(rid, g.get("result", {}))
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "testing.error")), int(g.get("code", -33990)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_profile(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_profile_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "profile.error")), int(g.get("code", -33993)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_export(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_export_dispatch(method, pd, self)
+	if method == "export.build" and g.get("ok", false):
+		return _wr_ok(rid, g.get("result", {}))
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "export.error")), int(g.get("code", -33994)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_scene_3d(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_scene_3d_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "scene_3d.error")), int(g.get("code", -33980)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_audio(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_audio_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "audio.error")), int(g.get("code", -33974)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_input(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_input_dispatch(method, pd, self)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "input.error")), int(g.get("code", -33977)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))

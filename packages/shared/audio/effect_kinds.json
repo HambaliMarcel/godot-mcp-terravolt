@@ -1,0 +1,23 @@
+{
+  "since": "0.13.0",
+  "kinds": [
+    "Reverb",
+    "Delay",
+    "Compressor",
+    "Chorus",
+    "Limiter",
+    "EQ6",
+    "EQ10",
+    "EQ21",
+    "Distortion",
+    "PitchShift",
+    "Phaser",
+    "PanRecorder",
+    "Filter",
+    "HardLimiter",
+    "Panner",
+    "Record",
+    "SpectrumAnalyzer",
+    "StereoEnhance"
+  ]
+}

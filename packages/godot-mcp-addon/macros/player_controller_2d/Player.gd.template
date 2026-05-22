@@ -1,0 +1,42 @@
+extends CharacterBody2D
+
+signal health_changed(current: int, maximum: int)
+
+@export var move_speed: float = 220.0
+@export var jump_velocity: float = -360.0
+@export var gravity: float = 980.0
+@export var coyote_time_s: float = 0.12
+@export var jump_buffer_s: float = 0.1
+
+var _coyote_left: float = 0.0
+var _jump_buffer_left: float = 0.0
+
+
+func _ready() -> void:
+	health_changed.emit(100, 100)
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		_coyote_left = maxf(_coyote_left - delta, 0.0)
+	else:
+		_coyote_left = coyote_time_s
+
+	if Input.is_action_just_pressed("jump"):
+		_jump_buffer_left = jump_buffer_s
+	else:
+		_jump_buffer_left = maxf(_jump_buffer_left - delta, 0.0)
+
+	if _jump_buffer_left > 0.0 and _coyote_left > 0.0:
+		velocity.y = jump_velocity
+		_jump_buffer_left = 0.0
+		_coyote_left = 0.0
+
+	var direction := Input.get_axis("move_left", "move_right")
+	if direction != 0.0:
+		velocity.x = direction * move_speed
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, move_speed * delta * 8.0)
+
+	move_and_slide()

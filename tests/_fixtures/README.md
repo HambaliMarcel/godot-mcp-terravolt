@@ -16,6 +16,8 @@ can copy to a temp directory.
 | `nav_zoo/`           | Floor + nav region; powers task 19 `navigation.*` headless tests.                                                           |
 | `tilemap_zoo/`       | TileMapLayer + tileset; powers task 20 `tilemap.*` headless tests.                                                          |
 | `theme_zoo/`         | Theme + Control sample; powers task 20 `theme_ui.*` headless tests.                                                         |
+| `audio_zoo/`         | Multi-bus `AudioBusLayout`; powers task 21 `audio.*` headless tests.                                                        |
+| `input_zoo/`         | Custom `dash` action + script reference; powers task 21 `input.*` headless tests.                                           |
 | `dialogue_demo/`     | _(planned)_ Macro showcase.                                                                                                 |
 | `stress_tree_10000/` | _(planned)_ Stress tree for envelope/SLA tests.                                                                             |
 

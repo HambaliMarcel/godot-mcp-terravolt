@@ -1,0 +1,11 @@
+; Testing zoo — task 23 headless integration (GUT marker + stub runner).
+
+config_version=5
+
+[application]
+config/name="Testing Zoo"
+config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://main.tscn"
+
+[rendering]
+renderer/rendering_method="forward_plus"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://scene_3d_zoo_main"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_crate"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_default"]
+background_mode = 1
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_blocks"]
+item/0/name = "block"
+item/0/mesh = SubResource("BoxMesh_crate")
+
+[node name="World" type="Node3D"]
+
+[node name="Crate" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_crate")
+
+[node name="KeyLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+light_energy = 1.2
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 4)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_default")
+
+[node name="FloorGrid" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_blocks")
+cell_size = Vector3(1, 1, 1)

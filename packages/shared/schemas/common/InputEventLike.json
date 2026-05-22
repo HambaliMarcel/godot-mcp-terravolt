@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://terravolt.dev/schemas/common/InputEventLike.json",
+  "title": "InputEventLike",
+  "description": "Serialized input event for runtime.send_input, input.*, and runtime buffers.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "key" },
+        "key": { "type": "integer" },
+        "keycode": { "type": "integer" },
+        "physical_keycode": { "type": "integer" },
+        "keycode_or_physical_key": { "type": "integer" },
+        "modifier_flags": { "type": "integer" },
+        "pressed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "mouse_button" },
+        "button_index": { "type": "integer" },
+        "pressed": { "type": "boolean" },
+        "position": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "joypad_button" },
+        "button_index": { "type": "integer" },
+        "device": { "type": "integer" },
+        "pressed": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "joypad_motion" },
+        "axis": { "type": "integer" },
+        "axis_value": { "type": "number" },
+        "device": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["type", "action"],
+      "properties": {
+        "type": { "const": "action" },
+        "action": { "type": "string" },
+        "pressed": { "type": "boolean" },
+        "strength": { "type": "number" }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

@@ -170,6 +170,24 @@
     "-33930": {
       "hint": "`runtime.no_session` (-33930)",
       "steps": ["See symbol `runtime.no_session`."]
+    },
+    "audio.preview_unavailable": {
+      "hint": "Headless CI has no audio output; preview is expected to fail there.",
+      "steps": [
+        "Run `audio.preview_play` from the Godot editor with a display server, or skip preview in CI.",
+        "Use `audio.list_buses` / `audio.set_bus` for bus layout work without playback."
+      ]
+    },
+    "audio.bus_name_exists": {
+      "hint": "Choose a unique bus name or remove the existing bus first.",
+      "steps": [
+        "Call `audio.list_buses` to see current names.",
+        "Use `audio.remove_bus` if replacing a bus."
+      ]
+    },
+    "input.action_exists": {
+      "hint": "The action name is already registered in InputMap.",
+      "steps": ["Call `input.list_actions` or use `input.set_action_events` to update bindings."]
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.12.0",
+  "catalog_version": "0.16.0",
   "methods": [
     {
       "method": "ping",
@@ -6718,6 +6718,1858 @@
       "safe": false,
       "mutates": true,
       "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.list_buses",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Describe the AudioServer bus layout.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.list_buses",
+        "title": "audio.list_buses",
+        "description": "Describe the AudioServer bus layout."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.add_bus",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Add an audio bus.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "send_to": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.add_bus",
+        "title": "audio.add_bus",
+        "description": "Add an audio bus."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["audio.bus_name_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.remove_bus",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Remove an audio bus and optionally reassign sends.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "index": {
+            "type": "integer"
+          },
+          "reassign_sends_to": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.remove_bus",
+        "title": "audio.remove_bus",
+        "description": "Remove an audio bus and optionally reassign sends."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["audio.bus_unknown", "audio.cannot_remove_master"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.set_bus",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Patch bus volume, mute, solo, bypass, or send target.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["bus", "patch"],
+        "properties": {
+          "bus": {},
+          "patch": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.set_bus",
+        "title": "audio.set_bus",
+        "description": "Patch bus volume, mute, solo, bypass, or send target."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["audio.bus_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.add_effect",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Add an AudioEffect to a bus.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["bus", "kind"],
+        "properties": {
+          "bus": {},
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "params": {
+            "type": "object"
+          },
+          "position": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.add_effect",
+        "title": "audio.add_effect",
+        "description": "Add an AudioEffect to a bus."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["audio.bus_unknown", "audio.effect_kind_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "audio.preview_play",
+      "category": "audio",
+      "since": "0.13.0",
+      "description": "Play a stream on a bus for preview.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["stream_path"],
+        "properties": {
+          "stream_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bus": {
+            "type": "string"
+          },
+          "volume_db": {
+            "type": "number"
+          },
+          "pitch_scale": {
+            "type": "number"
+          },
+          "duration_s": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "audio.preview_play",
+        "title": "audio.preview_play",
+        "description": "Play a stream on a bus for preview."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": false,
+      "errorCodes": ["audio.preview_unavailable", "resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.list_actions",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "List InputMap actions and bound events.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "include_builtin": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.list_actions",
+        "title": "input.list_actions",
+        "description": "List InputMap actions and bound events."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.add_action",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Create an input action with optional events.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "deadzone": {
+            "type": "number"
+          },
+          "events": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.add_action",
+        "title": "input.add_action",
+        "description": "Create an input action with optional events."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["input.action_exists", "input.action_name_invalid"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.remove_action",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Remove an input action.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.remove_action",
+        "title": "input.remove_action",
+        "description": "Remove an input action."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["input.action_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.set_action_events",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Replace all events bound to an action.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "events"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "events": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.set_action_events",
+        "title": "input.set_action_events",
+        "description": "Replace all events bound to an action."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["input.action_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.rename_action",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Rename an input action and optionally rewrite script references.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          },
+          "update_references": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.rename_action",
+        "title": "input.rename_action",
+        "description": "Rename an input action and optionally rewrite script references."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["input.action_unknown", "input.action_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.simulate_action",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Simulate pressing and releasing an action.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["action"],
+        "properties": {
+          "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "strength": {
+            "type": "number"
+          },
+          "hold_ms": {
+            "type": "integer"
+          },
+          "then_release": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.simulate_action",
+        "title": "input.simulate_action",
+        "description": "Simulate pressing and releasing an action."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["input.action_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "input.describe_event",
+      "category": "input",
+      "since": "0.13.0",
+      "description": "Describe an input event and matching actions.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["event"],
+        "properties": {
+          "event": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "input.describe_event",
+        "title": "input.describe_event",
+        "description": "Describe an input event and matching actions."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.add_mesh_instance",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Add a MeshInstance3D with optional primitive or resource mesh and material.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["parent_path"],
+        "properties": {
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "transform": {
+            "type": "object"
+          },
+          "mesh": {
+            "type": "object"
+          },
+          "material": {
+            "type": "object"
+          },
+          "cast_shadow": {
+            "type": "string"
+          },
+          "gi_mode": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.add_mesh_instance",
+        "title": "scene_3d.add_mesh_instance",
+        "description": "Add a MeshInstance3D with optional primitive or resource mesh and material."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene_3d.primitive_unknown"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.add_camera",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Add a Camera3D with perspective/orthogonal/frustum projection and optional current toggle.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["parent_path"],
+        "properties": {
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "transform": {
+            "type": "object"
+          },
+          "fov": {
+            "type": "number"
+          },
+          "near": {
+            "type": "number"
+          },
+          "far": {
+            "type": "number"
+          },
+          "projection": {
+            "type": "string"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "cull_mask": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.add_camera",
+        "title": "scene_3d.add_camera",
+        "description": "Add a Camera3D with perspective/orthogonal/frustum projection and optional current toggle."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.add_light",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Add a directional, omni, or spot light with shadow and bake configuration.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["parent_path", "kind"],
+        "properties": {
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "transform": {
+            "type": "object"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "color": {},
+          "energy": {
+            "type": "number"
+          },
+          "shadow_enabled": {
+            "type": "boolean"
+          },
+          "bake_mode": {
+            "type": "string"
+          },
+          "range": {
+            "type": "number"
+          },
+          "angle_deg": {
+            "type": "number"
+          },
+          "inner_angle_deg": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.add_light",
+        "title": "scene_3d.add_light",
+        "description": "Add a directional, omni, or spot light with shadow and bake configuration."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.set_environment",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Add or update a WorldEnvironment (sky, fog, ambient, tonemap, glow, SSAO, SSR).",
+      "inputSchema": {
+        "type": "object",
+        "required": ["spec"],
+        "properties": {
+          "scene_root_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "spec": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.set_environment",
+        "title": "scene_3d.set_environment",
+        "description": "Add or update a WorldEnvironment (sky, fog, ambient, tonemap, glow, SSAO, SSR)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.add_gridmap",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Add a GridMap with a MeshLibrary and optionally seeded cells.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["parent_path", "mesh_library_path"],
+        "properties": {
+          "parent_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "transform": {
+            "type": "object"
+          },
+          "mesh_library_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cell_size": {
+            "type": "object"
+          },
+          "cells": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.add_gridmap",
+        "title": "scene_3d.add_gridmap",
+        "description": "Add a GridMap with a MeshLibrary and optionally seeded cells."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["scene_3d.mesh_library_unknown", "scene_3d.gridmap_cells_invalid"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "scene_3d.frame_subject",
+      "category": "scene_3d",
+      "since": "0.14.0",
+      "description": "Position a camera to frame one or more subjects using their combined global AABB.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["camera_path", "subjects"],
+        "properties": {
+          "camera_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subjects": {
+            "type": "array"
+          },
+          "margin": {
+            "type": "number"
+          },
+          "pitch_deg": {
+            "type": "number"
+          },
+          "yaw_deg": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "scene_3d.frame_subject",
+        "title": "scene_3d.frame_subject",
+        "description": "Position a camera to frame one or more subjects using their combined global AABB."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.list_suites",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "Enumerate detected test suites.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "framework": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.list_suites",
+        "title": "testing.list_suites",
+        "description": "Enumerate detected test suites."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.run",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "Run tests headless.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "framework": {
+            "type": "string"
+          },
+          "suites": {
+            "type": "array"
+          },
+          "tags": {
+            "type": "array"
+          },
+          "parallel": {
+            "type": "boolean"
+          },
+          "timeout_ms": {
+            "type": "integer"
+          },
+          "fail_fast": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.run",
+        "title": "testing.run",
+        "description": "Run tests headless."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["testing.framework_unknown", "testing.timeout"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.assert_state",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "Assert runtime/editor state conditions.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["assertions"],
+        "properties": {
+          "assertions": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.assert_state",
+        "title": "testing.assert_state",
+        "description": "Assert runtime/editor state conditions."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.screenshot_compare",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "Compare a screenshot against a golden image.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source", "golden_path"],
+        "properties": {
+          "source": {
+            "type": "object"
+          },
+          "golden_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "tolerance": {
+            "type": "number"
+          },
+          "save_diff_to": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.screenshot_compare",
+        "title": "testing.screenshot_compare",
+        "description": "Compare a screenshot against a golden image."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": false,
+      "errorCodes": ["testing.golden_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.list_reports",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "List saved test reports.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.list_reports",
+        "title": "testing.list_reports",
+        "description": "List saved test reports."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "testing.get_report",
+      "category": "testing",
+      "since": "0.15.0",
+      "description": "Fetch a saved test report by id.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "testing.get_report",
+        "title": "testing.get_report",
+        "description": "Fetch a saved test report by id."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "profile.monitor",
+      "category": "profile",
+      "since": "0.15.0",
+      "description": "Sample Godot performance monitors.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array"
+          },
+          "window_ms": {
+            "type": "integer"
+          },
+          "samples": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "profile.monitor",
+        "title": "profile.monitor",
+        "description": "Sample Godot performance monitors."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "profile.flamegraph",
+      "category": "profile",
+      "since": "0.15.0",
+      "description": "Capture a profiling flamegraph snapshot.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "duration_s": {
+            "type": "number"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "include_native": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "profile.flamegraph",
+        "title": "profile.flamegraph",
+        "description": "Capture a profiling flamegraph snapshot."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": false,
+      "errorCodes": ["profile.flamegraph_unavailable"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "export.list_presets",
+      "category": "export",
+      "since": "0.15.0",
+      "description": "List export presets configured for the project.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "export.list_presets",
+        "title": "export.list_presets",
+        "description": "List export presets configured for the project."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "export.build",
+      "category": "export",
+      "since": "0.15.0",
+      "description": "Run an export preset build.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["preset"],
+        "properties": {
+          "preset": {
+            "type": "string",
+            "minLength": 1
+          },
+          "debug": {
+            "type": "boolean"
+          },
+          "output_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "with_pck_only": {
+            "type": "boolean"
+          },
+          "platform_args": {
+            "type": "object"
+          },
+          "timeout_ms": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "export.build",
+        "title": "export.build",
+        "description": "Run an export preset build."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["export.preset_unknown", "export.template_missing", "export.timeout"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "export.template_info",
+      "category": "export",
+      "since": "0.15.0",
+      "description": "Report installed export template status.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "export.template_info",
+        "title": "export.template_info",
+        "description": "Report installed export template status."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.player_controller_2d",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a 2D platformer player.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "with_sprite": {
+            "type": "boolean"
+          },
+          "camera": {
+            "type": "boolean"
+          },
+          "animation_set": {
+            "type": "string"
+          },
+          "input_actions": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.player_controller_2d",
+        "title": "macro.player_controller_2d",
+        "description": "Scaffold a 2D platformer player."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.player_controller_3d",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a 3D first/third-person player.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "perspective": {
+            "type": "string"
+          },
+          "with_mesh": {
+            "type": "boolean"
+          },
+          "camera_offset": {
+            "type": "object"
+          },
+          "with_jump": {
+            "type": "boolean"
+          },
+          "input_actions": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.player_controller_3d",
+        "title": "macro.player_controller_3d",
+        "description": "Scaffold a 3D first/third-person player."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.enemy_with_state_machine",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold an enemy with patrol/chase states.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "dimension": {
+            "type": "string"
+          },
+          "patrol_radius": {
+            "type": "number"
+          },
+          "aggro_radius": {
+            "type": "number"
+          },
+          "attack_range": {
+            "type": "number"
+          },
+          "health": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.enemy_with_state_machine",
+        "title": "macro.enemy_with_state_machine",
+        "description": "Scaffold an enemy with patrol/chase states."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.enemy_wave_spawner",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a wave spawner.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["enemy_scene_path"],
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "enemy_scene_path": {
+            "type": "string"
+          },
+          "spawn_points": {
+            "type": "array"
+          },
+          "wave_count": {
+            "type": "integer"
+          },
+          "base_enemies": {
+            "type": "integer"
+          },
+          "scale_per_wave": {
+            "type": "number"
+          },
+          "between_wave_pause_s": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.enemy_wave_spawner",
+        "title": "macro.enemy_wave_spawner",
+        "description": "Scaffold a wave spawner."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.dialog_system",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a dialog UI system.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "theme_path": {
+            "type": "string"
+          },
+          "with_portrait": {
+            "type": "boolean"
+          },
+          "with_choices": {
+            "type": "boolean"
+          },
+          "typewriter_chars_per_s": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.dialog_system",
+        "title": "macro.dialog_system",
+        "description": "Scaffold a dialog UI system."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.inventory_system",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold an inventory UI.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "slot_count": {
+            "type": "integer"
+          },
+          "stackable": {
+            "type": "boolean"
+          },
+          "with_drag_drop": {
+            "type": "boolean"
+          },
+          "theme_path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.inventory_system",
+        "title": "macro.inventory_system",
+        "description": "Scaffold an inventory UI."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.save_load_system",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold save/load slots.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "slot_count": {
+            "type": "integer"
+          },
+          "include_screenshot": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.save_load_system",
+        "title": "macro.save_load_system",
+        "description": "Scaffold save/load slots."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.settings_menu",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a settings menu scene.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "theme_path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array"
+          },
+          "bind_to_main_menu": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.settings_menu",
+        "title": "macro.settings_menu",
+        "description": "Scaffold a settings menu scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.main_menu",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a main menu scene.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "theme_path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "with_continue": {
+            "type": "boolean"
+          },
+          "with_credits": {
+            "type": "boolean"
+          },
+          "start_scene_path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.main_menu",
+        "title": "macro.main_menu",
+        "description": "Scaffold a main menu scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.pause_overlay",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a pause overlay.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "theme_path": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.pause_overlay",
+        "title": "macro.pause_overlay",
+        "description": "Scaffold a pause overlay."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.hud_health_score",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold HUD health/score widgets.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "player_path": {
+            "type": "string"
+          },
+          "theme_path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.hud_health_score",
+        "title": "macro.hud_health_score",
+        "description": "Scaffold HUD health/score widgets."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.day_night_cycle",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a day/night cycle controller.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "scene_path": {
+            "type": "string"
+          },
+          "duration_s": {
+            "type": "number"
+          },
+          "start_hour": {
+            "type": "number"
+          },
+          "with_fog": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.day_night_cycle",
+        "title": "macro.day_night_cycle",
+        "description": "Scaffold a day/night cycle controller."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.basic_2d_level",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a basic 2D level scene.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["output_path"],
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "with_parallax": {
+            "type": "boolean"
+          },
+          "tileset_path": {
+            "type": "string"
+          },
+          "level_width_tiles": {
+            "type": "integer"
+          },
+          "level_height_tiles": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.basic_2d_level",
+        "title": "macro.basic_2d_level",
+        "description": "Scaffold a basic 2D level scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.basic_3d_level",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold a basic 3D level scene.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["output_path"],
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "mesh_library_path": {
+            "type": "string"
+          },
+          "with_sky": {
+            "type": "boolean"
+          },
+          "size_meters": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.basic_3d_level",
+        "title": "macro.basic_3d_level",
+        "description": "Scaffold a basic 3D level scene."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "macro.localization_setup",
+      "category": "macro",
+      "since": "0.16.0",
+      "description": "Scaffold localization tables and wiring.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "type": "boolean"
+          },
+          "confirm_high_risk": {
+            "type": "boolean"
+          },
+          "locales": {
+            "type": "array"
+          },
+          "table_path": {
+            "type": "string"
+          },
+          "wire_into_ui_root": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "macro.localization_setup",
+        "title": "macro.localization_setup",
+        "description": "Scaffold localization tables and wiring."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     }

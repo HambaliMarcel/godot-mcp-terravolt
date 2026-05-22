@@ -16,6 +16,13 @@ const _ParticleHelpers := preload("../handlers/particle_helpers.gd")
 const _NavigationHelpers := preload("../handlers/navigation_helpers.gd")
 const _TilemapHelpers := preload("../handlers/tilemap_helpers.gd")
 const _ThemeUiHelpers := preload("../handlers/theme_ui_helpers.gd")
+const _AudioHelpers := preload("../handlers/audio_helpers.gd")
+const _InputHelpers := preload("../handlers/input_helpers.gd")
+const _Scene3dHelpers := preload("../handlers/scene_3d_helpers.gd")
+const _TestingHelpers := preload("../handlers/testing_helpers.gd")
+const _ProfileHelpers := preload("../handlers/profile_helpers.gd")
+const _ExportHelpers := preload("../handlers/export_helpers.gd")
+const _MacroHelpers := preload("../handlers/macro_helpers.gd")
 const _RuntimeSession := preload("../services/runtime_session.gd")
 const _RuntimeProxy := preload("../services/runtime_proxy.gd")
 
@@ -1573,6 +1580,11 @@ static func headless_tilemap_dispatch(method: String, params: Dictionary, tree: 
 			return node_err(-33101, "protocol.method_not_found")
 
 
+static func headless_macro_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	return _MacroHelpers.headless_dispatch(method, params, tree)
+
+
 static func headless_theme_ui_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
 	ensure_main_scene(tree)
 	var root := scene_root()
@@ -1591,6 +1603,114 @@ static func headless_theme_ui_dispatch(method: String, params: Dictionary, tree:
 			return _ThemeUiHelpers.preview(str(params.get("theme_path", "")), widgets, size)
 		"theme_ui.scaffold_screen":
 			return _ThemeUiHelpers.scaffold_screen(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_testing_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	var root := scene_root()
+	match method:
+		"testing.list_suites":
+			return _TestingHelpers.list_suites(params)
+		"testing.run":
+			return _TestingHelpers.run_tests(params)
+		"testing.assert_state":
+			return _TestingHelpers.assert_state(params, root)
+		"testing.screenshot_compare":
+			return _TestingHelpers.screenshot_compare(params)
+		"testing.list_reports":
+			return _TestingHelpers.list_reports(params)
+		"testing.get_report":
+			return _TestingHelpers.get_report(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_profile_dispatch(method: String, params: Dictionary, _tree: SceneTree) -> Dictionary:
+	match method:
+		"profile.monitor":
+			return _ProfileHelpers.monitor(params)
+		"profile.flamegraph":
+			return _ProfileHelpers.flamegraph(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_export_dispatch(method: String, params: Dictionary, _tree: SceneTree) -> Dictionary:
+	match method:
+		"export.list_presets":
+			return _ExportHelpers.list_presets()
+		"export.build":
+			return _ExportHelpers.build(params)
+		"export.template_info":
+			return _ExportHelpers.template_info()
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+#endregion
+
+
+#region audio / input (task 21)
+
+static func headless_audio_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	match method:
+		"audio.list_buses":
+			return _AudioHelpers.list_buses()
+		"audio.add_bus":
+			return _AudioHelpers.add_bus(params)
+		"audio.remove_bus":
+			return _AudioHelpers.remove_bus(params)
+		"audio.set_bus":
+			return _AudioHelpers.set_bus(params)
+		"audio.add_effect":
+			return _AudioHelpers.add_effect(params)
+		"audio.preview_play":
+			return _AudioHelpers.preview_play(params, tree)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_input_dispatch(method: String, params: Dictionary, _tree: SceneTree) -> Dictionary:
+	match method:
+		"input.list_actions":
+			return _InputHelpers.list_actions(bool(params.get("include_builtin", false)))
+		"input.add_action":
+			return _InputHelpers.add_action(params)
+		"input.remove_action":
+			return _InputHelpers.remove_action(params)
+		"input.set_action_events":
+			return _InputHelpers.set_action_events(params)
+		"input.rename_action":
+			return _InputHelpers.rename_action(params)
+		"input.simulate_action":
+			return _InputHelpers.simulate_action(params)
+		"input.describe_event":
+			return _InputHelpers.describe_event(params)
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+#endregion
+
+
+#region scene_3d (task 22)
+
+static func headless_scene_3d_dispatch(method: String, params: Dictionary, tree: SceneTree) -> Dictionary:
+	ensure_main_scene(tree)
+	var root := scene_root()
+	match method:
+		"scene_3d.add_mesh_instance":
+			return _Scene3dHelpers.add_mesh_instance(root, params)
+		"scene_3d.add_camera":
+			return _Scene3dHelpers.add_camera(root, params)
+		"scene_3d.add_light":
+			return _Scene3dHelpers.add_light(root, params)
+		"scene_3d.set_environment":
+			return _Scene3dHelpers.set_environment(root, params)
+		"scene_3d.add_gridmap":
+			return _Scene3dHelpers.add_gridmap(root, params)
+		"scene_3d.frame_subject":
+			return _Scene3dHelpers.frame_subject(root, params)
 		_:
 			return node_err(-33101, "protocol.method_not_found")
 

@@ -1,0 +1,9 @@
+; Audio zoo — task 21 headless integration.
+
+config_version=5
+
+[application]
+config/name="Audio Zoo"
+config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://main.tscn"
+

@@ -1,0 +1,8 @@
+[gd_resource type="MeshLibrary" format=3 uid="uid://scene3d_blocks_meshlib"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_block"]
+size = Vector3(1, 1, 1)
+
+[resource]
+item/0/name = "block"
+item/0/mesh = SubResource("BoxMesh_block")
