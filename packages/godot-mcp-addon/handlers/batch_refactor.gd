@@ -54,7 +54,7 @@ func _h_apply(ctx: Dictionary) -> Dictionary:
 			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.BATCH_CONFIRM_MISMATCH, "batch.confirm_mismatch", "confirm_token does not match plan.", {})}
 	var snapshots := _snapshot_plan_files(plan)
 	var executed := _execute_plan(plan, false)
-	var revert_token := str(Time.get_ticks_msec()) + executed.get("total_edits", 0)
+	var revert_token: String = str(Time.get_ticks_msec()) + str(executed.get("total_edits", 0))
 	executed["applied"] = true
 	executed["revert_token"] = revert_token
 	executed["summary"] = "%d ops on %d files" % [plan.get("ops", []).size(), executed.get("total_files", 0)]

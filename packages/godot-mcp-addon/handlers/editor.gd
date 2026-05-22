@@ -85,7 +85,7 @@ func _h_screenshot(_ctx: Dictionary) -> Dictionary:
 			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Could not grab editor viewport.", {})}
 		img = tex.get_image()
 	else:
-		var vp_count := iface.get_editor_viewport_count()
+		var vp_count: int = iface.get_editor_viewport_count()
 		var idx := 0 if target == "viewport_2d" else 1
 		if idx >= vp_count:
 			idx = 0
@@ -93,7 +93,7 @@ func _h_screenshot(_ctx: Dictionary) -> Dictionary:
 		if target == "viewport_3d":
 			vp = iface.get_editor_viewport_3d(idx)
 		else:
-			vp = iface.get_editor_viewport_2d(idx)
+			vp = iface.get_editor_viewport_2d()
 		if vp == null:
 			return {"ok": false, "error": TerravoltErrors.tv_rpc_error(TerravoltErrors.EDITOR_NOT_AVAILABLE, "editor.not_available", "Viewport target unavailable.", {})}
 		img = vp.get_texture().get_image()
@@ -302,7 +302,7 @@ func _h_reload_scripts(_ctx: Dictionary) -> Dictionary:
 	var reloaded: Array = []
 	if scope == "all":
 		iface.get_resource_filesystem().scan()
-	ScriptServer.reload_scripts()
+	iface.get_script_editor().reload_open_files()
 	var root := iface.get_edited_scene_root()
 	if root != null:
 		var sp := root.scene_file_path

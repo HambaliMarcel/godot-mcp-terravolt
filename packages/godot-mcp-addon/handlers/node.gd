@@ -4,11 +4,11 @@ class_name TerravoltNodeHandlers
 
 const _Utils := preload("./handler_utils.gd")
 
-const _EXPR_DENY := PackedStringArray([
+const _EXPR_DENY = [
 	"OS", "File", "DirAccess", "FileAccess", "Engine", "JavaScriptBridge", "HTTPClient", "HTTPRequest",
 	"Socket", "StreamPeer", "TCPServer", "UDPServer", "ResourceLoader", "ResourceSaver", "ProjectSettings",
 	"ClassDB", "GDScript", "Expression",
-])
+]
 
 var _dispatcher: TerravoltDispatcher
 var _logger: TerravoltLogger

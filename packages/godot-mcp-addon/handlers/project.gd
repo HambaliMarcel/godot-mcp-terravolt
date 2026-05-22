@@ -7,7 +7,7 @@ const _Utils := preload("./handler_utils.gd")
 var _dispatcher: TerravoltDispatcher
 var _logger: TerravoltLogger
 
-const _LOCKED_PREFIXES: PackedStringArray = PackedStringArray(["application/config/features"])
+const _LOCKED_PREFIXES = ["application/config/features"]
 
 
 func attach(dispatcher: TerravoltDispatcher, logger: TerravoltLogger) -> void:
@@ -106,7 +106,7 @@ func _h_info(_ctx: Dictionary) -> Dictionary:
 		"dotnet": dotnet,
 		"autoload_count": _list_autoload_rows().size(),
 		"addon_count": 0,
-		"feature_tags": PackedStringArray(OS.get_feature_list()),
+		"feature_tags": _feature_tags_active(),
 		"path_user_dir": ProjectSettings.globalize_path("user://"),
 		"path_res_dir": ProjectSettings.globalize_path("res://"),
 	}
@@ -265,3 +265,11 @@ func _h_set_main_scene(ctx: Dictionary) -> Dictionary:
 		"ok": true,
 		"result": {"set": true, "path": path, "previous": previous, "state": _h_info({}).get("result", {})},
 	}
+
+
+func _feature_tags_active() -> PackedStringArray:
+	var tags: PackedStringArray = []
+	for nm in ["editor", "template", "release", "debug", "pc", "mobile", "web", "wasm", "dotnet"]:
+		if OS.has_feature(nm):
+			tags.append(nm)
+	return tags

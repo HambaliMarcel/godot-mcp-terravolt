@@ -182,7 +182,7 @@ func _h_rename_symbol(ctx: Dictionary) -> Dictionary:
 			var re := RegEx.new()
 			var pat := "\\b%s\\b" % from_sym.replace(".", "\\.")
 			if re.compile(pat) == OK:
-				text = re.sub(from_sym, to_sym, text)
+				text = re.sub(text, to_sym, true)
 				FileAccess.open(abs, FileAccess.WRITE).store_string(text)
 			_rescan(fp)
 	return {

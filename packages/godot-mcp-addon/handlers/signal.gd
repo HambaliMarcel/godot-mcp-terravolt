@@ -178,8 +178,11 @@ func _h_disconnect(ctx: Dictionary) -> Dictionary:
 		return _Utils.err_node_not_found(str(p.get("from_path", "")))
 	var sig := str(p.get("signal_name", ""))
 	var method := str(p.get("method", ""))
-	var ok := from.disconnect(sig, Callable(to, method))
-	return {"ok": true, "result": {"disconnected": ok}}
+	var callable := Callable(to, method)
+	var was_connected := from.is_connected(sig, callable)
+	if was_connected:
+		from.disconnect(sig, callable)
+	return {"ok": true, "result": {"disconnected": was_connected}}
 
 
 func _h_list_connections(ctx: Dictionary) -> Dictionary:

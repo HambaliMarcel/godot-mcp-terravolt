@@ -326,18 +326,18 @@ func _h_save_as(ctx: Dictionary) -> Dictionary:
 				{"path": new_path}
 			),
 		}
-	var err := ei.save_scene_as(new_path)
-	if err != OK:
+	ei.save_scene_as(new_path)
+	var abs := _Utils.globalize(new_path)
+	if not FileAccess.file_exists(abs):
 		return {
 			"ok": false,
 			"error": TerravoltErrors.tv_rpc_error(
 				TerravoltErrors.SCENE_SAVE_FAILED,
 				"scene.save_failed",
-				error_string(err),
+				"save_scene_as did not create target file",
 				{"path": new_path}
 			),
 		}
-	var abs := _Utils.globalize(new_path)
 	var bytes := FileAccess.get_file_as_bytes(abs).size() if FileAccess.file_exists(abs) else 0
 	return {
 		"ok": true,
