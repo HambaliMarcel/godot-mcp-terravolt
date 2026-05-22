@@ -78,12 +78,14 @@ Daemon identity + catalog metadata.
 Tail the daemon log file (`user://mcp_log.txt`).
 
 - **Input:**
+
   ```jsonc
   { "lines": 100, "level": "info" } // both fields optional
   ```
 
   - `lines`: integer `[1, 1000]`.
   - `level`: `"debug" | "info" | "warn" | "error"`.
+
 - **Result:** array of structured log records.
 - **Headless fallback:** no — requires editor session with the addon loaded.
 

@@ -48,43 +48,47 @@ const skipReason = !godotBinary
     ? `addon missing: ${addonSrc}`
     : `fixture missing: ${fixture}`;
 
-test("addon parse-check: every .gd compiles under real Godot 4", { skip: skip && skipReason }, () => {
-  try {
-    rmSync(addonDst, { recursive: true, force: true });
-    cpSync(addonSrc, addonDst, { recursive: true });
+test(
+  "addon parse-check: every .gd compiles under real Godot 4",
+  { skip: skip && skipReason },
+  () => {
+    try {
+      rmSync(addonDst, { recursive: true, force: true });
+      cpSync(addonSrc, addonDst, { recursive: true });
 
-    const res = spawnSync(
-      godotBinary,
-      ["--headless", "--import", "--path", fixture],
-      { encoding: "utf8", windowsHide: true, timeout: 90_000 },
-    );
+      const res = spawnSync(godotBinary, ["--headless", "--import", "--path", fixture], {
+        encoding: "utf8",
+        windowsHide: true,
+        timeout: 90_000,
+      });
 
-    const stderr = (res.stderr ?? "") + "\n" + (res.stdout ?? "");
-    const parseErrors = stderr
-      .split(/\r?\n/)
-      .filter((line) => /SCRIPT ERROR:\s+Parse Error:/.test(line))
-      .slice(0, 40);
+      const stderr = (res.stderr ?? "") + "\n" + (res.stdout ?? "");
+      const parseErrors = stderr
+        .split(/\r?\n/)
+        .filter((line) => /SCRIPT ERROR:\s+Parse Error:/.test(line))
+        .slice(0, 40);
 
-    assert.equal(
-      parseErrors.length,
-      0,
-      `Godot --import reported ${parseErrors.length} GDScript parse error(s):\n  ${parseErrors.join("\n  ")}`,
-    );
-    assert.equal(
-      res.status,
-      0,
-      `Godot --import exited ${res.status}\nstderr:\n${stderr.slice(0, 2000)}`,
-    );
-  } finally {
-    rmSync(addonDst, { recursive: true, force: true });
-    const godotMeta = join(fixture, ".godot");
-    if (existsSync(godotMeta)) {
-      try {
-        const s = statSync(godotMeta);
-        if (s.isDirectory()) rmSync(godotMeta, { recursive: true, force: true });
-      } catch {
-        /* ignore */
+      assert.equal(
+        parseErrors.length,
+        0,
+        `Godot --import reported ${parseErrors.length} GDScript parse error(s):\n  ${parseErrors.join("\n  ")}`,
+      );
+      assert.equal(
+        res.status,
+        0,
+        `Godot --import exited ${res.status}\nstderr:\n${stderr.slice(0, 2000)}`,
+      );
+    } finally {
+      rmSync(addonDst, { recursive: true, force: true });
+      const godotMeta = join(fixture, ".godot");
+      if (existsSync(godotMeta)) {
+        try {
+          const s = statSync(godotMeta);
+          if (s.isDirectory()) rmSync(godotMeta, { recursive: true, force: true });
+        } catch {
+          /* ignore */
+        }
       }
     }
-  }
-});
+  },
+);

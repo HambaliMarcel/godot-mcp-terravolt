@@ -39,7 +39,8 @@ export function registerRouterOnlyTools(args: {
   ajvCompileSmoke: ValidateFn | null;
   headless?: HeadlessCoordinator;
 }): void {
-  const { mcp, routeCatalog, jsonRegistry, routerRegistrySha, godot, ajvCompileSmoke, headless } = args;
+  const { mcp, routeCatalog, jsonRegistry, routerRegistrySha, godot, ajvCompileSmoke, headless } =
+    args;
 
   registerToolCompat(
     mcp,
@@ -206,7 +207,9 @@ export function registerRouterOnlyTools(args: {
       } catch {
         headlessDriverGd = null;
       }
-      const headlessTcpAlive = Boolean((headless?.status() as Record<string, unknown> | undefined)?.alive);
+      const headlessTcpAlive = Boolean(
+        (headless?.status() as Record<string, unknown> | undefined)?.alive,
+      );
 
       const hashMatch =
         daemonOk &&

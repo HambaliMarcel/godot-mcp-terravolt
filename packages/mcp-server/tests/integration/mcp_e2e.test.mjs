@@ -44,10 +44,7 @@ function loadGodotBinary() {
 }
 
 const godotBinary = loadGodotBinary();
-const skip =
-  !godotBinary ||
-  !existsSync(fixture) ||
-  !existsSync(routerEntry);
+const skip = !godotBinary || !existsSync(fixture) || !existsSync(routerEntry);
 
 const skipReason = !godotBinary
   ? "Godot binary unavailable (`npm run env:godot` first)"
@@ -57,114 +54,125 @@ const skipReason = !godotBinary
       ? `fixture missing: ${fixture}`
       : "skipped";
 
-test("MCP stdio: tools/list + headless.* round-trip via real Godot", { skip: skip && skipReason }, async () => {
-  const env = {
-    ...process.env,
-    TERRAVOLT_GODOT_BINARY: godotBinary,
-    TERRAVOLT_PROJECT_PATH: fixture,
-    TERRAVOLT_LOG_LEVEL: "warn",
-    TERRAVOLT_CONNECT_TIMEOUT_MS: "750",
-    TERRAVOLT_HEADLESS_BOOT_TIMEOUT_MS: "30000",
-    TERRAVOLT_HEADLESS_OP_TIMEOUT_MS: "15000",
-  };
+test(
+  "MCP stdio: tools/list + headless.* round-trip via real Godot",
+  { skip: skip && skipReason },
+  async () => {
+    const env = {
+      ...process.env,
+      TERRAVOLT_GODOT_BINARY: godotBinary,
+      TERRAVOLT_PROJECT_PATH: fixture,
+      TERRAVOLT_LOG_LEVEL: "warn",
+      TERRAVOLT_CONNECT_TIMEOUT_MS: "750",
+      TERRAVOLT_HEADLESS_BOOT_TIMEOUT_MS: "30000",
+      TERRAVOLT_HEADLESS_OP_TIMEOUT_MS: "15000",
+    };
 
-  const transport = new StdioClientTransport({
-    command: process.execPath,
-    args: [routerEntry, "--godot-port", "1", "--connect-timeout-ms", "300"],
-    env,
-    stderr: "pipe",
-  });
-  const stderrChunks = [];
-  const client = new Client(
-    { name: "terravolt-e2e", version: "0.0.0-test" },
-    { capabilities: { tools: {} } },
-  );
-
-  try {
-    await client.connect(transport);
-  } catch (e) {
-    const stderr = transport.stderr;
-    if (stderr) {
-      try {
-        for await (const c of stderr) stderrChunks.push(c.toString());
-      } catch {
-        /* ignore */
-      }
-    }
-    e.message = `${e.message}\nROUTER STDERR:\n${stderrChunks.join("")}`;
-    throw e;
-  }
-  transport.stderr?.on?.("data", (c) => stderrChunks.push(c.toString()));
-
-  try {
-    const tools = await client.listTools();
-    const names = new Set(tools.tools.map((t) => t.name));
-    for (const want of [
-      "ping",
-      "server.info",
-      "tools.list",
-      "tools.describe",
-      "tools.metrics",
-      "tools.bottlenecks",
-      "tools.health",
-      "context.fetch_raw",
-      "headless.start_project",
-      "headless.status",
-      "headless.stop",
-      "headless.validate_script",
-    ]) {
-      assert.ok(names.has(want), `missing tool: ${want}`);
-    }
-
-    const unwrap = (res) =>
-      res.structuredContent ?? JSON.parse(res.content?.[0]?.text ?? "{}");
-
-    const startRes = await client.callTool({
-      name: "headless.start_project",
-      arguments: { projectPath: fixture },
+    const transport = new StdioClientTransport({
+      command: process.execPath,
+      args: [routerEntry, "--godot-port", "1", "--connect-timeout-ms", "300"],
+      env,
+      stderr: "pipe",
     });
-    assert.ok(!startRes.isError, `start failed: ${JSON.stringify(startRes)}`);
-    const startEnv = unwrap(startRes);
-    assert.equal(startEnv.ok, true);
-    assert.equal(startEnv.tool, "headless.start_project");
-    assert.equal(startEnv.result?.ready, true);
-    assert.equal(typeof startEnv.result?.pid, "number");
-    assert.equal(typeof startEnv.result?.port, "number");
-    assert.ok(startEnv.result.port > 0);
-
-    const statusRes = await client.callTool({ name: "headless.status", arguments: {} });
-    const statusEnv = unwrap(statusRes);
-    assert.equal(statusEnv.ok, true);
-    assert.equal(statusEnv.result?.alive, true);
-
-    const scratchDir = join(fixture, ".tv-scratch");
-    mkdirSync(scratchDir, { recursive: true });
-    const scratch = join(scratchDir, "noop.gd");
-    writeFileSync(scratch, "extends Node\nfunc do_thing() -> int:\n\treturn 42\n", "utf8");
+    const stderrChunks = [];
+    const client = new Client(
+      { name: "terravolt-e2e", version: "0.0.0-test" },
+      { capabilities: { tools: {} } },
+    );
 
     try {
-      const valRes = await client.callTool({
-        name: "headless.validate_script",
-        arguments: { path: scratch, projectPath: fixture },
-      });
-      const valEnv = unwrap(valRes);
-      assert.ok(!valRes.isError, `validate isError: ${JSON.stringify(valEnv)}`);
-      assert.equal(valEnv.ok, true);
-      assert.equal(valEnv.result?.ok, true, `validate result not ok: ${JSON.stringify(valEnv.result)}`);
-    } finally {
-      rmSync(scratchDir, { recursive: true, force: true });
+      await client.connect(transport);
+    } catch (e) {
+      const stderr = transport.stderr;
+      if (stderr) {
+        try {
+          for await (const c of stderr) stderrChunks.push(c.toString());
+        } catch {
+          /* ignore */
+        }
+      }
+      e.message = `${e.message}\nROUTER STDERR:\n${stderrChunks.join("")}`;
+      throw e;
     }
+    transport.stderr?.on?.("data", (c) => stderrChunks.push(c.toString()));
 
-    const pingRes = await client.callTool({ name: "ping", arguments: {} });
-    const pingEnv = unwrap(pingRes);
-    assert.equal(pingEnv.ok, true, `ping failed: ${JSON.stringify(pingEnv)}`);
-    assert.equal(pingEnv.method, "ping@headless", `expected headless fallback route, got: ${pingEnv.method}`);
-    assert.equal(pingEnv.result?.ok, true);
+    try {
+      const tools = await client.listTools();
+      const names = new Set(tools.tools.map((t) => t.name));
+      for (const want of [
+        "ping",
+        "server.info",
+        "tools.list",
+        "tools.describe",
+        "tools.metrics",
+        "tools.bottlenecks",
+        "tools.health",
+        "context.fetch_raw",
+        "headless.start_project",
+        "headless.status",
+        "headless.stop",
+        "headless.validate_script",
+      ]) {
+        assert.ok(names.has(want), `missing tool: ${want}`);
+      }
 
-    const stopRes = await client.callTool({ name: "headless.stop", arguments: { force: true } });
-    const stopEnv = unwrap(stopRes);
-    assert.equal(stopEnv.ok, true);
-  } finally {
-    await client.close().catch(() => {});
-  }
-});
+      const unwrap = (res) => res.structuredContent ?? JSON.parse(res.content?.[0]?.text ?? "{}");
+
+      const startRes = await client.callTool({
+        name: "headless.start_project",
+        arguments: { projectPath: fixture },
+      });
+      assert.ok(!startRes.isError, `start failed: ${JSON.stringify(startRes)}`);
+      const startEnv = unwrap(startRes);
+      assert.equal(startEnv.ok, true);
+      assert.equal(startEnv.tool, "headless.start_project");
+      assert.equal(startEnv.result?.ready, true);
+      assert.equal(typeof startEnv.result?.pid, "number");
+      assert.equal(typeof startEnv.result?.port, "number");
+      assert.ok(startEnv.result.port > 0);
+
+      const statusRes = await client.callTool({ name: "headless.status", arguments: {} });
+      const statusEnv = unwrap(statusRes);
+      assert.equal(statusEnv.ok, true);
+      assert.equal(statusEnv.result?.alive, true);
+
+      const scratchDir = join(fixture, ".tv-scratch");
+      mkdirSync(scratchDir, { recursive: true });
+      const scratch = join(scratchDir, "noop.gd");
+      writeFileSync(scratch, "extends Node\nfunc do_thing() -> int:\n\treturn 42\n", "utf8");
+
+      try {
+        const valRes = await client.callTool({
+          name: "headless.validate_script",
+          arguments: { path: scratch, projectPath: fixture },
+        });
+        const valEnv = unwrap(valRes);
+        assert.ok(!valRes.isError, `validate isError: ${JSON.stringify(valEnv)}`);
+        assert.equal(valEnv.ok, true);
+        assert.equal(
+          valEnv.result?.ok,
+          true,
+          `validate result not ok: ${JSON.stringify(valEnv.result)}`,
+        );
+      } finally {
+        rmSync(scratchDir, { recursive: true, force: true });
+      }
+
+      const pingRes = await client.callTool({ name: "ping", arguments: {} });
+      const pingEnv = unwrap(pingRes);
+      assert.equal(pingEnv.ok, true, `ping failed: ${JSON.stringify(pingEnv)}`);
+      assert.equal(
+        pingEnv.method,
+        "ping@headless",
+        `expected headless fallback route, got: ${pingEnv.method}`,
+      );
+      assert.equal(pingEnv.result?.ok, true);
+
+      const stopRes = await client.callTool({ name: "headless.stop", arguments: { force: true } });
+      const stopEnv = unwrap(stopRes);
+      assert.equal(stopEnv.ok, true);
+    } finally {
+      await client.close().catch(() => {});
+    }
+  },
+);

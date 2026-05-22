@@ -40,7 +40,8 @@ export function resolveAutoHeal(daemonErr: Record<string, unknown>): AutoHealBlo
   }
 
   const codeRaw = daemonErr["code"];
-  const codeNum = typeof codeRaw === "number" ? codeRaw : Number.parseInt(String(codeRaw ?? ""), 10);
+  const codeNum =
+    typeof codeRaw === "number" ? codeRaw : Number.parseInt(String(codeRaw ?? ""), 10);
   if (Number.isFinite(codeNum)) {
     const fromCode = bundle.byCode[String(codeNum)];
     if (fromCode !== undefined) return fromCode;

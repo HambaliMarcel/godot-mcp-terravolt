@@ -24,9 +24,7 @@ function ancestorDirs(seed: string): string[] {
 function toFsPath(urlOrPath: string): string {
   if (urlOrPath.startsWith("file://")) return fileURLToPath(urlOrPath);
   if (isAbsolute(urlOrPath)) return urlOrPath;
-  throw new Error(
-    `[terravolt] Expected a file:// URL or absolute path, got: ${urlOrPath}`,
-  );
+  throw new Error(`[terravolt] Expected a file:// URL or absolute path, got: ${urlOrPath}`);
 }
 
 /**

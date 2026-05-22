@@ -28,7 +28,6 @@ export async function runGodotArgv(opts: {
       }
 
       rejectPromise(new Error("headless.timeout"));
-
     }, opts.timeoutMs);
 
     proc.stdout?.setEncoding("utf8");
@@ -38,29 +37,18 @@ export async function runGodotArgv(opts: {
     });
     proc.stderr?.on("data", (chk: string) => {
       if (err.length < MAX_EACH) err += chk.slice(0, MAX_EACH - err.length);
-
     });
-
 
     proc.on("error", (e) => {
       clearTimeout(killer);
 
-
       rejectPromise(e);
-
     });
-
 
     proc.on("close", (code) => {
       clearTimeout(killer);
 
-
-
       resolvePromise({ exitCode: code, stdout: out, stderr: err });
     });
-
-
   });
-
-
 }

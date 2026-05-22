@@ -68,10 +68,7 @@ export class HeadlessCoordinator {
   }
 
   resolvedProjectOrThrow(): string {
-    const p =
-      this.cfg.projectPath ??
-      process.env.TERRAVOLT_PROJECT_PATH ??
-      "";
+    const p = this.cfg.projectPath ?? process.env.TERRAVOLT_PROJECT_PATH ?? "";
     if (!p.length) throw new Error("headless.no_project");
     return path.resolve(p);
   }

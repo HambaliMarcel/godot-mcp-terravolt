@@ -37,10 +37,14 @@ function gitShow(repoRoot, ref, relPath) {
 
 function previousTag(repoRoot) {
   try {
-    const out = execFileSync("git", ["describe", "--tags", "--abbrev=0", "--match", "v*.*.*", "HEAD^"], {
-      cwd: repoRoot,
-      stdio: ["ignore", "pipe", "ignore"],
-    });
+    const out = execFileSync(
+      "git",
+      ["describe", "--tags", "--abbrev=0", "--match", "v*.*.*", "HEAD^"],
+      {
+        cwd: repoRoot,
+        stdio: ["ignore", "pipe", "ignore"],
+      },
+    );
     return out.toString("utf8").trim() || undefined;
   } catch {
     try {
@@ -125,18 +129,29 @@ function main() {
   lines.push(`- Base ref: \`${from ?? "<initial>"}\``);
   lines.push(`- Head ref: \`${args.to}\``);
   lines.push(`- Router \`catalog_version\`: \`${currMethods?.catalog_version ?? "?"}\``);
-  if (prevMethods) lines.push(`- Previous \`catalog_version\`: \`${prevMethods.catalog_version ?? "?"}\``);
+  if (prevMethods)
+    lines.push(`- Previous \`catalog_version\`: \`${prevMethods.catalog_version ?? "?"}\``);
   lines.push("");
 
   lines.push("## Method registry");
-  lines.push(`- **Added (${md.added.length}):** ${md.added.map((m) => `\`${m}\``).join(", ") || "_none_"}`);
-  lines.push(`- **Changed (${md.changed.length}):** ${md.changed.map((m) => `\`${m}\``).join(", ") || "_none_"}`);
-  lines.push(`- **Removed (${md.removed.length}):** ${md.removed.map((m) => `\`${m}\``).join(", ") || "_none_"}`);
+  lines.push(
+    `- **Added (${md.added.length}):** ${md.added.map((m) => `\`${m}\``).join(", ") || "_none_"}`,
+  );
+  lines.push(
+    `- **Changed (${md.changed.length}):** ${md.changed.map((m) => `\`${m}\``).join(", ") || "_none_"}`,
+  );
+  lines.push(
+    `- **Removed (${md.removed.length}):** ${md.removed.map((m) => `\`${m}\``).join(", ") || "_none_"}`,
+  );
   lines.push("");
 
   lines.push("## Error registry");
-  lines.push(`- **Added (${ed.added.length}):** ${ed.added.map((c) => `\`${c}\``).join(", ") || "_none_"}`);
-  lines.push(`- **Removed (${ed.removed.length}):** ${ed.removed.map((c) => `\`${c}\``).join(", ") || "_none_"}`);
+  lines.push(
+    `- **Added (${ed.added.length}):** ${ed.added.map((c) => `\`${c}\``).join(", ") || "_none_"}`,
+  );
+  lines.push(
+    `- **Removed (${ed.removed.length}):** ${ed.removed.map((c) => `\`${c}\``).join(", ") || "_none_"}`,
+  );
   lines.push("");
 
   const changelog = join(root, "CHANGELOG.md");

@@ -40,7 +40,11 @@ export function registerHeadlessRouterTools(args: {
   registerToolCompat(
     mcp,
     "headless.start_project",
-    { title: "Headless session start", description: "Starts §07 headless subprocess.", inputSchema: OpenParamsSchema },
+    {
+      title: "Headless session start",
+      description: "Starts §07 headless subprocess.",
+      inputSchema: OpenParamsSchema,
+    },
     async (raw) => {
       metricsRecordToolStart("headless.start_project");
       const t0 = Date.now();
@@ -50,11 +54,20 @@ export function registerHeadlessRouterTools(args: {
         await headless.ensureDefaultSession(projOpt);
         const latency = Date.now() - t0;
         metricsRecordToolEnd("headless.start_project", true, latency);
-        return okStructured(successEnvelope("headless.start_project", "headless", latency, { ready: true, ...headless.status() }));
+        return okStructured(
+          successEnvelope("headless.start_project", "headless", latency, {
+            ready: true,
+            ...headless.status(),
+          }),
+        );
       } catch (e) {
         metricsRecordToolEnd("headless.start_project", false, Date.now() - t0);
         const msg = e instanceof Error ? e.message : String(e);
-        const code = msg.includes("binary_missing") ? "headless.binary_missing" : msg.includes("no_project") ? "headless.no_project" : "headless.spawn_failed";
+        const code = msg.includes("binary_missing")
+          ? "headless.binary_missing"
+          : msg.includes("no_project")
+            ? "headless.no_project"
+            : "headless.spawn_failed";
         return errStructured(code, { app_code: code, hint: msg });
       }
     },
@@ -114,7 +127,9 @@ export function registerHeadlessRouterTools(args: {
       const t0 = Date.now();
       const latency = Date.now() - t0;
       metricsRecordToolEnd("headless.status", true, latency);
-      return okStructured(successEnvelope("headless.status", "headless", latency, headless.status()));
+      return okStructured(
+        successEnvelope("headless.status", "headless", latency, headless.status()),
+      );
     },
   );
 
@@ -141,7 +156,11 @@ export function registerHeadlessRouterTools(args: {
   registerToolCompat(
     mcp,
     "headless.validate_script",
-    { title: "validate_script headless", description: "Parses/script reload .gd.", inputSchema: OpenParamsSchema },
+    {
+      title: "validate_script headless",
+      description: "Parses/script reload .gd.",
+      inputSchema: OpenParamsSchema,
+    },
     async (raw) => {
       metricsRecordToolStart("headless.validate_script");
       const t0 = Date.now();
@@ -153,12 +172,16 @@ export function registerHeadlessRouterTools(args: {
           return errStructured("protocol.invalid_params", { app_code: "protocol.invalid_params" });
         }
 
-        await headless.ensureDefaultSession(typeof p.projectPath === "string" ? p.projectPath : undefined);
+        await headless.ensureDefaultSession(
+          typeof p.projectPath === "string" ? p.projectPath : undefined,
+        );
         const res = await headless.rpc("script.validate_syntax", { path: scriptPath });
         const latency = Date.now() - t0;
         metricsRecordToolEnd("headless.validate_script", true, latency);
 
-        return okStructured(successEnvelope("headless.validate_script", "script.validate_syntax", latency, res));
+        return okStructured(
+          successEnvelope("headless.validate_script", "script.validate_syntax", latency, res),
+        );
       } catch (e) {
         metricsRecordToolEnd("headless.validate_script", false, Date.now() - t0);
         return errStructured(e instanceof Error ? e.message : String(e));
@@ -166,4 +189,3 @@ export function registerHeadlessRouterTools(args: {
     },
   );
 }
-

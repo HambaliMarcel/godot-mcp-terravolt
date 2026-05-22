@@ -103,7 +103,8 @@ function registerDaemonRow(
         const latencyMs = Date.now() - t0;
         metricsRecordToolEnd(meta.name, true, latencyMs);
         if (meta.name === "ping") {
-          const rr = typeof raw === "object" && raw !== null ? (raw as Record<string, unknown>) : {};
+          const rr =
+            typeof raw === "object" && raw !== null ? (raw as Record<string, unknown>) : {};
           const tsRaw = rr["ts"];
           const daemonTs = typeof tsRaw === "number" ? tsRaw : Number.NaN;
           const body = successEnvelope(meta.name, route, latencyMs, {
@@ -128,7 +129,8 @@ function registerDaemonRow(
             ? (error as NodeJS.ErrnoException).code
             : "";
 
-        const transportDown = code === TRANSPORT_NOT_CONNECTED || code === "transport_socket_closed";
+        const transportDown =
+          code === TRANSPORT_NOT_CONNECTED || code === "transport_socket_closed";
 
         if (transportDown && meta.headlessFallback && headless !== undefined) {
           try {
@@ -137,7 +139,10 @@ function registerDaemonRow(
             return finishOk(raw, `${daemonMethod}@headless`);
           } catch {
             metricsRecordToolEnd(meta.name, false, Date.now() - t0);
-            return errStructured(TRANSPORT_NOT_CONNECTED, transportDisconnectedPayload(includeAutoHealHints));
+            return errStructured(
+              TRANSPORT_NOT_CONNECTED,
+              transportDisconnectedPayload(includeAutoHealHints),
+            );
           }
         }
 
@@ -145,13 +150,18 @@ function registerDaemonRow(
         metricsRecordToolEnd(meta.name, false, latencyMs);
 
         if (transportDown) {
-          return errStructured(TRANSPORT_NOT_CONNECTED, transportDisconnectedPayload(includeAutoHealHints));
+          return errStructured(
+            TRANSPORT_NOT_CONNECTED,
+            transportDisconnectedPayload(includeAutoHealHints),
+          );
         }
 
         if (error instanceof DaemonJsonRpcError) {
           const ah = includeAutoHealHints ? resolveAutoHeal(error.daemon) : undefined;
           const msg =
-            typeof error.daemon["message"] === "string" ? error.daemon["message"] : String(error.message);
+            typeof error.daemon["message"] === "string"
+              ? error.daemon["message"]
+              : String(error.message);
           return errStructured(msg, {
             ...error.daemon,
             ...(ah !== undefined ? { autoHeal: ah } : {}),
@@ -163,4 +173,3 @@ function registerDaemonRow(
     },
   );
 }
-

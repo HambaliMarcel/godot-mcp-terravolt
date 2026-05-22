@@ -155,4 +155,3 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
     shutdown,
   };
 }
-

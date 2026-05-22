@@ -85,7 +85,8 @@ function scanWindowsRoot(root) {
 function scanFromPath() {
   const env = process.env.PATH ?? "";
   const dirs = env.split(path.delimiter).filter(Boolean);
-  const names = platform() === "win32" ? ["godot.exe", "godot4.exe", "Godot.exe"] : ["godot", "godot4"];
+  const names =
+    platform() === "win32" ? ["godot.exe", "godot4.exe", "Godot.exe"] : ["godot", "godot4"];
   for (const d of dirs) {
     for (const n of names) {
       const attempt = path.join(d, n);
@@ -105,7 +106,8 @@ function resolveGodotBinary(opts) {
 
   if (platform() === "win32") {
     const roots = [];
-    if (process.env.LOCALAPPDATA) roots.push(path.join(process.env.LOCALAPPDATA, "Programs", "Godot"));
+    if (process.env.LOCALAPPDATA)
+      roots.push(path.join(process.env.LOCALAPPDATA, "Programs", "Godot"));
     if (process.env.USERPROFILE) roots.push(path.join(process.env.USERPROFILE, "Tools", "Godot"));
     roots.push(String.raw`C:\Program Files\Godot`, String.raw`C:\Tools\Godot`);
     for (const r of roots) {
@@ -125,7 +127,8 @@ function resolveGodotBinary(opts) {
       "/usr/local/bin/godot",
       "/usr/bin/godot",
     ];
-    if (process.env.HOME) linuxCandidates.push(path.join(process.env.HOME, ".local", "share", "godot", "godot"));
+    if (process.env.HOME)
+      linuxCandidates.push(path.join(process.env.HOME, ".local", "share", "godot", "godot"));
     for (const c of linuxCandidates) if (existsSync(c)) return c;
   }
 
