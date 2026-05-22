@@ -274,10 +274,28 @@
       "norm_label": "addon:unlink"
     },
     {
-      "label": "release",
+      "label": "catalog:sync",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L25",
+      "id": "godot_mcp_marcel_package_scripts_catalog_sync",
+      "community": 30,
+      "norm_label": "catalog:sync"
+    },
+    {
+      "label": "catalog:gen",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "id": "godot_mcp_marcel_package_scripts_catalog_gen",
+      "community": 30,
+      "norm_label": "catalog:gen"
+    },
+    {
+      "label": "release",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
       "id": "godot_mcp_marcel_package_scripts_release",
       "community": 30,
       "norm_label": "release"
@@ -286,7 +304,7 @@
       "label": "intel:graphs",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "id": "godot_mcp_marcel_package_scripts_intel_graphs",
       "community": 30,
       "norm_label": "intel:graphs"
@@ -295,7 +313,7 @@
       "label": "intel:gitnexus",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "id": "godot_mcp_marcel_package_scripts_intel_gitnexus",
       "community": 30,
       "norm_label": "intel:gitnexus"
@@ -304,7 +322,7 @@
       "label": "intel:graphify",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "id": "godot_mcp_marcel_package_scripts_intel_graphify",
       "community": 30,
       "norm_label": "intel:graphify"
@@ -313,7 +331,7 @@
       "label": "intel:graphify:cluster",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "id": "godot_mcp_marcel_package_scripts_intel_graphify_cluster",
       "community": 30,
       "norm_label": "intel:graphify:cluster"
@@ -322,7 +340,7 @@
       "label": "omni:intel",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "id": "godot_mcp_marcel_package_scripts_omni_intel",
       "community": 30,
       "norm_label": "omni:intel"
@@ -331,7 +349,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "id": "godot_mcp_marcel_package_devdependencies",
       "community": 30,
       "norm_label": "devdependencies"
@@ -340,7 +358,7 @@
       "label": "dependency-cruiser",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L35",
       "id": "godot_mcp_marcel_package_devdependencies_dependency_cruiser",
       "community": 30,
       "norm_label": "dependency-cruiser"
@@ -349,7 +367,7 @@
       "label": "gitnexus",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "id": "godot_mcp_marcel_package_devdependencies_gitnexus",
       "community": 30,
       "norm_label": "gitnexus"
@@ -358,7 +376,7 @@
       "label": "madge",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L37",
       "id": "godot_mcp_marcel_package_devdependencies_madge",
       "community": 30,
       "norm_label": "madge"
@@ -367,7 +385,7 @@
       "label": "prettier",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L38",
       "id": "godot_mcp_marcel_package_devdependencies_prettier",
       "community": 30,
       "norm_label": "prettier"
@@ -376,7 +394,7 @@
       "label": "cross-env",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L39",
       "id": "godot_mcp_marcel_package_devdependencies_cross_env",
       "community": 30,
       "norm_label": "cross-env"
@@ -481,6 +499,42 @@
       "norm_label": "type"
     },
     {
+      "label": "main",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L11",
+      "id": "mcp_server_package_main",
+      "community": 18,
+      "norm_label": "main"
+    },
+    {
+      "label": "bin",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L12",
+      "id": "mcp_server_package_bin",
+      "community": 18,
+      "norm_label": "bin"
+    },
+    {
+      "label": "terravolt-godot-mcp",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L8",
+      "id": "mcp_server_package_bin_terravolt_godot_mcp",
+      "community": 18,
+      "norm_label": "terravolt-godot-mcp"
+    },
+    {
+      "label": "exports",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L10",
+      "id": "mcp_server_package_exports",
+      "community": 18,
+      "norm_label": "exports"
+    },
+    {
       "label": "description",
       "file_type": "code",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
@@ -493,7 +547,7 @@
       "label": "engines",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L7",
+      "source_location": "L14",
       "id": "mcp_server_package_engines",
       "community": 18,
       "norm_label": "engines"
@@ -502,7 +556,7 @@
       "label": "node",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L8",
+      "source_location": "L15",
       "id": "mcp_server_package_engines_node",
       "community": 18,
       "norm_label": "node"
@@ -529,7 +583,7 @@
       "label": "typecheck",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L12",
+      "source_location": "L19",
       "id": "mcp_server_package_scripts_typecheck",
       "community": 18,
       "norm_label": "typecheck"
@@ -538,7 +592,7 @@
       "label": "lint",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L13",
+      "source_location": "L20",
       "id": "mcp_server_package_scripts_lint",
       "community": 18,
       "norm_label": "lint"
@@ -547,7 +601,7 @@
       "label": "lint:fix",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L14",
+      "source_location": "L21",
       "id": "mcp_server_package_scripts_lint_fix",
       "community": 18,
       "norm_label": "lint:fix"
@@ -574,7 +628,7 @@
       "label": "@eslint/js",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L18",
+      "source_location": "L25",
       "id": "mcp_server_package_devdependencies_eslint_js",
       "community": 18,
       "norm_label": "@eslint/js"
@@ -589,10 +643,19 @@
       "norm_label": "@types/node"
     },
     {
+      "label": "@types/ws",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L42",
+      "id": "mcp_server_package_devdependencies_types_ws",
+      "community": 18,
+      "norm_label": "@types/ws"
+    },
+    {
       "label": "eslint",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L20",
+      "source_location": "L28",
       "id": "mcp_server_package_devdependencies_eslint",
       "community": 18,
       "norm_label": "eslint"
@@ -610,10 +673,64 @@
       "label": "typescript-eslint",
       "file_type": "code",
       "source_file": "packages/mcp-server/package.json",
-      "source_location": "L22",
+      "source_location": "L30",
       "id": "mcp_server_package_devdependencies_typescript_eslint",
       "community": 18,
       "norm_label": "typescript-eslint"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L36",
+      "id": "mcp_server_package_dependencies",
+      "community": 18,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@modelcontextprotocol/sdk",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L37",
+      "id": "mcp_server_package_dependencies_modelcontextprotocol_sdk",
+      "community": 18,
+      "norm_label": "@modelcontextprotocol/sdk"
+    },
+    {
+      "label": "ajv",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L34",
+      "id": "mcp_server_package_dependencies_ajv",
+      "community": 18,
+      "norm_label": "ajv"
+    },
+    {
+      "label": "ajv-formats",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L35",
+      "id": "mcp_server_package_dependencies_ajv_formats",
+      "community": 18,
+      "norm_label": "ajv-formats"
+    },
+    {
+      "label": "ws",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L38",
+      "id": "mcp_server_package_dependencies_ws",
+      "community": 18,
+      "norm_label": "ws"
+    },
+    {
+      "label": "zod",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L37",
+      "id": "mcp_server_package_dependencies_zod",
+      "community": 18,
+      "norm_label": "zod"
     },
     {
       "label": "tsconfig.build.json",
@@ -760,10 +877,19 @@
       "norm_label": "noimplicitany"
     },
     {
-      "label": "noUncheckedIndexedAccess",
+      "label": "noImplicitOverride",
       "file_type": "code",
       "source_file": "packages/mcp-server/tsconfig.json",
       "source_location": "L9",
+      "id": "mcp_server_tsconfig_compileroptions_noimplicitoverride",
+      "community": 43,
+      "norm_label": "noimplicitoverride"
+    },
+    {
+      "label": "noUncheckedIndexedAccess",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/tsconfig.json",
+      "source_location": "L10",
       "id": "mcp_server_tsconfig_compileroptions_nouncheckedindexedaccess",
       "community": 43,
       "norm_label": "nouncheckedindexedaccess"
@@ -772,7 +898,7 @@
       "label": "verbatimModuleSyntax",
       "file_type": "code",
       "source_file": "packages/mcp-server/tsconfig.json",
-      "source_location": "L10",
+      "source_location": "L11",
       "id": "mcp_server_tsconfig_compileroptions_verbatimmodulesyntax",
       "community": 43,
       "norm_label": "verbatimmodulesyntax"
@@ -781,7 +907,7 @@
       "label": "isolatedModules",
       "file_type": "code",
       "source_file": "packages/mcp-server/tsconfig.json",
-      "source_location": "L11",
+      "source_location": "L12",
       "id": "mcp_server_tsconfig_compileroptions_isolatedmodules",
       "community": 43,
       "norm_label": "isolatedmodules"
@@ -862,7 +988,7 @@
       "label": "noEmit",
       "file_type": "code",
       "source_file": "packages/mcp-server/tsconfig.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "mcp_server_tsconfig_compileroptions_noemit",
       "community": 43,
       "norm_label": "noemit"
@@ -886,22 +1012,814 @@
       "norm_label": "exclude"
     },
     {
-      "label": "health.ts",
+      "label": "config.ts",
       "file_type": "code",
-      "source_file": "packages/mcp-server/src/health.ts",
+      "source_file": "packages/mcp-server/src/config.ts",
       "source_location": "L1",
-      "id": "packages_mcp_server_src_health_ts",
-      "community": 687,
-      "norm_label": "health.ts"
+      "id": "packages_mcp_server_src_config_ts",
+      "community": 177,
+      "norm_label": "config.ts"
     },
     {
-      "label": "__scaffoldPhase",
+      "label": "LogLevel",
       "file_type": "code",
-      "source_file": "packages/mcp-server/src/health.ts",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L3",
+      "id": "src_config_loglevel",
+      "community": 177,
+      "norm_label": "loglevel"
+    },
+    {
+      "label": "Config",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
       "source_location": "L5",
-      "id": "src_health_scaffoldphase",
-      "community": 687,
-      "norm_label": "__scaffoldphase"
+      "id": "src_config_config",
+      "community": 177,
+      "norm_label": "config"
+    },
+    {
+      "label": "envString()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L22",
+      "id": "src_config_envstring",
+      "community": 177,
+      "norm_label": "envstring()"
+    },
+    {
+      "label": "envInt()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L27",
+      "id": "src_config_envint",
+      "community": 177,
+      "norm_label": "envint()"
+    },
+    {
+      "label": "parseLogLevel()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L34",
+      "id": "src_config_parseloglevel",
+      "community": 177,
+      "norm_label": "parseloglevel()"
+    },
+    {
+      "label": "parseIntOpt()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L39",
+      "id": "src_config_parseintopt",
+      "community": 177,
+      "norm_label": "parseintopt()"
+    },
+    {
+      "label": "ParseResult",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L45",
+      "id": "src_config_parseresult",
+      "community": 177,
+      "norm_label": "parseresult"
+    },
+    {
+      "label": "loadConfig()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L49",
+      "id": "src_config_loadconfig",
+      "community": 177,
+      "norm_label": "loadconfig()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_index_ts",
+      "community": 177,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "readPackageVersion()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L9",
+      "id": "src_index_readpackageversion",
+      "community": 177,
+      "norm_label": "readpackageversion()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L570",
+      "id": "src_index_main",
+      "community": 177,
+      "norm_label": "main()"
+    },
+    {
+      "label": "logger.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_logger_ts",
+      "community": 177,
+      "norm_label": "logger.ts"
+    },
+    {
+      "label": "ORDER",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L3",
+      "id": "src_logger_order",
+      "community": 177,
+      "norm_label": "order"
+    },
+    {
+      "label": "Logger",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L10",
+      "id": "src_logger_logger",
+      "community": 1112,
+      "norm_label": "logger"
+    },
+    {
+      "label": "createLogger()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L17",
+      "id": "src_logger_createlogger",
+      "community": 177,
+      "norm_label": "createlogger()"
+    },
+    {
+      "label": "loadRegistry.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "community": 95,
+      "norm_label": "loadregistry.ts"
+    },
+    {
+      "label": "McpToolOverlay",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L6",
+      "id": "catalog_loadregistry_mcptooloverlay",
+      "community": 95,
+      "norm_label": "mcptooloverlay"
+    },
+    {
+      "label": "MethodRegistryEntry",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L12",
+      "id": "catalog_loadregistry_methodregistryentry",
+      "community": 95,
+      "norm_label": "methodregistryentry"
+    },
+    {
+      "label": "MethodRegistryFile",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L28",
+      "id": "catalog_loadregistry_methodregistryfile",
+      "community": 95,
+      "norm_label": "methodregistryfile"
+    },
+    {
+      "label": "registryPath()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L33",
+      "id": "catalog_loadregistry_registrypath",
+      "community": 95,
+      "norm_label": "registrypath()"
+    },
+    {
+      "label": "loadMethodRegistry()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L40",
+      "id": "catalog_loadregistry_loadmethodregistry",
+      "community": 95,
+      "norm_label": "loadmethodregistry()"
+    },
+    {
+      "label": "registryContentSha256()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L46",
+      "id": "catalog_loadregistry_registrycontentsha256",
+      "community": 95,
+      "norm_label": "registrycontentsha256()"
+    },
+    {
+      "label": "errors.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_diagnostics_errors_ts",
+      "community": 1112,
+      "norm_label": "errors.ts"
+    },
+    {
+      "label": "isRecord()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L6",
+      "id": "diagnostics_errors_isrecord",
+      "community": 1112,
+      "norm_label": "isrecord()"
+    },
+    {
+      "label": "DaemonJsonRpcError",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L10",
+      "id": "diagnostics_errors_daemonjsonrpcerror",
+      "community": 1112,
+      "norm_label": "daemonjsonrpcerror"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L13",
+      "id": "diagnostics_errors_daemonjsonrpcerror_constructor",
+      "community": 1112,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": "map_godot_error.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_diagnostics_map_godot_error_ts",
+      "community": 1112,
+      "norm_label": "map_godot_error.ts"
+    },
+    {
+      "label": "mapGodotJsonRpcError()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L4",
+      "id": "diagnostics_map_godot_error_mapgodotjsonrpcerror",
+      "community": 1112,
+      "norm_label": "mapgodotjsonrpcerror()"
+    },
+    {
+      "label": "driver.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/headless/driver.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_headless_driver_ts",
+      "community": 1120,
+      "norm_label": "driver.ts"
+    },
+    {
+      "label": "HeadlessDriverStub",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/headless/driver.ts",
+      "source_location": "L4",
+      "id": "headless_driver_headlessdriverstub",
+      "community": 1120,
+      "norm_label": "headlessdriverstub"
+    },
+    {
+      "label": "framing.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/framing.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_jsonrpc_framing_ts",
+      "community": 1112,
+      "norm_label": "framing.ts"
+    },
+    {
+      "label": "nextJsonRpcId()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/framing.ts",
+      "source_location": "L1",
+      "id": "jsonrpc_framing_nextjsonrpcid",
+      "community": 1112,
+      "norm_label": "nextjsonrpcid()"
+    },
+    {
+      "label": "pending.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "community": 1112,
+      "norm_label": "pending.ts"
+    },
+    {
+      "label": "Entry",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L4",
+      "id": "jsonrpc_pending_entry",
+      "community": 1112,
+      "norm_label": "entry"
+    },
+    {
+      "label": "PendingRequests",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L10",
+      "id": "jsonrpc_pending_pendingrequests",
+      "community": 1116,
+      "norm_label": "pendingrequests"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L13",
+      "id": "jsonrpc_pending_pendingrequests_constructor",
+      "community": 1116,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".dispose()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L15",
+      "id": "jsonrpc_pending_pendingrequests_dispose",
+      "community": 1116,
+      "norm_label": ".dispose()"
+    },
+    {
+      "label": ".create()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L23",
+      "id": "jsonrpc_pending_pendingrequests_create",
+      "community": 1116,
+      "norm_label": ".create()"
+    },
+    {
+      "label": ".resolve()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L67",
+      "id": "jsonrpc_pending_pendingrequests_resolve",
+      "community": 1116,
+      "norm_label": ".resolve()"
+    },
+    {
+      "label": ".rejectRpc()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L78",
+      "id": "jsonrpc_pending_pendingrequests_rejectrpc",
+      "community": 1116,
+      "norm_label": ".rejectrpc()"
+    },
+    {
+      "label": ".rejectAll()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L89",
+      "id": "jsonrpc_pending_pendingrequests_rejectall",
+      "community": 1116,
+      "norm_label": ".rejectall()"
+    },
+    {
+      "label": "metrics.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_telemetry_metrics_ts",
+      "community": 95,
+      "norm_label": "metrics.ts"
+    },
+    {
+      "label": "MetricsSnapshot",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L1",
+      "id": "telemetry_metrics_metricssnapshot",
+      "community": 95,
+      "norm_label": "metricssnapshot"
+    },
+    {
+      "label": "snap",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L9",
+      "id": "telemetry_metrics_snap",
+      "community": 95,
+      "norm_label": "snap"
+    },
+    {
+      "label": "metricsRecordToolStart()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L17",
+      "id": "telemetry_metrics_metricsrecordtoolstart",
+      "community": 95,
+      "norm_label": "metricsrecordtoolstart()"
+    },
+    {
+      "label": "metricsRecordToolEnd()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L25",
+      "id": "telemetry_metrics_metricsrecordtoolend",
+      "community": 95,
+      "norm_label": "metricsrecordtoolend()"
+    },
+    {
+      "label": "registry.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_tools_registry_ts",
+      "community": 95,
+      "norm_label": "registry.ts"
+    },
+    {
+      "label": "RegisteredRouterTool",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L3",
+      "id": "tools_registry_registeredroutertool",
+      "community": 95,
+      "norm_label": "registeredroutertool"
+    },
+    {
+      "label": "RouterToolCatalog",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L18",
+      "id": "tools_registry_routertoolcatalog",
+      "community": 1117,
+      "norm_label": "routertoolcatalog"
+    },
+    {
+      "label": ".add()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L21",
+      "id": "tools_registry_routertoolcatalog_add",
+      "community": 1117,
+      "norm_label": ".add()"
+    },
+    {
+      "label": ".entries()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L25",
+      "id": "tools_registry_routertoolcatalog_entries",
+      "community": 1117,
+      "norm_label": ".entries()"
+    },
+    {
+      "label": ".describe()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L29",
+      "id": "tools_registry_routertoolcatalog_describe",
+      "community": 1117,
+      "norm_label": ".describe()"
+    },
+    {
+      "label": ".filter()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L33",
+      "id": "tools_registry_routertoolcatalog_filter",
+      "community": 1117,
+      "norm_label": ".filter()"
+    },
+    {
+      "label": ".mergeFromDaemonRegistry()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L45",
+      "id": "tools_registry_routertoolcatalog_mergefromdaemonregistry",
+      "community": 1117,
+      "norm_label": ".mergefromdaemonregistry()"
+    },
+    {
+      "label": ".snapshotNames()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L71",
+      "id": "tools_registry_routertoolcatalog_snapshotnames",
+      "community": 1117,
+      "norm_label": ".snapshotnames()"
+    },
+    {
+      "label": "godot_ws_client.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "community": 1112,
+      "norm_label": "godot_ws_client.ts"
+    },
+    {
+      "label": "GodotNotificationSubscriber",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L9",
+      "id": "transport_godot_ws_client_godotnotificationsubscriber",
+      "community": 1112,
+      "norm_label": "godotnotificationsubscriber"
+    },
+    {
+      "label": "GodotWsClient",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L11",
+      "id": "transport_godot_ws_client_godotwsclient",
+      "community": 108,
+      "norm_label": "godotwsclient"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L24",
+      "id": "transport_godot_ws_client_godotwsclient_constructor",
+      "community": 108,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L31",
+      "id": "transport_godot_ws_client_godotwsclient_start",
+      "community": 108,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L37",
+      "id": "transport_godot_ws_client_godotwsclient_stop",
+      "community": 108,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".subscribeNotifications()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L53",
+      "id": "transport_godot_ws_client_godotwsclient_subscribenotifications",
+      "community": 108,
+      "norm_label": ".subscribenotifications()"
+    },
+    {
+      "label": ".isConnected()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L60",
+      "id": "transport_godot_ws_client_godotwsclient_isconnected",
+      "community": 108,
+      "norm_label": ".isconnected()"
+    },
+    {
+      "label": ".sendNotification()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L65",
+      "id": "transport_godot_ws_client_godotwsclient_sendnotification",
+      "community": 108,
+      "norm_label": ".sendnotification()"
+    },
+    {
+      "label": ".request()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L75",
+      "id": "transport_godot_ws_client_godotwsclient_request",
+      "community": 108,
+      "norm_label": ".request()"
+    },
+    {
+      "label": ".dispose()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L112",
+      "id": "transport_godot_ws_client_godotwsclient_dispose",
+      "community": 108,
+      "norm_label": ".dispose()"
+    },
+    {
+      "label": ".notConnectedErr()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L117",
+      "id": "transport_godot_ws_client_godotwsclient_notconnectederr",
+      "community": 108,
+      "norm_label": ".notconnectederr()"
+    },
+    {
+      "label": ".waitForSocket()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L123",
+      "id": "transport_godot_ws_client_godotwsclient_waitforsocket",
+      "community": 108,
+      "norm_label": ".waitforsocket()"
+    },
+    {
+      "label": ".safeSendText()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L142",
+      "id": "transport_godot_ws_client_godotwsclient_safesendtext",
+      "community": 108,
+      "norm_label": ".safesendtext()"
+    },
+    {
+      "label": ".scheduleReconnect()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L147",
+      "id": "transport_godot_ws_client_godotwsclient_schedulereconnect",
+      "community": 108,
+      "norm_label": ".schedulereconnect()"
+    },
+    {
+      "label": ".tryOpen()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L153",
+      "id": "transport_godot_ws_client_godotwsclient_tryopen",
+      "community": 108,
+      "norm_label": ".tryopen()"
+    },
+    {
+      "label": ".onRawMessage()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L209",
+      "id": "transport_godot_ws_client_godotwsclient_onrawmessage",
+      "community": 108,
+      "norm_label": ".onrawmessage()"
+    },
+    {
+      "label": ".dispatchOne()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L239",
+      "id": "transport_godot_ws_client_godotwsclient_dispatchone",
+      "community": 1112,
+      "norm_label": ".dispatchone()"
+    },
+    {
+      "label": ".startPing()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L270",
+      "id": "transport_godot_ws_client_godotwsclient_startping",
+      "community": 108,
+      "norm_label": ".startping()"
+    },
+    {
+      "label": ".stopPing()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L288",
+      "id": "transport_godot_ws_client_godotwsclient_stopping",
+      "community": 108,
+      "norm_label": ".stopping()"
+    },
+    {
+      "label": "mcp_stdio.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L1",
+      "id": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "community": 95,
+      "norm_label": "mcp_stdio.ts"
+    },
+    {
+      "label": "ToolsListSchema",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L20",
+      "id": "transport_mcp_stdio_toolslistschema",
+      "community": 95,
+      "norm_label": "toolslistschema"
+    },
+    {
+      "label": "ToolsDescribeSchema",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L27",
+      "id": "transport_mcp_stdio_toolsdescribeschema",
+      "community": 95,
+      "norm_label": "toolsdescribeschema"
+    },
+    {
+      "label": "OpenParamsSchema",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L33",
+      "id": "transport_mcp_stdio_openparamsschema",
+      "community": 95,
+      "norm_label": "openparamsschema"
+    },
+    {
+      "label": "ValidateFn",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L35",
+      "id": "transport_mcp_stdio_validatefn",
+      "community": 95,
+      "norm_label": "validatefn"
+    },
+    {
+      "label": "registerToolCompat()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L38",
+      "id": "transport_mcp_stdio_registertoolcompat",
+      "community": 95,
+      "norm_label": "registertoolcompat()"
+    },
+    {
+      "label": "RouterBundle",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L55",
+      "id": "transport_mcp_stdio_routerbundle",
+      "community": 95,
+      "norm_label": "routerbundle"
+    },
+    {
+      "label": "okStructured()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L63",
+      "id": "transport_mcp_stdio_okstructured",
+      "community": 95,
+      "norm_label": "okstructured()"
+    },
+    {
+      "label": "errStructured()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L70",
+      "id": "transport_mcp_stdio_errstructured",
+      "community": 95,
+      "norm_label": "errstructured()"
+    },
+    {
+      "label": "successEnvelope()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L79",
+      "id": "transport_mcp_stdio_successenvelope",
+      "community": 95,
+      "norm_label": "successenvelope()"
+    },
+    {
+      "label": "disconnectedHint()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L88",
+      "id": "transport_mcp_stdio_disconnectedhint",
+      "community": 95,
+      "norm_label": "disconnectedhint()"
+    },
+    {
+      "label": "describeTool()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L95",
+      "id": "transport_mcp_stdio_describetool",
+      "community": 95,
+      "norm_label": "describetool()"
+    },
+    {
+      "label": "LOCAL_TOOLS",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L112",
+      "id": "transport_mcp_stdio_local_tools",
+      "community": 95,
+      "norm_label": "local_tools"
+    },
+    {
+      "label": "bootstrapRouter()",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L183",
+      "id": "transport_mcp_stdio_bootstraprouter",
+      "community": 95,
+      "norm_label": "bootstraprouter()"
     },
     {
       "label": "smoke.test.mjs",
@@ -911,6 +1829,87 @@
       "id": "packages_mcp_server_tests_smoke_test_mjs",
       "community": 844,
       "norm_label": "smoke.test.mjs"
+    },
+    {
+      "label": "pkgRoot",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L8",
+      "id": "tests_smoke_test_pkgroot",
+      "community": 844,
+      "norm_label": "pkgroot"
+    },
+    {
+      "label": "entry",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L9",
+      "id": "tests_smoke_test_entry",
+      "community": 844,
+      "norm_label": "entry"
+    },
+    {
+      "label": "r",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L12",
+      "id": "tests_smoke_test_r",
+      "community": 844,
+      "norm_label": "r"
+    },
+    {
+      "label": "cfg",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L24",
+      "id": "tests_smoke_test_cfg",
+      "community": 844,
+      "norm_label": "cfg"
+    },
+    {
+      "label": "registry.json",
+      "file_type": "code",
+      "source_file": "packages/shared/errors/registry.json",
+      "source_location": "L1",
+      "id": "packages_shared_errors_registry_json",
+      "community": 1119,
+      "norm_label": "registry.json"
+    },
+    {
+      "label": "codes",
+      "file_type": "code",
+      "source_file": "packages/shared/errors/registry.json",
+      "source_location": "L2",
+      "id": "errors_registry_codes",
+      "community": 1119,
+      "norm_label": "codes"
+    },
+    {
+      "label": "registry.json",
+      "file_type": "code",
+      "source_file": "packages/shared/methods/registry.json",
+      "source_location": "L1",
+      "id": "packages_shared_methods_registry_json",
+      "community": 1118,
+      "norm_label": "registry.json"
+    },
+    {
+      "label": "catalog_version",
+      "file_type": "code",
+      "source_file": "packages/shared/methods/registry.json",
+      "source_location": "L2",
+      "id": "methods_registry_catalog_version",
+      "community": 1118,
+      "norm_label": "catalog_version"
+    },
+    {
+      "label": "methods",
+      "file_type": "code",
+      "source_file": "packages/shared/methods/registry.json",
+      "source_location": "L3",
+      "id": "methods_registry_methods",
+      "community": 1118,
+      "norm_label": "methods"
     },
     {
       "label": "package.json",
@@ -1885,24 +2884,6 @@
       "norm_label": "url"
     },
     {
-      "label": "main",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L11",
-      "id": "mcp_server_package_main",
-      "community": 18,
-      "norm_label": "main"
-    },
-    {
-      "label": "bin",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L12",
-      "id": "mcp_server_package_bin",
-      "community": 18,
-      "norm_label": "bin"
-    },
-    {
       "label": "godot-mcp-server",
       "file_type": "code",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
@@ -1991,42 +2972,6 @@
       "id": "mcp_server_package_license",
       "community": 18,
       "norm_label": "license"
-    },
-    {
-      "label": "dependencies",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L36",
-      "id": "mcp_server_package_dependencies",
-      "community": 18,
-      "norm_label": "dependencies"
-    },
-    {
-      "label": "@modelcontextprotocol/sdk",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L37",
-      "id": "mcp_server_package_dependencies_modelcontextprotocol_sdk",
-      "community": 18,
-      "norm_label": "@modelcontextprotocol/sdk"
-    },
-    {
-      "label": "ws",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L38",
-      "id": "mcp_server_package_dependencies_ws",
-      "community": 18,
-      "norm_label": "ws"
-    },
-    {
-      "label": "@types/ws",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L42",
-      "id": "mcp_server_package_devdependencies_types_ws",
-      "community": 18,
-      "norm_label": "@types/ws"
     },
     {
       "label": "@vitest/coverage-v8",
@@ -2232,7 +3177,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
       "source_location": "L29",
       "id": "src_godot_bridge_runtime_only_tools",
-      "community": 108,
+      "community": 51,
       "norm_label": "runtime_only_tools"
     },
     {
@@ -2511,7 +3456,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/godot-bridge.ts",
       "source_location": "L420",
       "id": "src_godot_bridge_createbridge",
-      "community": 51,
+      "community": 1114,
       "norm_label": "createbridge()"
     },
     {
@@ -2592,7 +3537,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
       "source_location": "L78",
       "id": "src_index_executetoolcall",
-      "community": 95,
+      "community": 35,
       "norm_label": "executetoolcall()"
     },
     {
@@ -2639,15 +3584,6 @@
       "id": "src_index_startproxy",
       "community": 35,
       "norm_label": "startproxy()"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L570",
-      "id": "src_index_main",
-      "community": 35,
-      "norm_label": "main()"
     },
     {
       "label": "primary-http.ts",
@@ -2772,7 +3708,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L1",
       "id": "references_godot_mcp_tomyud1_mcp_server_src_proxy_client_ts",
-      "community": 35,
+      "community": 1113,
       "norm_label": "proxy-client.ts"
     },
     {
@@ -2781,7 +3717,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L8",
       "id": "src_proxy_client_proberesult",
-      "community": 35,
+      "community": 1113,
       "norm_label": "proberesult"
     },
     {
@@ -2790,7 +3726,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L14",
       "id": "src_proxy_client_proxytoolresult",
-      "community": 35,
+      "community": 1113,
       "norm_label": "proxytoolresult"
     },
     {
@@ -2799,7 +3735,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L25",
       "id": "src_proxy_client_probeexistingserver",
-      "community": 35,
+      "community": 1113,
       "norm_label": "probeexistingserver()"
     },
     {
@@ -2808,7 +3744,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L41",
       "id": "src_proxy_client_registerproxyclient",
-      "community": 35,
+      "community": 1113,
       "norm_label": "registerproxyclient()"
     },
     {
@@ -2817,7 +3753,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L52",
       "id": "src_proxy_client_unregisterproxyclient",
-      "community": 35,
+      "community": 1113,
       "norm_label": "unregisterproxyclient()"
     },
     {
@@ -2826,7 +3762,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L64",
       "id": "src_proxy_client_proxytoolcall",
-      "community": 35,
+      "community": 1113,
       "norm_label": "proxytoolcall()"
     },
     {
@@ -2835,7 +3771,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L81",
       "id": "src_proxy_client_httpget",
-      "community": 35,
+      "community": 1113,
       "norm_label": "httpget()"
     },
     {
@@ -2844,7 +3780,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts",
       "source_location": "L103",
       "id": "src_proxy_client_httppost",
-      "community": 35,
+      "community": 1113,
       "norm_label": "httppost()"
     },
     {
@@ -3024,7 +3960,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L1",
       "id": "references_godot_mcp_tomyud1_mcp_server_src_visualizer_server_ts",
-      "community": 95,
+      "community": 35,
       "norm_label": "visualizer-server.ts"
     },
     {
@@ -3033,7 +3969,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L15",
       "id": "src_visualizer_server_dirname",
-      "community": 95,
+      "community": 35,
       "norm_label": "__dirname"
     },
     {
@@ -3042,7 +3978,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L25",
       "id": "src_visualizer_server_setgodotbridge",
-      "community": 95,
+      "community": 35,
       "norm_label": "setgodotbridge()"
     },
     {
@@ -3051,7 +3987,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L33",
       "id": "src_visualizer_server_servevisualization",
-      "community": 95,
+      "community": 35,
       "norm_label": "servevisualization()"
     },
     {
@@ -3060,7 +3996,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L91",
       "id": "src_visualizer_server_handlevisualizerconnection",
-      "community": 95,
+      "community": 35,
       "norm_label": "handlevisualizerconnection()"
     },
     {
@@ -3069,7 +4005,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L114",
       "id": "src_visualizer_server_handleinternalcommand",
-      "community": 95,
+      "community": 35,
       "norm_label": "handleinternalcommand()"
     },
     {
@@ -3078,7 +4014,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L146",
       "id": "src_visualizer_server_stopvisualizationserver",
-      "community": 95,
+      "community": 35,
       "norm_label": "stopvisualizationserver()"
     },
     {
@@ -3087,7 +4023,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L158",
       "id": "src_visualizer_server_findport",
-      "community": 95,
+      "community": 35,
       "norm_label": "findport()"
     },
     {
@@ -3096,7 +4032,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts",
       "source_location": "L170",
       "id": "src_visualizer_server_openbrowser",
-      "community": 95,
+      "community": 35,
       "norm_label": "openbrowser()"
     },
     {
@@ -3105,7 +4041,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L1",
       "id": "references_godot_mcp_tomyud1_mcp_server_src_tests_godot_bridge_test_ts",
-      "community": 51,
+      "community": 1114,
       "norm_label": "godot-bridge.test.ts"
     },
     {
@@ -3114,7 +4050,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L9",
       "id": "tests_godot_bridge_test_connectclient",
-      "community": 51,
+      "community": 1114,
       "norm_label": "connectclient()"
     },
     {
@@ -3123,7 +4059,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L18",
       "id": "tests_godot_bridge_test_nextmessage",
-      "community": 51,
+      "community": 1114,
       "norm_label": "nextmessage()"
     },
     {
@@ -3132,7 +4068,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L57",
       "id": "tests_godot_bridge_test_blocker",
-      "community": 51,
+      "community": 1114,
       "norm_label": "blocker"
     },
     {
@@ -3141,7 +4077,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L83",
       "id": "tests_godot_bridge_test_status",
-      "community": 51,
+      "community": 1114,
       "norm_label": "status"
     },
     {
@@ -3150,7 +4086,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L123",
       "id": "tests_godot_bridge_test_events",
-      "community": 51,
+      "community": 1114,
       "norm_label": "events"
     },
     {
@@ -3168,7 +4104,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L174",
       "id": "tests_godot_bridge_test_closepromise",
-      "community": 51,
+      "community": 1114,
       "norm_label": "closepromise"
     },
     {
@@ -3177,7 +4113,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L253",
       "id": "tests_godot_bridge_test_msgpromise",
-      "community": 51,
+      "community": 1114,
       "norm_label": "msgpromise"
     },
     {
@@ -3186,7 +4122,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/godot-bridge.test.ts",
       "source_location": "L256",
       "id": "tests_godot_bridge_test_resultpromise",
-      "community": 51,
+      "community": 1114,
       "norm_label": "resultpromise"
     },
     {
@@ -3276,7 +4212,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts",
       "source_location": "L1",
       "id": "references_godot_mcp_tomyud1_mcp_server_src_tests_proxy_client_test_ts",
-      "community": 35,
+      "community": 1113,
       "norm_label": "proxy-client.test.ts"
     },
     {
@@ -3285,7 +4221,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts",
       "source_location": "L18",
       "id": "tests_proxy_client_test_noop",
-      "community": 35,
+      "community": 1113,
       "norm_label": "noop()"
     },
     {
@@ -3294,7 +4230,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/proxy-client.test.ts",
       "source_location": "L51",
       "id": "tests_proxy_client_test_executor",
-      "community": 35,
+      "community": 1113,
       "norm_label": "executor"
     },
     {
@@ -3303,7 +4239,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L1",
       "id": "references_godot_mcp_tomyud1_mcp_server_src_tests_tool_registry_test_ts",
-      "community": 108,
+      "community": 51,
       "norm_label": "tool-registry.test.ts"
     },
     {
@@ -3312,7 +4248,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L8",
       "id": "tests_tool_registry_test_getexecutortoolnames",
-      "community": 108,
+      "community": 51,
       "norm_label": "getexecutortoolnames()"
     },
     {
@@ -3321,7 +4257,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L19",
       "id": "tests_tool_registry_test_getruntimetoolnames",
-      "community": 108,
+      "community": 51,
       "norm_label": "getruntimetoolnames()"
     },
     {
@@ -3330,7 +4266,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L45",
       "id": "tests_tool_registry_test_names",
-      "community": 108,
+      "community": 51,
       "norm_label": "names"
     },
     {
@@ -3339,7 +4275,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L59",
       "id": "tests_tool_registry_test_executortools",
-      "community": 108,
+      "community": 51,
       "norm_label": "executortools"
     },
     {
@@ -3348,7 +4284,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L60",
       "id": "tests_tool_registry_test_runtimetools",
-      "community": 108,
+      "community": 51,
       "norm_label": "runtimetools"
     },
     {
@@ -3357,7 +4293,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tests/tool-registry.test.ts",
       "source_location": "L61",
       "id": "tests_tool_registry_test_missing",
-      "community": 108,
+      "community": 51,
       "norm_label": "missing"
     },
     {
@@ -3411,7 +4347,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
       "source_location": "L13",
       "id": "tools_index_alltools",
-      "community": 108,
+      "community": 51,
       "norm_label": "alltools"
     },
     {
@@ -3420,7 +4356,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/tools/index.ts",
       "source_location": "L22",
       "id": "tools_index_toolexists",
-      "community": 95,
+      "community": 35,
       "norm_label": "toolexists()"
     },
     {
@@ -3609,7 +4545,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L155",
       "id": "visualizer_canvas_clearpositions",
-      "community": 31,
+      "community": 39,
       "norm_label": "clearpositions()"
     },
     {
@@ -3627,7 +4563,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L169",
       "id": "visualizer_canvas_draw",
-      "community": 39,
+      "community": 33,
       "norm_label": "draw()"
     },
     {
@@ -3726,7 +4662,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js",
       "source_location": "L799",
       "id": "visualizer_canvas_scenehittest",
-      "community": 39,
+      "community": 33,
       "norm_label": "scenehittest()"
     },
     {
@@ -4014,7 +4950,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/modals.js",
       "source_location": "L24",
       "id": "visualizer_modals_initcontextmenu",
-      "community": 33,
+      "community": 31,
       "norm_label": "initcontextmenu()"
     },
     {
@@ -4239,7 +5175,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
       "source_location": "L401",
       "id": "visualizer_panel_handleinlineedit",
-      "community": 21,
+      "community": 37,
       "norm_label": "handleinlineedit()"
     },
     {
@@ -4491,7 +5427,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js",
       "source_location": "L1070",
       "id": "visualizer_panel_savescenenodeproperty",
-      "community": 21,
+      "community": 37,
       "norm_label": "savescenenodeproperty()"
     },
     {
@@ -4635,7 +5571,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/state.js",
       "source_location": "L95",
       "id": "visualizer_state_setcurrentview",
-      "community": 31,
+      "community": 97,
       "norm_label": "setcurrentview()"
     },
     {
@@ -5013,7 +5949,7 @@
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js",
       "source_location": "L47",
       "id": "visualizer_websocket_sendcommand",
-      "community": 33,
+      "community": 37,
       "norm_label": "sendcommand()"
     },
     {
@@ -5038,7 +5974,7 @@
       "label": "__dirname",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L21",
+      "source_location": "L18",
       "id": "scripts_addon_link_dirname",
       "community": 1109,
       "norm_label": "__dirname"
@@ -5047,7 +5983,7 @@
       "label": "ROOT",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L23",
+      "source_location": "L20",
       "id": "scripts_addon_link_root",
       "community": 1109,
       "norm_label": "root"
@@ -5056,7 +5992,7 @@
       "label": "SRC",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L25",
+      "source_location": "L22",
       "id": "scripts_addon_link_src",
       "community": 1109,
       "norm_label": "src"
@@ -5065,7 +6001,7 @@
       "label": "die()",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L29",
+      "source_location": "L24",
       "id": "scripts_addon_link_die",
       "community": 1109,
       "norm_label": "die()"
@@ -5074,7 +6010,7 @@
       "label": "godotRoot()",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L45",
+      "source_location": "L30",
       "id": "scripts_addon_link_godotroot",
       "community": 1109,
       "norm_label": "godotroot()"
@@ -5083,7 +6019,7 @@
       "label": "rmrf()",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L154",
+      "source_location": "L72",
       "id": "scripts_addon_link_rmrf",
       "community": 1109,
       "norm_label": "rmrf()"
@@ -5092,7 +6028,7 @@
       "label": "cpTree()",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L164",
+      "source_location": "L76",
       "id": "scripts_addon_link_cptree",
       "community": 1109,
       "norm_label": "cptree()"
@@ -5101,7 +6037,7 @@
       "label": "argv",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L213",
+      "source_location": "L92",
       "id": "scripts_addon_link_argv",
       "community": 1109,
       "norm_label": "argv"
@@ -5110,7 +6046,7 @@
       "label": "force",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L219",
+      "source_location": "L94",
       "id": "scripts_addon_link_force",
       "community": 1109,
       "norm_label": "force"
@@ -5119,7 +6055,7 @@
       "label": "unlinkCmd",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L222",
+      "source_location": "L96",
       "id": "scripts_addon_link_unlinkcmd",
       "community": 1109,
       "norm_label": "unlinkcmd"
@@ -5128,7 +6064,7 @@
       "label": "proj",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L236",
+      "source_location": "L102",
       "id": "scripts_addon_link_proj",
       "community": 1109,
       "norm_label": "proj"
@@ -5137,10 +6073,82 @@
       "label": "dest",
       "file_type": "code",
       "source_file": "scripts/addon-link.mjs",
-      "source_location": "L242",
+      "source_location": "L106",
       "id": "scripts_addon_link_dest",
       "community": 1109,
       "norm_label": "dest"
+    },
+    {
+      "label": "catalog-sync.mjs",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L1",
+      "id": "scripts_catalog_sync_mjs",
+      "community": 1115,
+      "norm_label": "catalog-sync.mjs"
+    },
+    {
+      "label": "root",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L10",
+      "id": "scripts_catalog_sync_root",
+      "community": 1115,
+      "norm_label": "root"
+    },
+    {
+      "label": "regPath",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L11",
+      "id": "scripts_catalog_sync_regpath",
+      "community": 1115,
+      "norm_label": "regpath"
+    },
+    {
+      "label": "outDir",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L12",
+      "id": "scripts_catalog_sync_outdir",
+      "community": 1115,
+      "norm_label": "outdir"
+    },
+    {
+      "label": "outPath",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L13",
+      "id": "scripts_catalog_sync_outpath",
+      "community": 1115,
+      "norm_label": "outpath"
+    },
+    {
+      "label": "bytes",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L15",
+      "id": "scripts_catalog_sync_bytes",
+      "community": 1115,
+      "norm_label": "bytes"
+    },
+    {
+      "label": "hash",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L16",
+      "id": "scripts_catalog_sync_hash",
+      "community": 1115,
+      "norm_label": "hash"
+    },
+    {
+      "label": "{ catalog_version: catalogVersion }",
+      "file_type": "code",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L17",
+      "id": "scripts_catalog_sync_catalog_version_catalogversion",
+      "community": 1115,
+      "norm_label": "{ catalog_version: catalogversion }"
     },
     {
       "label": "planned.mjs",
@@ -32092,7 +33100,7 @@
       "label": "0.14 Risk register (foundation-relevant)",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L354",
+      "source_location": "L355",
       "id": "tasklist_00_foundation_and_contracts_0_14_risk_register_foundation_relevant",
       "community": 36,
       "norm_label": "0.14 risk register (foundation-relevant)"
@@ -32101,7 +33109,7 @@
       "label": "0.15 Communication conventions for later files",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L372",
+      "source_location": "L373",
       "id": "tasklist_00_foundation_and_contracts_0_15_communication_conventions_for_later_files",
       "community": 36,
       "norm_label": "0.15 communication conventions for later files"
@@ -32110,7 +33118,7 @@
       "label": "0.16 Final checklist (before opening file 01)",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L394",
+      "source_location": "L395",
       "id": "tasklist_00_foundation_and_contracts_0_16_final_checklist_before_opening_file_01",
       "community": 36,
       "norm_label": "0.16 final checklist (before opening file 01)"
@@ -32119,7 +33127,7 @@
       "label": "Appendix A \u2014 Official Godot Docs alignment (added revision 2)",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L410",
+      "source_location": "L411",
       "id": "tasklist_00_foundation_and_contracts_appendix_a_official_godot_docs_alignment_added_revision_2",
       "community": 36,
       "norm_label": "appendix a \u2014 official godot docs alignment (added revision 2)"
@@ -32128,7 +33136,7 @@
       "label": "A.1 Doctrine clarifications",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L416",
+      "source_location": "L417",
       "id": "tasklist_00_foundation_and_contracts_a_1_doctrine_clarifications",
       "community": 36,
       "norm_label": "a.1 doctrine clarifications"
@@ -32137,7 +33145,7 @@
       "label": "A.2 Vocabulary delta \u2014 Godot canonical terms",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L446",
+      "source_location": "L447",
       "id": "tasklist_00_foundation_and_contracts_a_2_vocabulary_delta_godot_canonical_terms",
       "community": 36,
       "norm_label": "a.2 vocabulary delta \u2014 godot canonical terms"
@@ -32146,7 +33154,7 @@
       "label": "A.3 Tree-order rule (used everywhere downstream)",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L462",
+      "source_location": "L463",
       "id": "tasklist_00_foundation_and_contracts_a_3_tree_order_rule_used_everywhere_downstream",
       "community": 36,
       "norm_label": "a.3 tree-order rule (used everywhere downstream)"
@@ -32155,7 +33163,7 @@
       "label": "A.4 Deferred call discipline",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L474",
+      "source_location": "L475",
       "id": "tasklist_00_foundation_and_contracts_a_4_deferred_call_discipline",
       "community": 36,
       "norm_label": "a.4 deferred call discipline"
@@ -32164,7 +33172,7 @@
       "label": "A.5 GDScript discipline",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L486",
+      "source_location": "L487",
       "id": "tasklist_00_foundation_and_contracts_a_5_gdscript_discipline",
       "community": 36,
       "norm_label": "a.5 gdscript discipline"
@@ -32173,7 +33181,7 @@
       "label": "A.6 Risk register additions",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L496",
+      "source_location": "L497",
       "id": "tasklist_00_foundation_and_contracts_a_6_risk_register_additions",
       "community": 36,
       "norm_label": "a.6 risk register additions"
@@ -32182,7 +33190,7 @@
       "label": "A.7 Decisions Log addition",
       "file_type": "document",
       "source_file": "docs/tasklist/00-foundation-and-contracts.md",
-      "source_location": "L506",
+      "source_location": "L507",
       "id": "tasklist_00_foundation_and_contracts_a_7_decisions_log_addition",
       "community": 36,
       "norm_label": "a.7 decisions log addition"
@@ -33937,7 +34945,7 @@
       "label": "5.10 Verification plan",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L336",
+      "source_location": "L337",
       "id": "tasklist_05_node_mcp_router_5_10_verification_plan",
       "community": 17,
       "norm_label": "5.10 verification plan"
@@ -33946,7 +34954,7 @@
       "label": "5.11 Risks & mitigations",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L349",
+      "source_location": "L350",
       "id": "tasklist_05_node_mcp_router_5_11_risks_mitigations",
       "community": 17,
       "norm_label": "5.11 risks & mitigations"
@@ -33955,7 +34963,7 @@
       "label": "5.12 Handoff checklist to file `06`",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L362",
+      "source_location": "L363",
       "id": "tasklist_05_node_mcp_router_5_12_handoff_checklist_to_file_06",
       "community": 17,
       "norm_label": "5.12 handoff checklist to file `06`"
@@ -33964,7 +34972,7 @@
       "label": "Appendix A \u2014 Official Godot Docs alignment (added revision 2)",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L374",
+      "source_location": "L375",
       "id": "tasklist_05_node_mcp_router_appendix_a_official_godot_docs_alignment_added_revision_2",
       "community": 17,
       "norm_label": "appendix a \u2014 official godot docs alignment (added revision 2)"
@@ -33973,7 +34981,7 @@
       "label": "A.1 Router-side WS client expectations (matching Godot 4 server semantics)",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L380",
+      "source_location": "L381",
       "id": "tasklist_05_node_mcp_router_a_1_router_side_ws_client_expectations_matching_godot_4_server_semantics",
       "community": 17,
       "norm_label": "a.1 router-side ws client expectations (matching godot 4 server semantics)"
@@ -33982,7 +34990,7 @@
       "label": "A.2 Router-side heartbeat strategy",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L391",
+      "source_location": "L392",
       "id": "tasklist_05_node_mcp_router_a_2_router_side_heartbeat_strategy",
       "community": 17,
       "norm_label": "a.2 router-side heartbeat strategy"
@@ -33991,7 +34999,7 @@
       "label": "A.3 Daemon-discovery helpers",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L401",
+      "source_location": "L402",
       "id": "tasklist_05_node_mcp_router_a_3_daemon_discovery_helpers",
       "community": 17,
       "norm_label": "a.3 daemon-discovery helpers"
@@ -34000,7 +35008,7 @@
       "label": "A.4 .NET / C# considerations",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L411",
+      "source_location": "L412",
       "id": "tasklist_05_node_mcp_router_a_4_net_c_considerations",
       "community": 17,
       "norm_label": "a.4 .net / c# considerations"
@@ -34009,7 +35017,7 @@
       "label": "A.5 Router-side configuration knobs (additions)",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L423",
+      "source_location": "L424",
       "id": "tasklist_05_node_mcp_router_a_5_router_side_configuration_knobs_additions",
       "community": 17,
       "norm_label": "a.5 router-side configuration knobs (additions)"
@@ -34018,7 +35026,7 @@
       "label": "A.6 Reserved future MCP-side endpoints",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L435",
+      "source_location": "L436",
       "id": "tasklist_05_node_mcp_router_a_6_reserved_future_mcp_side_endpoints",
       "community": 17,
       "norm_label": "a.6 reserved future mcp-side endpoints"
@@ -34027,7 +35035,7 @@
       "label": "A.7 stdout discipline reaffirmed",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L448",
+      "source_location": "L449",
       "id": "tasklist_05_node_mcp_router_a_7_stdout_discipline_reaffirmed",
       "community": 17,
       "norm_label": "a.7 stdout discipline reaffirmed"
@@ -34036,7 +35044,7 @@
       "label": "A.8 Risks added",
       "file_type": "document",
       "source_file": "docs/tasklist/05-node-mcp-router.md",
-      "source_location": "L456",
+      "source_location": "L457",
       "id": "tasklist_05_node_mcp_router_a_8_risks_added",
       "community": 17,
       "norm_label": "a.8 risks added"
@@ -34360,7 +35368,7 @@
       "label": "6.8 Tech stack delta vs `00 \u00a70.10`",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L386",
+      "source_location": "L387",
       "id": "tasklist_06_tool_translation_layer_6_8_tech_stack_delta_vs_00_0_10",
       "community": 83,
       "norm_label": "6.8 tech stack delta vs `00 \u00a70.10`"
@@ -34369,7 +35377,7 @@
       "label": "6.9 Acceptance criteria",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L394",
+      "source_location": "L395",
       "id": "tasklist_06_tool_translation_layer_6_9_acceptance_criteria",
       "community": 83,
       "norm_label": "6.9 acceptance criteria"
@@ -34378,7 +35386,7 @@
       "label": "6.10 Verification plan",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L411",
+      "source_location": "L415",
       "id": "tasklist_06_tool_translation_layer_6_10_verification_plan",
       "community": 83,
       "norm_label": "6.10 verification plan"
@@ -34387,7 +35395,7 @@
       "label": "6.11 Risks & mitigations",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L424",
+      "source_location": "L428",
       "id": "tasklist_06_tool_translation_layer_6_11_risks_mitigations",
       "community": 83,
       "norm_label": "6.11 risks & mitigations"
@@ -34396,7 +35404,7 @@
       "label": "6.12 Handoff checklist to file `07`",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L437",
+      "source_location": "L441",
       "id": "tasklist_06_tool_translation_layer_6_12_handoff_checklist_to_file_07",
       "community": 83,
       "norm_label": "6.12 handoff checklist to file `07`"
@@ -34405,7 +35413,7 @@
       "label": "Appendix A \u2014 Official Godot Docs alignment (added revision 2)",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L449",
+      "source_location": "L453",
       "id": "tasklist_06_tool_translation_layer_appendix_a_official_godot_docs_alignment_added_revision_2",
       "community": 104,
       "norm_label": "appendix a \u2014 official godot docs alignment (added revision 2)"
@@ -34414,7 +35422,7 @@
       "label": "A.1 Common types \u2014 Godot \u2194 JSON mapping (locked)",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L455",
+      "source_location": "L459",
       "id": "tasklist_06_tool_translation_layer_a_1_common_types_godot_json_mapping_locked",
       "community": 104,
       "norm_label": "a.1 common types \u2014 godot \u2194 json mapping (locked)"
@@ -34423,7 +35431,7 @@
       "label": "A.2 Resource semantics",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L488",
+      "source_location": "L492",
       "id": "tasklist_06_tool_translation_layer_a_2_resource_semantics",
       "community": 104,
       "norm_label": "a.2 resource semantics"
@@ -34432,7 +35440,7 @@
       "label": "A.3 Group semantics",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L508",
+      "source_location": "L512",
       "id": "tasklist_06_tool_translation_layer_a_3_group_semantics",
       "community": 104,
       "norm_label": "a.3 group semantics"
@@ -34441,7 +35449,7 @@
       "label": "A.4 Property hints \u2014 what `node.get_properties_schema` returns",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L518",
+      "source_location": "L522",
       "id": "tasklist_06_tool_translation_layer_a_4_property_hints_what_node_get_properties_schema_returns",
       "community": 104,
       "norm_label": "a.4 property hints \u2014 what `node.get_properties_schema` returns"
@@ -34450,7 +35458,7 @@
       "label": "A.5 Best-practices source rules adopted in the catalog",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L531",
+      "source_location": "L535",
       "id": "tasklist_06_tool_translation_layer_a_5_best_practices_source_rules_adopted_in_the_catalog",
       "community": 104,
       "norm_label": "a.5 best-practices source rules adopted in the catalog"
@@ -34459,7 +35467,7 @@
       "label": "A.6 `class_*` reference embedding",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L548",
+      "source_location": "L552",
       "id": "tasklist_06_tool_translation_layer_a_6_class_reference_embedding",
       "community": 104,
       "norm_label": "a.6 `class_*` reference embedding"
@@ -34468,7 +35476,7 @@
       "label": "A.7 Schema reuse \u2014 `$ref` graph",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L555",
+      "source_location": "L559",
       "id": "tasklist_06_tool_translation_layer_a_7_schema_reuse_ref_graph",
       "community": 104,
       "norm_label": "a.7 schema reuse \u2014 `$ref` graph"
@@ -34477,7 +35485,7 @@
       "label": "A.8 New common schemas to ship",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L565",
+      "source_location": "L569",
       "id": "tasklist_06_tool_translation_layer_a_8_new_common_schemas_to_ship",
       "community": 104,
       "norm_label": "a.8 new common schemas to ship"
@@ -34486,7 +35494,7 @@
       "label": "A.9 Risks added",
       "file_type": "document",
       "source_file": "docs/tasklist/06-tool-translation-layer.md",
-      "source_location": "L575",
+      "source_location": "L579",
       "id": "tasklist_06_tool_translation_layer_a_9_risks_added",
       "community": 104,
       "norm_label": "a.9 risks added"
@@ -36376,7 +37384,7 @@
       "label": "References",
       "file_type": "document",
       "source_file": "packages/README.md",
-      "source_location": "L35",
+      "source_location": "L36",
       "id": "packages_readme_references",
       "community": 454,
       "norm_label": "references"
@@ -36403,7 +37411,7 @@
       "label": "Requirements",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L5",
+      "source_location": "L6",
       "id": "godot_mcp_addon_readme_requirements",
       "community": 110,
       "norm_label": "requirements"
@@ -36412,7 +37420,7 @@
       "label": "Link into a Godot dev project",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L11",
+      "source_location": "L12",
       "id": "godot_mcp_addon_readme_link_into_a_godot_dev_project",
       "community": 110,
       "norm_label": "link into a godot dev project"
@@ -36421,7 +37429,7 @@
       "label": "code:bash",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "godot_mcp_addon_readme_codeblock_1",
       "community": 110,
       "norm_label": "code:bash"
@@ -36430,7 +37438,7 @@
       "label": "code:block2",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L31",
+      "source_location": "L32",
       "id": "godot_mcp_addon_readme_codeblock_2",
       "community": 110,
       "norm_label": "code:block2"
@@ -36439,7 +37447,7 @@
       "label": "code:bash",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "godot_mcp_addon_readme_codeblock_3",
       "community": 110,
       "norm_label": "code:bash"
@@ -36448,7 +37456,7 @@
       "label": "Editor usage",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L45",
+      "source_location": "L46",
       "id": "godot_mcp_addon_readme_editor_usage",
       "community": 110,
       "norm_label": "editor usage"
@@ -36457,7 +37465,7 @@
       "label": "Phase map",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L51",
+      "source_location": "L52",
       "id": "godot_mcp_addon_readme_phase_map",
       "community": 110,
       "norm_label": "phase map"
@@ -36466,7 +37474,7 @@
       "label": "Automated tests",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L61",
+      "source_location": "L64",
       "id": "godot_mcp_addon_readme_automated_tests",
       "community": 110,
       "norm_label": "automated tests"
@@ -36475,7 +37483,7 @@
       "label": "Operational constants",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
-      "source_location": "L65",
+      "source_location": "L68",
       "id": "godot_mcp_addon_readme_operational_constants",
       "community": 110,
       "norm_label": "operational constants"
@@ -36486,53 +37494,107 @@
       "source_file": "packages/mcp-server/README.md",
       "source_location": "L1",
       "id": "packages_mcp_server_readme_md",
-      "community": 177,
+      "community": 55,
       "norm_label": "readme.md"
     },
     {
-      "label": "Node MCP router (`packages/mcp-server`)",
+      "label": "Node MCP router (`@terravolt/godot-mcp`)",
       "file_type": "document",
       "source_file": "packages/mcp-server/README.md",
       "source_location": "L1",
-      "id": "mcp_server_readme_node_mcp_router_packages_mcp_server",
-      "community": 177,
-      "norm_label": "node mcp router (`packages/mcp-server`)"
+      "id": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "community": 55,
+      "norm_label": "node mcp router (`@terravolt/godot-mcp`)"
     },
     {
-      "label": "Current status (through task `01`)",
+      "label": "CLI",
       "file_type": "document",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L6",
-      "id": "mcp_server_readme_current_status_through_task_01",
-      "community": 177,
-      "norm_label": "current status (through task `01`)"
+      "source_location": "L9",
+      "id": "mcp_server_readme_cli",
+      "community": 55,
+      "norm_label": "cli"
     },
     {
-      "label": "Manifest outlook (finalize in task `05`)",
+      "label": "code:json ({)",
       "file_type": "document",
-      "source_file": "packages/mcp-server/README.md",
-      "source_location": "L14",
-      "id": "mcp_server_readme_manifest_outlook_finalize_in_task_05",
-      "community": 177,
-      "norm_label": "manifest outlook (finalize in task `05`)"
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
+      "source_location": "L22",
+      "id": "mcp_server_readme_codeblock_1",
+      "community": 55,
+      "norm_label": "code:json ({)"
     },
     {
-      "label": "Folder map",
+      "label": "Cursor / MCP config (sketch)",
       "file_type": "document",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L23",
-      "id": "mcp_server_readme_folder_map",
-      "community": 177,
-      "norm_label": "folder map"
+      "source_location": "L20",
+      "id": "mcp_server_readme_cursor_mcp_config_sketch",
+      "community": 55,
+      "norm_label": "cursor / mcp config (sketch)"
     },
     {
-      "label": "Package scripts (`npm run` when invoked via workspace)",
+      "label": "Daemon tools (from shared catalog)",
       "file_type": "document",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L38",
-      "id": "mcp_server_readme_package_scripts_npm_run_when_invoked_via_workspace",
-      "community": 177,
-      "norm_label": "package scripts (`npm run` when invoked via workspace)"
+      "source_location": "L25",
+      "id": "mcp_server_readme_daemon_tools_from_shared_catalog",
+      "community": 55,
+      "norm_label": "daemon tools (from shared catalog)"
+    },
+    {
+      "label": "Router-only tools",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L35",
+      "id": "mcp_server_readme_router_only_tools",
+      "community": 55,
+      "norm_label": "router-only tools"
+    },
+    {
+      "label": "Cancellation (best-effort)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L47",
+      "id": "mcp_server_readme_cancellation_best_effort",
+      "community": 55,
+      "norm_label": "cancellation (best-effort)"
+    },
+    {
+      "label": "Catalog sync (Godot)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L53",
+      "id": "mcp_server_readme_catalog_sync_godot",
+      "community": 55,
+      "norm_label": "catalog sync (godot)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
+      "source_location": "L34",
+      "id": "mcp_server_readme_codeblock_2",
+      "community": 55,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "Layout",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L64",
+      "id": "mcp_server_readme_layout",
+      "community": 55,
+      "norm_label": "layout"
+    },
+    {
+      "label": "Scripts (workspace)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L78",
+      "id": "mcp_server_readme_scripts_workspace",
+      "community": 55,
+      "norm_label": "scripts (workspace)"
     },
     {
       "label": "CONTRIBUTING.md",
@@ -45173,24 +46235,6 @@
       "id": "mcp_server_readme_1_install_the_godot_plugin",
       "community": 55,
       "norm_label": "1. install the godot plugin"
-    },
-    {
-      "label": "code:json ({)",
-      "file_type": "document",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
-      "source_location": "L22",
-      "id": "mcp_server_readme_codeblock_1",
-      "community": 55,
-      "norm_label": "code:json ({)"
-    },
-    {
-      "label": "code:json ({)",
-      "file_type": "document",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
-      "source_location": "L34",
-      "id": "mcp_server_readme_codeblock_2",
-      "community": 55,
-      "norm_label": "code:json ({)"
     },
     {
       "label": "2. Install the Godot plugin",
@@ -54634,6 +55678,69 @@
       "norm_label": "10.6.3 test selection per category"
     },
     {
+      "label": "health.ts",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/health.ts",
+      "source_location": "L1",
+      "community": 687,
+      "norm_label": "health.ts",
+      "id": "packages_mcp_server_src_health_ts"
+    },
+    {
+      "label": "__scaffoldPhase",
+      "file_type": "code",
+      "source_file": "packages/mcp-server/src/health.ts",
+      "source_location": "L5",
+      "community": 687,
+      "norm_label": "__scaffoldphase",
+      "id": "src_health_scaffoldphase"
+    },
+    {
+      "label": "Node MCP router (`packages/mcp-server`)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L1",
+      "community": 55,
+      "norm_label": "node mcp router (`packages/mcp-server`)",
+      "id": "mcp_server_readme_node_mcp_router_packages_mcp_server"
+    },
+    {
+      "label": "Current status (through task `01`)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L6",
+      "community": 55,
+      "norm_label": "current status (through task `01`)",
+      "id": "mcp_server_readme_current_status_through_task_01"
+    },
+    {
+      "label": "Manifest outlook (finalize in task `05`)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L14",
+      "community": 55,
+      "norm_label": "manifest outlook (finalize in task `05`)",
+      "id": "mcp_server_readme_manifest_outlook_finalize_in_task_05"
+    },
+    {
+      "label": "Folder map",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L23",
+      "community": 55,
+      "norm_label": "folder map",
+      "id": "mcp_server_readme_folder_map"
+    },
+    {
+      "label": "Package scripts (`npm run` when invoked via workspace)",
+      "file_type": "document",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L38",
+      "community": 55,
+      "norm_label": "package scripts (`npm run` when invoked via workspace)",
+      "id": "mcp_server_readme_package_scripts_npm_run_when_invoked_via_workspace"
+    },
+    {
       "label": "Godot MCP addon (`packages/godot-mcp-addon`)",
       "file_type": "document",
       "source_file": "packages/godot-mcp-addon/README.md",
@@ -54719,7 +55826,7 @@
       "file_type": "document",
       "source_file": "packages/mcp-server/README.md",
       "source_location": "L1",
-      "community": 177,
+      "community": 55,
       "norm_label": "mcp server (placeholder)",
       "id": "mcp_server_readme_mcp_server_placeholder"
     },
@@ -56082,6 +57189,26 @@
       "source_file": "package.json",
       "source_location": "L25",
       "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_catalog_sync",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "godot_mcp_marcel_package_scripts",
+      "target": "godot_mcp_marcel_package_scripts_catalog_gen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "godot_mcp_marcel_package_scripts",
       "target": "godot_mcp_marcel_package_scripts_release"
@@ -56272,6 +57399,36 @@
       "source_file": "packages/mcp-server/package.json",
       "source_location": "L6",
       "weight": 1.0,
+      "source": "packages_mcp_server_package_json",
+      "target": "mcp_server_package_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_package_json",
+      "target": "mcp_server_package_bin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_package_json",
+      "target": "mcp_server_package_exports",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L6",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "packages_mcp_server_package_json",
       "target": "mcp_server_package_description"
@@ -56309,6 +57466,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "packages_mcp_server_package_json",
+      "target": "mcp_server_package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
       "source_location": "L2",
       "weight": 1.0,
@@ -56335,6 +57502,46 @@
       "confidence_score": 1.0,
       "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
       "target": "mcp_server_package_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
+      "target": "mcp_server_package_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "mcp_server_package_bin",
+      "target": "mcp_server_package_bin_terravolt_godot_mcp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
+      "target": "mcp_server_package_bin"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_package_bin",
+      "target": "mcp_server_package_bin_godot_mcp_server"
     },
     {
       "relation": "contains",
@@ -56499,6 +57706,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_package_devdependencies",
+      "target": "mcp_server_package_devdependencies_types_ws"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "packages/mcp-server/package.json",
       "source_location": "L20",
       "weight": 1.0,
@@ -56540,16 +57757,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_package_devdependencies",
-      "target": "mcp_server_package_devdependencies_types_ws"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
       "source_location": "L43",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -56575,6 +57782,66 @@
       "confidence_score": 1.0,
       "source": "mcp_server_package_devdependencies",
       "target": "mcp_server_package_devdependencies_vitest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_package_dependencies",
+      "target": "mcp_server_package_dependencies_modelcontextprotocol_sdk"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "mcp_server_package_dependencies",
+      "target": "mcp_server_package_dependencies_ajv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "mcp_server_package_dependencies",
+      "target": "mcp_server_package_dependencies_ajv_formats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_package_dependencies",
+      "target": "mcp_server_package_dependencies_ws"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "mcp_server_package_dependencies",
+      "target": "mcp_server_package_dependencies_zod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
+      "target": "mcp_server_package_dependencies"
     },
     {
       "relation": "contains",
@@ -56742,6 +58009,16 @@
       "source_file": "packages/mcp-server/tsconfig.json",
       "source_location": "L9",
       "weight": 1.0,
+      "source": "mcp_server_tsconfig_compileroptions",
+      "target": "mcp_server_tsconfig_compileroptions_noimplicitoverride",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/tsconfig.json",
+      "source_location": "L9",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "mcp_server_tsconfig_compileroptions",
       "target": "mcp_server_tsconfig_compileroptions_nouncheckedindexedaccess"
@@ -56899,12 +58176,1754 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "packages/mcp-server/src/health.ts",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_loglevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_envstring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_envint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_parseloglevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_parseintopt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_parseresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_config_ts",
+      "target": "src_config_loadconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "packages_mcp_server_src_config_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "packages_mcp_server_src_config_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_config_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_config_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "src_config_loglevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "src_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "src_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "src_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_config_envint",
+      "target": "src_config_envstring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "src_config_loadconfig",
+      "target": "src_config_envstring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "src_config_loadconfig",
+      "target": "src_config_envint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "src_config_loadconfig",
+      "target": "src_config_parseloglevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/config.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "src_config_loadconfig",
+      "target": "src_config_parseintopt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "src_config_loadconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "src_index_main",
+      "target": "src_config_loadconfig"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "packages_mcp_server_src_logger_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "src_logger_createlogger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "transport_mcp_stdio_bootstraprouter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "src_index_readpackageversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_index_ts",
+      "target": "src_index_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_index_main",
+      "target": "src_index_readpackageversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L570",
+      "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "packages_mcp_server_src_health_ts",
-      "target": "src_health_scaffoldphase"
+      "source": "references_godot_mcp_tomyud1_mcp_server_src_index_ts",
+      "target": "src_index_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L580",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_index_main",
+      "target": "src_index_killprocessonport"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L583",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_index_main",
+      "target": "src_index_startprimary"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L586",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_index_main",
+      "target": "src_index_startproxy"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "src_index_main",
+      "target": "src_logger_createlogger"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "packages/mcp-server/src/index.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "src_index_main",
+      "target": "transport_mcp_stdio_bootstraprouter"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
+      "source_location": "L572",
+      "weight": 1.0,
+      "source": "src_index_main",
+      "target": "src_proxy_client_probeexistingserver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "src_logger_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "src_logger_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/logger.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_logger_ts",
+      "target": "src_logger_createlogger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "target": "packages_mcp_server_src_logger_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_logger_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_logger_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "target": "src_logger_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "src_logger_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "src_logger_logger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_mcptooloverlay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_methodregistryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_methodregistryfile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_registrypath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_loadmethodregistry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "target": "catalog_loadregistry_registrycontentsha256",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_tools_registry_ts",
+      "target": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_catalog_loadregistry_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_tools_registry_ts",
+      "target": "catalog_loadregistry_methodregistryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "catalog_loadregistry_loadmethodregistry",
+      "target": "catalog_loadregistry_registrypath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/catalog/loadRegistry.ts",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "catalog_loadregistry_registrycontentsha256",
+      "target": "catalog_loadregistry_registrypath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "catalog_loadregistry_loadmethodregistry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "transport_mcp_stdio_bootstraprouter",
+      "target": "catalog_loadregistry_loadmethodregistry"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "catalog_loadregistry_registrycontentsha256",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "transport_mcp_stdio_bootstraprouter",
+      "target": "catalog_loadregistry_registrycontentsha256"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_diagnostics_errors_ts",
+      "target": "diagnostics_errors_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_diagnostics_errors_ts",
+      "target": "diagnostics_errors_daemonjsonrpcerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_diagnostics_map_godot_error_ts",
+      "target": "packages_mcp_server_src_diagnostics_errors_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "target": "packages_mcp_server_src_diagnostics_errors_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_diagnostics_errors_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_diagnostics_errors_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_diagnostics_map_godot_error_ts",
+      "target": "diagnostics_errors_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "diagnostics_errors_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "diagnostics_map_godot_error_mapgodotjsonrpcerror",
+      "target": "diagnostics_errors_isrecord"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L240",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_dispatchone",
+      "target": "diagnostics_errors_isrecord"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/errors.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "diagnostics_errors_daemonjsonrpcerror",
+      "target": "diagnostics_errors_daemonjsonrpcerror_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "diagnostics_errors_daemonjsonrpcerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "diagnostics_errors_daemonjsonrpcerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_diagnostics_map_godot_error_ts",
+      "target": "diagnostics_map_godot_error_mapgodotjsonrpcerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_diagnostics_map_godot_error_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "diagnostics_map_godot_error_mapgodotjsonrpcerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_dispatchone",
+      "target": "diagnostics_map_godot_error_mapgodotjsonrpcerror"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/headless/driver.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_headless_driver_ts",
+      "target": "headless_driver_headlessdriverstub",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/framing.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_framing_ts",
+      "target": "jsonrpc_framing_nextjsonrpcid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_jsonrpc_framing_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "jsonrpc_framing_nextjsonrpcid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_request",
+      "target": "jsonrpc_framing_nextjsonrpcid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "target": "jsonrpc_pending_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "target": "jsonrpc_pending_pendingrequests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "packages_mcp_server_src_jsonrpc_pending_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_dispose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_create",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_resolve",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_rejectrpc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/jsonrpc/pending.ts",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "jsonrpc_pending_pendingrequests",
+      "target": "jsonrpc_pending_pendingrequests_rejectall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "jsonrpc_pending_pendingrequests",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_telemetry_metrics_ts",
+      "target": "telemetry_metrics_metricssnapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_telemetry_metrics_ts",
+      "target": "telemetry_metrics_snap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_telemetry_metrics_ts",
+      "target": "telemetry_metrics_metricsrecordtoolstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/telemetry/metrics.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_telemetry_metrics_ts",
+      "target": "telemetry_metrics_metricsrecordtoolend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_telemetry_metrics_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "telemetry_metrics_metricssnapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "telemetry_metrics_metricsrecordtoolstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "telemetry_metrics_metricsrecordtoolend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_tools_registry_ts",
+      "target": "tools_registry_registeredroutertool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_tools_registry_ts",
+      "target": "tools_registry_routertoolcatalog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_tools_registry_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "tools_registry_registeredroutertool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_add",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_entries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_describe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_filter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_mergefromdaemonregistry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog",
+      "target": "tools_registry_routertoolcatalog_snapshotnames",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "tools_registry_routertoolcatalog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/tools/registry.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "tools_registry_routertoolcatalog_mergefromdaemonregistry",
+      "target": "tools_registry_routertoolcatalog_add",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "transport_godot_ws_client_godotnotificationsubscriber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "target": "transport_godot_ws_client_godotwsclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "packages_mcp_server_src_transport_godot_ws_client_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_subscribenotifications",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_isconnected",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_sendnotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_dispose",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_notconnectederr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_waitforsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_safesendtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_schedulereconnect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_tryopen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L209",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_onrawmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_dispatchone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_startping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L288",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient",
+      "target": "transport_godot_ws_client_godotwsclient_stopping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_godot_ws_client_godotwsclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_start",
+      "target": "transport_godot_ws_client_godotwsclient_schedulereconnect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_stop",
+      "target": "transport_godot_ws_client_godotwsclient_stopping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_dispose",
+      "target": "transport_godot_ws_client_godotwsclient_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_sendnotification",
+      "target": "transport_godot_ws_client_godotwsclient_isconnected",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_request",
+      "target": "transport_godot_ws_client_godotwsclient_isconnected",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_waitforsocket",
+      "target": "transport_godot_ws_client_godotwsclient_isconnected",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_sendnotification",
+      "target": "transport_godot_ws_client_godotwsclient_safesendtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_request",
+      "target": "transport_godot_ws_client_godotwsclient_sendnotification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_request",
+      "target": "transport_godot_ws_client_godotwsclient_waitforsocket",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_request",
+      "target": "transport_godot_ws_client_godotwsclient_notconnectederr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L233",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_onrawmessage",
+      "target": "transport_godot_ws_client_godotwsclient_dispatchone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/godot_ws_client.ts",
+      "source_location": "L271",
+      "weight": 1.0,
+      "source": "transport_godot_ws_client_godotwsclient_startping",
+      "target": "transport_godot_ws_client_godotwsclient_stopping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_toolslistschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_toolsdescribeschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_openparamsschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_validatefn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_registertoolcompat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_routerbundle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_okstructured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_errstructured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_successenvelope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_disconnectedhint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_describetool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_local_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "packages_mcp_server_src_transport_mcp_stdio_ts",
+      "target": "transport_mcp_stdio_bootstraprouter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/transport/mcp_stdio.ts",
+      "source_location": "L328",
+      "weight": 1.0,
+      "source": "transport_mcp_stdio_bootstraprouter",
+      "target": "transport_mcp_stdio_registertoolcompat",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "packages_mcp_server_tests_smoke_test_mjs",
+      "target": "tests_smoke_test_pkgroot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "packages_mcp_server_tests_smoke_test_mjs",
+      "target": "tests_smoke_test_entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "packages_mcp_server_tests_smoke_test_mjs",
+      "target": "tests_smoke_test_r",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/tests/smoke.test.mjs",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "packages_mcp_server_tests_smoke_test_mjs",
+      "target": "tests_smoke_test_cfg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/shared/errors/registry.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "packages_shared_errors_registry_json",
+      "target": "errors_registry_codes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/shared/methods/registry.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "packages_shared_methods_registry_json",
+      "target": "methods_registry_catalog_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/shared/methods/registry.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "packages_shared_methods_registry_json",
+      "target": "methods_registry_methods",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -58803,26 +61822,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
-      "target": "mcp_server_package_main"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
-      "target": "mcp_server_package_bin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
       "source_location": "L15",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -58853,16 +61852,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "references_godot_mcp_tomyud1_mcp_server_package_json",
-      "target": "mcp_server_package_dependencies"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
       "source_location": "L7",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -58878,36 +61867,6 @@
       "confidence_score": 1.0,
       "source": "mcp_server_package_repository",
       "target": "mcp_server_package_repository_url"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_package_bin",
-      "target": "mcp_server_package_bin_godot_mcp_server"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_package_dependencies",
-      "target": "mcp_server_package_dependencies_modelcontextprotocol_sdk"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/package.json",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_package_dependencies",
-      "target": "mcp_server_package_dependencies_ws"
     },
     {
       "relation": "contains",
@@ -59996,16 +62955,6 @@
       "target": "src_index_startproxy"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L570",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "references_godot_mcp_tomyud1_mcp_server_src_index_ts",
-      "target": "src_index_main"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -60076,33 +63025,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L580",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_index_main",
-      "target": "src_index_killprocessonport"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
       "source_location": "L375",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_index_startprimary",
       "target": "src_index_startproxy"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L583",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_index_main",
-      "target": "src_index_startprimary"
     },
     {
       "relation": "calls",
@@ -60130,34 +63057,12 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L586",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_index_main",
-      "target": "src_index_startproxy"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
       "source_location": "L549",
       "weight": 1.0,
       "source": "src_index_startproxy",
       "target": "src_proxy_client_registerproxyclient"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/src/index.ts",
-      "source_location": "L572",
-      "weight": 1.0,
-      "source": "src_index_main",
-      "target": "src_proxy_client_probeexistingserver"
     },
     {
       "relation": "contains",
@@ -65837,6 +68742,76 @@
       "confidence_score": 1.0,
       "source": "scripts_addon_link_godotroot",
       "target": "scripts_addon_link_die"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_regpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_outdir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_outpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_bytes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_hash",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/catalog-sync.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "scripts_catalog_sync_mjs",
+      "target": "scripts_catalog_sync_catalog_version_catalogversion",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -94419,6 +97394,16 @@
       "source_file": "packages/mcp-server/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "source": "packages_mcp_server_readme_md",
+      "target": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "packages_mcp_server_readme_md",
       "target": "mcp_server_readme_node_mcp_router_packages_mcp_server"
@@ -94437,41 +97422,121 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L6",
+      "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_readme_node_mcp_router_packages_mcp_server",
-      "target": "mcp_server_readme_current_status_through_task_01"
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_cli",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L38",
+      "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_readme_node_mcp_router_packages_mcp_server",
-      "target": "mcp_server_readme_package_scripts_npm_run_when_invoked_via_workspace"
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_cursor_mcp_config_sketch",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L14",
+      "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_readme_current_status_through_task_01",
-      "target": "mcp_server_readme_manifest_outlook_finalize_in_task_05"
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_daemon_tools_from_shared_catalog",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "packages/mcp-server/README.md",
-      "source_location": "L23",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_router_only_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_cancellation_best_effort",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_catalog_sync_godot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_terravolt_godot_mcp",
+      "target": "mcp_server_readme_scripts_workspace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "mcp_server_readme_cli",
+      "target": "mcp_server_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
+      "source_location": "L22",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "mcp_server_readme_current_status_through_task_01",
-      "target": "mcp_server_readme_folder_map"
+      "source": "mcp_server_readme_1_install_the_godot_plugin",
+      "target": "mcp_server_readme_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "mcp_server_readme_catalog_sync_godot",
+      "target": "mcp_server_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_readme_1_install_the_godot_plugin",
+      "target": "mcp_server_readme_codeblock_2"
     },
     {
       "relation": "contains",
@@ -103937,26 +107002,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_readme_1_install_the_godot_plugin",
-      "target": "mcp_server_readme_codeblock_1"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "mcp_server_readme_1_install_the_godot_plugin",
-      "target": "mcp_server_readme_codeblock_2"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "references/godot-mcp-tomyud1/mcp-server/README.md",
       "source_location": "L61",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -111176,6 +114221,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/src/health.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "packages_mcp_server_src_health_ts",
+      "target": "src_health_scaffoldphase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_packages_mcp_server",
+      "target": "mcp_server_readme_current_status_through_task_01"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_readme_node_mcp_router_packages_mcp_server",
+      "target": "mcp_server_readme_package_scripts_npm_run_when_invoked_via_workspace"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_readme_current_status_through_task_01",
+      "target": "mcp_server_readme_manifest_outlook_finalize_in_task_05"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/mcp-server/README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "mcp_server_readme_current_status_through_task_01",
+      "target": "mcp_server_readme_folder_map"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "packages/godot-mcp-addon/README.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -112175,5 +115270,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3dd9a73ab2a698faa8c7ee8cd1f6d652e898ee5c"
+  "built_at_commit": "48159575286f738f8b708ee62206d6bebd4a3a11"
 }

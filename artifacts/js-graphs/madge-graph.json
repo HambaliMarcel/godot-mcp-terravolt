@@ -1,9 +1,108 @@
 {
   "config/dependency-cruiser.config.cjs": [],
+  "packages/mcp-server/dist/catalog/loadRegistry.d.ts": [],
+  "packages/mcp-server/dist/catalog/loadRegistry.js": [],
+  "packages/mcp-server/dist/config.d.ts": [],
+  "packages/mcp-server/dist/config.js": [],
+  "packages/mcp-server/dist/diagnostics/errors.d.ts": [],
+  "packages/mcp-server/dist/diagnostics/errors.js": [],
+  "packages/mcp-server/dist/diagnostics/map_godot_error.d.ts": [],
+  "packages/mcp-server/dist/diagnostics/map_godot_error.js": [
+    "packages/mcp-server/dist/diagnostics/errors.js"
+  ],
+  "packages/mcp-server/dist/headless/driver.d.ts": [],
+  "packages/mcp-server/dist/headless/driver.js": [],
   "packages/mcp-server/dist/health.d.ts": [],
   "packages/mcp-server/dist/health.js": [],
+  "packages/mcp-server/dist/index.d.ts": [],
+  "packages/mcp-server/dist/index.js": [
+    "packages/mcp-server/dist/config.js",
+    "packages/mcp-server/dist/logger.js",
+    "packages/mcp-server/dist/transport/mcp_stdio.js"
+  ],
+  "packages/mcp-server/dist/jsonrpc/framing.d.ts": [],
+  "packages/mcp-server/dist/jsonrpc/framing.js": [],
+  "packages/mcp-server/dist/jsonrpc/pending.d.ts": [
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/jsonrpc/pending.js": [
+    "packages/mcp-server/dist/diagnostics/errors.js"
+  ],
+  "packages/mcp-server/dist/logger.d.ts": [
+    "packages/mcp-server/dist/config.d.ts"
+  ],
+  "packages/mcp-server/dist/logger.js": [],
+  "packages/mcp-server/dist/telemetry/metrics.d.ts": [],
+  "packages/mcp-server/dist/telemetry/metrics.js": [],
+  "packages/mcp-server/dist/tools/registry.d.ts": [
+    "packages/mcp-server/dist/catalog/loadRegistry.d.ts"
+  ],
+  "packages/mcp-server/dist/tools/registry.js": [],
+  "packages/mcp-server/dist/transport/godot_ws_client.d.ts": [
+    "packages/mcp-server/dist/config.d.ts",
+    "packages/mcp-server/dist/logger.d.ts"
+  ],
+  "packages/mcp-server/dist/transport/godot_ws_client.js": [
+    "packages/mcp-server/dist/diagnostics/errors.js",
+    "packages/mcp-server/dist/diagnostics/map_godot_error.js",
+    "packages/mcp-server/dist/jsonrpc/framing.js",
+    "packages/mcp-server/dist/jsonrpc/pending.js"
+  ],
+  "packages/mcp-server/dist/transport/mcp_stdio.d.ts": [
+    "packages/mcp-server/dist/config.d.ts",
+    "packages/mcp-server/dist/logger.d.ts",
+    "packages/mcp-server/dist/tools/registry.d.ts",
+    "packages/mcp-server/dist/transport/godot_ws_client.d.ts"
+  ],
+  "packages/mcp-server/dist/transport/mcp_stdio.js": [
+    "packages/mcp-server/dist/catalog/loadRegistry.js",
+    "packages/mcp-server/dist/diagnostics/errors.js",
+    "packages/mcp-server/dist/telemetry/metrics.js",
+    "packages/mcp-server/dist/tools/registry.js",
+    "packages/mcp-server/dist/transport/godot_ws_client.js"
+  ],
   "packages/mcp-server/eslint.config.mjs": [],
-  "packages/mcp-server/src/health.ts": [],
+  "packages/mcp-server/src/catalog/loadRegistry.ts": [],
+  "packages/mcp-server/src/config.ts": [],
+  "packages/mcp-server/src/diagnostics/errors.ts": [],
+  "packages/mcp-server/src/diagnostics/map_godot_error.ts": [
+    "packages/mcp-server/src/diagnostics/errors.ts"
+  ],
+  "packages/mcp-server/src/headless/driver.ts": [],
+  "packages/mcp-server/src/index.ts": [
+    "packages/mcp-server/src/config.ts",
+    "packages/mcp-server/src/logger.ts",
+    "packages/mcp-server/src/transport/mcp_stdio.ts"
+  ],
+  "packages/mcp-server/src/jsonrpc/framing.ts": [],
+  "packages/mcp-server/src/jsonrpc/pending.ts": [
+    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/logger.ts": [
+    "packages/mcp-server/src/config.ts"
+  ],
+  "packages/mcp-server/src/telemetry/metrics.ts": [],
+  "packages/mcp-server/src/tools/registry.ts": [
+    "packages/mcp-server/src/catalog/loadRegistry.ts"
+  ],
+  "packages/mcp-server/src/transport/godot_ws_client.ts": [
+    "packages/mcp-server/src/config.ts",
+    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/diagnostics/map_godot_error.ts",
+    "packages/mcp-server/src/jsonrpc/framing.ts",
+    "packages/mcp-server/src/jsonrpc/pending.ts",
+    "packages/mcp-server/src/logger.ts"
+  ],
+  "packages/mcp-server/src/transport/mcp_stdio.ts": [
+    "packages/mcp-server/src/catalog/loadRegistry.ts",
+    "packages/mcp-server/src/config.ts",
+    "packages/mcp-server/src/diagnostics/errors.ts",
+    "packages/mcp-server/src/logger.ts",
+    "packages/mcp-server/src/telemetry/metrics.ts",
+    "packages/mcp-server/src/tools/registry.ts",
+    "packages/mcp-server/src/transport/godot_ws_client.ts"
+  ],
   "packages/mcp-server/tests/smoke.test.mjs": [],
   "references/godot-mcp-coding-solo/scripts/build.js": [],
   "references/godot-mcp-coding-solo/src/index.ts": [],
@@ -114,6 +213,7 @@
   "references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js": [],
   "references/godot-mcp-tomyud1/mcp-server/vitest.config.ts": [],
   "scripts/addon-link.mjs": [],
+  "scripts/catalog-sync.mjs": [],
   "scripts/planned.mjs": [],
   "scripts/regen-graphs.mjs": [],
   "scripts/run-gitnexus.mjs": [],

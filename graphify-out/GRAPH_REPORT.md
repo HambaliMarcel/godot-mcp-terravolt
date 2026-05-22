@@ -1,16 +1,16 @@
 # Graph Report - Godot MCP Marcel  (2026-05-22)
 
 ## Corpus Check
-- 1052 files · ~624,492 words
+- 1067 files · ~629,210 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 6199 nodes · 5594 edges · 1112 communities (767 shown, 345 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
+- 6322 nodes · 5785 edges · 1121 communities (770 shown, 351 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3dd9a73a`
+- Built from commit: `48159575`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -857,8 +857,18 @@
 - [[_COMMUNITY_Community 840|Community 840]]
 - [[_COMMUNITY_Community 841|Community 841]]
 - [[_COMMUNITY_Community 842|Community 842]]
+- [[_COMMUNITY_Community 844|Community 844]]
 - [[_COMMUNITY_Community 1109|Community 1109]]
 - [[_COMMUNITY_Community 1110|Community 1110]]
+- [[_COMMUNITY_Community 1112|Community 1112]]
+- [[_COMMUNITY_Community 1113|Community 1113]]
+- [[_COMMUNITY_Community 1114|Community 1114]]
+- [[_COMMUNITY_Community 1115|Community 1115]]
+- [[_COMMUNITY_Community 1116|Community 1116]]
+- [[_COMMUNITY_Community 1117|Community 1117]]
+- [[_COMMUNITY_Community 1118|Community 1118]]
+- [[_COMMUNITY_Community 1119|Community 1119]]
+- [[_COMMUNITY_Community 1120|Community 1120]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Changelog` - 42 edges
@@ -873,18 +883,18 @@
 10. `全部 162 个工具` - 26 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `handleInlineEdit()` --calls--> `sendCommand()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js
-- `saveSceneNodeProperty()` --calls--> `sendCommand()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/panel.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/websocket.js
-- `startPrimary()` --calls--> `setGodotBridge()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/index.ts → references/godot-mcp-tomyud1/mcp-server/src/visualizer-server.ts
-- `init()` --calls--> `initCanvas()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/main.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
-- `initEvents()` --calls--> `getCanvas()`  [EXTRACTED]
-  references/godot-mcp-tomyud1/mcp-server/src/visualizer/events.js → references/godot-mcp-tomyud1/mcp-server/src/visualizer/canvas.js
+- `main()` --calls--> `bootstrapRouter()`  [INFERRED]
+  references/godot-mcp-tomyud1/mcp-server/src/index.ts → packages/mcp-server/src/transport/mcp_stdio.ts
+- `main()` --calls--> `loadConfig()`  [INFERRED]
+  references/godot-mcp-tomyud1/mcp-server/src/index.ts → packages/mcp-server/src/config.ts
+- `main()` --calls--> `readPackageVersion()`  [EXTRACTED]
+  references/godot-mcp-tomyud1/mcp-server/src/index.ts → packages/mcp-server/src/index.ts
+- `main()` --calls--> `createLogger()`  [INFERRED]
+  references/godot-mcp-tomyud1/mcp-server/src/index.ts → packages/mcp-server/src/logger.ts
+- `main()` --calls--> `probeExistingServer()`  [EXTRACTED]
+  references/godot-mcp-tomyud1/mcp-server/src/index.ts → references/godot-mcp-tomyud1/mcp-server/src/proxy-client.ts
 
-## Communities (1112 total, 345 thin omitted)
+## Communities (1121 total, 351 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
@@ -960,7 +970,7 @@ Nodes (44): 05 — Node MCP Router (Phase 2, part A), 5.10 Verification plan, 5.
 
 ### Community 18 - "Community 18"
 Cohesion: 0.05
-Nodes (42): bin, godot-mcp-server, dependencies, @modelcontextprotocol/sdk, ws, description, devDependencies, esbuild (+34 more)
+Nodes (47): bin, godot-mcp-server, terravolt-godot-mcp, dependencies, ajv, ajv-formats, @modelcontextprotocol/sdk, ws (+39 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.05
@@ -972,7 +982,7 @@ Nodes (42): 04 — JSON-RPC Dispatch & Logging (Phase 1, part C), 4.10 Verificat
 
 ### Community 21 - "Community 21"
 Cohesion: 0.07
-Nodes (35): actualIndex, closePanel(), formatPropertyName(), funcIndex, handleInlineEdit(), highlight, initInlineEditing(), initPropertyEditing() (+27 more)
+Nodes (33): actualIndex, closePanel(), formatPropertyName(), funcIndex, highlight, initInlineEditing(), initPropertyEditing(), initSectionResizing() (+25 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.05
@@ -1008,43 +1018,43 @@ Nodes (33): Architecture, Bug Fixes, Bug Fixes, Bug Fixes, Bug Fixes, Changelog,
 
 ### Community 30 - "Community 30"
 Cohesion: 0.06
-Nodes (32): description, devDependencies, cross-env, dependency-cruiser, gitnexus, madge, prettier, engines (+24 more)
+Nodes (34): description, devDependencies, cross-env, dependency-cruiser, gitnexus, madge, prettier, engines (+26 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.11
-Nodes (25): clearPositions(), fitToView(), initEvents(), updateStats(), applyForces(), centerLayout(), initLayout(), resolveCollisions() (+17 more)
+Nodes (24): fitToView(), initEvents(), updateStats(), applyForces(), centerLayout(), initLayout(), resolveCollisions(), init() (+16 more)
 
 ### Community 32 - "Community 32"
 Cohesion: 0.06
 Nodes (30): author, bin, godot-mcp, bugs, url, dependencies, axios, fs-extra (+22 more)
 
 ### Community 33 - "Community 33"
-Cohesion: 0.16
-Nodes (28): getCanvas(), hitTest(), screenToWorld(), expandScene(), goBackToSceneOverview(), handleSceneMouseDown(), handleSceneMouseMove(), handleSceneMouseUp() (+20 more)
+Cohesion: 0.17
+Nodes (28): draw(), getCanvas(), hitTest(), sceneHitTest(), screenToWorld(), expandScene(), goBackToSceneOverview(), handleSceneMouseDown() (+20 more)
 
 ### Community 34 - "Community 34"
 Cohesion: 0.07
 Nodes (29): 00 — Foundation & Contracts (Pre-Phase 1), 0.10 Tech stack (final, no debate), 0.11 Cross-file dependency map, 0.12 Scoreboard (used by the agent to grade itself), 0.13 Decisions log (append-only), 0.14 Risk register (foundation-relevant), 0.15 Communication conventions for later files, 0.16 Final checklist (before opening file 01) (+21 more)
 
 ### Community 35 - "Community 35"
-Cohesion: 0.12
-Nodes (25): args, createMcpServer(), HTTP_PORT, IDLE_TIMEOUT, killProcessOnPort(), main(), noForce, SERVER_VERSION (+17 more)
+Cohesion: 0.11
+Nodes (22): args, createMcpServer(), executeToolCall(), HTTP_PORT, IDLE_TIMEOUT, killProcessOnPort(), noForce, SERVER_VERSION (+14 more)
 
 ### Community 36 - "Community 36"
 Cohesion: 0.07
 Nodes (29): 00 — Foundation & Contracts (Pre-Phase 1), 0.10 Tech stack (final, no debate), 0.11 Cross-file dependency map, 0.12 Scoreboard (used by the agent to grade itself), 0.13 Decisions log (append-only), 0.14 Risk register (foundation-relevant), 0.15 Communication conventions for later files, 0.16 Final checklist (before opening file 01) (+21 more)
 
 ### Community 37 - "Community 37"
-Cohesion: 0.09
-Nodes (18): expandAndHighlightFunction(), setCurrentUsages(), GD_KEYWORDS, GD_TYPES, highlightGDScript(), forceDeleteFromPanel(), initUsagePanelDrag(), initUsagePanelResize() (+10 more)
+Cohesion: 0.08
+Nodes (21): expandAndHighlightFunction(), handleInlineEdit(), saveSceneNodeProperty(), setCurrentUsages(), GD_KEYWORDS, GD_TYPES, highlightGDScript(), forceDeleteFromPanel() (+13 more)
 
 ### Community 38 - "Community 38"
 Cohesion: 0.08
 Nodes (26): 3D Scene Tools (6), All 172 Tools, Analysis & Search Tools (4), Animation Tools (6), AnimationTree Tools (4), Audio Tools (6), Batch & Refactoring Tools (8), Blend Tree Tools (1) (+18 more)
 
 ### Community 39 - "Community 39"
-Cohesion: 0.14
-Nodes (22): calculateTreeLayout(), centerOnNodes(), draw(), drawExpandedSceneView(), drawSceneNode(), drawSceneOverview(), drawSceneView(), drawSceneViewPlaceholder() (+14 more)
+Cohesion: 0.13
+Nodes (21): calculateTreeLayout(), centerOnNodes(), clearPositions(), drawExpandedSceneView(), drawSceneNode(), drawSceneOverview(), drawSceneView(), drawSceneViewPlaceholder() (+13 more)
 
 ### Community 40 - "Community 40"
 Cohesion: 0.14
@@ -1056,7 +1066,7 @@ Nodes (23): 0. Install Node.js (one-time setup), 1. Install the Godot plugin, 2.
 
 ### Community 43 - "Community 43"
 Cohesion: 0.09
-Nodes (22): compilerOptions, declaration, declarationMap, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, lib, module (+14 more)
+Nodes (23): compilerOptions, declaration, declarationMap, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, lib, module (+15 more)
 
 ### Community 44 - "Community 44"
 Cohesion: 0.09
@@ -1088,7 +1098,7 @@ Nodes (19): Checklists, code:block1 (1. gitnexus_impact({target: "X", direction:
 
 ### Community 51 - "Community 51"
 Cohesion: 0.11
-Nodes (15): ConnectionCallback, ConnSlot, createBridge(), GodotInfo, PendingRequest, RuntimeStatusCallback, ToolInvokeMessage, ToolResultMessage (+7 more)
+Nodes (14): ConnectionCallback, ConnSlot, GodotInfo, PendingRequest, RUNTIME_ONLY_TOOLS, RuntimeStatusCallback, ToolInvokeMessage, ToolResultMessage (+6 more)
 
 ### Community 52 - "Community 52"
 Cohesion: 0.11
@@ -1103,8 +1113,8 @@ Cohesion: 0.11
 Nodes (18): 10.6.10 Support matrix, 10.6.11 Security review, 10.6.12 Telemetry & privacy, 10.6.13 FAQ outline, 10.6.14 Roadmap (v1.1+ ideas), 10.6.15 Open-source operations, 10.6.16 Release readiness review, 10.6.17 Post-release maintenance (+10 more)
 
 ### Community 55 - "Community 55"
-Cohesion: 0.11
-Nodes (17): 0. Install Node.js (one-time setup), 1. Install the Godot plugin, 2. Install the Godot plugin, 32 Tools Across 6 Categories, 3. Connect, Build From Source, code:json ({), code:json ({) (+9 more)
+Cohesion: 0.06
+Nodes (32): 0. Install Node.js (one-time setup), 1. Install the Godot plugin, 2. Install the Godot plugin, 32 Tools Across 6 Categories, 3. Connect, Build From Source, Cancellation (best-effort), Catalog sync (Godot) (+24 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.11
@@ -1263,16 +1273,16 @@ Cohesion: 0.18
 Nodes (10): 10.1 Header, 10.2 Phase placement, 10.3 Inputs / prerequisites, 10.4 Outputs, 10.5 Operating constants used, 10.6.1 Test pyramid, 10.6.2 Integration harness, 10.6.3 Test selection per category (+2 more)
 
 ### Community 95 - "Community 95"
-Cohesion: 0.20
-Nodes (7): executeToolCall(), __dirname, findPort(), serveVisualization(), setGodotBridge(), stopVisualizationServer(), toolExists()
+Cohesion: 0.11
+Nodes (19): loadMethodRegistry(), McpToolOverlay, MethodRegistryEntry, MethodRegistryFile, registryContentSha256(), registryPath(), metricsRecordToolEnd(), metricsRecordToolStart() (+11 more)
 
 ### Community 96 - "Community 96"
 Cohesion: 0.22
 Nodes (10): 1. Scene & node DOM (CRUD+), 2. Scripting & context (C# & GDScript), 3. Runtime & telemetry (live connection), 4. Vibe-code macros (advanced automation), Categorical schemas, DIRECTIVES FOR CURSOR, Directives for implementers, File 2: superset_tool_registry.md (+2 more)
 
 ### Community 97 - "Community 97"
-Cohesion: 0.18
-Nodes (9): camera, currentUsages, FOLDER_COLORS, folderColorMap, getFolderColor(), scenePositions, scriptToScenes, setPendingDelete() (+1 more)
+Cohesion: 0.17
+Nodes (10): camera, currentUsages, FOLDER_COLORS, folderColorMap, getFolderColor(), scenePositions, scriptToScenes, setCurrentView() (+2 more)
 
 ### Community 98 - "Community 98"
 Cohesion: 0.20
@@ -1313,10 +1323,6 @@ Nodes (8): code:bash (git config core.hooksPath .githooks), code:bash (chmod +x 
 ### Community 107 - "Community 107"
 Cohesion: 0.22
 Nodes (9): Added — safety primitives in `base_command.gd`, Changed — broad cross-scene edits are opt-in, Changed — live scene mutations participate in UndoRedo, Changed — scene saves go through `EditorInterface`, Changed — server schemas, Fixed — `execute_editor_script` escape hatch, Fixed — open script/shader writes, Migration notes (+1 more)
-
-### Community 108 - "Community 108"
-Cohesion: 0.22
-Nodes (6): RUNTIME_ONLY_TOOLS, executorTools, missing, names, runtimeTools, allTools
 
 ### Community 109 - "Community 109"
 Cohesion: 0.25
@@ -1591,8 +1597,8 @@ Cohesion: 0.29
 Nodes (6): 00 — Foundation & Contracts (Pre-Phase 1), 0.1 Purpose of this file, 0.2.1 Topology (locked), 0.2.2 Non-negotiables, 0.2 Product framing (memorize this), code:text (┌────────────────────────┐)
 
 ### Community 177 - "Community 177"
-Cohesion: 0.29
-Nodes (6): Current status (through task `01`), Folder map, Manifest outlook (finalize in task `05`), MCP server (placeholder), Node MCP router (`packages/mcp-server`), Package scripts (`npm run` when invoked via workspace)
+Cohesion: 0.26
+Nodes (12): Config, envInt(), envString(), loadConfig(), LogLevel, parseIntOpt(), parseLogLevel(), ParseResult (+4 more)
 
 ### Community 178 - "Community 178"
 Cohesion: 0.29
@@ -2874,6 +2880,10 @@ Nodes (3): 6.6.6 Successful response envelope, code:text ({), code:text ({)
 Cohesion: 0.67
 Nodes (3): 6.6.6 Successful response envelope, code:text ({), code:text ({)
 
+### Community 844 - "Community 844"
+Cohesion: 0.40
+Nodes (4): cfg, entry, pkgRoot, r
+
 ### Community 1109 - "Community 1109"
 Cohesion: 0.17
 Nodes (10): argv, dest, die(), __dirname, force, godotRoot(), proj, ROOT (+2 more)
@@ -2882,25 +2892,41 @@ Nodes (10): argv, dest, die(), __dirname, force, godotRoot(), proj, ROOT (+2 mor
 Cohesion: 0.17
 Nodes (11): 1. Keep the unzip folder stable, 2. Smoke-test the binary, 3. Put `godot` on `--version`/`PATH`, 4. Sandbox project outside `godot-mcp-terravolt`, code:powershell (& "D:\sdk\godot-mono\4.6.3\Godot_v4.6.3-stable_mono_win64.ex), code:bat (@echo off), code:powershell ($bindir = Join-Path $env:USERPROFILE "bin"), code:powershell (where.exe godot) (+3 more)
 
+### Community 1112 - "Community 1112"
+Cohesion: 0.25
+Nodes (7): DaemonJsonRpcError, isRecord(), mapGodotJsonRpcError(), nextJsonRpcId(), Entry, Logger, GodotNotificationSubscriber
+
+### Community 1113 - "Community 1113"
+Cohesion: 0.29
+Nodes (9): httpGet(), httpPost(), probeExistingServer(), ProbeResult, proxyToolCall(), ProxyToolResult, registerProxyClient(), unregisterProxyClient() (+1 more)
+
+### Community 1114 - "Community 1114"
+Cohesion: 0.20
+Nodes (7): createBridge(), blocker, closePromise, events, msgPromise, resultPromise, status
+
+### Community 1115 - "Community 1115"
+Cohesion: 0.25
+Nodes (7): bytes, { catalog_version: catalogVersion }, hash, outDir, outPath, regPath, root
+
 ## Knowledge Gaps
-- **4303 isolated node(s):** `aliveStatusCodes`, `ignorePatterns`, `printWidth`, `semi`, `singleQuote` (+4298 more)
+- **4342 isolated node(s):** `aliveStatusCodes`, `ignorePatterns`, `printWidth`, `semi`, `singleQuote` (+4337 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **345 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **351 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `08 — Toolset Implementation (Phase 3 — the 200+ catalog)` connect `Community 53` to `Community 48`, `Community 44`?**
+- **Why does `GodotBridge` connect `Community 41` to `Community 35`, `Community 1114`, `Community 51`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `GodotBridge` connect `Community 41` to `Community 35`, `Community 51`, `Community 95`?**
-  _High betweenness centrality (0.000) - this node is a cross-community bridge._
-- **Why does `Changelog` connect `Community 29` to `Community 512`, `Community 513`, `Community 514`, `Community 515`, `Community 450`, `Community 75`, `Community 463`, `Community 464`, `Community 465`, `Community 466`, `Community 467`, `Community 479`, `Community 480`, `Community 481`, `Community 482`, `Community 483`, `Community 484`, `Community 485`, `Community 486`, `Community 487`, `Community 488`, `Community 489`, `Community 490`, `Community 107`, `Community 99`, `Community 511`?**
+- **Why does `main()` connect `Community 177` to `Community 1113`, `Community 35`, `Community 95`?**
   _High betweenness centrality (0.000) - this node is a cross-community bridge._
 - **What connects `aliveStatusCodes`, `ignorePatterns`, `printWidth` to the rest of the system?**
-  _4304 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _4343 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
+- **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
