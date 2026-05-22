@@ -10,6 +10,16 @@ The shared method catalog tracks its own `catalog_version` inside
 
 ## [Unreleased]
 
+### Added — Phase 3 catalog (task 14)
+
+- **`resource.*`** (15 methods) and **`shader.*`** (6 methods) in catalog **`0.6.0`**:
+  `handlers/resource.gd`, `handlers/shader.gd`, `handlers/resource_helpers.gd`.
+- Deterministic `resource.export_json` / `resource.import_json`; dependency lookups; shader
+  compile-check with headless parity.
+- Fixture `tests/_fixtures/resource_zoo/`; integration test
+  `tests/integration/resource/resource_shader_headless.test.mjs`.
+- Catalog docs: `docs/catalog/resource.md`, `docs/catalog/shader.md`.
+
 ### Added — Phase 3 catalog (task 13)
 
 - **`script.*`** (8 methods) and **`signal.*`** (10 methods) in catalog **`0.5.0`**:

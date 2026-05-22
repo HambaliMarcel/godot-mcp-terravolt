@@ -56,6 +56,15 @@ For full per-tool details (inputs, results, errors), see
 | `signal.connect`, `signal.disconnect`, `signal.bulk_connect`, `signal.bulk_disconnect`                                 | yes    | no           | Require active scene + UndoRedo.        |
 | `signal.add_declaration`, `signal.remove_declaration`                                                                  | yes    | partial      | Headless stub for script file ops.      |
 
+### Resource & shader (catalog 0.6.0)
+
+| `method`                                                                                                                                                       | Editor | Headless TCP | Notes                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------------------------------------- |
+| `resource.list`, `resource.get`, `resource.create`, `resource.update`, `resource.duplicate`, `resource.delete`, `resource.export_json`, `resource.import_json` | yes    | yes          | JSON export is deterministic (sorted keys). |
+| `resource.get_dependencies`, `resource.get_dependents`, `resource.validate`, `resource.diff`                                                                   | yes    | yes          | Dependency walk via `ResourceLoader`.       |
+| `resource.rename`, `resource.replace_references`, `resource.set_uid`                                                                                           | yes    | no           | Editor-first v1 (reference rewrites).       |
+| `shader.list`, `shader.read`, `shader.write`, `shader.compile_check`, `shader.list_params`, `shader.set_material_params`                                       | yes    | yes          | Compile via temp save + reload.             |
+
 ## Headless-only methods (no editor counterpart)
 
 | `method`                 | Surface                             | Notes                                                                     |
