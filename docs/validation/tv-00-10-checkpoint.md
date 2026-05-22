@@ -2,7 +2,7 @@
 
 **Canonical docs:** `docs/tasklist/00*.md` … `10-quality-testing-release-and-docs.md`
 
-## Automated checks (2026-05-22, refreshed)
+## Automated checks (2026-05-22, refreshed with **real Godot 4.6.3 stable mono**)
 
 Run from repo root (`npm install` once):
 
@@ -11,11 +11,37 @@ Run from repo root (`npm install` once):
 | `npm run lint` | Pass |
 | `npm run typecheck` | Pass |
 | `npm run build:server` | Pass |
-| `npm run test:server` | Pass — 9 tests: CLI smoke (2), router unit (6), **headless integration (1, real Godot)**. |
+| `npm run test:server` | Pass — **11 tests**: CLI smoke (2), router unit (6), **headless integration (1, real Godot)**, **MCP stdio E2E (1, real Godot)**, **addon parse-check (1, real Godot `--import`)**. |
 | `npm run catalog:sync` | Pass (`packages/godot-mcp-addon/_generated/catalog_meta.gd`) |
 | `npm run env:godot` | Pass (writes `.terravolt/godot-env.json`; auto-detects Mono build). |
 | `npm run release:check` | Pass (5/5 gates: hash, version, error mirror, readiness doc, CHANGELOG). |
 | `npm run release:notes` | Pass (diff vs previous tag, fallback to initial when no tag exists). |
+
+### Real Godot interaction verified end-to-end
+
+`packages/mcp-server/tests/integration/mcp_e2e.test.mjs` spawns the
+compiled router via `@modelcontextprotocol/sdk` `StdioClientTransport`
+and exercises:
+
+1. MCP `tools/list` — confirms all 12 expected tools (`ping`,
+   `server.info`, `log.tail`, `tools.{list,describe,metrics,bottlenecks,health}`,
+   `context.fetch_raw`, `headless.{start_project,status,stop,validate_script}`).
+2. `headless.start_project` → boots **real `Godot_v4.6.3-stable_mono_win64`**
+   from `%LOCALAPPDATA%\Programs\Godot\…` against
+   `tests/_fixtures/empty/project.godot`, parses the TCP port from stderr,
+   returns live `pid`/`port`/`uptimeMs`.
+3. `headless.validate_script` → JSON-RPC `script.validate_syntax` on a
+   tiny `.gd` snippet generated in the fixture (round-trip with the
+   driver's `GDScript.new()` → `reload()` path).
+4. `ping` (daemon-bridged tool) → WS handshake fails (port `1`, no daemon),
+   falls back to headless coordinator, returns
+   `{ ok: true, method: "ping@headless" }` in `<200 ms`.
+5. `headless.stop` → driver exits cleanly.
+
+`packages/mcp-server/tests/integration/addon_parse.test.mjs` stages the
+addon as `tests/_fixtures/with-addon/addons/terravolt_mcp/` and runs
+`godot --headless --import --path <fixture>` which triggers the full
+project compile pass — zero `SCRIPT ERROR: Parse Error:` lines required.
 
 ## Per-task rollup (truthful)
 
@@ -34,6 +60,21 @@ Run from repo root (`npm install` once):
 - **Bug fix (§07):** the headless driver previously `preload("../error_codes.gd")` which fails when launched against a project that does not mount the addon (Godot resource loader can’t resolve outside `res://`). Driver is now self-contained; catalog meta arrives through `TERRAVOLT_CATALOG_VERSION` and `TERRAVOLT_REGISTRY_SHA256` env vars injected by `launchHeadlessDriver`.
 - **Bug fix (§07):** the driver previously `_stop=true` on first peer disconnect, killing subsequent RPCs. Replaced with `_peer=null` + re-accept loop. Validated by `tests/integration/headless.test.mjs`.
 - **Path migration:** Godot 4.6.3 Mono moved from `C:\Users\marce\Downloads\…` to `%LOCALAPPDATA%\Programs\Godot\Godot_v4.6.3-stable_mono_win64\`. Router resolver and `setup-godot-env.mjs` scan that location and prefer the `_console.exe` variant.
+
+## Findings during the real-MCP smoke (2026-05-22 follow-up)
+
+Driving the compiled router through `@modelcontextprotocol/sdk` (instead of
+testing internal modules in-process) surfaced three real bugs that no other
+test caught — they are now fixed:
+
+- **Windows crash on bootstrap (`-router-only` regression).** `packages/mcp-server/src/catalog/loadRegistry.ts` called `resolveMethodRegistryJsonPath(fileURLToPath(import.meta.url))` and the helper then ran `fileURLToPath` again. On Windows the second call sees a path like `H:\…` and throws `ERR_INVALID_URL_SCHEME`. Fixed by passing `import.meta.url` directly; both helpers (`catalog/repoRoot.ts` and `headless/resolveTerravoltRoot.ts`) now also tolerate plain absolute paths defensively.
+- **`error_codes.gd` parser failure under real Godot 4.6.** GDScript 4 does **not** accept multi-line patterns inside `match` arms; the existing `category_for(tv_code)` ladder failed with `Expected expression for match pattern`. Replaced both lookup helpers with a single `_CODE_TO_SYMBOL` Dictionary — fewer lines, no `match`, parses on every supported Godot 4.x.
+- **`logging.gd` referenced a non-existent API.** `FileAccess.get_file_size(path)` does not exist as a static method in Godot 4.6 (cf. `references/godot-docs/classes/class_fileaccess.rst`). Replaced with `FileAccess.open(... READ).get_length()`.
+- **`json_schema_mini.gd` type inference.** `var it := schema["items"]` failed strict typing (Dictionary indexing returns `Variant`). Now `var it: Variant = …`.
+
+A new headless `--import` fixture (`tests/_fixtures/with-addon/`) plus
+`tests/integration/addon_parse.test.mjs` guards against regressions of any
+of the GDScript-side bugs above.
 
 ## Manual / CI gap
 

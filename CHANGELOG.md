@@ -37,6 +37,35 @@ The shared method catalog tracks its own `catalog_version` inside
   `%USERPROFILE%\Tools\Godot\**`, `C:\Program Files\Godot`, and `C:\Tools\Godot`
   on Windows; prefers the `_console.exe` variant for stable stderr capture.
 
+### Fixed
+
+- **Windows bootstrap crash:** `packages/mcp-server/src/catalog/loadRegistry.ts`
+  double-decoded `import.meta.url` (calling `fileURLToPath` twice), raising
+  `ERR_INVALID_URL_SCHEME` on every router spawn because Windows paths
+  (`H:\…`) are parsed as URL scheme `h:`. Helpers now accept either a
+  `file://` URL or an already-decoded absolute path.
+- **`error_codes.gd` parse error in Godot 4.6:** multi-line `match` patterns
+  (`A,\n B,\n C:`) are not valid GDScript. Replaced both `category_for`
+  and `symbol_for` ladders with a single `_CODE_TO_SYMBOL` Dictionary.
+- **`logging.gd` log rotation:** `FileAccess.get_file_size(path)` does not
+  exist as a static method in Godot 4.6 (verified against
+  `references/godot-docs/classes/class_fileaccess.rst`). Now opens the
+  file in READ mode and uses `get_length()`.
+- **`json_schema_mini.gd` strict typing:** `var it := schema["items"]`
+  could not infer a type from a Variant dictionary access; now explicit
+  `var it: Variant = …`.
+
+### Verified end-to-end (real Godot 4.6.3 stable mono)
+
+- `tests/integration/mcp_e2e.test.mjs` drives the compiled router via
+  the official MCP TypeScript SDK over stdio and confirms `tools/list`,
+  `headless.start_project`, `headless.validate_script`,
+  `headless.status`, `headless.stop`, and WS-down → headless fallback for
+  `ping` (route reported as `ping@headless`).
+- `tests/integration/addon_parse.test.mjs` stages the addon into
+  `tests/_fixtures/with-addon/` and runs `godot --headless --import` to
+  confirm every `.gd` file parses cleanly with `class_name` resolution.
+
 ### Security
 
 - `SECURITY.md` expanded with §10 threat-model notes for loopback default,
