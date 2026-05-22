@@ -161,6 +161,51 @@ static func project_set_settings(params: Dictionary) -> Dictionary:
 	return {"ok": true, "result": {"applied": applied, "dry_run": dry_run}}
 
 
+static func _list_autoload_rows() -> Array:
+	var rows: Array = []
+	for pi in ProjectSettings.get_property_list():
+		if typeof(pi) != TYPE_DICTIONARY:
+			continue
+		var name := str((pi as Dictionary).get("name", ""))
+		if not name.begins_with("autoload/"):
+			continue
+		var val := str(ProjectSettings.get_setting(name, ""))
+		var singleton := val.begins_with("*")
+		var path := val.lstrip("*")
+		rows.append({"name": name.substr("autoload/".length()), "path": path, "singleton": singleton, "source": "project"})
+	rows.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return str(a.get("name", "")) < str(b.get("name", "")))
+	return rows
+
+
+static func project_list_autoloads() -> Dictionary:
+	return {"ok": true, "result": {"autoloads": _list_autoload_rows()}}
+
+
+static func project_add_autoload(params: Dictionary) -> Dictionary:
+	var name := str(params.get("name", ""))
+	var path := resolve_path(str(params.get("path", "")))
+	var singleton := bool(params.get("singleton", true))
+	var prefix := "*" if singleton else ""
+	ProjectSettings.set_setting("autoload/%s" % name, "%s%s" % [prefix, path])
+	ProjectSettings.save()
+	return {
+		"ok": true,
+		"result": {
+			"added": true,
+			"autoload": {"name": name, "path": path, "singleton": singleton},
+			"state": {"autoloads": _list_autoload_rows()},
+		},
+	}
+
+
+static func project_remove_autoload(params: Dictionary) -> Dictionary:
+	var name := str(params.get("name", ""))
+	if ProjectSettings.has_setting("autoload/%s" % name):
+		ProjectSettings.clear("autoload/%s" % name)
+		ProjectSettings.save()
+	return {"ok": true, "result": {"removed": true, "name": name, "state": {"autoloads": _list_autoload_rows()}}}
+
+
 #region node (task 12)
 
 static var _scene_root: Node = null

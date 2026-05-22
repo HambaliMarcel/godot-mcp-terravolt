@@ -173,6 +173,8 @@ func _dispatch(line: String) -> String:
 				"project.get_settings",
 				"project.info",
 				"project.list_autoloads",
+				"project.add_autoload",
+				"project.remove_autoload",
 				"project.set_main_scene",
 				"project.set_settings",
 				"scene.create",
@@ -218,7 +220,11 @@ func _dispatch(line: String) -> String:
 		"project.set_settings":
 			return JSON.stringify(_wr_ok(rid, _Ops.project_set_settings(pd).result))
 		"project.list_autoloads":
-			return JSON.stringify(_wr_ok(rid, {"autoloads": []}))
+			return JSON.stringify(_wr_ok(rid, _Ops.project_list_autoloads().result))
+		"project.add_autoload":
+			return JSON.stringify(_wr_ok(rid, _Ops.project_add_autoload(pd).result))
+		"project.remove_autoload":
+			return JSON.stringify(_wr_ok(rid, _Ops.project_remove_autoload(pd).result))
 		"project.set_main_scene":
 			var mp := _Ops.resolve_path(str(pd.get("path", "")))
 			if bool(pd.get("validate", true)) and not _Ops.scene_exists(mp):
