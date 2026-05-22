@@ -7,4 +7,6 @@ Executable Node entrypoints wired from **`package.json`** (`npm run intel:*`). K
 | `regen-graphs.mjs` | `npm run intel:graphs` |
 | `run-gitnexus.mjs` | `npm run intel:gitnexus` |
 
+| `strip-cursoragent-coauthor-msgfilter.sh` | Documented **`git filter-branch --msg-filter`** helper — [git-hooks](../docs/contributing/git-hooks.md) |
+
 See **[`docs/repo-layout.md`](../docs/repo-layout.md)** for where outputs land (`artifacts/js-graphs/`, `.gitnexus/`, …).
