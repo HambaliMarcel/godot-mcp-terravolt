@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.17.0",
+  "catalog_version": "0.17.1",
   "methods": [
     {
       "method": "ping",
@@ -60,6 +60,35 @@
       "headlessFallback": true
     },
     {
+      "method": "server.force_disconnect",
+      "category": "server",
+      "since": "0.17.1",
+      "description": "Evict every other connected MCP peer so the caller takes exclusive control of the slot. Useful when a stale Cursor MCP session is holding the single-peer lock.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "server_force_disconnect",
+        "title": "Force-disconnect other MCP peers",
+        "description": "Drop every connected MCP peer except the caller. Useful to unstick a zombie session without restarting Godot."
+      },
+      "requiresEditor": true,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": []
+    },
+    {
       "method": "log.tail",
       "category": "log",
       "since": "0.1.0",
@@ -74,12 +103,7 @@
           },
           "level": {
             "type": "string",
-            "enum": [
-              "debug",
-              "info",
-              "warn",
-              "error"
-            ]
+            "enum": ["debug", "info", "warn", "error"]
           }
         },
         "additionalProperties": false
@@ -139,9 +163,7 @@
       "description": "Scene metadata without instantiating.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -163,9 +185,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.path_not_found"
-      ],
+      "errorCodes": ["scene.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -176,9 +196,7 @@
       "description": "Open a scene tab in the editor.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -203,10 +221,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.path_not_found",
-        "editor.not_available"
-      ],
+      "errorCodes": ["scene.path_not_found", "editor.not_available"],
       "examples": [],
       "headlessFallback": false
     },
@@ -241,10 +256,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "editor.no_active_scene",
-        "editor.not_available"
-      ],
+      "errorCodes": ["editor.no_active_scene", "editor.not_available"],
       "examples": [],
       "headlessFallback": false
     },
@@ -276,10 +288,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.save_failed",
-        "editor.no_active_scene"
-      ],
+      "errorCodes": ["scene.save_failed", "editor.no_active_scene"],
       "examples": [],
       "headlessFallback": false
     },
@@ -290,9 +299,7 @@
       "description": "Save the current scene under a new path.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "new_path"
-        ],
+        "required": ["new_path"],
         "properties": {
           "new_path": {
             "type": "string",
@@ -317,9 +324,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.save_failed"
-      ],
+      "errorCodes": ["scene.save_failed"],
       "examples": [],
       "headlessFallback": false
     },
@@ -330,9 +335,7 @@
       "description": "Create a new scene file with a typed root node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -363,10 +366,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.create_failed",
-        "node.type_unknown"
-      ],
+      "errorCodes": ["scene.create_failed", "node.type_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -377,9 +377,7 @@
       "description": "Delete a scene file with optional dependency guard.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -404,10 +402,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.path_not_found",
-        "resource.dependency_block"
-      ],
+      "errorCodes": ["scene.path_not_found", "resource.dependency_block"],
       "examples": [],
       "headlessFallback": true
     },
@@ -418,10 +413,7 @@
       "description": "Instantiate a PackedScene under a parent node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source_path",
-          "parent_path"
-        ],
+        "required": ["source_path", "parent_path"],
         "properties": {
           "source_path": {
             "type": "string",
@@ -440,11 +432,7 @@
           },
           "edit_state": {
             "type": "string",
-            "enum": [
-              "instance",
-              "disabled",
-              "main"
-            ]
+            "enum": ["instance", "disabled", "main"]
           }
         },
         "additionalProperties": false
@@ -461,10 +449,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.path_not_found",
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.path_not_found", "scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -475,10 +460,7 @@
       "description": "Pack a subtree into a new .tscn file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "root_path",
-          "output_path"
-        ],
+        "required": ["root_path", "output_path"],
         "properties": {
           "root_path": {
             "type": "string",
@@ -507,10 +489,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.create_failed",
-        "editor.no_active_scene"
-      ],
+      "errorCodes": ["scene.create_failed", "editor.no_active_scene"],
       "examples": [],
       "headlessFallback": true
     },
@@ -524,10 +503,7 @@
         "properties": {
           "envelope": {
             "type": "string",
-            "enum": [
-              "summary",
-              "raw"
-            ]
+            "enum": ["summary", "raw"]
           },
           "max_depth": {
             "type": "integer",
@@ -552,9 +528,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "editor.no_active_scene"
-      ],
+      "errorCodes": ["editor.no_active_scene"],
       "examples": [],
       "headlessFallback": true
     },
@@ -565,9 +539,7 @@
       "description": "Return a subtree from a NodePath.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "root_path"
-        ],
+        "required": ["root_path"],
         "properties": {
           "root_path": {
             "type": "string",
@@ -575,10 +547,7 @@
           },
           "envelope": {
             "type": "string",
-            "enum": [
-              "summary",
-              "raw"
-            ]
+            "enum": ["summary", "raw"]
           },
           "max_depth": {
             "type": "integer",
@@ -603,9 +572,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -616,9 +583,7 @@
       "description": "Search the active scene for nodes matching a selector.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "selector"
-        ],
+        "required": ["selector"],
         "properties": {
           "selector": {
             "type": "object"
@@ -680,9 +645,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.path_not_found"
-      ],
+      "errorCodes": ["scene.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -693,10 +656,7 @@
       "description": "Replace a subtree with another scene or synthesized node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "at_path",
-          "with"
-        ],
+        "required": ["at_path", "with"],
         "properties": {
           "at_path": {
             "type": "string",
@@ -726,10 +686,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found",
-        "scene.path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found", "scene.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -804,9 +761,7 @@
       "description": "Patch project settings.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "patch"
-        ],
+        "required": ["patch"],
         "properties": {
           "patch": {
             "type": "object"
@@ -835,9 +790,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "project.setting_locked"
-      ],
+      "errorCodes": ["project.setting_locked"],
       "examples": [],
       "headlessFallback": true
     },
@@ -873,10 +826,7 @@
       "description": "Register an autoload singleton.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name",
-          "path"
-        ],
+        "required": ["name", "path"],
         "properties": {
           "name": {
             "type": "string",
@@ -905,9 +855,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "node.type_unknown"
-      ],
+      "errorCodes": ["node.type_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -918,9 +866,7 @@
       "description": "Unregister an autoload.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "name": {
             "type": "string",
@@ -952,9 +898,7 @@
       "description": "Set application/run/main_scene.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -979,9 +923,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.path_not_found"
-      ],
+      "errorCodes": ["scene.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -992,10 +934,7 @@
       "description": "Add a new node under a parent in the active scene.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "type"
-        ],
+        "required": ["parent_path", "type"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -1042,11 +981,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "node.type_unknown",
-        "scene.node_path_not_found",
-        "node.name_collision"
-      ],
+      "errorCodes": ["node.type_unknown", "scene.node_path_not_found", "node.name_collision"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1057,9 +992,7 @@
       "description": "Remove a node and its subtree from the active scene.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1091,9 +1024,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1104,9 +1035,7 @@
       "description": "Clone a node under a target parent.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source_path"
-        ],
+        "required": ["source_path"],
         "properties": {
           "source_path": {
             "type": "string",
@@ -1145,9 +1074,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1158,10 +1085,7 @@
       "description": "Reparent a node and/or change sibling order.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source_path",
-          "target_parent_path"
-        ],
+        "required": ["source_path", "target_parent_path"],
         "properties": {
           "source_path": {
             "type": "string",
@@ -1200,10 +1124,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found",
-        "node.cycle_detected"
-      ],
+      "errorCodes": ["scene.node_path_not_found", "node.cycle_detected"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1214,10 +1135,7 @@
       "description": "Rename a node and optionally rewrite NodePath references.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "new_name"
-        ],
+        "required": ["path", "new_name"],
         "properties": {
           "path": {
             "type": "string",
@@ -1252,10 +1170,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found",
-        "node.name_collision"
-      ],
+      "errorCodes": ["scene.node_path_not_found", "node.name_collision"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1266,9 +1181,7 @@
       "description": "Read node identity and serializable properties.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1283,10 +1196,7 @@
           },
           "envelope": {
             "type": "string",
-            "enum": [
-              "summary",
-              "raw"
-            ]
+            "enum": ["summary", "raw"]
           },
           "scene_path": {
             "type": "string",
@@ -1308,9 +1218,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1321,10 +1229,7 @@
       "description": "Polymorphic mutator: property writes, groups, meta, signal connect/disconnect in one call.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "ops"
-        ],
+        "required": ["path", "ops"],
         "properties": {
           "path": {
             "type": "string",
@@ -1383,10 +1288,7 @@
           },
           "scope": {
             "type": "string",
-            "enum": [
-              "scene",
-              "active"
-            ]
+            "enum": ["scene", "active"]
           },
           "scene_path": {
             "type": "string",
@@ -1419,9 +1321,7 @@
       "description": "Enumerate declared signals and connections on a node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1453,9 +1353,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1466,19 +1364,14 @@
       "description": "Resolve a Selector to concrete NodePaths.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "selector"
-        ],
+        "required": ["selector"],
         "properties": {
           "selector": {
             "type": "object"
           },
           "expect": {
             "type": "string",
-            "enum": [
-              "single",
-              "many"
-            ]
+            "enum": ["single", "many"]
           },
           "scene_path": {
             "type": "string",
@@ -1500,9 +1393,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "selector.no_match"
-      ],
+      "errorCodes": ["selector.no_match"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1513,10 +1404,7 @@
       "description": "Type query: class or script inheritance check.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "type"
-        ],
+        "required": ["path", "type"],
         "properties": {
           "path": {
             "type": "string",
@@ -1545,9 +1433,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1558,10 +1444,7 @@
       "description": "Attach a script resource to a node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "script_path"
-        ],
+        "required": ["path", "script_path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1610,9 +1493,7 @@
       "description": "Remove the script from a node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1638,9 +1519,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1651,10 +1530,7 @@
       "description": "Evaluate a sandboxed Godot Expression against a node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "expression"
-        ],
+        "required": ["path", "expression"],
         "properties": {
           "path": {
             "type": "string",
@@ -1735,9 +1611,7 @@
       "description": "Read script contents (envelope-aware).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1765,9 +1639,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "script.path_not_found"
-      ],
+      "errorCodes": ["script.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1778,10 +1650,7 @@
       "description": "Create or overwrite a script file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "content"
-        ],
+        "required": ["path", "content"],
         "properties": {
           "path": {
             "type": "string",
@@ -1825,10 +1694,7 @@
       "description": "Apply line-range hunks to a script.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "hunks"
-        ],
+        "required": ["path", "hunks"],
         "properties": {
           "path": {
             "type": "string",
@@ -1854,10 +1720,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "script.path_not_found",
-        "script.patch_conflict"
-      ],
+      "errorCodes": ["script.path_not_found", "script.patch_conflict"],
       "examples": [],
       "headlessFallback": true
     },
@@ -1868,9 +1731,7 @@
       "description": "Compile-check a script.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -1910,9 +1771,7 @@
       "description": "Find symbol references across the project.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "symbol"
-        ],
+        "required": ["symbol"],
         "properties": {
           "symbol": {
             "type": "string"
@@ -1949,11 +1808,7 @@
       "description": "Rename a symbol project-wide.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to",
-          "kind"
-        ],
+        "required": ["from", "to", "kind"],
         "properties": {
           "scope": {},
           "from": {
@@ -1986,9 +1841,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "script.rename_conflict"
-      ],
+      "errorCodes": ["script.rename_conflict"],
       "examples": [],
       "headlessFallback": false
     },
@@ -1999,9 +1852,7 @@
       "description": "Format a script file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2026,10 +1877,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "script.path_not_found",
-        "script.formatter_missing"
-      ],
+      "errorCodes": ["script.path_not_found", "script.formatter_missing"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2040,9 +1888,7 @@
       "description": "List user-declared signals on a node's script.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2074,10 +1920,7 @@
       "description": "Add a signal declaration to a script.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "script_path",
-          "signal_name"
-        ],
+        "required": ["script_path", "signal_name"],
         "properties": {
           "script_path": {
             "type": "string",
@@ -2108,10 +1951,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "script.path_not_found",
-        "signal.name_exists"
-      ],
+      "errorCodes": ["script.path_not_found", "signal.name_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2122,10 +1962,7 @@
       "description": "Remove a signal declaration from a script.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "script_path",
-          "signal_name"
-        ],
+        "required": ["script_path", "signal_name"],
         "properties": {
           "script_path": {
             "type": "string",
@@ -2150,10 +1987,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "script.path_not_found",
-        "signal.unknown"
-      ],
+      "errorCodes": ["script.path_not_found", "signal.unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2164,12 +1998,7 @@
       "description": "Connect a signal to a target method.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from_path",
-          "signal_name",
-          "to_path",
-          "method"
-        ],
+        "required": ["from_path", "signal_name", "to_path", "method"],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2206,11 +2035,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "signal.unknown",
-        "signal.target_unknown",
-        "signal.method_unknown"
-      ],
+      "errorCodes": ["signal.unknown", "signal.target_unknown", "signal.method_unknown"],
       "examples": [],
       "headlessFallback": false
     },
@@ -2221,12 +2046,7 @@
       "description": "Disconnect a signal connection.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from_path",
-          "signal_name",
-          "to_path",
-          "method"
-        ],
+        "required": ["from_path", "signal_name", "to_path", "method"],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2268,9 +2088,7 @@
       "description": "List outgoing signal connections on a node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2305,10 +2123,7 @@
       "description": "Reverse lookup for signal listeners.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from_path",
-          "signal_name"
-        ],
+        "required": ["from_path", "signal_name"],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2346,9 +2161,7 @@
       "description": "Connect many signal pairs atomically.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "connections"
-        ],
+        "required": ["connections"],
         "properties": {
           "connections": {
             "type": "array"
@@ -2380,9 +2193,7 @@
       "description": "Disconnect many signal pairs.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "connections"
-        ],
+        "required": ["connections"],
         "properties": {
           "connections": {
             "type": "array"
@@ -2485,9 +2296,7 @@
       "description": "Read resource properties (envelope-aware for large blobs).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2515,9 +2324,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2528,10 +2335,7 @@
       "description": "Create a new resource and save it.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "class"
-        ],
+        "required": ["path", "class"],
         "properties": {
           "path": {
             "type": "string",
@@ -2562,10 +2366,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.class_unknown",
-        "resource.path_exists"
-      ],
+      "errorCodes": ["resource.class_unknown", "resource.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2576,10 +2377,7 @@
       "description": "Patch properties on an existing resource.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "patch"
-        ],
+        "required": ["path", "patch"],
         "properties": {
           "path": {
             "type": "string",
@@ -2624,10 +2422,7 @@
       "description": "Duplicate a resource to a new path.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source_path",
-          "target_path"
-        ],
+        "required": ["source_path", "target_path"],
         "properties": {
           "source_path": {
             "type": "string",
@@ -2660,10 +2455,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found",
-        "resource.path_exists"
-      ],
+      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2674,9 +2466,7 @@
       "description": "Delete a resource file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2701,10 +2491,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found",
-        "resource.dependency_block"
-      ],
+      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2715,10 +2502,7 @@
       "description": "Rename or move a resource with optional reference rewrites.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to"
-        ],
+        "required": ["from", "to"],
         "properties": {
           "from": {
             "type": "string",
@@ -2751,10 +2535,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found",
-        "resource.path_exists"
-      ],
+      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2765,9 +2546,7 @@
       "description": "List outbound dependencies of a resource.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2792,9 +2571,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2805,9 +2582,7 @@
       "description": "Reverse-lookup dependents of a resource.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2848,10 +2623,7 @@
       "description": "Rewrite project-wide references from one path to another.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from_path",
-          "to_path"
-        ],
+        "required": ["from_path", "to_path"],
         "properties": {
           "from_path": {
             "type": "string",
@@ -2895,9 +2667,7 @@
       "description": "Export a resource as deterministic JSON.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -2922,9 +2692,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2935,10 +2703,7 @@
       "description": "Import a resource from export JSON.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "target_path",
-          "json_string"
-        ],
+        "required": ["target_path", "json_string"],
         "properties": {
           "target_path": {
             "type": "string",
@@ -2966,10 +2731,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.json_schema_mismatch",
-        "resource.path_exists"
-      ],
+      "errorCodes": ["resource.json_schema_mismatch", "resource.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -2980,9 +2742,7 @@
       "description": "Assign or rotate a resource UID.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3010,9 +2770,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3023,9 +2781,7 @@
       "description": "Validate a resource file loads cleanly.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3058,10 +2814,7 @@
       "description": "Structured diff between two resources or JSON.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "a",
-          "b"
-        ],
+        "required": ["a", "b"],
         "properties": {
           "a": {
             "type": "string",
@@ -3084,9 +2837,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3127,9 +2878,7 @@
       "description": "Read shader source from a .gdshader file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3154,9 +2903,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3167,10 +2914,7 @@
       "description": "Create or overwrite a .gdshader file.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "content"
-        ],
+        "required": ["path", "content"],
         "properties": {
           "path": {
             "type": "string",
@@ -3199,10 +2943,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_exists",
-        "protocol.idempotency_conflict"
-      ],
+      "errorCodes": ["resource.path_exists", "protocol.idempotency_conflict"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3213,9 +2954,7 @@
       "description": "Validate a shader compiles.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3237,10 +2976,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found",
-        "shader.compile_timeout"
-      ],
+      "errorCodes": ["resource.path_not_found", "shader.compile_timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3251,9 +2987,7 @@
       "description": "Enumerate shader uniform parameters.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3275,9 +3009,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3288,10 +3020,7 @@
       "description": "Set shader parameters on a ShaderMaterial.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "material_path",
-          "params"
-        ],
+        "required": ["material_path", "params"],
         "properties": {
           "material_path": {
             "type": "string",
@@ -3438,9 +3167,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "asset.import_timeout"
-      ],
+      "errorCodes": ["asset.import_timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3451,9 +3178,7 @@
       "description": "Read import settings from .import sidecar.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3475,9 +3200,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3488,10 +3211,7 @@
       "description": "Patch import settings and optionally reimport.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "patch"
-        ],
+        "required": ["path", "patch"],
         "properties": {
           "path": {
             "type": "string",
@@ -3519,10 +3239,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "asset.unknown_setting",
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["asset.unknown_setting", "resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3533,9 +3250,7 @@
       "description": "Add a new asset from base64 or file URL.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3566,10 +3281,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "asset.too_large",
-        "asset.path_exists"
-      ],
+      "errorCodes": ["asset.too_large", "asset.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3580,9 +3292,7 @@
       "description": "Delete an asset and its import sidecar.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3607,10 +3317,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found",
-        "resource.dependency_block"
-      ],
+      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3621,10 +3328,7 @@
       "description": "Rename/move an asset with optional reference rewrites.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to"
-        ],
+        "required": ["from", "to"],
         "properties": {
           "from": {
             "type": "string",
@@ -3657,10 +3361,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "resource.path_not_found",
-        "asset.path_exists"
-      ],
+      "errorCodes": ["resource.path_not_found", "asset.path_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3671,9 +3372,7 @@
       "description": "Generate a preview thumbnail for an asset.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3698,9 +3397,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": false
     },
@@ -3711,9 +3408,7 @@
       "description": "Read intrinsic metadata for an asset.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -3735,9 +3430,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3748,9 +3441,7 @@
       "description": "Apply import preset settings to many assets.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "preset"
-        ],
+        "required": ["preset"],
         "properties": {
           "preset": {
             "type": "string"
@@ -3779,9 +3470,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "asset.preset_unknown"
-      ],
+      "errorCodes": ["asset.preset_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3825,9 +3514,7 @@
       "description": "Preview a batch refactor plan without applying.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "plan"
-        ],
+        "required": ["plan"],
         "properties": {
           "plan": {
             "type": "object"
@@ -3858,9 +3545,7 @@
       "description": "Apply a previewed batch refactor plan.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "plan"
-        ],
+        "required": ["plan"],
         "properties": {
           "plan": {
             "type": "object"
@@ -3884,10 +3569,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "batch.confirm_mismatch",
-        "batch.partial_failure"
-      ],
+      "errorCodes": ["batch.confirm_mismatch", "batch.partial_failure"],
       "examples": [],
       "headlessFallback": true
     },
@@ -3898,10 +3580,7 @@
       "description": "Rename a GDScript class_name project-wide.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to"
-        ],
+        "required": ["from", "to"],
         "properties": {
           "from": {
             "type": "string"
@@ -3941,10 +3620,7 @@
       "description": "Move a folder and rewrite references.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to"
-        ],
+        "required": ["from", "to"],
         "properties": {
           "from": {
             "type": "string",
@@ -3985,10 +3661,7 @@
       "description": "Project-wide find-and-replace in text files.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "pattern",
-          "replacement"
-        ],
+        "required": ["pattern", "replacement"],
         "properties": {
           "pattern": {},
           "replacement": {
@@ -4018,9 +3691,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "batch.too_many_edits"
-      ],
+      "errorCodes": ["batch.too_many_edits"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4031,10 +3702,7 @@
       "description": "Normalize file names to a casing convention.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "target",
-          "selector"
-        ],
+        "required": ["target", "selector"],
         "properties": {
           "target": {
             "type": "string"
@@ -4071,10 +3739,7 @@
       "description": "Swap node/resource classes where compatible.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "selector",
-          "target_class"
-        ],
+        "required": ["selector", "target_class"],
         "properties": {
           "selector": {
             "type": "object"
@@ -4103,9 +3768,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "batch.incompatible_classes"
-      ],
+      "errorCodes": ["batch.incompatible_classes"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4171,9 +3834,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "editor.screenshot_too_large"
-      ],
+      "errorCodes": ["editor.screenshot_too_large"],
       "examples": [],
       "headlessFallback": false
     },
@@ -4184,9 +3845,7 @@
       "description": "Select and frame a node in the scene tree dock.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string"
@@ -4220,9 +3879,7 @@
       "description": "Open a script in the script editor at an optional line.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -4321,9 +3978,7 @@
       "description": "Run a one-off @tool script inside the editor with deny-list gating.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source"
-        ],
+        "required": ["source"],
         "properties": {
           "source": {
             "type": "string"
@@ -4355,10 +4010,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "editor.script_timeout",
-        "editor.script_forbidden_api"
-      ],
+      "errorCodes": ["editor.script_timeout", "editor.script_forbidden_api"],
       "examples": [],
       "headlessFallback": false
     },
@@ -4435,9 +4087,7 @@
       "description": "Save, load, list, or delete named editor dock layouts.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "action"
-        ],
+        "required": ["action"],
         "properties": {
           "action": {
             "type": "string"
@@ -4460,9 +4110,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "editor.unsupported_in_version"
-      ],
+      "errorCodes": ["editor.unsupported_in_version"],
       "examples": [],
       "headlessFallback": false
     },
@@ -4762,10 +4410,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "runtime.no_session",
-        "runtime.bridge_unavailable"
-      ],
+      "errorCodes": ["runtime.no_session", "runtime.bridge_unavailable"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4776,9 +4421,7 @@
       "description": "Read properties on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -4803,10 +4446,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "runtime.no_session",
-        "scene.node_path_not_found"
-      ],
+      "errorCodes": ["runtime.no_session", "scene.node_path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4817,10 +4457,7 @@
       "description": "Sandboxed expression evaluation against a live node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "expression"
-        ],
+        "required": ["path", "expression"],
         "properties": {
           "path": {
             "type": "string",
@@ -4847,10 +4484,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "runtime.no_session",
-        "expression.forbidden_identifier"
-      ],
+      "errorCodes": ["runtime.no_session", "expression.forbidden_identifier"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4861,10 +4495,7 @@
       "description": "Set a property on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "key"
-        ],
+        "required": ["path", "key"],
         "properties": {
           "path": {
             "type": "string",
@@ -4889,10 +4520,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "node.property_unknown"
-      ],
+      "errorCodes": ["runtime.no_session", "node.property_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4903,10 +4531,7 @@
       "description": "Call a method on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "method"
-        ],
+        "required": ["path", "method"],
         "properties": {
           "path": {
             "type": "string",
@@ -4933,10 +4558,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "node.method_unknown"
-      ],
+      "errorCodes": ["runtime.no_session", "node.method_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4947,10 +4569,7 @@
       "description": "Emit a signal on a live node.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "signal"
-        ],
+        "required": ["path", "signal"],
         "properties": {
           "path": {
             "type": "string",
@@ -4977,10 +4596,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "signal.unknown"
-      ],
+      "errorCodes": ["runtime.no_session", "signal.unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -4991,9 +4607,7 @@
       "description": "Synthesize input events into the running game.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "events"
-        ],
+        "required": ["events"],
         "properties": {
           "events": {
             "type": "array"
@@ -5019,9 +4633,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session"
-      ],
+      "errorCodes": ["runtime.no_session"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5032,9 +4644,7 @@
       "description": "Higher-level input macro built from named actions.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "sequence"
-        ],
+        "required": ["sequence"],
         "properties": {
           "sequence": {
             "type": "array"
@@ -5057,9 +4667,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session"
-      ],
+      "errorCodes": ["runtime.no_session"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5070,9 +4678,7 @@
       "description": "Click a UI control by path or visible text.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "selector"
-        ],
+        "required": ["selector"],
         "properties": {
           "selector": {
             "type": "object"
@@ -5098,10 +4704,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "runtime.ui_not_found"
-      ],
+      "errorCodes": ["runtime.no_session", "runtime.ui_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5112,10 +4715,7 @@
       "description": "Drive a navigation agent or CharacterBody toward a target.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "agent_path",
-          "target"
-        ],
+        "required": ["agent_path", "target"],
         "properties": {
           "agent_path": {
             "type": "string",
@@ -5148,10 +4748,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "runtime.navigate_timeout"
-      ],
+      "errorCodes": ["runtime.no_session", "runtime.navigate_timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5162,9 +4759,7 @@
       "description": "Start or stop recording live inputs.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "action"
-        ],
+        "required": ["action"],
         "properties": {
           "action": {
             "type": "string"
@@ -5187,9 +4782,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session"
-      ],
+      "errorCodes": ["runtime.no_session"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5200,9 +4793,7 @@
       "description": "Replay a recorded input buffer.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "buffer_id"
-        ],
+        "required": ["buffer_id"],
         "properties": {
           "buffer_id": {
             "type": "string"
@@ -5228,10 +4819,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session",
-        "runtime.buffer_not_found"
-      ],
+      "errorCodes": ["runtime.no_session", "runtime.buffer_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5267,9 +4855,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "runtime.no_session"
-      ],
+      "errorCodes": ["runtime.no_session"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5302,10 +4888,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "runtime.no_session",
-        "runtime.bridge_unavailable"
-      ],
+      "errorCodes": ["runtime.no_session", "runtime.bridge_unavailable"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5316,9 +4899,7 @@
       "description": "Mutate engine-wide runtime params (time scale, physics ticks, debug flags).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "params"
-        ],
+        "required": ["params"],
         "properties": {
           "params": {
             "type": "object"
@@ -5338,9 +4919,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "runtime.no_session"
-      ],
+      "errorCodes": ["runtime.no_session"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5385,10 +4964,7 @@
       "description": "Create a new Animation in an AnimationPlayer library.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "player_path",
-          "name"
-        ],
+        "required": ["player_path", "name"],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5428,9 +5004,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation.name_exists"
-      ],
+      "errorCodes": ["animation.name_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5441,11 +5015,7 @@
       "description": "Add a track to an animation on an AnimationPlayer.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "player_path",
-          "animation",
-          "track"
-        ],
+        "required": ["player_path", "animation", "track"],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5482,10 +5052,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation.unknown",
-        "animation.track_kind_unknown"
-      ],
+      "errorCodes": ["animation.unknown", "animation.track_kind_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5496,12 +5063,7 @@
       "description": "Insert or replace keyframes on an animation track.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "player_path",
-          "animation",
-          "track_index",
-          "keys"
-        ],
+        "required": ["player_path", "animation", "track_index", "keys"],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5541,9 +5103,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation.unknown"
-      ],
+      "errorCodes": ["animation.unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5554,9 +5114,7 @@
       "description": "Play, queue, pause, or stop an animation on an AnimationPlayer.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "player_path"
-        ],
+        "required": ["player_path"],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5596,9 +5154,7 @@
       "requiresRuntime": true,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation.unknown"
-      ],
+      "errorCodes": ["animation.unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5609,10 +5165,7 @@
       "description": "Export an animation preview (GIF/MP4 best-effort; PNG sequence fallback).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "player_path",
-          "name"
-        ],
+        "required": ["player_path", "name"],
         "properties": {
           "player_path": {
             "type": "string",
@@ -5649,10 +5202,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation.exporter_missing",
-        "animation.unknown"
-      ],
+      "errorCodes": ["animation.exporter_missing", "animation.unknown"],
       "examples": [],
       "headlessFallback": false
     },
@@ -5663,9 +5213,7 @@
       "description": "Describe an AnimationTree root, states, transitions, and parameters.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path"
-        ],
+        "required": ["tree_path"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5701,10 +5249,7 @@
       "description": "Enable or disable AnimationTree processing.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "active"
-        ],
+        "required": ["tree_path", "active"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5743,11 +5288,7 @@
       "description": "Set a blend parameter or travel/advance a state-machine playback.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "parameter",
-          "value"
-        ],
+        "required": ["tree_path", "parameter", "value"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5779,9 +5320,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation_tree.parameter_unknown"
-      ],
+      "errorCodes": ["animation_tree.parameter_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5792,10 +5331,7 @@
       "description": "Add a state to a StateMachine AnimationTree root.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "state"
-        ],
+        "required": ["tree_path", "state"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5823,9 +5359,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation_tree.state_exists"
-      ],
+      "errorCodes": ["animation_tree.state_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5836,10 +5370,7 @@
       "description": "Remove a state from a StateMachine root.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "name"
-        ],
+        "required": ["tree_path", "name"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5867,9 +5398,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "animation_tree.state_unknown"
-      ],
+      "errorCodes": ["animation_tree.state_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -5880,12 +5409,7 @@
       "description": "Add a transition between two states in a StateMachine.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "from",
-          "to",
-          "transition"
-        ],
+        "required": ["tree_path", "from", "to", "transition"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5930,11 +5454,7 @@
       "description": "Remove a transition between two states.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path",
-          "from",
-          "to"
-        ],
+        "required": ["tree_path", "from", "to"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -5976,9 +5496,7 @@
       "description": "Snapshot blend weights and active state-machine transition progress.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tree_path"
-        ],
+        "required": ["tree_path"],
         "properties": {
           "tree_path": {
             "type": "string",
@@ -6014,11 +5532,7 @@
       "description": "Add a physics body node with optional collision shape under a parent.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "kind",
-          "dimension"
-        ],
+        "required": ["parent_path", "kind", "dimension"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -6066,10 +5580,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "physics.shape_kind_unknown",
-        "physics.dimension_mismatch"
-      ],
+      "errorCodes": ["physics.shape_kind_unknown", "physics.dimension_mismatch"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6080,9 +5591,7 @@
       "description": "Set collision layer and mask on a physics body.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -6105,9 +5614,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "physics.dimension_mismatch"
-      ],
+      "errorCodes": ["physics.dimension_mismatch"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6148,11 +5655,7 @@
       "description": "Name or rename a physics layer index (1..32).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "dimension",
-          "index",
-          "name"
-        ],
+        "required": ["dimension", "index", "name"],
         "properties": {
           "dimension": {
             "type": "string"
@@ -6189,9 +5692,7 @@
       "description": "Cast one or more rays against the live physics space.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "dimension"
-        ],
+        "required": ["dimension"],
         "properties": {
           "dimension": {
             "type": "string"
@@ -6227,9 +5728,7 @@
       "requiresRuntime": true,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "physics.batch_too_large"
-      ],
+      "errorCodes": ["physics.batch_too_large"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6240,9 +5739,7 @@
       "description": "Set global gravity vector and magnitude for 2D or 3D.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "dimension"
-        ],
+        "required": ["dimension"],
         "properties": {
           "dimension": {
             "type": "string"
@@ -6279,10 +5776,7 @@
       "description": "Add a GPU or CPU particle system under a parent.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "dimension"
-        ],
+        "required": ["parent_path", "dimension"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -6327,9 +5821,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "particle.gpu_unsupported"
-      ],
+      "errorCodes": ["particle.gpu_unsupported"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6340,10 +5832,7 @@
       "description": "Patch properties on a ParticleProcessMaterial resource.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "material_path",
-          "patch"
-        ],
+        "required": ["material_path", "patch"],
         "properties": {
           "material_path": {
             "type": "string",
@@ -6369,10 +5858,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "protocol.idempotency_conflict",
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["protocol.idempotency_conflict", "resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6383,9 +5869,7 @@
       "description": "Render a short preview of a particle system.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "system_path"
-        ],
+        "required": ["system_path"],
         "properties": {
           "system_path": {
             "type": "string",
@@ -6426,10 +5910,7 @@
       "description": "Start, stop, restart, or one-shot emit a particle system.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "system_path",
-          "action"
-        ],
+        "required": ["system_path", "action"],
         "properties": {
           "system_path": {
             "type": "string",
@@ -6490,9 +5971,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "asset.preset_unknown"
-      ],
+      "errorCodes": ["asset.preset_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6503,10 +5982,7 @@
       "description": "Add a NavigationRegion2D/3D with navmesh resource.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "dimension"
-        ],
+        "required": ["parent_path", "dimension"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -6588,9 +6064,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "navigation.bake_timeout"
-      ],
+      "errorCodes": ["navigation.bake_timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6601,10 +6075,7 @@
       "description": "Add a NavigationAgent2D/3D child to a body.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "dimension"
-        ],
+        "required": ["parent_path", "dimension"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -6694,11 +6165,7 @@
       "description": "Compute a navigation path between two points.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "dimension",
-          "from",
-          "to"
-        ],
+        "required": ["dimension", "from", "to"],
         "properties": {
           "dimension": {
             "type": "string"
@@ -6741,9 +6208,7 @@
       "description": "Toggle navigation debug overlay at runtime.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "enabled"
-        ],
+        "required": ["enabled"],
         "properties": {
           "enabled": {
             "type": "boolean"
@@ -6777,9 +6242,7 @@
       "description": "Describe a TileMapLayer or legacy TileMap (tileset, layers, used rect, atlas sources).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -6811,10 +6274,7 @@
       "description": "Set or clear cells in bulk on a tilemap layer.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "cells"
-        ],
+        "required": ["path", "cells"],
         "properties": {
           "path": {
             "type": "string",
@@ -6857,11 +6317,7 @@
       "description": "Fill a rectangle or polygon with one tile.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "source_id",
-          "atlas_coords"
-        ],
+        "required": ["path", "source_id", "atlas_coords"],
         "properties": {
           "path": {
             "type": "string",
@@ -6900,9 +6356,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "tilemap.cell_batch_too_large"
-      ],
+      "errorCodes": ["tilemap.cell_batch_too_large"],
       "examples": [],
       "headlessFallback": true
     },
@@ -6913,9 +6367,7 @@
       "description": "Read tiles in a region or the used rect.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path"
-        ],
+        "required": ["path"],
         "properties": {
           "path": {
             "type": "string",
@@ -6956,9 +6408,7 @@
       "description": "Describe a TileSet resource (sources, terrains, custom data).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "tileset_path"
-        ],
+        "required": ["tileset_path"],
         "properties": {
           "tileset_path": {
             "type": "string",
@@ -6990,12 +6440,7 @@
       "description": "Paint cells using terrain auto-tiling.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "path",
-          "cells",
-          "terrain_set",
-          "terrain"
-        ],
+        "required": ["path", "cells", "terrain_set", "terrain"],
         "properties": {
           "path": {
             "type": "string",
@@ -7031,10 +6476,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "tilemap.terrain_unknown",
-        "tilemap.cell_batch_too_large"
-      ],
+      "errorCodes": ["tilemap.terrain_unknown", "tilemap.cell_batch_too_large"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7080,12 +6522,7 @@
       "description": "Set a theme color on a Theme resource or Control override.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "target",
-          "type",
-          "name",
-          "value"
-        ],
+        "required": ["target", "type", "name", "value"],
         "properties": {
           "target": {
             "type": "object",
@@ -7123,9 +6560,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "theme.target_missing"
-      ],
+      "errorCodes": ["theme.target_missing"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7136,10 +6571,7 @@
       "description": "Set default or per-type font on a Theme or Control.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "target",
-          "font_path"
-        ],
+        "required": ["target", "font_path"],
         "properties": {
           "target": {
             "type": "object",
@@ -7183,10 +6615,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "theme.target_missing",
-        "theme.font_load_failed"
-      ],
+      "errorCodes": ["theme.target_missing", "theme.font_load_failed"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7197,12 +6626,7 @@
       "description": "Define or replace a StyleBox on a Theme or Control.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "target",
-          "type",
-          "name",
-          "stylebox"
-        ],
+        "required": ["target", "type", "name", "stylebox"],
         "properties": {
           "target": {
             "type": "object",
@@ -7242,10 +6666,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "theme.target_missing",
-        "theme.stylebox_invalid"
-      ],
+      "errorCodes": ["theme.target_missing", "theme.stylebox_invalid"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7256,9 +6677,7 @@
       "description": "Generate a PNG preview of a theme on sample widgets.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "theme_path"
-        ],
+        "required": ["theme_path"],
         "properties": {
           "theme_path": {
             "type": "string",
@@ -7285,9 +6704,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "theme.preview_failed"
-      ],
+      "errorCodes": ["theme.preview_failed"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7298,10 +6715,7 @@
       "description": "Scaffold a UI screen scene from a preset kind (title, settings, hud, pause, etc.).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "output_path",
-          "kind"
-        ],
+        "required": ["output_path", "kind"],
         "properties": {
           "output_path": {
             "type": "string",
@@ -7369,9 +6783,7 @@
       "description": "Add an audio bus.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "name": {
             "type": "string",
@@ -7398,9 +6810,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "audio.bus_name_exists"
-      ],
+      "errorCodes": ["audio.bus_name_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7437,10 +6847,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "audio.bus_unknown",
-        "audio.cannot_remove_master"
-      ],
+      "errorCodes": ["audio.bus_unknown", "audio.cannot_remove_master"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7451,10 +6858,7 @@
       "description": "Patch bus volume, mute, solo, bypass, or send target.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "bus",
-          "patch"
-        ],
+        "required": ["bus", "patch"],
         "properties": {
           "bus": {},
           "patch": {
@@ -7475,9 +6879,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "audio.bus_unknown"
-      ],
+      "errorCodes": ["audio.bus_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7488,10 +6890,7 @@
       "description": "Add an AudioEffect to a bus.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "bus",
-          "kind"
-        ],
+        "required": ["bus", "kind"],
         "properties": {
           "bus": {},
           "kind": {
@@ -7519,10 +6918,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "audio.bus_unknown",
-        "audio.effect_kind_unknown"
-      ],
+      "errorCodes": ["audio.bus_unknown", "audio.effect_kind_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7533,9 +6929,7 @@
       "description": "Play a stream on a bus for preview.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "stream_path"
-        ],
+        "required": ["stream_path"],
         "properties": {
           "stream_path": {
             "type": "string",
@@ -7568,10 +6962,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": [
-        "audio.preview_unavailable",
-        "resource.path_not_found"
-      ],
+      "errorCodes": ["audio.preview_unavailable", "resource.path_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7612,9 +7003,7 @@
       "description": "Create an input action with optional events.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "name": {
             "type": "string",
@@ -7641,10 +7030,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "input.action_exists",
-        "input.action_name_invalid"
-      ],
+      "errorCodes": ["input.action_exists", "input.action_name_invalid"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7655,9 +7041,7 @@
       "description": "Remove an input action.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "properties": {
           "name": {
             "type": "string",
@@ -7678,9 +7062,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "input.action_unknown"
-      ],
+      "errorCodes": ["input.action_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7691,10 +7073,7 @@
       "description": "Replace all events bound to an action.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "name",
-          "events"
-        ],
+        "required": ["name", "events"],
         "properties": {
           "name": {
             "type": "string",
@@ -7718,9 +7097,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "input.action_unknown"
-      ],
+      "errorCodes": ["input.action_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7731,10 +7108,7 @@
       "description": "Rename an input action and optionally rewrite script references.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "from",
-          "to"
-        ],
+        "required": ["from", "to"],
         "properties": {
           "from": {
             "type": "string",
@@ -7765,10 +7139,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "input.action_unknown",
-        "input.action_exists"
-      ],
+      "errorCodes": ["input.action_unknown", "input.action_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7779,9 +7150,7 @@
       "description": "Simulate pressing and releasing an action.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "action"
-        ],
+        "required": ["action"],
         "properties": {
           "action": {
             "type": "string",
@@ -7811,9 +7180,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "input.action_unknown"
-      ],
+      "errorCodes": ["input.action_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7824,9 +7191,7 @@
       "description": "Describe an input event and matching actions.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "event"
-        ],
+        "required": ["event"],
         "properties": {
           "event": {
             "type": "object"
@@ -7857,9 +7222,7 @@
       "description": "Add a MeshInstance3D with optional primitive or resource mesh and material.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path"
-        ],
+        "required": ["parent_path"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7898,9 +7261,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene_3d.primitive_unknown"
-      ],
+      "errorCodes": ["scene_3d.primitive_unknown"],
       "examples": [],
       "headlessFallback": true
     },
@@ -7911,9 +7272,7 @@
       "description": "Add a Camera3D with perspective/orthogonal/frustum projection and optional current toggle.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path"
-        ],
+        "required": ["parent_path"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -7967,10 +7326,7 @@
       "description": "Add a directional, omni, or spot light with shadow and bake configuration.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "kind"
-        ],
+        "required": ["parent_path", "kind"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -8030,9 +7386,7 @@
       "description": "Add or update a WorldEnvironment (sky, fog, ambient, tonemap, glow, SSAO, SSR).",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "spec"
-        ],
+        "required": ["spec"],
         "properties": {
           "scene_root_path": {
             "type": "string",
@@ -8067,10 +7421,7 @@
       "description": "Add a GridMap with a MeshLibrary and optionally seeded cells.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "parent_path",
-          "mesh_library_path"
-        ],
+        "required": ["parent_path", "mesh_library_path"],
         "properties": {
           "parent_path": {
             "type": "string",
@@ -8107,10 +7458,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "scene_3d.mesh_library_unknown",
-        "scene_3d.gridmap_cells_invalid"
-      ],
+      "errorCodes": ["scene_3d.mesh_library_unknown", "scene_3d.gridmap_cells_invalid"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8121,10 +7469,7 @@
       "description": "Position a camera to frame one or more subjects using their combined global AABB.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "camera_path",
-          "subjects"
-        ],
+        "required": ["camera_path", "subjects"],
         "properties": {
           "camera_path": {
             "type": "string",
@@ -8232,10 +7577,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "testing.framework_unknown",
-        "testing.timeout"
-      ],
+      "errorCodes": ["testing.framework_unknown", "testing.timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8246,9 +7588,7 @@
       "description": "Assert runtime/editor state conditions.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "assertions"
-        ],
+        "required": ["assertions"],
         "properties": {
           "assertions": {
             "type": "array"
@@ -8279,10 +7619,7 @@
       "description": "Compare a screenshot against a golden image.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "source",
-          "golden_path"
-        ],
+        "required": ["source", "golden_path"],
         "properties": {
           "source": {
             "type": "object"
@@ -8315,9 +7652,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": [
-        "testing.golden_not_found"
-      ],
+      "errorCodes": ["testing.golden_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8358,9 +7693,7 @@
       "description": "Fetch a saved test report by id.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "id"
-        ],
+        "required": ["id"],
         "properties": {
           "id": {
             "type": "string",
@@ -8453,9 +7786,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": false,
-      "errorCodes": [
-        "profile.flamegraph_unavailable"
-      ],
+      "errorCodes": ["profile.flamegraph_unavailable"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8492,9 +7823,7 @@
       "description": "Run an export preset build.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "preset"
-        ],
+        "required": ["preset"],
         "properties": {
           "preset": {
             "type": "string",
@@ -8532,11 +7861,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "export.preset_unknown",
-        "export.template_missing",
-        "export.timeout"
-      ],
+      "errorCodes": ["export.preset_unknown", "export.template_missing", "export.timeout"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8613,11 +7938,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8671,11 +7992,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8729,11 +8046,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8744,9 +8057,7 @@
       "description": "Scaffold a wave spawner.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "enemy_scene_path"
-        ],
+        "required": ["enemy_scene_path"],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -8790,11 +8101,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8842,11 +8149,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8894,11 +8197,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8940,11 +8239,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -8989,11 +8284,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9041,11 +8332,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9087,11 +8374,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9133,11 +8416,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9182,11 +8461,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9197,9 +8472,7 @@
       "description": "Scaffold a basic 2D level scene.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "output_path"
-        ],
+        "required": ["output_path"],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -9237,11 +8510,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9252,9 +8521,7 @@
       "description": "Scaffold a basic 3D level scene.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "output_path"
-        ],
+        "required": ["output_path"],
         "properties": {
           "dry_run": {
             "type": "boolean"
@@ -9289,11 +8556,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9335,11 +8598,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "macro.not_implemented",
-        "macro.ops_limit",
-        "macro.file_exists"
-      ],
+      "errorCodes": ["macro.not_implemented", "macro.ops_limit", "macro.file_exists"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9365,9 +8624,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "android.adb_not_found"
-      ],
+      "errorCodes": ["android.adb_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9401,9 +8658,7 @@
       "requiresRuntime": false,
       "safe": true,
       "mutates": false,
-      "errorCodes": [
-        "android.preset_not_found"
-      ],
+      "errorCodes": ["android.preset_not_found"],
       "examples": [],
       "headlessFallback": true
     },
@@ -9465,9 +8720,7 @@
       "description": "Run a scripted scenario: ordered [input|wait|assert|screenshot] steps with per-step results.",
       "inputSchema": {
         "type": "object",
-        "required": [
-          "steps"
-        ],
+        "required": ["steps"],
         "properties": {
           "steps": {
             "type": "array"
@@ -9494,9 +8747,7 @@
       "requiresRuntime": false,
       "safe": false,
       "mutates": true,
-      "errorCodes": [
-        "testing.scenario_failed"
-      ],
+      "errorCodes": ["testing.scenario_failed"],
       "examples": [],
       "headlessFallback": true
     }

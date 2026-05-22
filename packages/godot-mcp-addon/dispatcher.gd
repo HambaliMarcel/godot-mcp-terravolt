@@ -368,6 +368,16 @@ func _register_builtin() -> void:
 	)
 
 	register(
+		"server.force_disconnect",
+		{
+			"type": "object",
+			"properties": {"reason": {"type": "string"}},
+			"additionalProperties": false
+		},
+		_h_server_force_disconnect
+	)
+
+	register(
 		"log.tail",
 		{
 			"type": "object",
@@ -458,6 +468,44 @@ func _h_server_shutdown(ctx: Dictionary) -> Dictionary:
 		reason = str((ctx[&"params"] as Dictionary).get(&"reason", ""))
 	logger.log_force("warn", "lifecycle", "remote_shutdown_requested", {"peer_id": ctx["peer_id"], "reason": reason})
 	return {"ok": true, "result": {"ok": true, "accepted": true}}
+
+
+# Force-disconnects every peer EXCEPT the caller. Useful when a zombie Cursor
+# MCP client is locking the slot and the operator wants to take over without
+# restarting Godot. Always returns immediately; the eviction happens on the next
+# server tick.
+func _h_server_force_disconnect(ctx: Dictionary) -> Dictionary:
+	var svc := server_ref.get_ref()
+	if svc == null:
+		return {"ok": false, "error": TerravoltErrors.json_rpc_error(-32603, "Server unavailable", TerravoltErrors.PROTOCOL_INTERNAL, "", {})}
+	var caller_id := int(ctx.get(&"peer_id", -1))
+	var reason := ""
+	if typeof(ctx[&"params"]) == TYPE_DICTIONARY:
+		reason = str((ctx[&"params"] as Dictionary).get(&"reason", ""))
+
+	# Snapshot the active peer set BEFORE calling into the server, otherwise we
+	# may iterate while the dictionary is being mutated.
+	var evicted: Array = []
+	if svc.has_method(&"peer_count_ready"):
+		# Iterate via reflection to avoid leaking the active_peer_by_id field.
+		# We call into a helper on the server that closes all peers except the
+		# given id.
+		if svc.has_method(&"force_disconnect_except"):
+			evicted = svc.call(&"force_disconnect_except", caller_id, reason)
+		elif svc.has_method(&"force_disconnect_all"):
+			# Fallback: if the more-targeted helper isn't present, drop everyone.
+			# The caller's own socket will get a 1001 close — that's OK from the
+			# RPC perspective; the response is queued before the close.
+			var n := int(svc.call(&"force_disconnect_all"))
+			evicted = [{"count": n}]
+
+	logger.log_force(
+		"warn",
+		"transport",
+		"force_disconnect",
+		{"caller_peer_id": caller_id, "evicted": evicted, "reason": reason}
+	)
+	return {"ok": true, "result": {"ok": true, "caller_peer_id": caller_id, "evicted": evicted}}
 
 
 func _h_server_info(_ctx: Dictionary) -> Dictionary:

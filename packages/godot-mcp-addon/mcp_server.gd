@@ -243,6 +243,80 @@ func _close_ready(pid: int, code: int, reason: String) -> void:
 		_set_fsm(ConnState.LISTENING, {})
 
 
+# Removes active peers whose WebSocket is no longer OPEN or whose last_activity_ms
+# is older than 2x the heartbeat timeout. Called before enforcing max_peers so a
+# stale slot never blocks a fresh Cursor reconnect.
+func _evict_stale_active_peers() -> int:
+	var removed := 0
+	var now_ms := Time.get_ticks_msec()
+	var tout_ms := float(ProjectSettings.get_setting("terravolt_mcp/server/heartbeat_timeout_ms", 45000))
+	if tout_ms <= 500.0:
+		tout_ms = 45000.0
+	var stale_threshold := tout_ms * 2.0
+	for pid in _active_peer_by_id.keys():
+		var dp := _active_peer_by_id[pid] as Dictionary
+		var ws_var: Variant = dp.get(&"ws")
+		var stale := false
+		var reason := ""
+		if not (ws_var is WebSocketPeer):
+			stale = true
+			reason = "missing_ws"
+		else:
+			var w := ws_var as WebSocketPeer
+			w.poll()
+			var rs := w.get_ready_state()
+			if rs != WebSocketPeer.STATE_OPEN:
+				stale = true
+				reason = "ws_state_%d" % int(rs)
+			else:
+				var last := float(dp.get(&"last_activity_ms", now_ms))
+				if now_ms - last > stale_threshold:
+					stale = true
+					reason = "idle_%dms" % int(now_ms - last)
+		if stale:
+			if logger:
+				logger.log_force(
+					"warn", "transport", "evict_stale_peer", {"peer_id": pid, "reason": reason}
+				)
+			emit_signal(
+				&"transport_diagnostic", {"event": "evict_stale", "peer_id": pid, "reason": reason}
+			)
+			if ws_var is WebSocketPeer:
+				(ws_var as WebSocketPeer).close(4001, "Evicted stale peer")
+			_active_peer_by_id.erase(pid)
+			removed += 1
+	if removed > 0 and _running and _active_peer_by_id.is_empty():
+		_set_fsm(ConnState.LISTENING, {})
+	return removed
+
+
+# Force-disconnect every active peer. Intended for the Terravolt dock "Restart"
+# button / RPC server.force_disconnect so an operator can unstick a zombie peer
+# without restarting Godot.
+func force_disconnect_all() -> int:
+	var n := _active_peer_by_id.size()
+	for pid in _active_peer_by_id.keys():
+		_close_ready(int(pid), 1001, "force_disconnect")
+	return n
+
+
+# Drop every active peer EXCEPT `keep_peer_id`. Returns a list describing each
+# evicted peer so RPC callers can show what they unstuck. The kept peer keeps
+# its socket open so it can receive the RPC response before any other peer is
+# reconnected.
+func force_disconnect_except(keep_peer_id: int, reason: String) -> Array:
+	var evicted: Array = []
+	for pid in _active_peer_by_id.keys():
+		var pid_i := int(pid)
+		if pid_i == keep_peer_id:
+			continue
+		var dp := _active_peer_by_id[pid] as Dictionary
+		var addr := str(dp.get(&"address", "?"))
+		evicted.append({"peer_id": pid_i, "address": addr})
+		_close_ready(pid_i, 1001, "force_disconnect: %s" % reason)
+	return evicted
+
+
 func _enqueue_out(peer: Dictionary, txt: String) -> void:
 	var q: PackedStringArray = peer.get(&"outbound_queue", PackedStringArray())
 	q = q.duplicate()
@@ -291,9 +365,22 @@ func _poll_peer(peer: Dictionary) -> void:
 		var maxp := int(ProjectSettings.get_setting("terravolt_mcp/server/max_peers", 1))
 		if maxp <= 0:
 			maxp = 1
+		# Evict zombie peers (closed WS / heartbeat-timed-out) BEFORE rejecting a new
+		# handshake; otherwise a stale slot blocks every Cursor reconnect forever.
+		if _active_peer_by_id.size() >= maxp:
+			_evict_stale_active_peers()
 		if _active_peer_by_id.size() >= maxp:
 			if logger:
-				logger.log_force("warn", "transport", "peer_busy", {"peer_id": peer.get(&"id", -1)})
+				logger.log_force(
+					"warn",
+					"transport",
+					"peer_busy",
+					{
+						"peer_id": peer.get(&"id", -1),
+						"active_count": _active_peer_by_id.size(),
+						"max_peers": maxp,
+					}
+				)
 			emit_signal(&"transport_diagnostic", {"code": TerravoltErrors.TRANSPORT_PEER_BUSY})
 			emit_signal(&"peer_disconnected_signal", int(peer.get(&"id", -1)), "peer_busy")
 			ws.close(1008, "policy violation: server busy")

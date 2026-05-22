@@ -13,6 +13,11 @@ var _server: TerravoltMCPServer = null
 var _dock: MarginContainer = null
 
 var _tree_budget_ms: int = -1_000_000
+# Latched true when the loaded TerravoltMCPServer class is missing methods this
+# build expects (e.g. a stale `addons/terravolt_mcp/` copy from `addon:link`
+# fallback). We stop polling and surface ONE clear error instead of spamming
+# `process_tick` 3000+ times per second.
+var _server_api_stale := false
 
 
 func _enter_tree() -> void:
@@ -101,8 +106,10 @@ func _enter_tree() -> void:
 	set_process(true)
 
 	if ProjectSettings.get_setting("terravolt_mcp/server/auto_start_on_open", true):
-
-		_server.start()
+		if _server.has_method(&"start"):
+			_server.start()
+		else:
+			_flag_server_api_stale("start")
 
 
 func _exit_tree() -> void:
@@ -126,8 +133,7 @@ func _exit_tree() -> void:
 
 	if _logger:
 		_logger.log_info("Terravolt MCP addon exited tree", {})
-	if _server:
-
+	if _server and _server.has_method(&"stop"):
 		_server.stop()
 	_server = null
 	_dispatcher = null
@@ -135,10 +141,37 @@ func _exit_tree() -> void:
 
 
 func _process(delta: float) -> void:
+	if _server_api_stale or _server == null:
+		return
+	if not _server.has_method(&"process_tick"):
+		_flag_server_api_stale("process_tick")
+		return
+	_server.process_tick(delta)
 
-	if _server:
-		_server.process_tick(delta)
 
+# Surfaces a stale-addon mismatch ONCE and then disables polling so the user
+# isn't drowned in identical errors. The most common cause is `addon:link`
+# falling back to a plain copy on Windows (no symlink permission) and the
+# project still holding the older copy.
+func _flag_server_api_stale(missing: String) -> void:
+	if _server_api_stale:
+		return
+	_server_api_stale = true
+	set_process(false)
+	var msg := (
+		"Terravolt addon: loaded TerravoltMCPServer is missing `%s`. "
+		+ "Your `addons/terravolt_mcp/` copy is stale. "
+		+ "Re-run `npm run addon:link -- --force` (or replace the folder) and "
+		+ "then Project → Reload Current Project."
+	) % missing
+	push_error(msg)
+	if _logger:
+		_logger.log_force(
+			"error",
+			"addon",
+			"stale_addon_copy",
+			{"missing_method": missing, "hint": "addon:link --force then reload project"}
+		)
 
 
 func _on_settings_changed() -> void:
@@ -159,8 +192,12 @@ func _on_editor_tree_changed() -> void:
 		return
 	_tree_budget_ms = now
 
-	if _server and _server.peer_count_ready() > 0:
-
+	if _server_api_stale or _server == null:
+		return
+	if not _server.has_method(&"peer_count_ready") or not _server.has_method(&"notify_server_event"):
+		_flag_server_api_stale("peer_count_ready/notify_server_event")
+		return
+	if _server.peer_count_ready() > 0:
 		_server.notify_server_event("event.runtime.tree_changed", {"source": "SceneTree"})
 
 
@@ -190,7 +227,10 @@ func _define_settings() -> void:
 	_set_def("terravolt_mcp/server/heartbeat_timeout_ms", 45000)
 	_set_def("terravolt_mcp/server/heartbeat_mode", "control_frame")
 
-	_set_def("terravolt_mcp/server/max_peers", 1)
+	# Default bumped to 2 so a Cursor MCP client can coexist with a debug script,
+	# OR a fresh Cursor reconnect can take over without waiting for the prior
+	# socket to drain. Single-peer mode is still available by overriding to 1.
+	_set_def("terravolt_mcp/server/max_peers", 2)
 
 	_set_def("terravolt_mcp/server/max_frame_bytes", 4194304)
 
