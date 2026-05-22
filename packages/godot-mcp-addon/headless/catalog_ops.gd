@@ -427,4 +427,356 @@ static func headless_signal_dispatch(method: String, params: Dictionary) -> Dict
 		_:
 			return node_err(-33101, "protocol.method_not_found")
 
+
+static func headless_resource_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"resource.list":
+			var rows := _hr_walk_resources(str(params.get("class", "")), str(params.get("pattern", "**/*.{tres,res,gdshader,shader}")), bool(params.get("include_imported", false)))
+			return {"ok": true, "result": {"resources": rows, "total": rows.size()}}
+		"resource.get":
+			var path := resolve_path(str(params.get("path", "")))
+			var res := _hr_load_resource(path)
+			if res == null:
+				return node_err(-33800, "resource.path_not_found")
+			return {
+				"ok": true,
+				"result": {
+					"path": path,
+					"class": res.get_class(),
+					"properties": _hr_serialize_props(res, int(params.get("max_depth", 3))),
+				},
+			}
+		"resource.create":
+			var cp := resolve_path(str(params.get("path", "")))
+			if _hr_file_exists(cp):
+				return node_err(-33802, "resource.path_exists")
+			var cls := str(params.get("class", ""))
+			if not ClassDB.class_exists(cls):
+				return node_err(-33801, "resource.class_unknown")
+			var res: Resource = ClassDB.instantiate(cls) as Resource
+			if res == null:
+				return node_err(-33801, "resource.class_unknown")
+			_hr_apply_props(res, params.get("properties", {}) as Dictionary)
+			var dir := globalize(cp.get_base_dir())
+			if not DirAccess.dir_exists_absolute(dir):
+				DirAccess.make_dir_recursive_absolute(dir)
+			if ResourceSaver.save(res, cp) != OK:
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": {"created": true, "path": cp, "class": cls, "revision": str(Time.get_ticks_msec())}}
+		"resource.update":
+			var up := resolve_path(str(params.get("path", "")))
+			var ures := _hr_load_resource(up)
+			if ures == null:
+				return node_err(-33800, "resource.path_not_found")
+			var applied := _hr_apply_props(ures, params.get("patch", {}) as Dictionary)
+			if not bool(params.get("dry_run", false)):
+				ResourceSaver.save(ures, up)
+			return {"ok": true, "result": {"updated": true, "path": up, "applied": applied, "dry_run": bool(params.get("dry_run", false))}}
+		"resource.duplicate":
+			var src := resolve_path(str(params.get("source_path", "")))
+			var dst := resolve_path(str(params.get("target_path", "")))
+			var sres := _hr_load_resource(src)
+			if sres == null:
+				return node_err(-33800, "resource.path_not_found")
+			var dir2 := globalize(dst.get_base_dir())
+			if not DirAccess.dir_exists_absolute(dir2):
+				DirAccess.make_dir_recursive_absolute(dir2)
+			ResourceSaver.save(sres.duplicate(bool(params.get("deep", true))), dst)
+			return {"ok": true, "result": {"duplicated": true, "source_path": src, "target_path": dst}}
+		"resource.delete":
+			var dp := resolve_path(str(params.get("path", "")))
+			if not _hr_file_exists(dp):
+				return node_err(-33800, "resource.path_not_found")
+			DirAccess.remove_absolute(globalize(dp))
+			return {"ok": true, "result": {"deleted": true, "path": dp, "dependents_warned": []}}
+		"resource.export_json":
+			var ep := resolve_path(str(params.get("path", "")))
+			var ex := _hr_export_json(ep)
+			if ex.get("missing", false):
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": ex}
+		"resource.import_json":
+			var ir := _hr_import_json(str(params.get("target_path", "")), str(params.get("json_string", "")), bool(params.get("overwrite", false)))
+			if ir.get("schema_mismatch", false):
+				return node_err(-33805, "resource.json_schema_mismatch")
+			if not ir.get("ok", false):
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": {"imported": true, "path": ir.path, "class": ir.cls}}
+		"resource.get_dependencies":
+			var gp := resolve_path(str(params.get("path", "")))
+			if not _hr_file_exists(gp):
+				return node_err(-33800, "resource.path_not_found")
+			var deps: Array = []
+			for d in ResourceLoader.get_dependencies(gp):
+				deps.append({"path": str(d), "class": "", "weak": false})
+			return {"ok": true, "result": {"dependencies": deps, "cycles": []}}
+		"resource.get_dependents":
+			return {"ok": true, "result": {"dependents": [], "total": 0}}
+		"resource.validate":
+			var vp := resolve_path(str(params.get("path", "")))
+			var ok := _hr_load_resource(vp) != null
+			return {"ok": true, "result": {"ok": ok, "issues": [] if ok else [{"severity": "error", "code": "resource.path_not_found", "message": "missing"}]}}
+		"resource.diff":
+			var a := resolve_path(str(params.get("a", "")))
+			var ae := _hr_export_json(a)
+			if ae.get("missing", false):
+				return node_err(-33800, "resource.path_not_found")
+			var a_doc: Dictionary = JSON.parse_string(ae.get("json_string", "")) as Dictionary
+			var b_v: Variant = params.get("b")
+			var b_doc: Dictionary
+			if typeof(b_v) == TYPE_DICTIONARY and (b_v as Dictionary).has("json_string"):
+				b_doc = JSON.parse_string(str((b_v as Dictionary).get("json_string", ""))) as Dictionary
+			else:
+				var be := _hr_export_json(resolve_path(str(b_v)))
+				if be.get("missing", false):
+					return node_err(-33800, "resource.path_not_found")
+				b_doc = JSON.parse_string(be.get("json_string", "")) as Dictionary
+			var diff_arr := _hr_diff_props(a_doc.get("properties", {}), b_doc.get("properties", {}))
+			var summary := {"added": 0, "removed": 0, "changed": 0}
+			for entry in diff_arr:
+				match str(entry.get("op", "")):
+					"add":
+						summary.added += 1
+					"remove":
+						summary.removed += 1
+					"change":
+						summary.changed += 1
+			return {"ok": true, "result": {"diff": diff_arr, "summary": summary}}
+		"resource.rename", "resource.replace_references", "resource.set_uid":
+			return node_err(-33400, "editor.not_available")
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func headless_shader_dispatch(method: String, params: Dictionary) -> Dictionary:
+	match method:
+		"shader.list":
+			var shaders: Array = []
+			for row in _hr_walk_resources("", "**/*.{tres,res,gdshader,shader}", false):
+				var path := str(row.get("path", ""))
+				var lower := path.to_lower()
+				if lower.ends_with(".gdshader") or str(row.get("class", "")) == "ShaderMaterial":
+					shaders.append({"path": path, "kind": "code" if lower.ends_with(".gdshader") else "material"})
+			return {"ok": true, "result": {"shaders": shaders, "total": shaders.size()}}
+		"shader.read":
+			var path := resolve_path(str(params.get("path", "")))
+			var abs := globalize(path)
+			if not FileAccess.file_exists(abs):
+				return node_err(-33800, "resource.path_not_found")
+			return {"ok": true, "result": {"path": path, "language": "gdshader", "content": FileAccess.get_file_as_string(abs), "truncated": false}}
+		"shader.write":
+			var wp := resolve_path(str(params.get("path", "")))
+			var abs := globalize(wp)
+			var dir := abs.get_base_dir()
+			if not DirAccess.dir_exists_absolute(dir):
+				DirAccess.make_dir_recursive_absolute(dir)
+			FileAccess.open(abs, FileAccess.WRITE).store_string(str(params.get("content", "")))
+			return {"ok": true, "result": {"written": true, "path": wp}}
+		"shader.compile_check":
+			var cp := resolve_path(str(params.get("path", "")))
+			var cab := globalize(cp)
+			if not FileAccess.file_exists(cab):
+				return node_err(-33800, "resource.path_not_found")
+			var check := _hr_shader_compile_check(FileAccess.get_file_as_string(cab))
+			return {"ok": true, "result": check}
+		"shader.list_params":
+			var lp := resolve_path(str(params.get("path", "")))
+			var res := _hr_load_resource(lp)
+			if res == null:
+				return node_err(-33800, "resource.path_not_found")
+			var params_out: Array = []
+			if res is Shader:
+				for u in (res as Shader).get_shader_uniform_list():
+					params_out.append(u)
+			return {"ok": true, "result": {"params": params_out}}
+		"shader.set_material_params":
+			var mp := resolve_path(str(params.get("material_path", "")))
+			var mat := _hr_load_resource(mp)
+			if mat == null or not mat is ShaderMaterial:
+				return node_err(-33800, "resource.path_not_found")
+			for k in (params.get("params", {}) as Dictionary).keys():
+				(mat as ShaderMaterial).set_shader_parameter(str(k), _hr_json_to_variant((params.get("params", {}) as Dictionary)[k]))
+			ResourceSaver.save(mat, mp)
+			return {"ok": true, "result": {"updated": true}}
+		_:
+			return node_err(-33101, "protocol.method_not_found")
+
+
+static func _hr_shader_compile_check(code: String) -> Dictionary:
+	var probe := "uniform float __tv_compile_probe;"
+	var augmented := code
+	if not code.contains("__tv_compile_probe"):
+		var lines := code.split("\n")
+		var out: PackedStringArray = []
+		var inserted := false
+		for line in lines:
+			out.append(line)
+			if not inserted and line.strip_edges().begins_with("shader_type"):
+				out.append(probe)
+				inserted = true
+		if not inserted:
+			augmented = "shader_type canvas_item;\n%s\n%s" % [probe, code]
+		else:
+			augmented = "\n".join(out)
+	var shader := Shader.new()
+	shader.code = augmented
+	shader.get_rid()
+	var ok := not shader.get_shader_uniform_list().is_empty()
+	if ok:
+		return {"ok": true, "errors": [], "warnings": []}
+	return {"ok": false, "errors": [{"line": 1, "col": 1, "message": "Shader failed to compile"}], "warnings": []}
+
+
+static func _hr_resource_class(res_path: String, abs_full: String) -> String:
+	var lower := res_path.to_lower()
+	if lower.ends_with(".gdshader") or lower.ends_with(".shader"):
+		return "Shader"
+	if ResourceLoader.exists(res_path):
+		var res := ResourceLoader.load(res_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+		if res != null:
+			return res.get_class()
+	if not FileAccess.file_exists(abs_full):
+		return ""
+	if abs_full.to_lower().ends_with(".res"):
+		var bin := ResourceLoader.load(res_path, "", ResourceLoader.CACHE_MODE_IGNORE)
+		return bin.get_class() if bin != null else ""
+	var head := FileAccess.get_file_as_string(abs_full)
+	if head.length() > 256:
+		head = head.substr(0, 256)
+	var key := 'type="'
+	var i := head.find(key)
+	if i >= 0:
+		var start := i + key.length()
+		var end := head.find('"', start)
+		if end > start:
+			return head.substr(start, end - start)
+	return ""
+
+
+static func _hr_file_exists(path: String) -> bool:
+	return ResourceLoader.exists(path) or FileAccess.file_exists(globalize(path))
+
+
+static func _hr_load_resource(path: String) -> Resource:
+	if not _hr_file_exists(path):
+		return null
+	return ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE) as Resource
+
+
+static func _hr_walk_resources(class_filter: String, _pattern: String, include_imported: bool) -> Array:
+	var out: Array = []
+	var base := ProjectSettings.globalize_path("res://")
+	_hr_collect(base, base, include_imported, out)
+	if not class_filter.is_empty():
+		var filtered: Array = []
+		for row in out:
+			if str(row.get("class", "")) == class_filter:
+				filtered.append(row)
+		out = filtered
+	out.sort_custom(func(a, b): return str(a.get("path", "")) < str(b.get("path", "")))
+	return out
+
+
+static func _hr_collect(base: String, dir_abs: String, include_imported: bool, out: Array) -> void:
+	var da := DirAccess.open(dir_abs)
+	if da == null:
+		return
+	da.list_dir_begin()
+	while true:
+		var name := da.get_next()
+		if name.is_empty():
+			break
+		if name.begins_with("."):
+			continue
+		var full := dir_abs.path_join(name)
+		if da.current_is_dir():
+			_hr_collect(base, full, include_imported, out)
+			continue
+		var lower := name.to_lower()
+		if not (lower.ends_with(".tres") or lower.ends_with(".res") or lower.ends_with(".gdshader") or lower.ends_with(".shader")):
+			continue
+		var rel := full.substr(base.length()).replace("\\", "/").lstrip("/")
+		var res_path := "res://%s" % rel
+		var cls := _hr_resource_class(res_path, full)
+		out.append({"path": res_path, "class": cls, "size_bytes": FileAccess.get_file_as_bytes(full).size()})
+	da.list_dir_end()
+
+
+static func _hr_json_to_variant(v: Variant) -> Variant:
+	if v == null or typeof(v) != TYPE_DICTIONARY:
+		return v
+	var d := v as Dictionary
+	if d.has("__tv") and str(d.get("__tv")) == "Color":
+		return Color(float(d.get("r", 0)), float(d.get("g", 0)), float(d.get("b", 0)), float(d.get("a", 1)))
+	return d
+
+
+static func _hr_apply_props(obj: Object, patch: Dictionary) -> Dictionary:
+	var applied: Dictionary = {}
+	for k in patch.keys():
+		var key := str(k)
+		var before = obj.get(key)
+		var after = _hr_json_to_variant(patch[k])
+		obj.set(key, after)
+		applied[key] = {"before": before, "after": after}
+	return applied
+
+
+static func _hr_serialize_props(obj: Object, _max_depth: int) -> Dictionary:
+	var out: Dictionary = {}
+	var names: Array = []
+	for pi in obj.get_property_list():
+		if typeof(pi) != TYPE_DICTIONARY:
+			continue
+		var n := str((pi as Dictionary).get("name", ""))
+		if n.is_empty() or n.begins_with("_"):
+			continue
+		names.append(n)
+	names.sort()
+	for n in names:
+		out[n] = obj.get(n)
+	return out
+
+
+static func _hr_export_json(path: String) -> Dictionary:
+	var res := _hr_load_resource(path)
+	if res == null:
+		return {"missing": true}
+	var payload := {"schema_version": "1.0", "path": path, "class": res.get_class(), "properties": _hr_serialize_props(res, 3)}
+	var text := JSON.stringify(payload, "\t")
+	return {"json_string": text, "hash": text.sha256_text(), "schema_version": "1.0"}
+
+
+static func _hr_import_json(target_path: String, json_string: String, overwrite: bool) -> Dictionary:
+	var parsed: Variant = JSON.parse_string(json_string)
+	if parsed == null or typeof(parsed) != TYPE_DICTIONARY:
+		return {"schema_mismatch": true}
+	var doc := parsed as Dictionary
+	if str(doc.get("schema_version", "")) != "1.0":
+		return {"schema_mismatch": true}
+	var path := resolve_path(target_path)
+	if _hr_file_exists(path) and not overwrite:
+		return {"ok": false}
+	var cls := str(doc.get("class", "Resource"))
+	var res: Resource = ClassDB.instantiate(cls) as Resource
+	_hr_apply_props(res, doc.get("properties", {}) as Dictionary)
+	var dir := globalize(path.get_base_dir())
+	if not DirAccess.dir_exists_absolute(dir):
+		DirAccess.make_dir_recursive_absolute(dir)
+	ResourceSaver.save(res, path)
+	return {"ok": true, "path": path, "cls": cls}
+
+
+static func _hr_diff_props(a: Dictionary, b: Dictionary) -> Array:
+	var diff: Array = []
+	for k in a.keys():
+		if not b.has(k):
+			diff.append({"path": str(k), "op": "remove", "before": a[k]})
+		elif JSON.stringify(a[k]) != JSON.stringify(b[k]):
+			diff.append({"path": str(k), "op": "change", "before": a[k], "after": b[k]})
+	for k in b.keys():
+		if not a.has(k):
+			diff.append({"path": str(k), "op": "add", "after": b[k]})
+	return diff
+
 #endregion

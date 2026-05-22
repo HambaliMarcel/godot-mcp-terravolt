@@ -316,6 +316,87 @@
       "since": "0.3.0"
     },
     {
+      "code": -33800,
+      "symbol": "resource.path_not_found",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Verify the resource path exists under res://.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33801,
+      "symbol": "resource.class_unknown",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use a registered Godot Resource class name.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33802,
+      "symbol": "resource.path_exists",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Pick a new path or pass overwrite=true.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33803,
+      "symbol": "resource.property_unknown",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Check Object.get_property_list() for valid keys.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33804,
+      "symbol": "resource.value_type_mismatch",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Property value type does not match the resource field.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33805,
+      "symbol": "resource.json_schema_mismatch",
+      "category": "resource",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Export JSON must match schema_version from resource.export_json.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33806,
+      "symbol": "shader.compile_timeout",
+      "category": "shader",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Shader compile exceeded shader_compile_timeout_ms.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33807,
+      "symbol": "shader.param_unknown",
+      "category": "shader",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Use shader.list_params to discover valid uniform names.",
+      "since": "0.6.0"
+    },
+    {
+      "code": -33808,
+      "symbol": "shader.param_type_mismatch",
+      "category": "shader",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Parameter value type does not match the shader uniform.",
+      "since": "0.6.0"
+    },
+    {
       "code": -33810,
       "symbol": "headless.binary_missing",
       "category": "headless",

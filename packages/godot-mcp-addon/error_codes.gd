@@ -78,6 +78,18 @@ const SIGNAL_METHOD_UNKNOWN := -33703
 const PROJECT_SETTING_LOCKED := -33590
 #endregion
 
+#region resource / shader (task 14)
+const RESOURCE_PATH_NOT_FOUND := -33800
+const RESOURCE_CLASS_UNKNOWN := -33801
+const RESOURCE_PATH_EXISTS := -33802
+const RESOURCE_PROPERTY_UNKNOWN := -33803
+const RESOURCE_VALUE_TYPE_MISMATCH := -33804
+const RESOURCE_JSON_SCHEMA_MISMATCH := -33805
+const SHADER_COMPILE_TIMEOUT := -33806
+const SHADER_PARAM_UNKNOWN := -33807
+const SHADER_PARAM_TYPE_MISMATCH := -33808
+#endregion
+
 #region headless (mirror packages/shared/errors/registry.json + docs/tasklist/07)
 const HEADLESS_BINARY_MISSING := -33810
 const HEADLESS_NO_PROJECT := -33811
@@ -151,6 +163,15 @@ const _CODE_TO_SYMBOL := {
 	SIGNAL_TARGET_UNKNOWN: "signal.target_unknown",
 	SIGNAL_METHOD_UNKNOWN: "signal.method_unknown",
 	RESOURCE_DEPENDENCY_BLOCK: "resource.dependency_block",
+	RESOURCE_PATH_NOT_FOUND: "resource.path_not_found",
+	RESOURCE_CLASS_UNKNOWN: "resource.class_unknown",
+	RESOURCE_PATH_EXISTS: "resource.path_exists",
+	RESOURCE_PROPERTY_UNKNOWN: "resource.property_unknown",
+	RESOURCE_VALUE_TYPE_MISMATCH: "resource.value_type_mismatch",
+	RESOURCE_JSON_SCHEMA_MISMATCH: "resource.json_schema_mismatch",
+	SHADER_COMPILE_TIMEOUT: "shader.compile_timeout",
+	SHADER_PARAM_UNKNOWN: "shader.param_unknown",
+	SHADER_PARAM_TYPE_MISMATCH: "shader.param_type_mismatch",
 	PROJECT_SETTING_LOCKED: "project.setting_locked",
 	HEADLESS_BINARY_MISSING: "headless.binary_missing",
 	HEADLESS_NO_PROJECT: "headless.no_project",

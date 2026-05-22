@@ -159,7 +159,7 @@ func _dispatch(line: String) -> String:
 				"registry_sha256": _registry_sha256,
 				"godot_version": gv.get("string", JSON.stringify(gv)),
 				"build_mode": "headless_tcp",
-				"supported_methods_count": 34,
+				"supported_methods_count": 55,
 			}
 			return JSON.stringify(_wr_ok(rid, info))
 		"server.list_methods":
@@ -242,6 +242,13 @@ func _dispatch(line: String) -> String:
 		"signal.connect", "signal.disconnect", "signal.bulk_connect", "signal.bulk_disconnect":
 			var sg := _err(-32603, "editor.no_active_scene", -33580, "Signal wiring requires active scene in editor.", {})
 			return JSON.stringify(_wr_err(rid, sg))
+		"resource.list", "resource.get", "resource.create", "resource.update", "resource.duplicate", "resource.delete", "resource.export_json", "resource.import_json", "resource.get_dependencies", "resource.get_dependents", "resource.validate", "resource.diff":
+			return JSON.stringify(_headless_resource(rid, method, pd))
+		"resource.rename", "resource.replace_references", "resource.set_uid":
+			var re := _err(-32603, "editor.not_available", _EDITOR_NOT_AVAILABLE, "Editor required for this resource method.", {})
+			return JSON.stringify(_wr_err(rid, re))
+		"shader.list", "shader.read", "shader.write", "shader.compile_check", "shader.list_params", "shader.set_material_params":
+			return JSON.stringify(_headless_shader(rid, method, pd))
 		"scene.get_tree", "scene.get_subtree", "scene.find_in_tree", "scene.instantiate", "scene.pack", "scene.replace":
 			var na := _err(-32603, "editor.no_active_scene", -33580, "No active scene in headless v1.", {})
 			return JSON.stringify(_wr_err(rid, na))
@@ -319,5 +326,25 @@ func _headless_catalog(rid: Variant, method: String, pd: Dictionary) -> Dictiona
 		return _wr_err(
 			rid,
 			_err(-32603, str(g.get("message", "catalog.error")), int(g.get("code", -33101)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_resource(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_resource_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "resource.error")), int(g.get("code", -33800)), "", {})
+		)
+	return _wr_ok(rid, g.get("result", {}))
+
+
+func _headless_shader(rid: Variant, method: String, pd: Dictionary) -> Dictionary:
+	var g := _Ops.headless_shader_dispatch(method, pd)
+	if not g.get("ok", false):
+		return _wr_err(
+			rid,
+			_err(-32603, str(g.get("message", "shader.error")), int(g.get("code", -33800)), "", {})
 		)
 	return _wr_ok(rid, g.get("result", {}))

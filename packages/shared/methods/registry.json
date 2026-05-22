@@ -1,5 +1,5 @@
 {
-  "catalog_version": "0.5.0",
+  "catalog_version": "0.6.0",
   "methods": [
     {
       "method": "ping",
@@ -2221,6 +2221,808 @@
       "safe": true,
       "mutates": false,
       "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.list",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "List resource files by class or glob.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "class": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "include_imported": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.list",
+        "title": "resource.list",
+        "description": "List resource files by class or glob."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.get",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Read resource properties (envelope-aware for large blobs).",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "include_subresources": {
+            "type": "boolean"
+          },
+          "max_depth": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.get",
+        "title": "resource.get",
+        "description": "Read resource properties (envelope-aware for large blobs)."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.create",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Create a new resource and save it.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "class"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "class": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object"
+          },
+          "take_over_path": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.create",
+        "title": "resource.create",
+        "description": "Create a new resource and save it."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.class_unknown", "resource.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.update",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Patch properties on an existing resource.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "patch"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "patch": {
+            "type": "object"
+          },
+          "if_match": {},
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.update",
+        "title": "resource.update",
+        "description": "Patch properties on an existing resource."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "resource.path_not_found",
+        "resource.property_unknown",
+        "resource.value_type_mismatch",
+        "protocol.idempotency_conflict"
+      ],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.duplicate",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Duplicate a resource to a new path.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["source_path", "target_path"],
+        "properties": {
+          "source_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "target_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "deep": {
+            "type": "boolean"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.duplicate",
+        "title": "resource.duplicate",
+        "description": "Duplicate a resource to a new path."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.delete",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Delete a resource file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "force": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.delete",
+        "title": "resource.delete",
+        "description": "Delete a resource file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found", "resource.dependency_block"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.rename",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Rename or move a resource with optional reference rewrites.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "update_references": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.rename",
+        "title": "resource.rename",
+        "description": "Rename or move a resource with optional reference rewrites."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found", "resource.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.get_dependencies",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "List outbound dependencies of a resource.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "deep": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.get_dependencies",
+        "title": "resource.get_dependencies",
+        "description": "List outbound dependencies of a resource."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.get_dependents",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Reverse-lookup dependents of a resource.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "folder": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.get_dependents",
+        "title": "resource.get_dependents",
+        "description": "Reverse-lookup dependents of a resource."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.replace_references",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Rewrite project-wide references from one path to another.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["from_path", "to_path"],
+        "properties": {
+          "from_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "to_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "dry_run": {
+            "type": "boolean"
+          },
+          "exclude": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.replace_references",
+        "title": "resource.replace_references",
+        "description": "Rewrite project-wide references from one path to another."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.export_json",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Export a resource as deterministic JSON.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "include_subresources": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.export_json",
+        "title": "resource.export_json",
+        "description": "Export a resource as deterministic JSON."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.import_json",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Import a resource from export JSON.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["target_path", "json_string"],
+        "properties": {
+          "target_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "json_string": {
+            "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.import_json",
+        "title": "resource.import_json",
+        "description": "Import a resource from export JSON."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.json_schema_mismatch", "resource.path_exists"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.set_uid",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Assign or rotate a resource UID.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.set_uid",
+        "title": "resource.set_uid",
+        "description": "Assign or rotate a resource UID."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.validate",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Validate a resource file loads cleanly.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.validate",
+        "title": "resource.validate",
+        "description": "Validate a resource file loads cleanly."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "resource.diff",
+      "category": "resource",
+      "since": "0.6.0",
+      "description": "Structured diff between two resources or JSON.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["a", "b"],
+        "properties": {
+          "a": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "b": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "resource.diff",
+        "title": "resource.diff",
+        "description": "Structured diff between two resources or JSON."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.list",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "List shader code files and ShaderMaterial resources.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.list",
+        "title": "shader.list",
+        "description": "List shader code files and ShaderMaterial resources."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": [],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.read",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "Read shader source from a .gdshader file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "range": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.read",
+        "title": "shader.read",
+        "description": "Read shader source from a .gdshader file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.write",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "Create or overwrite a .gdshader file.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path", "content"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "content": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.write",
+        "title": "shader.write",
+        "description": "Create or overwrite a .gdshader file."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": ["resource.path_exists", "protocol.idempotency_conflict"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.compile_check",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "Validate a shader compiles.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.compile_check",
+        "title": "shader.compile_check",
+        "description": "Validate a shader compiles."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found", "shader.compile_timeout"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.list_params",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "Enumerate shader uniform parameters.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.list_params",
+        "title": "shader.list_params",
+        "description": "Enumerate shader uniform parameters."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": true,
+      "mutates": false,
+      "errorCodes": ["resource.path_not_found"],
+      "examples": [],
+      "headlessFallback": true
+    },
+    {
+      "method": "shader.set_material_params",
+      "category": "shader",
+      "since": "0.6.0",
+      "description": "Set shader parameters on a ShaderMaterial.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["material_path", "params"],
+        "properties": {
+          "material_path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(res://|user://|/|[A-Za-z]:)"
+          },
+          "params": {
+            "type": "object"
+          },
+          "if_match": {}
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
+      "mcpTool": {
+        "name": "shader.set_material_params",
+        "title": "shader.set_material_params",
+        "description": "Set shader parameters on a ShaderMaterial."
+      },
+      "requiresEditor": false,
+      "requiresRuntime": false,
+      "safe": false,
+      "mutates": true,
+      "errorCodes": [
+        "resource.path_not_found",
+        "shader.param_unknown",
+        "shader.param_type_mismatch",
+        "protocol.idempotency_conflict"
+      ],
       "examples": [],
       "headlessFallback": true
     }
