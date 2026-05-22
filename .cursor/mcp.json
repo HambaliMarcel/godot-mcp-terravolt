@@ -3,6 +3,14 @@
     "gitnexus": {
       "command": "npx",
       "args": ["-y", "gitnexus@latest", "mcp"]
+    },
+    "terravolt-godot-mcp": {
+      "command": "node",
+      "args": ["H:/Godot MCP Marcel/packages/mcp-server/dist/index.js"],
+      "env": {
+        "TERRAVOLT_GODOT_BINARY": "C:/Users/marce/AppData/Local/Programs/Godot/Godot_v4.6.3-stable_mono_win64/Godot_v4.6.3-stable_mono_win64_console.exe",
+        "TERRAVOLT_PROJECT_PATH": "H:/Laminer/laminer"
+      }
     }
   }
 }
