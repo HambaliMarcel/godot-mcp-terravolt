@@ -2,7 +2,7 @@
 name: Bug report
 description: Something does not work as expected
 labels: []
-title: '[bug]: '
+title: "[bug]: "
 ---
 
 ## Summary

@@ -2,7 +2,10 @@
 
 ## Removing Cursor Agent from commit metadata (`cursoragent@cursor.com`)
 
-Cursor can append **`Co-authored-by:`** trailers such as **`Co-authored-by: Cursor <cursoragent@cursor.com>`**. GitHub shows these as commit co-authors. This repo recommends **stripping those lines** so history only reflects **human** identities you choose in **`git`** config.
+Cursor can append **`Co-authored-by:`** trailers such as
+**`Co-authored-by: Cursor <cursoragent@cursor.com>`**. GitHub shows these as commit co-authors. This
+repo recommends **stripping those lines** so history only reflects **human** identities you choose
+in **`git`** config.
 
 ### Future commits
 
@@ -12,13 +15,18 @@ Cursor can append **`Co-authored-by:`** trailers such as **`Co-authored-by: Curs
    git config core.hooksPath .githooks
    ```
 
-2. In **Cursor / VS Code**, disable automated Git **co-author** / **generated commit message additions** tied to Cursor Agent if your build exposes that toggle (setting names vary by version).
+2. In **Cursor / VS Code**, disable automated Git **co-author** / **generated commit message
+   additions** tied to Cursor Agent if your build exposes that toggle (setting names vary by
+   version).
 
-The **`.githooks/commit-msg`** hook normalizes CRLF line endings then drops any **`Co-authored-by:`** line that mentions **`cursoragent@cursor.com`**.
+The **`.githooks/commit-msg`** hook normalizes CRLF line endings then drops any
+**`Co-authored-by:`** line that mentions **`cursoragent@cursor.com`**.
 
 ### Fixing history already on GitHub
 
-If trailers already landed on **`origin`** (e.g. `origin/master`), you must **rewrite commits** locally and **force-push** (coordinate with collaborators—everyone must **fetch** + **hard reset** to the new tip).
+If trailers already landed on **`origin`** (e.g. `origin/master`), you must **rewrite commits**
+locally and **force-push** (coordinate with collaborators—everyone must **fetch** + **hard reset**
+to the new tip).
 
 Recorded helper (`tr` strips CR so patterns match reliably):
 

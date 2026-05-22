@@ -8,13 +8,13 @@
 
 ## What changed
 
-- 
-- 
+-
+-
 
 ## Test plan
 
-- [ ] 
-- [ ] 
+- [ ]
+- [ ]
 
 ## Intellectual / codegen
 

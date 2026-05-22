@@ -6,7 +6,10 @@ Strict, linear execution plan from **zero** to **production-ready** MCP behavior
 
 ## Fundamentals (pre–Phase 1)
 
-Complete [**`00-fundamentals-contract.md`**](00-fundamentals-contract.md) in-repo: topology, JSON-RPC discipline, constants (**`6505`**, **`user://mcp_log.txt`**), package paths, and phase gates. Closing fundamentals does **not** require transport code — only locked contracts that Phase 1 will implement.
+Complete [**`00-fundamentals-contract.md`**](00-fundamentals-contract.md) in-repo: topology,
+JSON-RPC discipline, constants (**`6505`**, **`user://mcp_log.txt`**), package paths, and phase
+gates. Closing fundamentals does **not** require transport code — only locked contracts that Phase 1
+will implement.
 
 ## Phase 1: Godot plugin foundation
 
@@ -37,4 +40,5 @@ Complete [**`00-fundamentals-contract.md`**](00-fundamentals-contract.md) in-rep
 ## Directives for implementers
 
 - Do not enter the next phase until the **current** transport layer is verified end-to-end.
-- Prefer **EditorInterface** (and related editor APIs) over hand-editing `.tscn` text to avoid corruption.
+- Prefer **EditorInterface** (and related editor APIs) over hand-editing `.tscn` text to avoid
+  corruption.

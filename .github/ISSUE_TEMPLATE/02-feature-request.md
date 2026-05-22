@@ -2,7 +2,7 @@
 name: Feature request
 description: Propose something new or an improvement
 labels: []
-title: '[feat]: '
+title: "[feat]: "
 ---
 
 ## Problem / motivation
