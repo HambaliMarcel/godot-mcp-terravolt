@@ -18,6 +18,19 @@ export const ToolsDescribeSchema = z
 /** Open object for MCP args before AJV validates against daemon `inputSchema` from the registry. */
 export const OpenParamsSchema = z.record(z.string(), z.unknown());
 
+export const ToolsBottlenecksSchema = z
+  .object({
+    topN: z.number().int().min(1).max(100).optional(),
+  })
+  .strict();
+
+export const ContextFetchRawSchema = z
+  .object({
+    method: z.string().min(1),
+    params: z.record(z.string(), z.unknown()).optional(),
+  })
+  .strict();
+
 export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
   {
     kind: "local",
@@ -29,7 +42,6 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
     mutates: false,
     requiresEditor: false,
     requiresRuntime: false,
-    daemonMethod: undefined,
     inputSchemaJson: {
       type: "object",
       properties: {
@@ -50,7 +62,6 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
     mutates: false,
     requiresEditor: false,
     requiresRuntime: false,
-    daemonMethod: undefined,
     inputSchemaJson: {
       type: "object",
       required: ["name"],
@@ -69,8 +80,45 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
     mutates: false,
     requiresEditor: false,
     requiresRuntime: false,
-    daemonMethod: undefined,
     inputSchemaJson: { type: "object", additionalProperties: false },
+    outputSchemaJson: { type: "object" },
+  },
+  {
+    kind: "local",
+    name: "tools.bottlenecks",
+    title: "tools.bottlenecks",
+    description: "§09 — tools ranked by rolling average latency.",
+    category: "tools",
+    safe: true,
+    mutates: false,
+    requiresEditor: false,
+    requiresRuntime: false,
+    inputSchemaJson: {
+      type: "object",
+      properties: { topN: { type: "integer", minimum: 1, maximum: 100 } },
+      additionalProperties: false,
+    },
+    outputSchemaJson: { type: "object" },
+  },
+  {
+    kind: "local",
+    name: "context.fetch_raw",
+    title: "context.fetch_raw",
+    description: "§09 — execute a JSON-RPC method on the daemon (pointer sugar; no envelope yet).",
+    category: "tools",
+    safe: true,
+    mutates: false,
+    requiresEditor: false,
+    requiresRuntime: false,
+    inputSchemaJson: {
+      type: "object",
+      required: ["method"],
+      properties: {
+        method: { type: "string", minLength: 1 },
+        params: { type: "object" },
+      },
+      additionalProperties: false,
+    },
     outputSchemaJson: { type: "object" },
   },
   {
@@ -83,13 +131,18 @@ export const ROUTER_ONLY_TOOLS: RegisteredRouterTool[] = [
     mutates: false,
     requiresEditor: false,
     requiresRuntime: false,
-    daemonMethod: undefined,
     inputSchemaJson: { type: "object", additionalProperties: false },
     outputSchemaJson: { type: "object" },
   },
 ];
 
-export type RouterOnlyToolName = "tools.list" | "tools.describe" | "tools.metrics" | "tools.health";
+export type RouterOnlyToolName =
+  | "tools.list"
+  | "tools.describe"
+  | "tools.metrics"
+  | "tools.health"
+  | "tools.bottlenecks"
+  | "context.fetch_raw";
 
 export function routerOnlyTool(name: RouterOnlyToolName): RegisteredRouterTool {
   const d = ROUTER_ONLY_TOOLS.find((t) => t.name === name);

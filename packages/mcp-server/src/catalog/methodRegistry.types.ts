@@ -20,6 +20,7 @@ export type MethodRegistryEntry = {
   mutates: boolean;
   errorCodes: unknown[];
   examples: unknown[];
+  headlessFallback?: boolean;
 };
 
 export type MethodRegistryFile = {

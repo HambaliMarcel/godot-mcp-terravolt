@@ -1,4 +1,4 @@
-import { parseArgs } from "node:util";
+﻿import { parseArgs } from "node:util";
 
 export type LogLevel = "debug" | "info" | "warn" | "error";
 
@@ -16,6 +16,13 @@ export type Config = {
   readonly token: string | undefined;
   readonly notificationFilter: "all" | "events";
   readonly packageVersion: string;
+  readonly godotBinaryPath: string | undefined;
+  readonly godotBinaryEnv: string | undefined;
+  readonly projectPath: string | undefined;
+  readonly headlessBootTimeoutMs: number;
+  readonly headlessOpTimeoutMs: number;
+  readonly metricsWindowSec: number;
+  readonly includeAutoHealHints: boolean;
 };
 
 function envString(name: string): string | undefined {
@@ -63,6 +70,12 @@ export function loadConfig(argv: string[], packageVersion: string): ParseResult 
       "max-payload-bytes": { type: "string" },
       token: { type: "string" },
       notifications: { type: "string" },
+      "godot-binary": { type: "string" },
+      project: { type: "string" },
+      "headless-boot-timeout-ms": { type: "string" },
+      "headless-op-timeout-ms": { type: "string" },
+      "metrics-window-sec": { type: "string" },
+      "disable-auto-heal": { type: "boolean" },
     },
   });
 
@@ -93,6 +106,22 @@ export function loadConfig(argv: string[], packageVersion: string): ParseResult 
     token: v["token"] ?? envString("TERRAVOLT_TOKEN"),
     notificationFilter,
     packageVersion,
+    godotBinaryPath: v["godot-binary"],
+    godotBinaryEnv: envString("TERRAVOLT_GODOT_BINARY"),
+    projectPath: v.project ?? envString("TERRAVOLT_PROJECT_PATH"),
+    headlessBootTimeoutMs: parseIntOpt(
+      v["headless-boot-timeout-ms"] ?? envString("TERRAVOLT_HEADLESS_BOOT_TIMEOUT_MS"),
+      envInt("TERRAVOLT_HEADLESS_BOOT_TIMEOUT_MS", 30_000),
+    ),
+    headlessOpTimeoutMs: parseIntOpt(
+      v["headless-op-timeout-ms"] ?? envString("TERRAVOLT_HEADLESS_OP_TIMEOUT_MS"),
+      envInt("TERRAVOLT_HEADLESS_OP_TIMEOUT_MS", 60_000),
+    ),
+    metricsWindowSec: parseIntOpt(
+      v["metrics-window-sec"] ?? envString("TERRAVOLT_METRICS_WINDOW_SEC"),
+      envInt("TERRAVOLT_METRICS_WINDOW_SEC", 300),
+    ),
+    includeAutoHealHints: v["disable-auto-heal"] !== true,
   };
 
   if (godotPort < 1 || godotPort > 65535) {

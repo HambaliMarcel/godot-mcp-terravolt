@@ -2,14 +2,23 @@ import type { ValidateFunction } from "ajv";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import type { MethodRegistryFile } from "../catalog/methodRegistry.types.js";
+import type { HeadlessCoordinator } from "../headless/headlessCoordinator.js";
 import { GodotWsClient } from "../transport/godot_ws_client.js";
 import {
+  metricsBottleneckReport,
   metricsRecordToolEnd,
   metricsRecordToolStart,
   metricsSnapshot,
 } from "../telemetry/metrics.js";
 import { RouterToolCatalog } from "../tools/registry.js";
-import { ToolsDescribeSchema, ToolsListSchema, routerOnlyTool } from "./local_router_tool_defs.js";
+import {
+  ContextFetchRawSchema,
+  ToolsBottlenecksSchema,
+  ToolsDescribeSchema,
+  ToolsListSchema,
+  routerOnlyTool,
+} from "./local_router_tool_defs.js";
+
 import { registerToolCompat } from "./register_tool_compat.js";
 import {
   errStructured,
@@ -28,8 +37,9 @@ export function registerRouterOnlyTools(args: {
   routerRegistrySha: string;
   godot: GodotWsClient;
   ajvCompileSmoke: ValidateFn | null;
+  headless?: HeadlessCoordinator;
 }): void {
-  const { mcp, routeCatalog, jsonRegistry, routerRegistrySha, godot, ajvCompileSmoke } = args;
+  const { mcp, routeCatalog, jsonRegistry, routerRegistrySha, godot, ajvCompileSmoke, headless } = args;
 
   registerToolCompat(
     mcp,
@@ -107,6 +117,51 @@ export function registerRouterOnlyTools(args: {
 
   registerToolCompat(
     mcp,
+    "tools.bottlenecks",
+    {
+      title: routerOnlyTool("tools.bottlenecks").title,
+      description: routerOnlyTool("tools.bottlenecks").description,
+      inputSchema: ToolsBottlenecksSchema,
+    },
+    async (raw: unknown, _extra: { signal: AbortSignal }) => {
+      metricsRecordToolStart("tools.bottlenecks");
+      const t0 = Date.now();
+      const p = ToolsBottlenecksSchema.parse(raw);
+      const topN = p.topN ?? 10;
+      const report = metricsBottleneckReport(topN);
+      const latency = Date.now() - t0;
+      metricsRecordToolEnd("tools.bottlenecks", true, latency);
+      return okStructured(successEnvelope("tools.bottlenecks", "local", latency, report));
+    },
+  );
+
+  registerToolCompat(
+    mcp,
+    "context.fetch_raw",
+    {
+      title: routerOnlyTool("context.fetch_raw").title,
+      description: routerOnlyTool("context.fetch_raw").description,
+      inputSchema: ContextFetchRawSchema,
+    },
+    async (raw: unknown, extra: { signal: AbortSignal }) => {
+      metricsRecordToolStart("context.fetch_raw");
+      const t0 = Date.now();
+      const p = ContextFetchRawSchema.parse(raw);
+      try {
+        const res = await godot.request(p.method, p.params ?? {}, { signal: extra.signal });
+        const latency = Date.now() - t0;
+        metricsRecordToolEnd("context.fetch_raw", true, latency);
+        return okStructured(successEnvelope("context.fetch_raw", p.method, latency, res));
+      } catch (err: unknown) {
+        const latency = Date.now() - t0;
+        metricsRecordToolEnd("context.fetch_raw", false, latency);
+        return errStructured(err instanceof Error ? err.message : String(err));
+      }
+    },
+  );
+
+  registerToolCompat(
+    mcp,
     "tools.health",
     {
       title: routerOnlyTool("tools.health").title,
@@ -138,6 +193,21 @@ export function registerRouterOnlyTools(args: {
         daemonOk = false;
       }
 
+      let headlessGodotResolvable = false;
+      try {
+        headless?.godotExeOrThrow();
+        headlessGodotResolvable = true;
+      } catch {
+        headlessGodotResolvable = false;
+      }
+      let headlessDriverGd: string | null = null;
+      try {
+        headlessDriverGd = headless?.resolveDriverPath() ?? null;
+      } catch {
+        headlessDriverGd = null;
+      }
+      const headlessTcpAlive = Boolean((headless?.status() as Record<string, unknown> | undefined)?.alive);
+
       const hashMatch =
         daemonOk &&
         remoteSha !== undefined &&
@@ -162,6 +232,9 @@ export function registerRouterOnlyTools(args: {
             daemon_registry_sha256: remoteSha ?? null,
             protocol_catalog_match: hashMatch,
             protocol_catalog_mismatch_detected: mismatchFlag,
+            headless_godot_executable_resolvable: headlessGodotResolvable,
+            headless_driver_gd_absolute: headlessDriverGd,
+            headless_tcp_session_alive: headlessTcpAlive,
             pass,
           },
         }),

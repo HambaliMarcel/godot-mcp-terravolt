@@ -1,7 +1,9 @@
-import type { ErrorObject } from "ajv";
+﻿import type { ErrorObject } from "ajv";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import { DaemonJsonRpcError, TRANSPORT_NOT_CONNECTED } from "../diagnostics/errors.js";
+import { loadAutoHealHintsBundle, resolveAutoHeal } from "../diagnostics/autoheal_hints.js";
+import type { HeadlessCoordinator } from "../headless/headlessCoordinator.js";
 import { GodotWsClient } from "../transport/godot_ws_client.js";
 import { metricsRecordToolEnd, metricsRecordToolStart } from "../telemetry/metrics.js";
 import type { RegisteredRouterTool } from "../tools/registry.js";
@@ -22,12 +24,14 @@ export type ValidateDaemonFn = (
 ) => { ok: true } | { ok: false; errors: ErrorObject[] | undefined | null };
 
 export function registerDaemonBridgedTools(args: {
+  headless?: HeadlessCoordinator;
   mcp: McpServer;
   godot: GodotWsClient;
   routeCatalog: RouterToolCatalog;
   validateDaemonInput: ValidateDaemonFn;
+  includeAutoHealHints: boolean;
 }): void {
-  const { mcp, godot, validateDaemonInput, routeCatalog } = args;
+  const { headless, mcp, godot, validateDaemonInput, routeCatalog, includeAutoHealHints } = args;
 
   const emitted = new Set<string>();
   const rows = [...routeCatalog.filter({})];
@@ -36,8 +40,23 @@ export function registerDaemonBridgedTools(args: {
     if (emitted.has(row.name)) continue;
     emitted.add(row.name);
 
-    registerDaemonRow(mcp, godot, row, row.daemonMethod, validateDaemonInput);
+    registerDaemonRow(
+      mcp,
+      godot,
+      row,
+      row.daemonMethod,
+      validateDaemonInput,
+      headless,
+      includeAutoHealHints,
+    );
   }
+}
+
+function transportDisconnectedPayload(includeAutoHealHints: boolean): Record<string, unknown> {
+  const base = disconnectedHint();
+  if (!includeAutoHealHints) return base;
+  const ah = loadAutoHealHintsBundle().bySymbol[TRANSPORT_NOT_CONNECTED];
+  return ah !== undefined ? { ...base, autoHeal: ah } : base;
 }
 
 function registerDaemonRow(
@@ -46,6 +65,8 @@ function registerDaemonRow(
   meta: RegisteredRouterTool,
   daemonMethod: string,
   validateDaemonInput: ValidateDaemonFn,
+  headless: HeadlessCoordinator | undefined,
+  includeAutoHealHints: boolean,
 ): void {
   registerToolCompat(
     mcp,
@@ -78,19 +99,14 @@ function registerDaemonRow(
         });
       }
 
-      try {
-        const raw = await godot.request(daemonMethod, paramsObj, {
-          signal: extra.signal,
-        });
+      const finishOk = (raw: unknown, route: string): ReturnType<typeof okStructured> => {
         const latencyMs = Date.now() - t0;
         metricsRecordToolEnd(meta.name, true, latencyMs);
-
         if (meta.name === "ping") {
-          const rr =
-            typeof raw === "object" && raw !== null ? (raw as Record<string, unknown>) : {};
+          const rr = typeof raw === "object" && raw !== null ? (raw as Record<string, unknown>) : {};
           const tsRaw = rr["ts"];
           const daemonTs = typeof tsRaw === "number" ? tsRaw : Number.NaN;
-          const body = successEnvelope(meta.name, daemonMethod, latencyMs, {
+          const body = successEnvelope(meta.name, route, latencyMs, {
             ok: true,
             daemonTs: Number.isFinite(daemonTs) ? daemonTs : undefined,
             roundTripMs: latencyMs,
@@ -98,22 +114,48 @@ function registerDaemonRow(
           });
           return okStructured(body);
         }
+        return okStructured(successEnvelope(meta.name, route, latencyMs, raw));
+      };
 
-        return okStructured(successEnvelope(meta.name, daemonMethod, latencyMs, raw));
+      try {
+        const raw = await godot.request(daemonMethod, paramsObj, {
+          signal: extra.signal,
+        });
+        return finishOk(raw, daemonMethod);
       } catch (error: unknown) {
-        const latencyMs = Date.now() - t0;
-        metricsRecordToolEnd(meta.name, false, latencyMs);
         const code =
           typeof (error as NodeJS.ErrnoException).code === "string"
             ? (error as NodeJS.ErrnoException).code
             : "";
 
-        if (code === TRANSPORT_NOT_CONNECTED || code === "transport_socket_closed") {
-          return errStructured(TRANSPORT_NOT_CONNECTED, disconnectedHint());
+        const transportDown = code === TRANSPORT_NOT_CONNECTED || code === "transport_socket_closed";
+
+        if (transportDown && meta.headlessFallback && headless !== undefined) {
+          try {
+            await headless.ensureDefaultSession();
+            const raw = await headless.rpc(daemonMethod, paramsObj);
+            return finishOk(raw, `${daemonMethod}@headless`);
+          } catch {
+            metricsRecordToolEnd(meta.name, false, Date.now() - t0);
+            return errStructured(TRANSPORT_NOT_CONNECTED, transportDisconnectedPayload(includeAutoHealHints));
+          }
+        }
+
+        const latencyMs = Date.now() - t0;
+        metricsRecordToolEnd(meta.name, false, latencyMs);
+
+        if (transportDown) {
+          return errStructured(TRANSPORT_NOT_CONNECTED, transportDisconnectedPayload(includeAutoHealHints));
         }
 
         if (error instanceof DaemonJsonRpcError) {
-          return errStructured(String(error.message), error.daemon);
+          const ah = includeAutoHealHints ? resolveAutoHeal(error.daemon) : undefined;
+          const msg =
+            typeof error.daemon["message"] === "string" ? error.daemon["message"] : String(error.message);
+          return errStructured(msg, {
+            ...error.daemon,
+            ...(ah !== undefined ? { autoHeal: ah } : {}),
+          });
         }
 
         return errStructured(error instanceof Error ? error.message : String(error));
@@ -121,3 +163,4 @@ function registerDaemonRow(
     },
   );
 }
+

@@ -36,6 +36,22 @@ export function metricsRecordToolEnd(tool: string, ok: boolean, latencyMs: numbe
   }
 }
 
+/** §09 — ranked tools by average latency (lifecycle totals ÷ calls). */
+export function metricsBottleneckReport(top: number): {
+  readonly slowestAverageMs: ReadonlyArray<{ tool: string; avgMs: number; calls: number }>;
+} {
+  const n = Math.min(100, Math.max(1, Math.floor(top)));
+  const rows = Object.entries(snap.byTool)
+    .map(([tool, b]) => ({
+      tool,
+      calls: b.calls,
+      avgMs: b.calls > 0 ? b.latencyMs / b.calls : 0,
+    }))
+    .sort((a, b) => b.avgMs - a.avgMs || a.tool.localeCompare(b.tool))
+    .slice(0, n);
+  return { slowestAverageMs: rows };
+}
+
 export function metricsSnapshot(): MetricsSnapshot {
   return JSON.parse(JSON.stringify(snap)) as MetricsSnapshot;
 }

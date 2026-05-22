@@ -1,4 +1,4 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+﻿import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import type { Notification } from "@modelcontextprotocol/sdk/types.js";
 import { Ajv, type ErrorObject, type ValidateFunction } from "ajv";
@@ -6,10 +6,12 @@ import addFormats from "ajv-formats";
 
 import { loadMethodRegistry, registryContentSha256 } from "../catalog/loadRegistry.js";
 import type { Config } from "../config.js";
+import { HeadlessCoordinator } from "../headless/headlessCoordinator.js";
 import type { Logger } from "../logger.js";
 import { ROUTER_ONLY_TOOLS } from "../mcp/local_router_tool_defs.js";
 import { registerDaemonBridgedTools } from "../mcp/register_daemon_bridge.js";
 import type { ValidateDaemonFn } from "../mcp/register_daemon_bridge.js";
+import { registerHeadlessRouterTools } from "../mcp/register_headless_router_tools.js";
 import { registerRouterOnlyTools } from "../mcp/register_router_only_tools.js";
 import { RouterToolCatalog } from "../tools/registry.js";
 import { GodotWsClient } from "./godot_ws_client.js";
@@ -82,7 +84,7 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
     {
       capabilities: { tools: { listChanged: false } },
       instructions:
-        "TerraVolt Godot MCP bridges Cursor (stdio MCP) to the Godot editor daemon (:6505).",
+        "TerraVolt bridges Cursor MCP stdio to editor (:6505) and optional Godot headless TCP (task 07).",
     },
   );
 
@@ -104,11 +106,17 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
   routeCatalog.mergeFromDaemonRegistry(jsonRegistry.methods);
   for (const lt of ROUTER_ONLY_TOOLS) routeCatalog.add(lt);
 
+  const headless = new HeadlessCoordinator(config, log, String(import.meta.url));
+
+  registerHeadlessRouterTools({ mcp, routeCatalog, headless });
+
   registerDaemonBridgedTools({
     mcp,
     godot,
+    headless,
     routeCatalog,
     validateDaemonInput,
+    includeAutoHealHints: config.includeAutoHealHints,
   });
 
   registerRouterOnlyTools({
@@ -118,11 +126,18 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
     routerRegistrySha,
     godot,
     ajvCompileSmoke: ajvHealthSmoke,
+    headless,
   });
 
   godot.start();
 
   async function shutdown(): Promise<void> {
+    try {
+      await headless.stop(false);
+    } catch {
+      //
+    }
+
     try {
       await mcp.close();
     } finally {
@@ -140,3 +155,4 @@ export function bootstrapRouter(opts: { config: Config; log: Logger }): RouterBu
     shutdown,
   };
 }
+

@@ -12,7 +12,10 @@ export type RegisteredRouterTool = {
   readonly requiresRuntime: boolean;
   readonly inputSchemaJson: Record<string, unknown>;
   readonly outputSchemaJson: Record<string, unknown> | undefined;
-  readonly daemonMethod: string | undefined;
+  /** Present for daemon-bridged tools; omitted for fully local MCP tools (e.g. headless.*, tools.list). */
+  readonly daemonMethod?: string | undefined;
+  /** When daemon WS is offline, optionally route this tool over the §07 headless TCP session (ping/server.info parity). */
+  readonly headlessFallback?: boolean;
 };
 
 export class RouterToolCatalog {
@@ -64,7 +67,8 @@ export class RouterToolCatalog {
         inputSchemaJson: input,
         outputSchemaJson: output,
         daemonMethod: m.method,
-      });
+        headlessFallback: m.headlessFallback === true,
+      } satisfies RegisteredRouterTool);
     }
   }
 
