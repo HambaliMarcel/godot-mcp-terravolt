@@ -5,10 +5,11 @@ Source-of-truth JSON consumed by **`packages/mcp-server`** (router boots from th
 **`packages/godot-mcp-addon/_generated/catalog_meta.gd`**), and (incrementally) the Godot addon
 (**`dispatcher.gd`** validates against matching schemas declared here).
 
-| Path                    | Purpose                                                                          |
-| ----------------------- | -------------------------------------------------------------------------------- |
-| `methods/registry.json` | MCP / daemon opcode catalog (`catalog_version`, per-method schemas)              |
-| `errors/registry.json`  | Subset mirrored for tooling; addon runtime errors remain in **`error_codes.gd`** |
+| Path                          | Purpose                                                                          |
+| ----------------------------- | -------------------------------------------------------------------------------- |
+| `methods/registry.json`       | MCP / daemon opcode catalog (`catalog_version`, per-method schemas)              |
+| `errors/registry.json`        | Subset mirrored for tooling; addon runtime errors remain in **`error_codes.gd`** |
+| `diagnostics/autoheal.json`    | Optional hints merged into MCP error payloads when `--disable-auto-heal` is off  |
 
 ## Overrides
 

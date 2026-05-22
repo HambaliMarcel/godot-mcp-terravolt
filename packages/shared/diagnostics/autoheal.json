@@ -1,0 +1,117 @@
+{
+  "bySymbol": {
+    "transport.not_connected": {
+      "hint": "The MCP router cannot reach the Godot daemon WebSocket (:6505 by default).",
+      "steps": [
+        "Open the target Godot project and enable the TerraVolt MCP addon (listen on TCP :6505).",
+        "If you only need parity methods (`ping`, `server.info`), start the project's headless session via MCP `headless.start_project`.",
+        "Confirm firewall / VPN is not blocking localhost; try `TERRAVOLT_GODOT_HOST` / `--godot-host`."
+      ]
+    },
+    "headless.binary_missing": {
+      "hint": "Headless tooling needs a Godot 4 executable on PATH or `--godot-binary` / `TERRAVOLT_GODOT_BINARY`.",
+      "steps": [
+        "Install Godot 4 CLI or Desktop build and expose it on PATH, or pass `--godot-binary` with the full exe path.",
+        "On Windows verify the path targets the executable you use for `-headless` (often `*_console_win64.exe`)."
+      ]
+    },
+    "headless.no_project": {
+      "hint": "Headless routing needs a `.godot` project root.",
+      "steps": [
+        "Pass `--project` or set `TERRAVOLT_PROJECT_PATH` to your game folder.",
+        "Or invoke `headless.start_project` with an explicit absolute project path."
+      ]
+    },
+    "headless.spawn_failed": {
+      "hint": "OS rejected starting the Godot child process.",
+      "steps": [
+        "Retry with `--godot-binary` pointing directly at the executable.",
+        "Check antivirus / execution policy blocking child processes.",
+        "Confirm the `--path` argument is valid and writable."
+      ]
+    },
+    "headless.driver_handshake_failed": {
+      "hint": "Driver script did not print `TERRAVOLT_HEADLESS_PORT` before the boot timeout expired.",
+      "steps": [
+        "Ensure addon `packages/godot-mcp-addon/headless/headless_driver.gd` remains reachable and `-script` path resolves.",
+        "Increase `--headless-boot-timeout-ms` if cold starts exceed the default budget."
+      ]
+    },
+    "headless.session_busy": {
+      "hint": "Only one bundled headless session is supported at once.",
+      "steps": [
+        "Call `headless.stop` before spawning another project/session.",
+        "Or wait for async headless RPCs to finish before starting a conflicting session."
+      ]
+    },
+    "headless.crashed": {
+      "hint": "Godot exited non-zero during a headless op.",
+      "steps": [
+        "Check daemon logs / stderr from the spawned process for scripting errors.",
+        "Reproduce with `--headless-boot-timeout-ms` raised to distinguish boot vs crash."
+      ]
+    },
+    "headless.timeout": {
+      "hint": "A daemon or headless call exceeded timeouts.",
+      "steps": [
+        "Bump `--request-timeout-ms` and `--headless-op-timeout-ms` for slow exports or imports.",
+        "Split large work batches into smaller tool calls."
+      ]
+    },
+    "headless.disallowed": {
+      "hint": "The requested path or RPC is outside the TerraVolt allowlist.",
+      "steps": [
+        "Prefer registry-backed daemon methods rather than arbitrary file paths.",
+        "Point `--project` at the intended sandbox root instead of escaping upward."
+      ]
+    },
+    "protocol.catalog_mismatch": {
+      "hint": "`server.info` differs from router `packages/shared/methods/registry.json`.",
+      "steps": [
+        "Run `npm run catalog:sync`, restart MCP router and the Godot editor.",
+        "If using a submodule copy of the addon, regenerate `_generated` catalog GD."
+      ]
+    }
+  },
+  "byCode": {
+    "-33810": {
+      "hint": "`headless.binary_missing` (-33810): Godot binary not located.",
+      "steps": [
+        "Same as symbol `headless.binary_missing`; use `--godot-binary` / `TERRAVOLT_GODOT_BINARY`."
+      ]
+    },
+    "-33811": {
+      "hint": "`headless.no_project` (-33811): Project path unresolved.",
+      "steps": [
+        "`--project` / `TERRAVOLT_PROJECT_PATH` / `headless.start_project(path=...)` must point at root with `project.godot`."
+      ]
+    },
+    "-33812": {
+      "hint": "`headless.spawn_failed` (-33812)",
+      "steps": ["See symbol `headless.spawn_failed`."]
+    },
+    "-33813": {
+      "hint": "`headless.driver_handshake_failed` (-33813)",
+      "steps": ["See symbol `headless.driver_handshake_failed`."]
+    },
+    "-33814": {
+      "hint": "`headless.session_busy` (-33814)",
+      "steps": ["See symbol `headless.session_busy`."]
+    },
+    "-33815": {
+      "hint": "`headless.crashed` (-33815)",
+      "steps": ["See symbol `headless.crashed`."]
+    },
+    "-33816": {
+      "hint": "`headless.timeout` (-33816)",
+      "steps": [
+        "Increase `--request-timeout-ms`, `--headless-op-timeout-ms`, or `--headless-boot-timeout-ms` as appropriate.",
+        "Split large workloads into incremental tool calls."
+      ]
+    },
+    "-33817": {
+      "hint": "`headless.disallowed` (-33817)",
+      "steps": ["See symbol `headless.disallowed`."]
+    }
+  }
+}

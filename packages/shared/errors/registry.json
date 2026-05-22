@@ -35,6 +35,78 @@
       "recoverable": false,
       "hint": "Check port availability and permissions on the daemon host.",
       "since": "0.1.0"
+    },
+    {
+      "code": -33810,
+      "symbol": "headless.binary_missing",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Locate Godot 4 exe via `--godot-binary`, `TERRAVOLT_GODOT_BINARY`, PATH, or common install dirs.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33811,
+      "symbol": "headless.no_project",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Pass `--project` / `TERRAVOLT_PROJECT_PATH` or reuse an active project's path.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33812,
+      "symbol": "headless.spawn_failed",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "OS failed to spawn the Godot subprocess; audit binary path and permissions.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33813,
+      "symbol": "headless.driver_handshake_failed",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "`headless_driver.gd` did not emit `TERRAVOLT_HEADLESS_PORT` within boot timeout.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33814,
+      "symbol": "headless.session_busy",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Stop the running headless session (`headless.stop`) before starting another.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33815,
+      "symbol": "headless.crashed",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Godot exited unexpectedly; inspect stderr/logs for scripting or startup errors.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33816,
+      "symbol": "headless.timeout",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Headless RPC or boot exceeded `--headless-op-timeout-ms` / `--headless-boot-timeout-ms`.",
+      "since": "0.2.0"
+    },
+    {
+      "code": -33817,
+      "symbol": "headless.disallowed",
+      "category": "headless",
+      "severity": "error",
+      "recoverable": true,
+      "hint": "Path or RPC blocked by TerraVolt allowlisting; stay within `--project`.",
+      "since": "0.2.0"
     }
   ]
 }

@@ -1,17 +1,24 @@
 {
-  "catalog_version": "0.1.0",
+  "catalog_version": "0.2.0",
   "methods": [
     {
       "method": "ping",
       "category": "server",
       "since": "0.1.0",
       "description": "JSON-RPC health check to the Godot daemon.",
-      "inputSchema": { "type": "object", "additionalProperties": false },
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "outputSchema": {
         "type": "object",
         "properties": {
-          "ok": { "type": "boolean" },
-          "ts": { "type": "integer" }
+          "ok": {
+            "type": "boolean"
+          },
+          "ts": {
+            "type": "integer"
+          }
         }
       },
       "mcpTool": {
@@ -24,15 +31,21 @@
       "safe": true,
       "mutates": false,
       "errorCodes": [],
-      "examples": []
+      "examples": [],
+      "headlessFallback": true
     },
     {
       "method": "server.info",
       "category": "server",
       "since": "0.1.0",
       "description": "Daemon identity, versions, listen address, and catalog metadata.",
-      "inputSchema": { "type": "object", "additionalProperties": false },
-      "outputSchema": { "type": "object" },
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object"
+      },
       "mcpTool": {
         "name": "server.info",
         "title": "Godot server.info",
@@ -43,7 +56,8 @@
       "safe": true,
       "mutates": false,
       "errorCodes": [],
-      "examples": []
+      "examples": [],
+      "headlessFallback": true
     },
     {
       "method": "log.tail",
@@ -53,12 +67,21 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "lines": { "type": "integer", "minimum": 1, "maximum": 1000 },
-          "level": { "type": "string", "enum": ["debug", "info", "warn", "error"] }
+          "lines": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "level": {
+            "type": "string",
+            "enum": ["debug", "info", "warn", "error"]
+          }
         },
         "additionalProperties": false
       },
-      "outputSchema": { "type": "array" },
+      "outputSchema": {
+        "type": "array"
+      },
       "mcpTool": {
         "name": "log.tail",
         "title": "Tail daemon log",
